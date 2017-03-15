@@ -6,9 +6,9 @@
 
 import os
 
-target = "public"
+target = os.path.join("docs", "html")
 try:
-    os.mkdir(target)
+    os.makedirs(target)
 except FileExistsError:
     pass
 
