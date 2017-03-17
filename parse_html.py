@@ -12,7 +12,8 @@ dir_htmls = join("docs", "html")
 path_index = join("docs", "index.html")
 path_template = join("docs", "template.html")
 
-res = markdown("# KyotoGeoPython ホームページへようこそ")
+#res = markdown("# KyotoGeoPython ホームページへようこそ")
+res = ""
 
 for folder in os.listdir(dir_htmls):
     if os.path.isdir(folder):
