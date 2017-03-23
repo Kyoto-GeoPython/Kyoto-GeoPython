@@ -39,7 +39,7 @@ for folder in os.listdir(dir_htmls):
                     key = "basic"
                 else:
                     key = "other"
-                reses[key] += markdown("[{}]({})".format(name, join("html", folder, file)))
+                reses[key] += markdown("[{}]({})".format(name, "/".join(["html", folder, file])))
         
         res += reses["basic"] + reses["other"]
         res += markdown("***")
@@ -60,8 +60,8 @@ with open(join("docs", "html", "Links.html"), "w", encoding="utf-8") as fp:
 res += markdown("## その他")
 # リンク集へのリンクを追加
 # ライブラリ集へのリンクを追加
-res += markdown("[ライブラリ集]({})".format(join("html", "ライブラリ集.html")))
-res += markdown("[リンク集]({})".format(join("html", "Links.html")))
+res += markdown("[ライブラリ集]({})".format("/".join(["html", "ライブラリ集.html"])))
+res += markdown("[リンク集]({})".format("/".join(["html", "Links.html"])))
 
         
 with open(path_template, "r", encoding="utf-8") as fp:
