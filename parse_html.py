@@ -30,8 +30,8 @@ res = ""
 
 def mynormlize(unistr):
 #   下の二行のコメントアウトを切り替えて実行して、index.htmlの差分が変わるか教えてください
-    res = normalize("NFC", unistr)
-#    res = unistr
+#    res = normalize("NFC", unistr)
+    res = unistr
     return res
 
 for folder in os.listdir(dir_htmls):
