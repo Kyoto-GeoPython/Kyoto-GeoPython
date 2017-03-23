@@ -29,7 +29,8 @@ style_sheet = """hr {
 res = ""
 
 def mynormlize(unistr):
-    res = normalize(unistr)
+#   下の二行のコメントアウトを切り替えて実行して、index.htmlの差分が変わるか教えてください
+    res = normalize("NFC", unistr)
 #    res = unistr
     return res
 
