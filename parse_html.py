@@ -28,13 +28,19 @@ style_sheet = """hr {
 """
 res = ""
 
+def mynormlize(unistr):
+    res = normalize(unistr)
+#    res = unistr
+    return res
+
 for folder in os.listdir(dir_htmls):
+    folder = mynormlize(folder)
     if os.path.isdir(folder) and folder in ["基礎編", "応用編"]: 
         reses = dict(basic="", other="")
         res += markdown("## {}".format(folder))
         
         for file in os.listdir(join(dir_htmls, folder)):
-            file = normalize("NFC", file)
+            file = mynormlize(file)
             if file[-5:] == ".html":
                 name = file[:-5]
                 if file.startswith("Pythonの基礎"):
