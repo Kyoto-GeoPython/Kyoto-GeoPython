@@ -11770,9 +11770,9 @@ div#notebook {
 <h1 id="Python&#12398;&#22411;-(1)">Python&#12398;&#22411; (1)<a class="anchor-link" href="#Python&#12398;&#22411;-(1)">&#182;</a></h1><p>Pythonは<strong>動的型付け言語</strong><br>
 型宣言などはなく、型を自動で判別してくれる</p>
 <ul>
-<li>整数 int:       2</li>
-<li>実数 float:     2.0</li>
-<li>複素数 complex: 2+0j</li>
+<li>（任意長）整数 int:       2</li>
+<li>（倍精度）実数 float:     2.0</li>
+<li>（倍精度）複素数 complex: 2+0j</li>
 </ul>
 <p>演算子: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>//</code>（整数部）, <code>%</code>（余り）, <code>**</code>（べき乗）</p>
 
@@ -11992,38 +11992,6 @@ startを省略すると最初から、stopを省略すると最後まで</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;I like tomatoes&quot;</span>
-<span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;12&quot;</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[&#39;I&#39;, &#39;like&#39;, &#39;tomatoes&#39;]
-0012
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12038,6 +12006,54 @@ startを省略すると最初から、stopを省略すると最後まで</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>メソッド: 型（クラス）に固有の関数</strong></p>
+
+<pre><code>オブジェクト名.メソッド名(引数)</code></pre>
+<p>の形をとる</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 文字列型のメソッド例</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;I like tomatoes&quot;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;12&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;I&#39;, &#39;like&#39;, &#39;tomatoes&#39;]
+I LIKE TOMATOES
+0012
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -12566,6 +12582,19 @@ linspaceは、stepを指定する代わりに分割数numを指定</p>
 
 <pre><code>オブジェクト名.メソッド名(引数)</code></pre>
 <p>の形をとる</p>
+<p>ndarrayには計算をスムーズにするための様々なメソッドがある</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="ndarray.sum(axis)">ndarray.sum(<em>axis</em>)<a class="anchor-link" href="#ndarray.sum(axis)">&#182;</a></h1><p>axis（整数またはタプル）で指定した軸に沿って和をとる<br>
+指定しなければ全体の和を取る<br>
+mean（平均）、max（最大）、min（最小）、var（分散）、std（標準偏差）なども同様</p>
 
 </div>
 </div>
@@ -12575,13 +12604,11 @@ linspaceは、stepを指定する代わりに分割数numを指定</p>
 <div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 文字列型のメソッド例</span>
-<span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;I like tomatoes&quot;</span>
-<span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;12&quot;</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -12594,9 +12621,12 @@ linspaceは、stepを指定する代わりに分割数numを指定</p>
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[&#39;I&#39;, &#39;like&#39;, &#39;tomatoes&#39;]
-I LIKE TOMATOES
-0012
+<pre>[[0 1 2]
+ [3 4 5]
+ [6 7 8]]
+[ 9 12 15]
+36
+[6 7 8]
 </pre>
 </div>
 </div>
@@ -12659,54 +12689,6 @@ I LIKE TOMATOES
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="ndarray.sum(axis)">ndarray.sum(<em>axis</em>)<a class="anchor-link" href="#ndarray.sum(axis)">&#182;</a></h1><p>axis（整数またはタプル）で指定した軸に沿って和をとる<br>
-指定しなければ全体の和を取る<br>
-mean（平均）、max（最大）、min（最小）、var（分散）、std（標準偏差）なども同様</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[[0 1 2]
- [3 4 5]
- [6 7 8]]
-[ 9 12 15]
-36
-[6 7 8]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="ndarray.T">ndarray.T<a class="anchor-link" href="#ndarray.T">&#182;</a></h1><p>転置をとる</p>
 <h1 id="ndarray.ravel()">ndarray.ravel()<a class="anchor-link" href="#ndarray.ravel()">&#182;</a></h1><p>多次元配列を（デフォルトではC形式で）1次元にする</p>
 <h1 id="ndarray.shape">ndarray.shape<a class="anchor-link" href="#ndarray.shape">&#182;</a></h1><p>配列の形（各次元の要素数）をタプルで返す</p>
@@ -12727,7 +12709,7 @@ mean（平均）、max（最大）、min（最小）、var（分散）、std（�
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># 0から2piまでを100等分</span>
@@ -12757,10 +12739,10 @@ mean（平均）、max（最大）、min（最小）、var（分散）、std（�
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="c1"># [0.0,1.0)の一様乱数</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
 <span class="n">fx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -12777,10 +12759,10 @@ mean（平均）、max（最大）、min（最小）、var（分散）、std（�
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[ 0.33686208  0.39706649  0.4032407   0.78413155  0.1172098   0.74075018
-  0.29518758  0.59386633]
-[ 3.66831470+0.j         -0.15790661+0.00043013j -0.24435640+0.2401812j
-  0.59721117+0.21653636j -1.36331440+0.j        ]
+<pre>[ 0.01961656  0.74296841  0.02893807  0.47893688  0.72129794  0.53022434
+  0.9101844   0.29164808]
+[ 3.72381468+0.j         -0.68368178+0.59838038j -0.19820797-0.50260779j
+ -0.71968097-1.16411229j -0.36374073+0.j        ]
 </pre>
 </div>
 </div>
@@ -12802,7 +12784,7 @@ NumPyのベクトル演算機能を活かし、forループをできるだけ無
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
@@ -12820,8 +12802,8 @@ y = np.sin(x)
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 12 ms, sys: 4 ms, total: 16 ms
-Wall time: 16.7 ms
+<pre>CPU times: user 4.34 ms, sys: 37 µs, total: 4.37 ms
+Wall time: 3.77 ms
 </pre>
 </div>
 </div>
@@ -12832,7 +12814,7 @@ Wall time: 16.7 ms
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
@@ -12852,8 +12834,8 @@ for i in range(100000):
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 264 ms, sys: 0 ns, total: 264 ms
-Wall time: 263 ms
+<pre>CPU times: user 99.1 ms, sys: 0 ns, total: 99.1 ms
+Wall time: 98.3 ms
 </pre>
 </div>
 </div>
@@ -12874,7 +12856,7 @@ Wall time: 263 ms
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -13155,7 +13137,7 @@ MRhjjDmFFYMxxphTWDEYY4w5xf8DEqOhh57Fk2sAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
@@ -13385,7 +13367,7 @@ KbBoa6YaAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
@@ -13829,7 +13811,7 @@ KMdxHCeWuIFyHMdxYsn/A1AcSyhpggXGAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">netCDF4</span> <span class="k">import</span> <span class="n">Dataset</span>
@@ -13861,7 +13843,7 @@ KMdxHCeWuIFyHMdxYsn/A1AcSyhpggXGAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">lon</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;longitude&quot;</span><span class="p">][:]</span> <span class="c1"># 最後の[:]をつけるとnumpy array形式で変数が得られる</span>
@@ -13886,7 +13868,7 @@ KMdxHCeWuIFyHMdxYsn/A1AcSyhpggXGAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="k">import</span> <span class="n">Basemap</span>
@@ -13909,15 +13891,15 @@ KMdxHCeWuIFyHMdxYsn/A1AcSyhpggXGAAAAAElFTkSuQmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[31]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[30]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{-60: ([&lt;matplotlib.lines.Line2D at 0x7f7f7e236198&gt;], []),
- -30: ([&lt;matplotlib.lines.Line2D at 0x7f7f7e236940&gt;], []),
- 0: ([&lt;matplotlib.lines.Line2D at 0x7f7f7e23b160&gt;], []),
- 30: ([&lt;matplotlib.lines.Line2D at 0x7f7f7e23b940&gt;], []),
- 60: ([&lt;matplotlib.lines.Line2D at 0x7f7f7e243160&gt;], [])}</pre>
+<pre>{-60: ([&lt;matplotlib.lines.Line2D at 0x7f7f8f26a908&gt;], []),
+ -30: ([&lt;matplotlib.lines.Line2D at 0x7f7f8f2700f0&gt;], []),
+ 0: ([&lt;matplotlib.lines.Line2D at 0x7f7f8f2708d0&gt;], []),
+ 30: ([&lt;matplotlib.lines.Line2D at 0x7f7f8f2780f0&gt;], []),
+ 60: ([&lt;matplotlib.lines.Line2D at 0x7f7f8f2788d0&gt;], [])}</pre>
 </div>
 
 </div>
@@ -13928,7 +13910,7 @@ KMdxHCeWuIFyHMdxYsn/A1AcSyhpggXGAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ここからはmatplotlibの「丁寧な」描き方とほぼ同じ</span>
