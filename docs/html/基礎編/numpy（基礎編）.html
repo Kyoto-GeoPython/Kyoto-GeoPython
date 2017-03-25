@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>numpy（基礎編）</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>numpy（基礎編）</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11,8 +13,8 @@
 *
 */
 /*!
- * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
+ * Bootstrap v3.3.6 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1107,6 +1109,7 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2535,6 +2538,7 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3025,6 +3029,7 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8755,9 +8760,6 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
-[dir="rtl"] #ipython_notebook {
-  float: right !important;
-}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -8960,14 +8962,8 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
-[dir="rtl"] #tabs li {
-  float: right;
-}
 ul#tabs {
   margin-bottom: 4px;
-}
-[dir="rtl"] ul#tabs {
-  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -8990,16 +8986,6 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
-}
-[dir="rtl"] .list_toolbar .tree-buttons {
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-right {
-  padding-top: 1px;
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-left {
-  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9136,9 +9122,6 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
-[dir="rtl"] #tree-selector a {
-  float: right;
-}
 #button-select-all {
   min-width: 50px;
 }
@@ -9228,9 +9211,6 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
-[dir="rtl"] #new-menu {
-  text-align: right;
-}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9275,9 +9255,6 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
-}
-[dir="rtl"] #running .col-sm-8 {
-  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9574,7 +9551,6 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
-  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9595,6 +9571,11 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
+}
+@-moz-document url-prefix() {
+  div.inner_cell {
+    overflow-x: hidden;
+  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11265,7 +11246,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 21ex;
+  width: 20ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11577,7 +11558,6 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
-  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11591,9 +11571,6 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
-}
-.terminal-app .terminal .xterm-rows {
-  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11654,10 +11631,8 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
-.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
-.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11668,11 +11643,9 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
-.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
-.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11806,17 +11779,25 @@ div#notebook {
 </ul>
 </li>
 <li>Numpyのデータ型</li>
-<li>インデックス参照</li>
-<li>ユニバーサル関数</li>
+<li>インデックス参照<ul>
+<li>スライス</li>
+<li>ファンシーインデックス参照</li>
 </ul>
 </li>
-<li>科学技術計算のための機能<ul>
+<li>ユニバーサル関数（ufunc）</li>
+</ul>
+</li>
+<li>科学技術計算のためのモジュール<ul>
 <li>線形代数（np.linalg）</li>
 <li>乱数生成（np.random）</li>
 <li>フーリエ変換（np.fft）</li>
 </ul>
 </li>
-<li>ndarrayのファイル入出力    </li>
+<li>ndarrayのファイル入出力    <ul>
+<li>npyとnpz形式でのバイナリ保存</li>
+<li>テキストでの保存</li>
+</ul>
+</li>
 </ul>
 
 </div>
@@ -11844,8 +11825,8 @@ Numpyは非常に高機能であり、全ての機能を1ページで説明す�
 <h2 id="Numpy&#12398;&#29305;&#24500;&#12392;&#12399;&#65311;">Numpy&#12398;&#29305;&#24500;&#12392;&#12399;&#65311;<a class="anchor-link" href="#Numpy&#12398;&#29305;&#24500;&#12392;&#12399;&#65311;">&#182;</a></h2><p>ざっとNumpyの特徴を上げてみると、</p>
 <ul>
 <li>ベクトル演算をベースにした省メモリで高速な多次元配列（ndarrayオブジェクト）</li>
-<li>行列演算（逆行列など）や乱数生成、フーリエ変換を簡単にできる</li>
-<li>C, C++, Fortranとの連携</li>
+<li>行列演算（逆行列など）や乱数生成、フーリエ変換を簡単に呼び出せる</li>
+<li>PythonとC, C++, Fortranとの連携を可能にするインターフェイスの提供</li>
 <li>バイナリやテキストでのファイル入出力を簡単にできる</li>
 </ul>
 <p>のようなものがあります。<br>
@@ -11912,11 +11893,7 @@ pipはインストール時にコンパイルするため、コンパイルエ�
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;type = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;shape = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dtype = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ndim = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">ndim</span><span class="p">))</span>
+<span class="n">x</span>
 </pre></div>
 
 </div>
@@ -11927,17 +11904,133 @@ pipはインストール時にコンパイルするため、コンパイルエ�
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt"></div>
+<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>x = [ 1.    0.01  0.7 ]
-type = &lt;class &#39;numpy.ndarray&#39;&gt;
-shape = (3,)
-dtype = float64
-ndim = 1
-</pre>
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 1.  ,  0.01,  0.7 ])</pre>
 </div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># xが何のオブジェクトか表示する</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>numpy.ndarray</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># xの形状</span>
+<span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(3,)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># xの型（この場合８バイト浮動小数点型）</span>
+<span class="n">x</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>dtype(&#39;float64&#39;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># xの次元</span>
+<span class="n">x</span><span class="o">.</span><span class="n">ndim</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1</pre>
+</div>
+
 </div>
 
 </div>
@@ -11959,30 +12052,27 @@ ndim = 1
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>多次元配列はこのように定義できます。</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 簡単のために関数を作る</span>
-<span class="k">def</span> <span class="nf">show_ndarray_info</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;type = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;shape = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dtype = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ndim = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">ndim</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">()</span>
-    
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[整数のみを入れた場合]&quot;</span><span class="p">)</span>
-<span class="n">show_ndarray_info</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[２次元配列]&quot;</span><span class="p">)</span>
-<span class="n">show_ndarray_info</span><span class="p">([</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ２×３の２次元配列を定義</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
         <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">3.</span><span class="p">],</span>
         <span class="p">[</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">20.</span><span class="p">,</span> <span class="mf">0.07</span><span class="p">]</span>
         <span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[複素数を入れた場合]&quot;</span><span class="p">)</span>
-<span class="n">show_ndarray_info</span><span class="p">([</span><span class="mi">1</span><span class="n">j</span><span class="p">,</span> <span class="mi">3</span><span class="o">+</span><span class="mi">6</span><span class="n">j</span><span class="p">,</span> <span class="mf">9.</span><span class="p">])</span>
+<span class="n">y</span>
 </pre></div>
 
 </div>
@@ -11993,34 +12083,246 @@ ndim = 1
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt"></div>
+<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[整数のみを入れた場合]
-x = [1 2 3]
-type = &lt;class &#39;numpy.ndarray&#39;&gt;
-shape = (3,)
-dtype = int32
-ndim = 1
 
-[２次元配列]
-x = [[  1.     0.1    3.  ]
- [  3.    20.     0.07]]
-type = &lt;class &#39;numpy.ndarray&#39;&gt;
-shape = (2, 3)
-dtype = float64
-ndim = 2
-
-[複素数を入れた場合]
-x = [ 0.+1.j  3.+6.j  9.+0.j]
-type = &lt;class &#39;numpy.ndarray&#39;&gt;
-shape = (3,)
-dtype = complex128
-ndim = 1
-
-</pre>
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[  1.  ,   0.1 ,   3.  ],
+       [  3.  ,  20.  ,   0.07]])</pre>
 </div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 形状</span>
+<span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(2, 3)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 型は１次元と同様</span>
+<span class="n">y</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>dtype(&#39;float64&#39;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 次元（つまりlen(y.shape)と等しい）</span>
+<span class="n">y</span><span class="o">.</span><span class="n">ndim</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>整数を入れると、intとして配列を作ります。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 整数を入れた場合</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">x</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[11]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([1, 2, 3])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 自動的に４バイトintと型推論している</span>
+<span class="n">x</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[12]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>dtype(&#39;int32&#39;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>もちろん複素数も扱えます。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 複素数を入れた場合</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="n">j</span><span class="p">,</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">6</span><span class="n">j</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+<span class="n">x</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[13]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 0.+1.j,  3.+6.j,  9.+0.j])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 実部、虚部それぞれ８バイトの１６バイト複素数</span>
+<span class="n">x</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[14]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>dtype(&#39;complex128&#39;)</pre>
+</div>
+
 </div>
 
 </div>
@@ -12040,7 +12342,7 @@ ndim = 1
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,])</span>
@@ -12055,23 +12357,23 @@ ndim = 1
 <span class="c1">#          [ 5,  6,  7,  8,  9],</span>
 <span class="c1">#          [10, 11, 12, 13, 14],</span>
 <span class="c1">#          [15, 16, 17, 18, 19]]</span>
-<span class="c1"># まず0~19までの一次元配列を作り、そのshapeを変更して４×５の多次元配列を作っている。</span>
+<span class="c1"># まず0~19までの一次元配列を作り、そのshapeを変更して４×５の２次元配列を作っている。</span>
 
 <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#==&gt; 1</span>
-<span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#==&gt; 9 （負のインデックスは後ろから数えたもの。x[1,3]と等価）</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#==&gt; 9 （負のインデックスは後ろから数えたもの。x[1,4]と等価）</span>
 
 <span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># １次元配列を取り出す</span>
 <span class="c1"># ==&gt; [15, 16, 17, 18, 19]</span>
 
-<span class="c1"># #一つの軸でのスライスではndimは変わらず、shapeだけが小さくなる（２×５の多次元配列に）。</span>
-<span class="c1"># x[2:4] </span>
-<span class="c1"># # ==&gt; [[10, 11, 12, 13, 14],</span>
-<span class="c1"># #          [15, 16, 17, 18, 19]]</span>
+<span class="c1">#一つの軸でのスライスでは次元は変わらず、shapeだけが小さくなる（２×５の多次元配列に）。</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> 
+<span class="c1"># ==&gt; [[10, 11, 12, 13, 14],</span>
+<span class="c1">#          [15, 16, 17, 18, 19]]</span>
 
-<span class="c1"># #複数の軸でのスライスも可能。</span>
-<span class="c1"># x[2:4, 2:4]  # ２×２</span>
-<span class="c1"># # ==&gt; [[12, 13],</span>
-<span class="c1"># #          [17, 18]]</span>
+<span class="c1">#複数の軸でのスライスも可能。</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>  <span class="c1"># ２×２</span>
+<span class="c1"># ==&gt; [[12, 13],</span>
+<span class="c1">#          [17, 18]]</span>
 </pre></div>
 
 </div>
@@ -12082,13 +12384,12 @@ ndim = 1
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[4]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[15]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([15, 16, 17, 18, 19])</pre>
+<pre>array([[12, 13],
+       [17, 18]])</pre>
 </div>
 
 </div>
@@ -12110,13 +12411,13 @@ ndim = 1
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">])</span>
 <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># ==&gt; [ 2.  ,  1.01,  1.7 ]</span>
 <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="c1"># ==&gt; [ 2.  ,  0.02,  1.4 ]</span>
-<span class="n">x</span> <span class="o">/</span> <span class="mf">1e5</span> <span class="c1"># ==&gt; [  1.00000000e-05,   1.00000000e-07,   7.00000000e-06]</span>
+<span class="n">x</span> <span class="o">/</span> <span class="mi">1</span><span class="n">e5</span> <span class="c1"># ==&gt; [  1.00000000e-05,   1.00000000e-07,   7.00000000e-06]</span>
 </pre></div>
 
 </div>
@@ -12127,9 +12428,7 @@ ndim = 1
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[5]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[16]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12155,7 +12454,7 @@ ndim = 1
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">8.</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">90</span><span class="p">])</span>
@@ -12174,9 +12473,7 @@ ndim = 1
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[6]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[17]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12202,7 +12499,7 @@ ndim = 1
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ３×３行列を作成</span>
@@ -12229,6 +12526,12 @@ ndim = 1
 <span class="c1">#          [  6.,   8.,  10.],        2*Aと等しくなっている</span>
 <span class="c1">#          [ 12.,  14.,  16.]]</span>
 
+<span class="c1"># ndarrayオブジェクトはdot関数を持っているため、このようにも書ける</span>
+<span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="c1"># ==&gt; [[  0.,   2.,   4.],</span>
+<span class="c1">#          [  6.,   8.,  10.],        2*Aと等しくなっている</span>
+<span class="c1">#          [ 12.,  14.,  16.]]</span>
+
 <span class="c1"># Python3.5以降であれば、行列積を@で記述可</span>
 <span class="n">A</span> <span class="o">@</span> <span class="n">B</span>
 <span class="c1"># ==&gt; [[  0.,   2.,   4.],</span>
@@ -12244,9 +12547,7 @@ ndim = 1
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[7]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[18]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12273,7 +12574,7 @@ ndim = 1
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
@@ -12288,9 +12589,7 @@ ndim = 1
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[8]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[19]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12318,7 +12617,7 @@ ndim = 1
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#ndarray.sizeは配列に含まれるデータの総数（必ずスカラーになる）</span>
@@ -12333,9 +12632,7 @@ ndim = 1
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[9]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[20]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12350,7 +12647,7 @@ ndim = 1
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># total sizeが変化しているので怒られる</span>
@@ -12365,14 +12662,12 @@ ndim = 1
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt"></div>
-
+<div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_text output_error">
 <pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-10-eccaecc34b0e&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">&lt;ipython-input-21-eccaecc34b0e&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-intense-fg ansi-bold"># total sizeが変化しているので怒られる</span>
 <span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>a<span class="ansi-yellow-intense-fg ansi-bold">.</span>reshape<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-cyan-intense-fg ansi-bold">1000</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-cyan-intense-fg ansi-bold">100000</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
 
@@ -12396,7 +12691,7 @@ ndim = 1
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
@@ -12410,9 +12705,7 @@ ndim = 1
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[11]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[22]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12440,7 +12733,7 @@ ndim = 1
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -12455,9 +12748,7 @@ ndim = 1
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[12]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[23]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12485,7 +12776,7 @@ ndim = 1
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -12502,9 +12793,7 @@ ndim = 1
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[13]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[24]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12530,7 +12819,7 @@ ndim = 1
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -12547,9 +12836,7 @@ ndim = 1
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[14]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[25]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12567,8 +12854,7 @@ ndim = 1
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>少しだけ、reshapeの実装について考えてみます。<br>
-C言語では、多次元配列であってもメモリ上に連続に配置され、インデックスを１変えたときに参照する位置を１次元の場合よりも大きくジャンプさせることであたかも隣接しているかのように操作することが出来ます。<br>
+<h4 id="(&#30330;&#23637;)-reshape&#12398;&#23455;&#35013;&#12434;&#35443;&#12375;&#12367;&#12415;&#12390;&#12415;&#12427;">(&#30330;&#23637;) reshape&#12398;&#23455;&#35013;&#12434;&#35443;&#12375;&#12367;&#12415;&#12390;&#12415;&#12427;<a class="anchor-link" href="#(&#30330;&#23637;)-reshape&#12398;&#23455;&#35013;&#12434;&#35443;&#12375;&#12367;&#12415;&#12390;&#12415;&#12427;">&#182;</a></h4><p>C言語では、多次元配列であってもメモリ上に連続に配置され、インデックスを１変えたときに参照する位置を１次元の場合よりも大きくジャンプさせることであたかも隣接しているかのように操作することが出来ます。<br>
 shapeを変えるということは、ある軸のインデックスが１増えたときにメモリ上への参照を何バイトだけジャンプするかを変更することを意味します。<br>
 このジャンプの量を<strong>strides</strong>といいます。</p>
 
@@ -12577,7 +12863,7 @@ shapeを変えるということは、ある軸のインデックスが１増え
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -12593,9 +12879,7 @@ shapeを変えるということは、ある軸のインデックスが１増え
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[15]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[26]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12610,10 +12894,13 @@ shapeを変えるということは、ある軸のインデックスが１増え
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">dtype</span> <span class="c1"># ==&gt; dtype(&#39;int32&#39;)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># int32型なので一つの値を表現するために４バイト必要</span>
+<span class="n">c</span><span class="o">.</span><span class="n">dtype</span> <span class="c1"># ==&gt; dtype(&#39;int32&#39;)</span>
+
+<span class="c1"># 同じ値になる</span>
 <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># ==&gt; 5</span>
 <span class="n">b</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="c1"># ==&gt; 5</span>
 </pre></div>
@@ -12626,13 +12913,71 @@ shapeを変えるということは、ある軸のインデックスが１増え
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[16]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[27]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
 <pre>5</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># cとbは同じデータを共有しているとTrueを返す</span>
+<span class="n">c</span><span class="o">.</span><span class="n">base</span> <span class="ow">is</span> <span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[28]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># コピーされたものはデータを共有しない</span>
+<span class="n">c</span><span class="o">.</span><span class="n">base</span> <span class="ow">is</span> <span class="n">b</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[29]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
 </div>
 
 </div>
@@ -12651,7 +12996,7 @@ shapeを変えるということは、ある軸のインデックスが１増え
 したがって、b[5]とc[1,0]が（参照しているメモリアドレスについても）等しくなるということです。<br>
 C言語の多次元配列は、後ろの軸であればあるほどメモリが隣接するような設計になっています。<br>
 １次元配列を多次元配列に変更するときには、２つの流派があります。<br>
-一つは、C言語と同じように、後ろの軸が隣接するようなものと、Fortranのように前の方の軸が隣接するようなものです。<br>
+一つは、C言語と同じように、後ろの軸が隣接するようなもの（<strong>行優先</strong>)と、Fortranのように前の方の軸が隣接するようなもの（<strong>列優先</strong>)です。<br>
 reshape関数は、キーワード引数orderがあり、この２つを選べるようになっています。<br>
 もちろん、そこまで使う機会はないと思うのですが（デフォルトで十分）、このような実装を理解しておくと、困ったときに対処しやすいと思います。</p>
 
@@ -12660,7 +13005,7 @@ reshape関数は、キーワード引数orderがあり、この２つを選べ�
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># C言語での多次元配列（デフォルトの動作）</span>
@@ -12675,9 +13020,7 @@ reshape関数は、キーワード引数orderがあり、この２つを選べ�
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[17]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[30]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12693,7 +13036,7 @@ reshape関数は、キーワード引数orderがあり、この２つを選べ�
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Fortranでの多次元配列</span>
@@ -12708,9 +13051,7 @@ reshape関数は、キーワード引数orderがあり、この２つを選べ�
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[18]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[31]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12729,10 +13070,9 @@ reshape関数は、キーワード引数orderがあり、この２つを選べ�
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>reshapeについてのまとめです。</p>
-<ul>
+<h4 id="reshape&#38306;&#25968;&#12414;&#12392;&#12417;">reshape&#38306;&#25968;&#12414;&#12392;&#12417;<a class="anchor-link" href="#reshape&#38306;&#25968;&#12414;&#12392;&#12417;">&#182;</a></h4><ul>
 <li>sizeを変化させない。引数に-1を使うと便利。</li>
-<li>reshapeはコピーではなくビューを返す。</li>
+<li>reshapeはコピーではなくビューを返す。コピーしたいときはcopy()を使う。</li>
 </ul>
 
 </div>
@@ -12753,7 +13093,7 @@ np.asarrayは引数がndarrayであれば、そのままndarrayを返し、そ�
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># dtypeを指定</span>
@@ -12771,9 +13111,7 @@ np.asarrayは引数がndarrayであれば、そのままndarrayを返し、そ�
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[19]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[32]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12792,17 +13130,17 @@ np.asarrayは引数がndarrayであれば、そのままndarrayを返し、そ�
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="np.arange">np.arange<a class="anchor-link" href="#np.arange">&#182;</a></h3><p>Python組み込み関数のrange()と同じ働きをする関数で、ndarrayを返します。<br>
-stepには小数も入れることが出来ます。</p>
+stepには少数も入れることが出来ます。</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 引数が一つの場合、stopのみstart=0となる</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 引数が一つの場合、stopのみ。start=0となる</span>
 <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># ==&gt; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
 <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">10.</span><span class="p">)</span> <span class="c1"># ==&gt; [ 0.,  1.,  2.,  3.,  4.,  5.,  6.,  7.,  8.,  9.]</span>
 <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span> <span class="c1"># ==&gt; [ 0.,  1.,  2.,  3.,  4.,  5.,  6.,  7.,  8.,  9.]</span>
@@ -12826,9 +13164,7 @@ stepには小数も入れることが出来ます。</p>
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[20]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[33]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12854,7 +13190,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#１次元の場合はスカラーを引数に与えることが可能</span>
@@ -12887,9 +13223,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[21]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[34]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12919,7 +13253,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 2048個のbool型の中にあるTrueの個数（実行するたびに変化する）</span>
@@ -12934,13 +13268,11 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[22]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[35]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>108</pre>
+<pre>106</pre>
 </div>
 
 </div>
@@ -12965,7 +13297,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -12979,9 +13311,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[23]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[36]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13005,7 +13335,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#この２つは等価</span>
@@ -13021,9 +13351,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[24]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[37]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13039,7 +13367,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#endpoint=Falseの場合。stopの値を含まない。</span>
@@ -13054,9 +13382,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[25]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[38]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13082,7 +13408,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
@@ -13096,9 +13422,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[26]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[39]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13121,7 +13445,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Numpy&#12398;&#12487;&#12540;&#12479;&#22411;">Numpy&#12398;&#12487;&#12540;&#12479;&#22411;<a class="anchor-link" href="#Numpy&#12398;&#12487;&#12540;&#12479;&#22411;">&#182;</a></h2><p>既に出てきたように、ndarrayには様々なdtypeが存在します。<br>
 基本的には精度の高い型が使われているためにそこまで意識する必要はないかもしれませんが、Cなどと連携するときやバイナリ入出力のときには考えないといけないこともあると思います。<br>
-表でまとめると以下のようになります。</p>
+表でまとめると以下のようになります。C言語、Fortranでの対応する型も書いています。</p>
 <table>
 <thead><tr>
 <th style="text-align:center">型</th>
@@ -13200,7 +13524,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -13229,9 +13553,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[27]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[40]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13250,7 +13572,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;">&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;<a class="anchor-link" href="#&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;">&#182;</a></h2><p>Numpyでは、部分配列の取り出し方に様々な種類があり、使いこなせると便利です。<br>
-ただ、取り出し方がコピーであるかビュー（参照）であるかを混乱することがあるので、チェックしておいてください。</p>
+ただ、取り出し方が<strong>コピー</strong>であるか<strong>ビュー（参照）</strong>であるかを混乱することがあるので、チェックしておいてください。</p>
 <h3 id="&#12473;&#12521;&#12452;&#12473;">&#12473;&#12521;&#12452;&#12473;<a class="anchor-link" href="#&#12473;&#12521;&#12452;&#12473;">&#182;</a></h3><p>Pythonのリストやタプルにも実装されているスライスをndarrayに対してするとその部分配列が<strong>ビュー（参照）</strong>で返ってきます。<br>
 つまり、その部分配列を書き換えると元々の配列も変わるということです。<br>
 スライスは高速に動作するので、使えるときはガンガン使っていきましょう。<br>
@@ -13261,7 +13583,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
@@ -13276,9 +13598,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[28]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[41]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13296,7 +13616,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># スライスする（２×２行列のビューができる）</span>
@@ -13312,9 +13632,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[29]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[42]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13330,7 +13648,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># スライスした部分配列の要素に全て-1を代入する</span>
@@ -13348,9 +13666,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[30]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[43]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13372,7 +13688,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>オリジナル配列のスライスされた部分が全て-1に変わっていることがわかります。<br>
-多次元配列のスライスは、一つ一つの軸のスライスを順番にスライスしていって小さくなっていくと考えると分かりやすいと思います。<br>
+多次元配列のスライスは、一つ一つの軸を順番にスライスしていって小さくなっていくと考えると分かりやすいと思います。<br>
 直接ビューに代入することも出来ます。</p>
 
 </div>
@@ -13380,7 +13696,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
@@ -13398,9 +13714,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[31]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[44]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13428,7 +13742,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
@@ -13449,9 +13763,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[32]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[45]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13479,7 +13791,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 同様のオリジナル配列を作る</span>
@@ -13503,9 +13815,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[33]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[46]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13535,7 +13845,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -13553,9 +13863,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[34]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[47]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13576,18 +13884,19 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <p>ひと目見ただけでも面倒なバグを生みそうな気配がします。</p>
 <p>配列に配列を代入するときはもっと深刻なバグの原因になるので気を付けるべきです。<br>
 コピーされたものだと思ってオリジナルを書き換えていると、コピー先が変わっているということが起こり得ます。<br>
-このようなバグはスカラーの場合と異なり、気付きにくいエラーなので要注意です。</p>
+このようなバグはスカラーの場合と異なり、気付きにくいエラーなので要注意です。<br>
+例えば、配列aの値を配列tempに保存して、aを書き換えたい状況だとします。</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
 <span class="c1"># aの要素をtempの要素に代入したつもりだったが・・・</span>
 <span class="n">temp</span> <span class="o">=</span> <span class="n">a</span>
@@ -13606,9 +13915,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[35]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[48]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13634,11 +13941,11 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
 <span class="c1"># 自分自身のスライスに代入</span>
 <span class="n">temp</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">a</span>
@@ -13656,13 +13963,11 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[36]:</div>
-
+<div class="output_area"><div class="prompt output_prompt">Out[49]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([ 0.,  1.,  2.,  3.,  4.,  5.,  6.,  7.,  8.,  9.])</pre>
+<pre>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</pre>
 </div>
 
 </div>
@@ -13686,11 +13991,30 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="c1"># temp = np.zeros(10)</span>
+<span class="c1"># temp = np.empty_like(a) # 先にメモリを確保する必要がない</span>
+
+<span class="c1"># コピーを渡す</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">a</span><span class="p">[:]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1"># temp = np.empty_like(a)</span>
 
 <span class="c1"># コピーを渡す</span>
 <span class="n">temp</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -13708,9 +14032,297 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[37]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[51]:</div>
 
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#12501;&#12449;&#12531;&#12471;&#12540;&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;">&#12501;&#12449;&#12531;&#12471;&#12540;&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;<a class="anchor-link" href="#&#12501;&#12449;&#12531;&#12471;&#12540;&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;">&#182;</a></h3><p>スライスよりも柔軟に部分配列を取り出せるインデックス参照がファンシーインデックス参照です。<br>
+Numpyの使いやすさを格段に上げる機能であり、使う機会も多くなると思います。<br>
+ただし、これはビューではなく、コピーを返すことに注意してください。<br>
+インデックスに配列を入れることで、対応する軸を抜き出すということをしてくれます。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># １次元の場合</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="n">a</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[52]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 0.   ,  0.125,  0.25 ,  0.375,  0.5  ,  0.625,  0.75 ,  0.875,  1.   ])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ファンシーインデックス参照の一例</span>
+<span class="c1"># 配列（ndarrayやリスト、タプルなど）をインデックスに入れると、部分配列（コピー）を返す</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="p">]</span>
+<span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[53]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 0.125,  0.375,  0.75 ,  0.   ])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># コピーであることの確認</span>
+<span class="c1"># bを書き換えたとしても・・・</span>
+<span class="n">b</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># 元の配列は変わらない</span>
+<span class="n">a</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[54]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 0.   ,  0.125,  0.25 ,  0.375,  0.5  ,  0.625,  0.75 ,  0.875,  1.   ])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>多次元配列の各軸のインデックスに配列を入れると、その軸を抜き出します。<br>
+インデックスに用いるリストによってどのような形状の配列が返ってきているかを確認してください。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 多次元配列を定義</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">arr</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[55]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[0, 1, 2],
+       [3, 4, 5],
+       [6, 7, 8]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># axis 0にリストを入れた場合（arr[2]とarr[1]を抜き出すことになる）</span>
+<span class="n">arr</span><span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[56]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[6, 7, 8],
+       [3, 4, 5]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[57]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># axis 1にリストを入れた場合（arr[:, 2]とarr[:, 0]を抜き出すことになる）</span>
+<span class="n">arr</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[57]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[2, 0],
+       [5, 3],
+       [8, 6]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># axis0, axis1のどちらにも同じ長さのリストを入れた場合</span>
+<span class="c1"># arr[2, 2]とarr[1, 0]を抜き出した１次元配列が返ってくる</span>
+<span class="n">arr</span><span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[58]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([8, 3])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>ファンシーインデックス参照の記法を用いて、代入ができます。<br>
+ファンシーインデックス参照そのものはコピーを返すのですが、代入のときはビューに代入しているかのように扱えます。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[59]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># １次元配列</span>
+<span class="n">arr1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">arr1</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[59]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13725,10 +14337,1566 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># スカラーを代入するとすべての要素がその値に置き換わる（スライスと同じような動作）</span>
+<span class="n">arr1</span><span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">arr1</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[60]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([100,   1, 100, 100,   4,   5,   6,   7, 100,   9])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[61]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 配列を代入すると、対応する値に置き換わる（shapeが同じである必要がある）</span>
+<span class="n">arr2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">arr2</span><span class="p">[[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">104</span><span class="p">)</span>
+<span class="n">arr2</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[61]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([  0, 103,   2, 101,   4,   5, 100, 102,   8,   9])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#12518;&#12491;&#12496;&#12540;&#12469;&#12523;&#38306;&#25968;&#65288;ufunc&#65289;">&#12518;&#12491;&#12496;&#12540;&#12469;&#12523;&#38306;&#25968;&#65288;ufunc&#65289;<a class="anchor-link" href="#&#12518;&#12491;&#12496;&#12540;&#12469;&#12523;&#38306;&#25968;&#65288;ufunc&#65289;">&#182;</a></h2><p>Numpyでは、三角関数(np.sinなど）や指数関数（np.exp）のような関数は<strong>ユニバーサル関数オブジェクト（略すとufunc）</strong>になっています。<br>
+<a href="https://docs.scipy.org/doc/numpy/reference/ufuncs.html">公式ドキュメント</a>によると、ufuncは、要素ごと（element-by-element）にndarrayへ作用する関数であるという説明があります。<br>
+そして、Numpyに標準で入っているufuncは、コンパイルされたC言語で実装されているということも書かれています。<br>
+ufuncの関数による計算結果はndarrayで返ってきます。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[62]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 0からpiまで</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># ufuncの一つであるnp.sinをxに作用させると、要素ごとにsin関数を作用させたものが配列として返ってくる</span>
+<span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[62]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([  0.00000000e+00,   3.42020143e-01,   6.42787610e-01,
+         8.66025404e-01,   9.84807753e-01,   9.84807753e-01,
+         8.66025404e-01,   6.42787610e-01,   3.42020143e-01,
+         1.22464680e-16])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>ufuncは、Pythonのループの遅さという欠点を補うために生まれ、そしてより便利な機能も追加されています。<br>
+例えば、ラジアン（弧度法）から度（度数法）を変換するufuncなどがあります。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[63]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ラジアンから度への変換</span>
+<span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[63]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([   0.,   20.,   40.,   60.,   80.,  100.,  120.,  140.,  160.,  180.])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[64]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 引数が二個の例：累乗を要素ごと、1**3, 2**4, 3**1を計算している</span>
+<span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[64]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 1, 16,  3], dtype=int32)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>ufuncはとても数が多いので、<a href="https://docs.scipy.org/doc/numpy/reference/ufuncs.html#available-ufuncs">公式HP</a>を参照してください。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#31185;&#23398;&#25216;&#34899;&#35336;&#31639;&#12398;&#12383;&#12417;&#12398;&#12514;&#12472;&#12517;&#12540;&#12523;">&#31185;&#23398;&#25216;&#34899;&#35336;&#31639;&#12398;&#12383;&#12417;&#12398;&#12514;&#12472;&#12517;&#12540;&#12523;<a class="anchor-link" href="#&#31185;&#23398;&#25216;&#34899;&#35336;&#31639;&#12398;&#12383;&#12417;&#12398;&#12514;&#12472;&#12517;&#12540;&#12523;">&#182;</a></h1><p>Numpyでは、C言語のライブラリをPythonから簡単に呼び出すことができるモジュールが用意されています。<br>
+このような他言語のライブラリの関数をPythonで呼び出せるようにしたものを<strong>ラッパー（wrapper）</strong>といいます（包み込むイメージ）。<br>
+これらはNumpyをインポートしたらすぐに使うことが出来ます。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#32218;&#24418;&#20195;&#25968;&#65288;np.linalg&#65289;"><a href="https://docs.scipy.org/doc/numpy/reference/routines.linalg.html">&#32218;&#24418;&#20195;&#25968;&#65288;np.linalg&#65289;</a><a class="anchor-link" href="#&#32218;&#24418;&#20195;&#25968;&#65288;np.linalg&#65289;">&#182;</a></h2><p><strong>np.linalg</strong>は、元々Fortranで書かれた<a href="http://www.netlib.org/lapack/"><strong>LAPACK</strong></a>がC言語に変換されたものをラップしたものです。<br>
+LAPACKの関数と一対一に対応しているわけではなく、より単純なインターフェイスで呼び出せるようになっています。<br>
+逆行列を求めたり、固有値分解、特異値分解など線形代数を網羅するライブラリです（詳細は上のリンクを参照）。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[65]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ３×３の二次元行列</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">A</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[65]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 0.81113153,  0.08398089,  0.81946805],
+       [ 0.32487136,  0.84201693,  0.5770126 ],
+       [ 0.16722265,  0.52675866,  0.89728486]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[66]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 逆行列を求めるinv関数</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">B</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[66]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 1.20497372,  0.95074669, -1.71186472],
+       [-0.52035885,  1.57640531, -0.53850042],
+       [ 0.08091593, -1.10262814,  1.74963647]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[67]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 積を取ると単位行列になる</span>
+<span class="n">A</span> <span class="o">@</span> <span class="n">B</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[67]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[  1.00000000e+00,  -4.68458491e-18,  -3.79172515e-17],
+       [  4.42867150e-17,   1.00000000e+00,   3.38783009e-17],
+       [  4.63608425e-17,  -1.54767808e-16,   1.00000000e+00]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Numpyの強みの一つとして、１次元配列をスカラーにする計算のように次元が下がる関数であれば、多次元配列を引数に取ることが出来、軸を指定することによって、その軸に沿った一括計算が可能になります。<br>
+分かりにくいので例をあげます。<br>
+１次元配列をスカラーにするような関数としてノルムを取る<strong>norm</strong>関数があります。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[68]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># normを取る（ようするにユークリッドノルム）</span>
+<span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">([</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[68]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>5.0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>このnorm関数に多次元配列を渡し、軸を指定すると、その軸に沿ってノルムを取ります。<br>
+つまりその軸がスカラーに縮約され、軸がなくなります。<br>
+例えば、shapeが(5, 3)の配列で軸１を指定すると、その軸に沿ってノルムが計算され、shapeが(5,)の配列が返されます。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[69]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 多次元配列を定義</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">arr</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[69]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 0,  1,  2],
+       [ 3,  4,  5],
+       [ 6,  7,  8],
+       [ 9, 10, 11],
+       [12, 13, 14]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[70]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 軸１についてノルム関数を適用する</span>
+<span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[70]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([  2.23606798,   7.07106781,  12.20655562,  17.3781472 ,  22.56102835])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[71]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 軸１（横方向）を潰すようにノルムを取る</span>
+<span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[71]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([  2.23606798,   7.07106781,  12.20655562,  17.3781472 ,  22.56102835])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#20081;&#25968;&#29983;&#25104;&#65288;np.random&#65289;"><a href="https://docs.scipy.org/doc/numpy/reference/routines.random.html">&#20081;&#25968;&#29983;&#25104;&#65288;np.random&#65289;</a><a class="anchor-link" href="#&#20081;&#25968;&#29983;&#25104;&#65288;np.random&#65289;">&#182;</a></h2><p>科学技術計算で広く使われている擬似乱数生成器である<strong>メルセンヌ・ツイスター</strong>をラップしているモジュールです。<br>
+高品質でかつ、高速な乱数生成で有名なライブラリです。<br>
+np.randomでは、様々な確率分布で乱数を生成できるような関数群が用意されています（<a href="https://docs.scipy.org/doc/numpy/reference/routines.random.html#distributions">Distributions</a>）。<br>
+主な関数を表にまとめました。</p>
+<table>
+<thead><tr>
+<th style="text-align:center">関数名</th>
+<th style="text-align:center">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">rand</td>
+<td style="text-align:center">一様乱数</td>
+</tr>
+<tr>
+<td style="text-align:center">randn</td>
+<td style="text-align:center">標準正規分布乱数</td>
+</tr>
+<tr>
+<td style="text-align:center">randint</td>
+<td style="text-align:center">整数乱数</td>
+</tr>
+<tr>
+<td style="text-align:center">choice</td>
+<td style="text-align:center">与えられたndarrayからランダムに選び出す</td>
+</tr>
+<tr>
+<td style="text-align:center">normal</td>
+<td style="text-align:center">正規分布乱数</td>
+</tr>
+</tbody>
+</table>
+<p>どの関数もshapeまたはsizeが指定でき、簡単に乱数を生成できます。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[72]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 一様乱数を求める</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[72]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 0.87547085,  0.42373036,  0.62681704,  0.00652193,  0.39994336,
+        0.21348584,  0.60716915,  0.40849877,  0.24338223,  0.53254521])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[73]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ３×３の標準正規分布乱数</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[73]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 0.38035506, -0.66246883,  0.24152916],
+       [ 1.2759454 , -0.3211881 ,  0.32568444],
+       [-0.5614904 , -0.04308281, -1.4738546 ]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[74]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 任意のオブジェクトのリストからランダムに取り出す</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s2">&quot;abcde&quot;</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[74]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([&#39;c&#39;, &#39;d&#39;, &#39;d&#39;, &#39;d&#39;, &#39;d&#39;, &#39;c&#39;, &#39;c&#39;, &#39;a&#39;, &#39;d&#39;, &#39;a&#39;], 
+      dtype=&#39;&lt;U1&#39;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[75]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ガンマ分布のヒストグラム</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">gamma</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="k">pass</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+kiQpm/8HWTUhZ/MAOBMAAAAASUVORK5CYII=
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#12501;&#12540;&#12522;&#12456;&#22793;&#25563;&#65288;np.fft&#65289;"><a href="https://docs.scipy.org/doc/numpy/reference/routines.fft.html">&#12501;&#12540;&#12522;&#12456;&#22793;&#25563;&#65288;np.fft&#65289;</a><a class="anchor-link" href="#&#12501;&#12540;&#12522;&#12456;&#22793;&#25563;&#65288;np.fft&#65289;">&#182;</a></h2><p>Cooley-Tukey型の高速離散フーリエ変換（FFT)のラッパーです。<br>
+フーリエ変換一般に言えることですが、変換と逆変換の係数が実装によって異なります（定数倍するだけですが）。<br>
+実装の詳細を知りたい人は <a href="https://docs.scipy.org/doc/numpy/reference/routines.fft.html#implementation-details">Implementation details</a> を参照してください。<br>
+下の表は<a href="https://docs.scipy.org/doc/numpy/reference/routines.fft.html#standard-ffts">様々な関数</a>をまとめたものです。</p>
+<table>
+<thead><tr>
+<th style="text-align:center">関数名</th>
+<th style="text-align:center">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">fft</td>
+<td style="text-align:center">１次元FFT</td>
+</tr>
+<tr>
+<td style="text-align:center">ifft</td>
+<td style="text-align:center">↑の逆変換</td>
+</tr>
+<tr>
+<td style="text-align:center">rfft</td>
+<td style="text-align:center">１次元実FFT</td>
+</tr>
+<tr>
+<td style="text-align:center">irfft</td>
+<td style="text-align:center">↑の逆変換</td>
+</tr>
+<tr>
+<td style="text-align:center">fft2</td>
+<td style="text-align:center">２次元FFT</td>
+</tr>
+<tr>
+<td style="text-align:center">ifft2</td>
+<td style="text-align:center">↑の逆変換</td>
+</tr>
+<tr>
+<td style="text-align:center">rfft2</td>
+<td style="text-align:center">２次元実FFT</td>
+</tr>
+<tr>
+<td style="text-align:center">irfft2</td>
+<td style="text-align:center">↑の逆変換</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[76]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># FFT</span>
+<span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[76]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 13.00000000+0.j        ,  -4.23606798-3.07768354j,
+         0.23606798+0.72654253j,   0.23606798-0.72654253j,
+        -4.23606798+3.07768354j])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[77]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 実FFT</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfft</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">res</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[77]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 13.00000000+0.j        ,  -4.23606798-3.07768354j,
+         0.23606798+0.72654253j])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[78]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 逆実FFT</span>
+<span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">irfft</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[78]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 1.19098301,  4.72982477,  5.42705098,  1.65214124])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[79]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 逆実フーリエ変換</span>
+<span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">irfft</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[79]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 1.,  3.,  5.,  3.,  1.])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>信号処理の一例です。<br>
+フィルターなどの高度な信号処理は<a href="https://docs.scipy.org/doc/scipy/reference/signal.html"><strong>scipy.signal</strong></a>を用いてください。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[80]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># サンプリング周波数（ナイキスト周波数＝10Hz）</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># [1/s]</span>
+
+<span class="c1"># サンプル時刻 [s]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">rate</span><span class="p">)</span>
+
+<span class="c1"># 2Hzと6Hzにピークを持つシグナル（に正規分布ノイズを加えたもの）</span>
+<span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">6</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+
+<span class="c1"># power spectrum</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">signal</span><span class="p">))</span>
+
+<span class="c1"># サンプリングレート（の逆数）を与えると各成分の周波数を返す</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfftfreq</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mf">1.</span><span class="o">/</span><span class="n">rate</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency [Hz]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Power spectrum&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[80]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&lt;matplotlib.lines.Line2D at 0x2b55dccd400&gt;]</pre>
+</div>
+
+</div>
+
+<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+X6rA6kf/34KSAAAAAElFTkSuQmCC
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="ndarray&#12398;&#12501;&#12449;&#12452;&#12523;&#20837;&#20986;&#21147;">ndarray&#12398;&#12501;&#12449;&#12452;&#12523;&#20837;&#20986;&#21147;<a class="anchor-link" href="#ndarray&#12398;&#12501;&#12449;&#12452;&#12523;&#20837;&#20986;&#21147;">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Numpyでファイル出力する場合、</p>
+<ul>
+<li>「.npyまたは.npz」形式でのバイナリ保存</li>
+<li>テキストでの保存</li>
+<li>一般的なバイナリ保存</li>
+</ul>
+<p>の３つが基本となります。本稿では上の２つを説明します。</p>
+<h2 id="npy&#12392;npz&#24418;&#24335;&#12391;&#12398;&#12496;&#12452;&#12490;&#12522;&#20445;&#23384;">npy&#12392;npz&#24418;&#24335;&#12391;&#12398;&#12496;&#12452;&#12490;&#12522;&#20445;&#23384;<a class="anchor-link" href="#npy&#12392;npz&#24418;&#24335;&#12391;&#12398;&#12496;&#12452;&#12490;&#12522;&#20445;&#23384;">&#182;</a></h2><p>これらはNumpy独自のバイナリ形式です。<br>
+<strong>np.save</strong>関数では、ndarrayを <strong>npy</strong> という拡張子を付けて保存します。<br>
+この形式だと、配列のshapeやdtypeなどの情報も保存するので、<strong>np.load</strong>で情報を保ったまま読み込むことが出来ます。<br>
+複数のndarrayを保存するときは <strong>np.savez</strong> 関数を用いて、<strong>npz</strong> という拡張子で保存します。<br>
+npz形式の場合のロードも <strong>np.load</strong> 関数を使います（拡張子で判断される）。<br>
+まずはnpyの保存をみてみましょう。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[81]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># arrをnpy形式で保存</span>
+<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;test_arr.npy&quot;</span><span class="p">,</span> <span class="n">arr</span><span class="p">)</span>
+
+<span class="c1"># npyをロード</span>
+<span class="n">arr_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;test_arr.npy&quot;</span><span class="p">)</span>
+
+<span class="c1"># 全ての要素が等しいならTrue</span>
+<span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">arr</span> <span class="o">==</span> <span class="n">arr_new</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[81]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>npzでは、キーワード引数を渡すと、その名前で保存されます。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[82]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">**</span> <span class="mi">3</span>
+<span class="n">my_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># キーワード引数でndarrayをsavezに渡す</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savez</span><span class="p">(</span><span class="s2">&quot;test_arrs.npz&quot;</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">my_x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">my_y</span><span class="p">)</span>
+
+<span class="n">arrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;test_arrs.npz&quot;</span><span class="p">)</span>
+
+<span class="n">arrs</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[82]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 0.        ,  0.00137174,  0.01097394,  0.03703704,  0.0877915 ,
+        0.17146776,  0.2962963 ,  0.47050754,  0.70233196,  1.        ])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#12486;&#12461;&#12473;&#12488;&#12391;&#12398;&#20445;&#23384;">&#12486;&#12461;&#12473;&#12488;&#12391;&#12398;&#20445;&#23384;<a class="anchor-link" href="#&#12486;&#12461;&#12473;&#12488;&#12391;&#12398;&#20445;&#23384;">&#182;</a></h2><p>ndarrayをテキスト形式で保存する関数は<strong>np.savetxt</strong>です。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[83]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ２次元配列</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># xをテキスト形式で保存</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s2">&quot;my_np.txt&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -13736,11 +15904,39 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[84]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 保存したテキストファイルを表示</span>
+<span class="o">!</span>cat my_np.txt
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0.000000000000000000e+00 1.111111111111111049e-01
+2.222222222222222099e-01 3.333333333333333148e-01
+4.444444444444444198e-01 5.555555555555555802e-01
+6.666666666666666297e-01 7.777777777777776791e-01
+8.888888888888888395e-01 1.000000000000000000e+00
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
     </div>
   </div>
 </body>
-
- 
-
-
 </html>
