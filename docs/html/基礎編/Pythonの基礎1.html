@@ -12391,8 +12391,8 @@ a
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>配列のなかでもlist, tuple, strは0からN-1（Nは要素数）の整数でインデクシングが行われています（要素に順序がある）。これらの型ではFortranなどと同様に部分配列を得る操作が行えます（スライスと呼ばれます）。スライスの文法は、</p>
 
-<pre><code>a[start:end:interval]</code></pre>
-<p>のようになっています。ここで<em>start</em>は部分配列の始まりのインデックスで、省略するとaの始まり(0)となります。<em>end</em>は部分配列の終わりのインデックスで、省略するとaの終わりとなります。<strong>注意すべきなのは、a[end]の要素自体はスライスされた部分配列に含まれないということです。</strong> <em>interval</em>はスライスする要素の間隔を指示し、省略すると（<em>interval</em>の前のコロンから省略できます）<em>start</em>と<em>end</em>の間のすべての要素を抜き出します。</p>
+<pre><code>a[start:stop:step]</code></pre>
+<p>のようになっています。ここで<em>start</em>は部分配列の始まりのインデックスで、省略するとaの始まり(0)となります。<em>stop</em>は部分配列の終わりのインデックスで、省略するとaの終わりとなります。<strong>注意すべきなのは、a[stop]の要素自体はスライスされた部分配列に含まれないということです。</strong> <em>step</em>はスライスする要素の間隔を指示し、省略すると（<em>step</em>の前のコロンから省略できます）<em>start</em>と<em>stop</em>の間のすべての要素を抜き出します。</p>
 
 </div>
 </div>
@@ -12406,7 +12406,7 @@ a
 <span class="n">slice1</span> <span class="o">=</span> <span class="n">my_list</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>    <span class="c1"># my_list[5]を含まないことに注目</span>
 <span class="n">slice2</span> <span class="o">=</span> <span class="n">my_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># 1から8まで（8を含まない）、増分3（2つおき）</span>
 <span class="n">slice3</span> <span class="o">=</span> <span class="n">my_list</span><span class="p">[</span><span class="mi">8</span><span class="p">:]</span>     <span class="c1"># 8から終わりまで</span>
-<span class="n">slice4</span> <span class="o">=</span> <span class="n">my_list</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>   <span class="c1"># 9から0まで1つずつ減っていく: intervalが負の時はstartおよびendのデフォルト値が入れ替わる</span>
+<span class="n">slice4</span> <span class="o">=</span> <span class="n">my_list</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>   <span class="c1"># 9から0まで1つずつ減っていく: stepが負の時はstartおよびstopのデフォルト値が入れ替わる</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">slice1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">slice2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">slice3</span><span class="p">)</span>

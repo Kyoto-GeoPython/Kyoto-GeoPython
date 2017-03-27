@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>Pythonの基礎2</title>
+<title>Sympy　―　代数演算</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -11751,43 +11751,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#30446;&#27425;">&#30446;&#27425;<a class="anchor-link" href="#&#30446;&#27425;">&#182;</a></h1><ul>
-<li>プログラムの流れ<ul>
-<li>条件分岐</li>
-<li>繰り返し</li>
-</ul>
-</li>
-<li>プログラムの再利用<ul>
-<li>関数</li>
-<li>モジュール</li>
-</ul>
-</li>
-<li>その他<ul>
-<li>コメント</li>
-<li>継続行</li>
-</ul>
-</li>
-<li>参考文献</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#12503;&#12525;&#12464;&#12521;&#12512;&#12398;&#27969;&#12428;">&#12503;&#12525;&#12464;&#12521;&#12512;&#12398;&#27969;&#12428;<a class="anchor-link" href="#&#12503;&#12525;&#12464;&#12521;&#12512;&#12398;&#27969;&#12428;">&#182;</a></h1><h2 id="&#26465;&#20214;&#20998;&#23696;:-if,-elif,-else">&#26465;&#20214;&#20998;&#23696;: if, elif, else<a class="anchor-link" href="#&#26465;&#20214;&#20998;&#23696;:-if,-elif,-else">&#182;</a></h2><p>if文による条件分岐処理の基本文法は次のとおりです。</p>
-
-<pre><code>if [論理型]:
-    [処理]         # ifの条件がTrueの場合
-elif [論理型]: 
-    [処理]         # ifの条件がFalseで、elifの条件がTrueの場合
-else:
-    [処理]         # ifもelifもFalseの場合</code></pre>
-<p>end ifに相当する（ブロックの終わりを示す）文が無いことがわかると思います。これがPythonの見た目上の大きな特徴で、<strong>インデントによってブロックを判別している</strong>のです。インデントはスペースでもタブでもよいのですが、プログラムを通して統一されている必要があります。通常、スペース4つがインデントに用いられます。ifなどの行末のコロンを忘れないようにしましょう。</p>
-<p>if文の構造は必ずしもこの形である必要はなく、ifブロックのみや、if-elif、if-else、if-elif-elif-...などの形ももちろん可能です。</p>
+<h1 id="Sympy&#12288;&#8213;&#12288;&#20195;&#25968;&#28436;&#31639;">Sympy&#12288;&#8213;&#12288;&#20195;&#25968;&#28436;&#31639;<a class="anchor-link" href="#Sympy&#12288;&#8213;&#12288;&#20195;&#25968;&#28436;&#31639;">&#182;</a></h1><p>ここでは、単純な例をいくつか実行しています。<br>
+他の機能は <a href="http://docs.sympy.org/0.7.0/tutorial.html">公式チュートリアル</a> を参照してください。</p>
 
 </div>
 </div>
@@ -11797,66 +11762,24 @@ else:
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">time_now</span> <span class="o">=</span> <span class="mi">15</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sy</span>
 
-<span class="k">if</span> <span class="p">(</span><span class="n">time_now</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="mi">23</span> <span class="o">&lt;</span> <span class="n">time_now</span><span class="p">):</span> <span class="c1"># False </span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sleeping&quot;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">time_now</span> <span class="o">&lt;</span> <span class="mi">12</span><span class="p">:</span>                   <span class="c1"># False</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Good morning!&quot;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">time_now</span> <span class="o">&lt;</span> <span class="mi">17</span><span class="p">:</span>                   <span class="c1"># True</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Good afternoon!&quot;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Good evening!&quot;</span><span class="p">)</span>
+<span class="c1">#jupyterできれいにプリントする</span>
+<span class="n">sy</span><span class="o">.</span><span class="n">init_printing</span><span class="p">()</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Good afternoon!
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#32368;&#12426;&#36820;&#12375;:-for,-while">&#32368;&#12426;&#36820;&#12375;: for, while<a class="anchor-link" href="#&#32368;&#12426;&#36820;&#12375;:-for,-while">&#182;</a></h2><p>繰り返しは、<strong>for</strong>文や<strong>while</strong>文を用います。</p>
-<p>for文の基本文法は次のとおりです。</p>
-
-<pre><code>for n in [配列型]:
-    [処理]</code></pre>
-<p>例によってインデント記法です。forの行のコロンに気をつけましょう。
-ここでnはダミー変数（文字はなんでもよい）で、配列型の要素を順に取ります。配列型としてはlist,tuple,strなどを用いるほか、<strong>range</strong>関数を用いることも多いです。range関数は次のような文法によって、等差数列を順に生成します（厳密には、range関数は「等差数列を順に返すオブジェクト」を生成しています。これをrange型のオブジェクトと呼ぶことができます）。</p>
-
-<pre><code>range(start,end,interval)   # startからendまで（endは含まない）、間隔はinterval
-range(start,end)            # 省略するとinterval = 1
-range(end)                  # start = 0, interval = 1</code></pre>
-<p>rangeはPython 2までは数列の入ったlistを返していたのですが、Python 3からrangeオブジェクトを返すようになりました（生成される数をメモリ上に格納しないため、メモリの節約になります）。使い方は同じです。</p>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_str</span> <span class="o">=</span> <span class="s2">&quot;orange&quot;</span>
-<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">my_str</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="n">a</span>
 </pre></div>
 
 </div>
@@ -11867,16 +11790,13 @@ range(end)                  # start = 0, interval = 1</code></pre>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>o
-r
-a
-n
-g
-e
-</pre>
+<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
+
+
+<div class="output_latex output_subarea output_execute_result">
+$$a$$
 </div>
+
 </div>
 
 </div>
@@ -11888,9 +11808,9 @@ e
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-    <span class="n">cube</span> <span class="o">=</span> <span class="n">i</span><span class="o">**</span><span class="mi">3</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">cube</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 複数のSymbolを定義</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;x y&quot;</span><span class="p">)</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span>
 </pre></div>
 
 </div>
@@ -11901,46 +11821,25 @@ e
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>0
-1
-8
-27
-64
-125
-216
-343
-512
-729
-</pre>
+<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
+
+
+<div class="output_latex output_subarea output_execute_result">
+$$\left ( x, \quad y\right )$$
 </div>
+
 </div>
 
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>For文においてもうひとつ便利な関数として、<strong>enumerate</strong>があります。enumerate関数は次のような文法で、インデックスnと配列要素a[n]のtupleを返してくれます。</p>
-
-<pre><code>for (n,a) in enumerate([配列型]):
-    [処理]</code></pre>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">a</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s2">&quot;apple&quot;</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;, &quot;</span><span class="o">+</span><span class="n">a</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
 
 </div>
@@ -11951,44 +11850,26 @@ e
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>0, a
-1, p
-2, p
-3, l
-4, e
-</pre>
+<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
+
+
+<div class="output_latex output_subarea output_execute_result">
+$$x^{2}$$
 </div>
+
 </div>
 
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>while文の基本文法は次のとおりです。</p>
-
-<pre><code>while [論理型]:
-    [処理]</code></pre>
-<p>条件式（論理型の部分）がTrueである限り、処理を繰り返します。条件式がどこかでFalseになるようにするか、<strong>break</strong>文によってループから出ることでループを終わらせます。</p>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mf">10.0</span>
-<span class="k">while</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">2</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 多項式</span>
+<span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
 
 </div>
@@ -11999,47 +11880,26 @@ e
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>10.0
-5.0
-2.5
-1.25
-</pre>
+<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
+
+
+<div class="output_latex output_subarea output_execute_result">
+$$\left(x^{2} - x y^{3} + 1\right)^{2}$$
 </div>
+
 </div>
 
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#12503;&#12525;&#12464;&#12521;&#12512;&#12398;&#20877;&#21033;&#29992;">&#12503;&#12525;&#12464;&#12521;&#12512;&#12398;&#20877;&#21033;&#29992;<a class="anchor-link" href="#&#12503;&#12525;&#12464;&#12521;&#12512;&#12398;&#20877;&#21033;&#29992;">&#182;</a></h1><h2 id="&#38306;&#25968;">&#38306;&#25968;<a class="anchor-link" href="#&#38306;&#25968;">&#182;</a></h2><p>Pythonでは、Fortranにおけるsubroutineとfunctionの差はなく、まとめて<strong>function</strong>（関数）として扱われます。関数は次のように定義されます。</p>
-
-<pre><code>def [関数名](引数):
-    [処理]
-    return [戻り値]</code></pre>
-<p>これもインデント記法が必須です。コロンを忘れないようにしましょう。
-例を使って詳しく見ていきましょう。</p>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 引数を2乗して返す関数</span>
-<span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
-
-<span class="n">y</span> <span class="o">=</span> <span class="n">square</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="n">square</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># 3**2 + 4**2 = 25</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 展開</span>
+<span class="p">((</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -12050,11 +11910,13 @@ e
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>25
-</pre>
+<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
+
+
+<div class="output_latex output_subarea output_execute_result">
+$$x^{3} + 3 x^{2} y + 3 x y^{2} + y^{3}$$
 </div>
+
 </div>
 
 </div>
@@ -12066,14 +11928,9 @@ e
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 引数のうち大きい方を返す関数</span>
-<span class="k">def</span> <span class="nf">greater</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">y</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">x</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">y</span>
-    
-<span class="nb">print</span><span class="p">(</span><span class="n">greater</span><span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># LaTexの表現</span>
+<span class="n">xdot</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;\dot</span><span class="si">{x}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">xdot</span>
 </pre></div>
 
 </div>
@@ -12084,11 +11941,13 @@ e
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>1.3333333333333333
-</pre>
+<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
+
+
+<div class="output_latex output_subarea output_execute_result">
+$$\dot{x}$$
 </div>
+
 </div>
 
 </div>
@@ -12100,11 +11959,9 @@ e
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 引数なしやreturnなしの関数もできます</span>
-<span class="k">def</span> <span class="nf">bark</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bow-wow!&quot;</span><span class="p">)</span>
-
-<span class="n">bark</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 関数を定義</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="s2">&quot;V&quot;</span><span class="p">)</span>
+<span class="n">V</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12115,11 +11972,13 @@ e
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Bow-wow!
-</pre>
+<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
+
+
+<div class="output_latex output_subarea output_execute_result">
+$$V{\left (x \right )}$$
 </div>
+
 </div>
 
 </div>
@@ -12131,20 +11990,9 @@ e
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># オプション引数は、関数定義の際に[引数=デフォルト値]とすることでセットできます（通常の引数より後ろにおくこと）</span>
-<span class="k">def</span> <span class="nf">lunch</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">vegetarian</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">time</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Too early for lunch!&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">time</span> <span class="o">&gt;</span> <span class="mi">16</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Too late for lunch!&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">vegetarian</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hamburger!&quot;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vegetarian hamburger!&quot;</span><span class="p">)</span>
-            
-<span class="n">lunch</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">lunch</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">vegetarian</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 関数の微分</span>
+<span class="n">dV</span> <span class="o">=</span> <span class="n">V</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">dV</span>
 </pre></div>
 
 </div>
@@ -12155,46 +12003,26 @@ e
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Hamburger!
-Vegetarian hamburger!
-</pre>
+<div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
+
+
+<div class="output_latex output_subarea output_execute_result">
+$$\frac{d}{d x} V{\left (x \right )}$$
 </div>
+
 </div>
 
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>詳細は述べませんが、関数内で変数を書き換える場合、その影響は関数内にとどまります（ローカルスコープ）。関数外で定義された変数を書き換えたい場合は、<strong>global</strong>文を用いてその変数がグローバル変数であることを宣言する必要があります。</p>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
-
-<span class="k">def</span> <span class="nf">try_to_rewrite_1</span><span class="p">():</span>
-    <span class="k">global</span> <span class="n">x</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">10</span>
-
-<span class="k">def</span> <span class="nf">try_to_rewrite_2</span><span class="p">():</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">10</span>
-    
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">try_to_rewrite_1</span><span class="p">()</span> <span class="c1"># successful</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">try_to_rewrite_2</span><span class="p">()</span> <span class="c1"># raises Error</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 実際の数式での微分</span>
+<span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">5</span> <span class="o">*</span> <span class="n">sy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12205,70 +12033,26 @@ Vegetarian hamburger!
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>10
-20
-</pre>
-</div>
+<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
+
+
+<div class="output_latex output_subarea output_execute_result">
+$$x^{5} \cos{\left (x \right )} + 5 x^{4} \sin{\left (x \right )}$$
 </div>
 
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">UnboundLocalError</span>                         Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-10-596a42660a12&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">     11</span> try_to_rewrite_1<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-red-fg"># successful</span>
-<span class="ansi-green-intense-fg ansi-bold">     12</span> print<span class="ansi-blue-fg">(</span>x<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">---&gt; 13</span><span class="ansi-red-fg"> </span>try_to_rewrite_2<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-red-fg"># raises Error</span>
-
-<span class="ansi-green-fg">&lt;ipython-input-10-596a42660a12&gt;</span> in <span class="ansi-cyan-fg">try_to_rewrite_2</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      6</span> 
-<span class="ansi-green-intense-fg ansi-bold">      7</span> <span class="ansi-green-fg">def</span> try_to_rewrite_2<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">----&gt; 8</span><span class="ansi-red-fg">     </span>x <span class="ansi-blue-fg">=</span> x <span class="ansi-blue-fg">+</span> <span class="ansi-cyan-fg">10</span>
-<span class="ansi-green-intense-fg ansi-bold">      9</span> 
-<span class="ansi-green-intense-fg ansi-bold">     10</span> print<span class="ansi-blue-fg">(</span>x<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">UnboundLocalError</span>: local variable &#39;x&#39; referenced before assignment</pre>
-</div>
 </div>
 
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#12514;&#12472;&#12517;&#12540;&#12523;">&#12514;&#12472;&#12517;&#12540;&#12523;<a class="anchor-link" href="#&#12514;&#12472;&#12517;&#12540;&#12523;">&#182;</a></h2><p>汎用的な関数や定数群などを異なる複数のスクリプトで用いるときは、<strong>モジュール</strong>を用いるのが便利です。
-モジュールの作り方は簡単で、基本的には独立したスクリプト(my_module.pyとします)の中に関数や定数を順に書いていくだけです。</p>
-<p>たとえば、次のような内容のmy_module.pyを作ったとしましょう。</p>
-
-<pre><code>pi = 3.141592
-
-def area(r):
-    return pi * r * r</code></pre>
-<p>このモジュールを使うには、my_module.pyがあるディレクトリで（あるいは後述のようにmy_module.pyへのパスを通して）、次のようにします。</p>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">my_module</span>
-
-<span class="n">radius</span> <span class="o">=</span> <span class="mf">5.0</span>
-<span class="n">S</span> <span class="o">=</span> <span class="n">my_module</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span> <span class="c1"># my_module内のarea関数</span>
-
-<span class="n">pi</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>                  <span class="c1"># このスクリプト内の定数pi</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">my_module</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>        <span class="c1"># my_module内の定数pi</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 関数への代入</span>
+<span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">y</span> <span class="o">-</span> <span class="n">y</span> <span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">([(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)])</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -12279,223 +12063,18 @@ def area(r):
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>0
-3.141592
-</pre>
+<div class="output_area"><div class="prompt output_prompt">Out[11]:</div>
+
+
+<div class="output_latex output_subarea output_execute_result">
+$$x \left(x^{2} - x + 1\right)$$
 </div>
+
 </div>
 
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>モジュールで定義された変数や関数は、このスクリプト内の名前空間ではmy_module.[<em>オブジェクト名</em>]として扱われます。そのため、スクリプト内のオブジェクトとモジュール内の（しばしば把握しきれていない）オブジェクトとが干渉することが避けられます。</p>
-<p>次のようなimportの方法もあります。</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">my_module</span> <span class="k">as</span> <span class="nn">mod</span>   <span class="c1"># 別名をつける</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mod</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
-
-<span class="kn">from</span> <span class="nn">my_module</span> <span class="k">import</span> <span class="n">pi</span>  <span class="c1"># モジュール内の特定のオブジェクトのみをインポート</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>                  <span class="c1"># この場合、モジュール内の選ばれたオブジェクトがこのスクリプトの名前空間内に定義される</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>3.141592
-3.141592
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>モジュール内の<strong>すべての</strong>オブジェクトをスクリプトの名前空間にインポートする、</p>
-
-<pre><code>from my_module import *</code></pre>
-<p>という方法もありますが、モジュール内の把握しきれないオブジェクトがスクリプト内の変数と干渉するおそれがあるため、使わないことをお勧めします。</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>ここではmy_module.pyをスクリプトと同じディレクトリに置いた状態での使い方を紹介しましたが、色んな所から同じモジュールを呼び出したいときにはimportが参照するパスにmy_module.pyの場所を追加することができます。たとえばLinuxの場合は環境変数PYTHONPATHを用いたり、Pythonスクリプト上からsysモジュールを用いて次のようにパスを通すことができます。</p>
-
-<pre><code>from sys import path  # pathは通っているパスが格納されているリストです
-path.append("/home/username/where/module/is/located") # リストのappendメソッドで要素を追加</code></pre>
-<p>処理の高速化のため、一度読まれたモジュールはimport文があっても再び読まれません。
-モジュールを修正して再び読み込んでほしい時には、セッションを再スタートする（IPythonなどを一度閉じる）か、importlibモジュール内の<strong>reload</strong>関数を用います。Python 2では組み込み関数としてreload()が定義されているため、importlibモジュールをインポートする必要はありません。</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">my_module</span>
-<span class="c1"># この時点でmy_module.pyを書き換えたとする</span>
-<span class="kn">import</span> <span class="nn">my_module</span>
-<span class="c1"># ここではモジュールの更新が適用されていない</span>
-<span class="kn">from</span> <span class="nn">importlib</span> <span class="k">import</span> <span class="n">reload</span>
-<span class="n">my_module</span> <span class="o">=</span> <span class="n">reload</span><span class="p">(</span><span class="n">my_module</span><span class="p">)</span>
-<span class="c1"># モジュールの更新が適用される</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Python組み込みの便利なモジュールとして、ファイル管理などを通してシェルスクリプトを代替する機能を得られる<strong>os</strong>や<strong>shutil</strong>、正規表現を扱う<strong>re</strong>、日付を扱える<strong>datetime</strong>などがあります。<strong>numpy</strong>、<strong>scipy</strong>、<strong>matplotlib</strong>といったサードパーティのライブラリもモジュールの形で利用することになります。scipyなどの大きなモジュールは<strong>サブモジュール</strong>という階層構造をとっていることも多く、メモリ節約のために必要なサブモジュールだけをインポートすることも覚えておくとよいでしょう。</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>    <span class="c1"># NumPyはまるごとインポートしても大丈夫です</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>           <span class="c1"># piやexp, cosなどの重要関数はnumpy直下にあります</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># randomサブモジュール内のrand関数</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>          <span class="c1"># numpyモジュール内のcos関数</span>
-
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">special</span> <span class="k">as</span> <span class="n">sp</span> <span class="c1"># 特殊関数関連のサブモジュール</span>
-<span class="n">z</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">erf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>          <span class="c1"># 誤差関数</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>3.141592653589793
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#12381;&#12398;&#20182;">&#12381;&#12398;&#20182;<a class="anchor-link" href="#&#12381;&#12398;&#20182;">&#182;</a></h1><h2 id="&#12467;&#12513;&#12531;&#12488;">&#12467;&#12513;&#12531;&#12488;<a class="anchor-link" href="#&#12467;&#12513;&#12531;&#12488;">&#182;</a></h2><p>1行のコメントアウトならば <strong>#</strong> （シャープ）が用いられ、#以後改行までの内容が無視されます。<br>
-複数行のコメントアウトはシングルクォーテーション3つまたはダブルクォーテーション3つをコメントの前後に配置します。<br>
-特に関数の定義(def func():)の次の行から始まる複数行コメントアウトは<strong>docstring</strong>と呼ばれ、そこに関数の説明を加えておくことが推奨されています。</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This is an example docstring.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">sq</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="c1"># コメント</span>
-    <span class="k">return</span> <span class="n">sq</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#32153;&#32154;&#34892;">&#32153;&#32154;&#34892;<a class="anchor-link" href="#&#32153;&#32154;&#34892;">&#182;</a></h2><p>行を継続するときは、行の終わりに<strong> \ </strong>（バックスラッシュ）を入れます。<br>
-ただし、関数の引数が数多くある場合など、(), [], {}のカッコの中で改行するときには\を省略できます。</p>
-<p>また、継続行の行頭の開始位置に関して制約はありません。</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> \
-  <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="n">some_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span>
-            <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#21442;&#32771;&#25991;&#29486;">&#21442;&#32771;&#25991;&#29486;<a class="anchor-link" href="#&#21442;&#32771;&#25991;&#29486;">&#182;</a></h1><ul>
-<li><a href="https://docs.python.org/3/tutorial/">The Python tutorial</a>（<a href="http://docs.python.jp/3/tutorial/">日本語</a>）</li>
-<li><a href="http://www.scipy-lectures.org/intro/language/python_language.html">Scipy Lecture notes - The Python language</a>（<a href="http://www.turbare.net/transl/scipy-lecture-notes/intro/language/python_language.html">日本語</a>）</li>
-</ul>
-
-</div>
-</div>
 </div>
     </div>
   </div>

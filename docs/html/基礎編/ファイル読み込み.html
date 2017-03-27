@@ -11956,132 +11956,132 @@ $ ncdump -c ersst.v4.201702.nc<br>
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>netcdf ersst.v4.201702 {
-dimensions:
-	lat = 89 ;
-	lev = 1 ;
-	lon = 180 ;
-	time = 1 ;
-
-variables:
-	double lat(lat) ;
-		lat:units = &#34;degrees_north&#34; ;
-		lat:long_name = &#34;Latitude&#34; ;
-		lat:standard_name = &#34;latitude&#34; ;
-		lat:axis = &#34;Y&#34; ;
-		lat:bounds = &#34;lat_bnds&#34; ;
-		lat:grids = &#34;Uniform grid from -88 to 88 by 2&#34; ;
-	double lev(lev) ;
-		lev:units = &#34;meters&#34; ;
-		lev:long_name = &#34;Depth of sea surface temperature measurements&#34; ;
-		lev:standard_name = &#34;depth&#34; ;
-		lev:axis = &#34;Z&#34; ;
-		lev:positive = &#34;down&#34; ;
-		lev:_CoordinateAxisType = &#34;Height&#34; ;
-		lev:comment = &#34;Measurement depth of in situ sea surface temperature varies&#34; ;
-	double lon(lon) ;
-		lon:units = &#34;degrees_east&#34; ;
-		lon:long_name = &#34;Longitude&#34; ;
-		lon:standard_name = &#34;longitude&#34; ;
-		lon:axis = &#34;X&#34; ;
-		lon:bounds = &#34;lon_bnds&#34; ;
-		lon:grids = &#34;Uniform grid from 0 to 358 by 2&#34; ;
-	float sst(time, lev, lat, lon) ;
-		sst:_FillValue = -999.f ;
-		sst:long_name = &#34;Extended reconstructed sea surface temperature&#34; ;
-		sst:standard_name = &#34;SST&#34; ;
-		sst:units = &#34;degree_C&#34; ;
-		sst:add_offset = 0.f ;
-		sst:scale_factor = 1.f ;
-		sst:valid_min = -3.f ;
-		sst:valid_max = 45.f ;
-	double time(time) ;
-		time:long_name = &#34;Center time of the day&#34; ;
-		time:standard_name = &#34;time&#34; ;
-		time:axis = &#34;T&#34; ;
-		time:delta_t = &#34;0000-01-00&#34; ;
-		time:avg_period = &#34;0000-01-00&#34; ;
-		time:units = &#34;minutes since 2017-02-01 00:00&#34; ;
-	float ssta(time, lev, lat, lon) ;
-		ssta:_FillValue = -999.f ;
-		ssta:long_name = &#34;Extended reconstructed SST anomalies&#34; ;
-		ssta:standard_name = &#34;SSTA&#34; ;
-		ssta:units = &#34;degree_C&#34; ;
-		ssta:add_offset = 0.f ;
-		ssta:scale_factor = 1.f ;
-		ssta:valid_min = -12.f ;
-		ssta:valid_max = 12.f ;
-
-// global attributes:
-		:Conventions = &#34;CF-1.6&#34; ;
-		:Metadata_Conventions = &#34;CF-1.6, Unidata Dataset Discovery v1.0&#34; ;
-		:metadata_link = &#34;C00884&#34; ;
-		:id = &#34;ersst.v4.201702&#34; ;
-		:naming_authority = &#34;gov.noaa.ncdc&#34; ;
-		:title = &#34;NOAA ERSSTv4 (in situ only)&#34; ;
-		:summary = &#34;ERSST.v4 is developped based on v3b after revisions of 11 parameters using updated data sets and advanced knowledge of ERSST analysis&#34; ;
-		:institution = &#34;NOAA/NESDIS/NCEI/CCOG&#34; ;
-		:creator_name = &#34;Boyin Huang&#34; ;
-		:creator_email = &#34;boyin.huang@noaa.gov&#34; ;
-		:date_modified = &#34;2017/03/03&#34; ;
-		:production_version = &#34;Version 5&#34; ;
-		:history = &#34;Fri Mar  3 13:35:18 2017: ncatted -O -a _FillValue,ssta,o,f,-999.0 ssta.nc\n&#34;,
-    &#34;Version 5 based on Version 4&#34; ;
-		:publisher_name = &#34;Boyin Huang&#34; ;
-		:publisher_email = &#34;boyin.huang@noaa.gov&#34; ;
-		:creator_url = &#34;http://www.ncdc.noaa.gov&#34; ;
-		:license = &#34;No constraints on data access or use&#34; ;
-		:time_coverage_start = &#34;2017-02-15T000000Z&#34; ;
-		:time_coverage_end = &#34;2017-02-15T000000Z&#34; ;
-		:geospatial_lon_min = -1.f ;
-		:geospatial_lon_max = 359.f ;
-		:geospatial_lat_min = -89.f ;
-		:geospatial_lat_max = 89.f ;
-		:geospatial_lat_units = &#34;degrees_north&#34; ;
-		:geospatial_lat_resolution = 2.f ;
-		:geospatial_lon_units = &#34;degrees_east&#34; ;
-		:geospatial_lon_resolution = 2.f ;
-		:spatial_resolution = &#34;2.0 degree grid&#34; ;
-		:cdm_data_type = &#34;Grid&#34; ;
-		:processing_level = &#34;L4&#34; ;
-		:standard_name_vocabulary = &#34;CF Standard Name Table v27&#34; ;
-		:keywords = &#34;Earth Science &amp;gt; Oceans &amp;gt; Ocean Temperature &amp;gt; Sea Sur face Temperature &amp;gt&#34; ;
-		:keywords_vocabulary = &#34;NASA Global Change Master Directory (GCMD) Science Keywords&#34; ;
-		:project = &#34;NOAA Extended Reconstructed Sea Surface Temperature (ERSST)&#34; ;
-		:platform = &#34;Ship and Buoy SSTs from ICOADS R2.5 and NCEP GTS&#34; ;
-		:instrument = &#34;Conventional thermometers&#34; ;
-		:source = &#34;ICOADS R2.5 SST, NCEP GTS SST, HadISST ice, NCEP ice&#34; ;
-		:comment = &#34;SSTs were observed by conventional thermometers in Buckets (in sulated or un-insulated canvas and wooded buckets), Engine Room Intakers, or floats and drifters&#34; ;
-		:references = &#34;Huang et al, 2015: Extended Reconstructed Sea Surface Temperatures Version 4 (ERSST.v4), Part I. Upgrades and Intercomparisons. Journal of Climate, DOI: 10.1175/JCLI-D-14-00006.1.&#34; ;
-		:climatology = &#34;Climatology is based on 1971-2000 SST, Xue, Y., T. M. Smith, and R. W. Reynolds, 2003: Interdecadal changes of 30-yr SST normals during 1871.2000. Journal of Climate, 16, 1601-1612.&#34; ;
-		:description = &#34;In situ data: ICOADS2.5 before 2007, NCEP in situ data from 2008 to present. Ice data: HadISST ice before 2015 and NCEP ice after 2015.&#34; ;
-
-data:
-
- lat = -88, -86, -84, -82, -80, -78, -76, -74, -72, -70, -68, -66, -64, -62, 
-    -60, -58, -56, -54, -52, -50, -48, -46, -44, -42, -40, -38, -36, -34, 
-    -32, -30, -28, -26, -24, -22, -20, -18, -16, -14, -12, -10, -8, -6, -4, 
-    -2, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 
-    36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 
-    72, 74, 76, 78, 80, 82, 84, 86, 88 ;
-
- lev = 0 ;
-
- lon = 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 
-    38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 
-    74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 
-    108, 110, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 132, 134, 
-    136, 138, 140, 142, 144, 146, 148, 150, 152, 154, 156, 158, 160, 162, 
-    164, 166, 168, 170, 172, 174, 176, 178, 180, 182, 184, 186, 188, 190, 
-    192, 194, 196, 198, 200, 202, 204, 206, 208, 210, 212, 214, 216, 218, 
-    220, 222, 224, 226, 228, 230, 232, 234, 236, 238, 240, 242, 244, 246, 
-    248, 250, 252, 254, 256, 258, 260, 262, 264, 266, 268, 270, 272, 274, 
-    276, 278, 280, 282, 284, 286, 288, 290, 292, 294, 296, 298, 300, 302, 
-    304, 306, 308, 310, 312, 314, 316, 318, 320, 322, 324, 326, 328, 330, 
-    332, 334, 336, 338, 340, 342, 344, 346, 348, 350, 352, 354, 356, 358 ;
-
- time = 0 ;
-}
+<pre>netcdf ersst.v4.201702 {
+dimensions:
+	lat = 89 ;
+	lev = 1 ;
+	lon = 180 ;
+	time = 1 ;
+
+variables:
+	double lat(lat) ;
+		lat:units = &#34;degrees_north&#34; ;
+		lat:long_name = &#34;Latitude&#34; ;
+		lat:standard_name = &#34;latitude&#34; ;
+		lat:axis = &#34;Y&#34; ;
+		lat:bounds = &#34;lat_bnds&#34; ;
+		lat:grids = &#34;Uniform grid from -88 to 88 by 2&#34; ;
+	double lev(lev) ;
+		lev:units = &#34;meters&#34; ;
+		lev:long_name = &#34;Depth of sea surface temperature measurements&#34; ;
+		lev:standard_name = &#34;depth&#34; ;
+		lev:axis = &#34;Z&#34; ;
+		lev:positive = &#34;down&#34; ;
+		lev:_CoordinateAxisType = &#34;Height&#34; ;
+		lev:comment = &#34;Measurement depth of in situ sea surface temperature varies&#34; ;
+	double lon(lon) ;
+		lon:units = &#34;degrees_east&#34; ;
+		lon:long_name = &#34;Longitude&#34; ;
+		lon:standard_name = &#34;longitude&#34; ;
+		lon:axis = &#34;X&#34; ;
+		lon:bounds = &#34;lon_bnds&#34; ;
+		lon:grids = &#34;Uniform grid from 0 to 358 by 2&#34; ;
+	float sst(time, lev, lat, lon) ;
+		sst:_FillValue = -999.f ;
+		sst:long_name = &#34;Extended reconstructed sea surface temperature&#34; ;
+		sst:standard_name = &#34;SST&#34; ;
+		sst:units = &#34;degree_C&#34; ;
+		sst:add_offset = 0.f ;
+		sst:scale_factor = 1.f ;
+		sst:valid_min = -3.f ;
+		sst:valid_max = 45.f ;
+	double time(time) ;
+		time:long_name = &#34;Center time of the day&#34; ;
+		time:standard_name = &#34;time&#34; ;
+		time:axis = &#34;T&#34; ;
+		time:delta_t = &#34;0000-01-00&#34; ;
+		time:avg_period = &#34;0000-01-00&#34; ;
+		time:units = &#34;minutes since 2017-02-01 00:00&#34; ;
+	float ssta(time, lev, lat, lon) ;
+		ssta:_FillValue = -999.f ;
+		ssta:long_name = &#34;Extended reconstructed SST anomalies&#34; ;
+		ssta:standard_name = &#34;SSTA&#34; ;
+		ssta:units = &#34;degree_C&#34; ;
+		ssta:add_offset = 0.f ;
+		ssta:scale_factor = 1.f ;
+		ssta:valid_min = -12.f ;
+		ssta:valid_max = 12.f ;
+
+// global attributes:
+		:Conventions = &#34;CF-1.6&#34; ;
+		:Metadata_Conventions = &#34;CF-1.6, Unidata Dataset Discovery v1.0&#34; ;
+		:metadata_link = &#34;C00884&#34; ;
+		:id = &#34;ersst.v4.201702&#34; ;
+		:naming_authority = &#34;gov.noaa.ncdc&#34; ;
+		:title = &#34;NOAA ERSSTv4 (in situ only)&#34; ;
+		:summary = &#34;ERSST.v4 is developped based on v3b after revisions of 11 parameters using updated data sets and advanced knowledge of ERSST analysis&#34; ;
+		:institution = &#34;NOAA/NESDIS/NCEI/CCOG&#34; ;
+		:creator_name = &#34;Boyin Huang&#34; ;
+		:creator_email = &#34;boyin.huang@noaa.gov&#34; ;
+		:date_modified = &#34;2017/03/03&#34; ;
+		:production_version = &#34;Version 5&#34; ;
+		:history = &#34;Fri Mar  3 13:35:18 2017: ncatted -O -a _FillValue,ssta,o,f,-999.0 ssta.nc\n&#34;,
+    &#34;Version 5 based on Version 4&#34; ;
+		:publisher_name = &#34;Boyin Huang&#34; ;
+		:publisher_email = &#34;boyin.huang@noaa.gov&#34; ;
+		:creator_url = &#34;http://www.ncdc.noaa.gov&#34; ;
+		:license = &#34;No constraints on data access or use&#34; ;
+		:time_coverage_start = &#34;2017-02-15T000000Z&#34; ;
+		:time_coverage_end = &#34;2017-02-15T000000Z&#34; ;
+		:geospatial_lon_min = -1.f ;
+		:geospatial_lon_max = 359.f ;
+		:geospatial_lat_min = -89.f ;
+		:geospatial_lat_max = 89.f ;
+		:geospatial_lat_units = &#34;degrees_north&#34; ;
+		:geospatial_lat_resolution = 2.f ;
+		:geospatial_lon_units = &#34;degrees_east&#34; ;
+		:geospatial_lon_resolution = 2.f ;
+		:spatial_resolution = &#34;2.0 degree grid&#34; ;
+		:cdm_data_type = &#34;Grid&#34; ;
+		:processing_level = &#34;L4&#34; ;
+		:standard_name_vocabulary = &#34;CF Standard Name Table v27&#34; ;
+		:keywords = &#34;Earth Science &amp;gt; Oceans &amp;gt; Ocean Temperature &amp;gt; Sea Sur face Temperature &amp;gt&#34; ;
+		:keywords_vocabulary = &#34;NASA Global Change Master Directory (GCMD) Science Keywords&#34; ;
+		:project = &#34;NOAA Extended Reconstructed Sea Surface Temperature (ERSST)&#34; ;
+		:platform = &#34;Ship and Buoy SSTs from ICOADS R2.5 and NCEP GTS&#34; ;
+		:instrument = &#34;Conventional thermometers&#34; ;
+		:source = &#34;ICOADS R2.5 SST, NCEP GTS SST, HadISST ice, NCEP ice&#34; ;
+		:comment = &#34;SSTs were observed by conventional thermometers in Buckets (in sulated or un-insulated canvas and wooded buckets), Engine Room Intakers, or floats and drifters&#34; ;
+		:references = &#34;Huang et al, 2015: Extended Reconstructed Sea Surface Temperatures Version 4 (ERSST.v4), Part I. Upgrades and Intercomparisons. Journal of Climate, DOI: 10.1175/JCLI-D-14-00006.1.&#34; ;
+		:climatology = &#34;Climatology is based on 1971-2000 SST, Xue, Y., T. M. Smith, and R. W. Reynolds, 2003: Interdecadal changes of 30-yr SST normals during 1871.2000. Journal of Climate, 16, 1601-1612.&#34; ;
+		:description = &#34;In situ data: ICOADS2.5 before 2007, NCEP in situ data from 2008 to present. Ice data: HadISST ice before 2015 and NCEP ice after 2015.&#34; ;
+
+data:
+
+ lat = -88, -86, -84, -82, -80, -78, -76, -74, -72, -70, -68, -66, -64, -62, 
+    -60, -58, -56, -54, -52, -50, -48, -46, -44, -42, -40, -38, -36, -34, 
+    -32, -30, -28, -26, -24, -22, -20, -18, -16, -14, -12, -10, -8, -6, -4, 
+    -2, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 
+    36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 
+    72, 74, 76, 78, 80, 82, 84, 86, 88 ;
+
+ lev = 0 ;
+
+ lon = 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 
+    38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 
+    74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 
+    108, 110, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 132, 134, 
+    136, 138, 140, 142, 144, 146, 148, 150, 152, 154, 156, 158, 160, 162, 
+    164, 166, 168, 170, 172, 174, 176, 178, 180, 182, 184, 186, 188, 190, 
+    192, 194, 196, 198, 200, 202, 204, 206, 208, 210, 212, 214, 216, 218, 
+    220, 222, 224, 226, 228, 230, 232, 234, 236, 238, 240, 242, 244, 246, 
+    248, 250, 252, 254, 256, 258, 260, 262, 264, 266, 268, 270, 272, 274, 
+    276, 278, 280, 282, 284, 286, 288, 290, 292, 294, 296, 298, 300, 302, 
+    304, 306, 308, 310, 312, 314, 316, 318, 320, 322, 324, 326, 328, 330, 
+    332, 334, 336, 338, 340, 342, 344, 346, 348, 350, 352, 354, 356, 358 ;
+
+ time = 0 ;
+}
 </pre>
 </div>
 </div>
@@ -12196,29 +12196,29 @@ data:
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>program main
-
-  implicit none
-
-  integer,parameter::N=10,M=20
-  integer::i,j
-  real,dimension(1:N,1:M)::x
-
-  open(10,file=&#39;filename.out&#39;,form=&#39;unformatted&#39;,access=&#39;direct&#39;,recl=N*4)
-
-  do i = 1,N
-     do j = 1,M
-        x(i,j) = i+j*2
-     end do
-  end do
-
-  do j = 1,M
-     write(10,rec=j)(x(i,j),i=1,N)
-  end do
-
-  close(10)
-
-end program main
+<pre>program main
+
+  implicit none
+
+  integer,parameter::N=10,M=20
+  integer::i,j
+  real,dimension(1:N,1:M)::x
+
+  open(10,file=&#39;filename.out&#39;,form=&#39;unformatted&#39;,access=&#39;direct&#39;,recl=N*4)
+
+  do i = 1,N
+     do j = 1,M
+        x(i,j) = i+j*2
+     end do
+  end do
+
+  do j = 1,M
+     write(10,rec=j)(x(i,j),i=1,N)
+  end do
+
+  close(10)
+
+end program main
 </pre>
 </div>
 </div>
