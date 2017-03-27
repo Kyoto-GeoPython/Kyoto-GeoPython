@@ -26,7 +26,10 @@ style_sheet = """hr {
   margin: 18px 0;
 }
 """
-res = ""
+chapres = {}
+chaps = ["基礎編", "応用編", "スライド"]
+for chap in chaps:
+    chapres[chap] = ""
 
 def mynormlize(unistr):
     res = normalize("NFC", unistr)
@@ -34,9 +37,9 @@ def mynormlize(unistr):
 
 for folder in os.listdir(dir_htmls):
     folder = mynormlize(folder)
-    if os.path.isdir(folder) and folder in ["基礎編", "応用編"]: 
+    if os.path.isdir(folder) and folder in chaps: 
         reses = dict(basic="", other="")
-        res += markdown("## {}".format(folder))
+        chapres[folder] += markdown("## {}".format(folder))
         
         for file in os.listdir(join(dir_htmls, folder)):
             file = mynormlize(file)
@@ -48,8 +51,8 @@ for folder in os.listdir(dir_htmls):
                     key = "other"
                 reses[key] += markdown("[{}]({})".format(name, "/".join(["html", folder, file])))
         
-        res += reses["basic"] + reses["other"]
-        res += markdown("***")
+        chapres[folder] += reses["basic"] + reses["other"]
+        chapres[folder] += markdown("***")
         
 # リンク集を生成する
 s_links = ""
@@ -62,8 +65,11 @@ with open(join("docs", "template_Links.html"), "r", encoding="utf-8") as fp:
     html_links = "".join(fp.readlines()).format(style_sheet, s_links)
 with open(join("docs", "html", "Links.html"), "w", encoding="utf-8") as fp:
     fp.write(html_links)
-    
 
+res = ""
+for chap in chaps:
+    res += chapres[chap]
+    
 res += markdown("## その他")
 # リンク集へのリンクを追加
 # ライブラリ集へのリンクを追加
