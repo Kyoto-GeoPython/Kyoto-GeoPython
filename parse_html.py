@@ -37,23 +37,25 @@ def mynormlize(unistr):
 
 for folder in os.listdir(dir_htmls):
     folder = mynormlize(folder)
-    if os.path.isdir(folder) and folder in chaps: 
-        reses = dict(basic="", other="")
+    if os.path.isdir(folder) and folder in chaps:
+        reses = dict(basic1="", basic2="", other="")
         chapres[folder] += markdown("## {}".format(folder))
-        
+
         for file in os.listdir(join(dir_htmls, folder)):
             file = mynormlize(file)
             if file[-5:] == ".html":
                 name = file[:-5]
-                if file.startswith("Pythonの基礎"):
-                    key = "basic"
+                if file.startswith("Pythonの基礎1"):
+                    key = "basic1"
+                elif file.startswith("Pythonの基礎2"):
+                    key = "basic2"
                 else:
                     key = "other"
                 reses[key] += markdown("[{}]({})".format(name, "/".join(["html", folder, file])))
-        
-        chapres[folder] += reses["basic"] + reses["other"]
+
+        chapres[folder] += reses["basic1"] + reses["basic2"] + reses["other"]
         chapres[folder] += markdown("***")
-        
+
 # リンク集を生成する
 s_links = ""
 for file in sorted(os.listdir("リンク集")):
@@ -69,14 +71,14 @@ with open(join("docs", "html", "Links.html"), "w", encoding="utf-8") as fp:
 res = ""
 for chap in chaps:
     res += chapres[chap]
-    
+
 res += markdown("## その他")
 # リンク集へのリンクを追加
 # ライブラリ集へのリンクを追加
 res += markdown("[ライブラリ集]({})".format("/".join(["html", "ライブラリ集.html"])))
 res += markdown("[リンク集]({})".format("/".join(["html", "Links.html"])))
 
-        
+
 with open(path_template, "r", encoding="utf-8") as fp:
     template = "".join(fp.readlines())
 with open(path_index, "w", encoding="utf-8") as fp:
