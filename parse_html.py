@@ -26,7 +26,10 @@ style_sheet = """hr {
   margin: 18px 0;
 }
 """
-res = ""
+chapres = {}
+chaps = ["基礎編", "応用編", "スライド"]
+for chap in chaps:
+    chapres[chap] = ""
 
 def mynormlize(unistr):
     res = normalize("NFC", unistr)
@@ -34,23 +37,25 @@ def mynormlize(unistr):
 
 for folder in os.listdir(dir_htmls):
     folder = mynormlize(folder)
-    if os.path.isdir(folder) and folder in ["基礎編", "応用編"]: 
-        reses = dict(basic="", other="")
-        res += markdown("## {}".format(folder))
-        
+    if os.path.isdir(folder) and folder in chaps:
+        reses = dict(basic1="", basic2="", other="")
+        chapres[folder] += markdown("## {}".format(folder))
+
         for file in os.listdir(join(dir_htmls, folder)):
             file = mynormlize(file)
             if file[-5:] == ".html":
                 name = file[:-5]
-                if file.startswith("Pythonの基礎"):
-                    key = "basic"
+                if file.startswith("Pythonの基礎1"):
+                    key = "basic1"
+                elif file.startswith("Pythonの基礎2"):
+                    key = "basic2"
                 else:
                     key = "other"
                 reses[key] += markdown("[{}]({})".format(name, "/".join(["html", folder, file])))
-        
-        res += reses["basic"] + reses["other"]
-        res += markdown("***")
-        
+
+        chapres[folder] += reses["basic1"] + reses["basic2"] + reses["other"]
+        chapres[folder] += markdown("***")
+
 # リンク集を生成する
 s_links = ""
 for file in sorted(os.listdir("リンク集")):
@@ -62,7 +67,10 @@ with open(join("docs", "template_Links.html"), "r", encoding="utf-8") as fp:
     html_links = "".join(fp.readlines()).format(style_sheet, s_links)
 with open(join("docs", "html", "Links.html"), "w", encoding="utf-8") as fp:
     fp.write(html_links)
-    
+
+res = ""
+for chap in chaps:
+    res += chapres[chap]
 
 res += markdown("## その他")
 # リンク集へのリンクを追加
@@ -70,7 +78,7 @@ res += markdown("## その他")
 res += markdown("[ライブラリ集]({})".format("/".join(["html", "ライブラリ集.html"])))
 res += markdown("[リンク集]({})".format("/".join(["html", "Links.html"])))
 
-        
+
 with open(path_template, "r", encoding="utf-8") as fp:
     template = "".join(fp.readlines())
 with open(path_index, "w", encoding="utf-8") as fp:

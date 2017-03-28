@@ -1,64 +1,10 @@
-
 <!DOCTYPE html>
 <html>
-<head>
-
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="chrome=1" />
-
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-<title>Slide_1 slides</title>
+<head><meta charset="utf-8" />
+<title>1日目スライド</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-<!-- General and theme style sheets -->
-<link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
-
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-<script>
-if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = 'reveal.js/css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-}
-
-</script>
-
-<!--[if lt IE 9]>
-<script src="reveal.js/lib/js/html5shiv.js"></script>
-<![endif]-->
-
-<!-- Loading the mathjax macro -->
-<!-- Load mathjax -->
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-    <!-- MathJax configuration -->
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-            processEscapes: true,
-            processEnvironments: true
-        },
-        // Center justify equations in code and markdown cells. Elsewhere
-        // we use CSS to left justify single line equations in code cells.
-        displayAlign: 'center',
-        "HTML-CSS": {
-            styles: {'.MathJax_Display': {"margin": 0}},
-            linebreaks: { automatic: true }
-        }
-    });
-    </script>
-    <!-- End of mathjax configuration -->
-
-<!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -11745,86 +11691,61 @@ ul.typeahead-list > li > a {
 
 <style type="text/css">
 /* Overrides of notebook CSS for static HTML export */
-.reveal {
-  font-size: 160%;
-  overflow-y: scroll;
+body {
+  overflow: visible;
+  padding: 8px;
 }
-.reveal pre {
-  width: inherit;
-  padding: 0.4em;
-  margin: 0px;
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+
+div#notebook {
+  overflow: visible;
+  border-top: none;
 }
-.reveal pre code {
-  padding: 0px;
-}
-.reveal section img {
-  border: 0px solid black;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0);
-}
-.reveal i {
-  font-style: normal;
-  font-family: FontAwesome;
-  font-size: 2em;
-}
-.reveal .slides {
-  text-align: left;
-}
-.reveal.fade {
-  opacity: 1;
-}
-.reveal .progress {
-  position: static;
-}
-div.input_area {
-  padding: 0.06em;
-}
-div.code_cell {
-  background-color: transparent;
-}
-div.prompt {
-  width: 11ex;
-  padding: 0.4em;
-  margin: 0px;
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-  text-align: right;
-}
-div.output_area pre {
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-}
-div.output_prompt {
-  /* 5px right shift to account for margin in parent container */
-  margin: 5px 5px 0 0;
-}
-div.text_cell.rendered .rendered_html {
-  /* The H1 height seems miscalculated, we are just hidding the scrollbar */
-  overflow-y: hidden;
-}
-a.anchor-link {
-  /* There is still an anchor, we are only hidding it */
-  display: none;
-}
-.rendered_html p {
-  text-align: inherit;
+
+@media print {
+  div.cell {
+    display: block;
+    page-break-inside: avoid;
+  } 
+  div.output_wrapper { 
+    display: block;
+    page-break-inside: avoid; 
+  }
+  div.output { 
+    display: block;
+    page-break-inside: avoid; 
+  }
 }
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
 <link rel="stylesheet" href="custom.css">
 
-</head>
-
-
+<!-- Loading mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration --></head>
 <body>
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
 
-
-<div class="reveal">
-<div class="slides">
-<section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -11840,7 +11761,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -11849,15 +11770,15 @@ a.anchor-link {
 <h1 id="Python&#12398;&#22411;-(1)">Python&#12398;&#22411; (1)<a class="anchor-link" href="#Python&#12398;&#22411;-(1)">&#182;</a></h1><p>Pythonは<strong>動的型付け言語</strong><br>
 型宣言などはなく、型を自動で判別してくれる</p>
 <ul>
-<li>整数 int:       2</li>
-<li>実数 float:     2.0</li>
-<li>複素数 complex: 2+0j</li>
+<li>（任意長）整数 int:       2</li>
+<li>（倍精度）実数 float:     2.0</li>
+<li>（倍精度）複素数 complex: 2+0j</li>
 </ul>
 <p>演算子: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>//</code>（整数部）, <code>%</code>（余り）, <code>**</code>（べき乗）</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
@@ -11890,7 +11811,7 @@ a.anchor-link {
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
@@ -11922,7 +11843,7 @@ a.anchor-link {
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -11937,7 +11858,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
@@ -11971,7 +11892,7 @@ True
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12023,7 +11944,7 @@ True
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12070,41 +11991,27 @@ startを省略すると最初から、stopを省略すると最後まで</p>
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Python&#12398;&#22411;-(4)">Python&#12398;&#22411; (4)<a class="anchor-link" href="#Python&#12398;&#22411;-(4)">&#182;</a></h1><ul>
-<li>ユーザー定義型
-オブジェクト指向型言語であるPythonでは、ユーザーが新たな型（クラス）を定義できる<br>
-データ構造だけでなく、演算規則やさまざまなメソッドも</li>
+<h1 id="Python&#12398;&#22411;(4)">Python&#12398;&#22411;(4)<a class="anchor-link" href="#Python&#12398;&#22411;(4)">&#182;</a></h1><ul>
+<li>辞書 dictionary: {"coffee":100, "tea":120}
+リストなどが0からN-1までの数字をインデックスとしていたのに対し、文字列でインデクシング</li>
 </ul>
-<p>その中でもNumPy ndarrayが特に重要... 高機能な配列計算を提供</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#22411;&#22793;&#25563;">&#22411;&#22793;&#25563;<a class="anchor-link" href="#&#22411;&#22793;&#25563;">&#182;</a></h1><p>Fortranなどと同様に、型の名前の関数を作用させることで型変換できる</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">100.0</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">price</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;coffee&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span> <span class="s2">&quot;tea&quot;</span><span class="p">:</span><span class="mi">120</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">price</span><span class="p">[</span><span class="s2">&quot;tea&quot;</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -12117,9 +12024,7 @@ startを省略すると最初から、stopを省略すると最後まで</p>
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>100.0
-100
-
+<pre>120
 </pre>
 </div>
 </div>
@@ -12127,7 +12032,94 @@ startを省略すると最初から、stopを省略すると最後まで</p>
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Python&#12398;&#22411;-(5)">Python&#12398;&#22411; (5)<a class="anchor-link" href="#Python&#12398;&#22411;-(5)">&#182;</a></h1><ul>
+<li>ユーザー定義型
+オブジェクト指向型言語であるPythonでは、ユーザーが新たな型（クラス）を定義できる<br>
+データ構造だけでなく、演算規則やさまざまなメソッドも</li>
+</ul>
+<p>その中でもNumPy ndarrayが特に重要... 高機能な配列計算を提供</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>メソッド: 型（クラス）に固有の関数</strong></p>
+
+<pre><code>オブジェクト名.メソッド名(引数)</code></pre>
+<p>の形をとる</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 文字列型のメソッド例</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;I like tomatoes&quot;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;12&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;I&#39;, &#39;like&#39;, &#39;tomatoes&#39;]
+I LIKE TOMATOES
+0012
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#22411;&#22793;&#25563;">&#22411;&#22793;&#25563;<a class="anchor-link" href="#&#22411;&#22793;&#25563;">&#182;</a></h1><p>Fortranなどと同様に、型の名前の関数を作用させることで型変換できる</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">100.0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># 実数 -&gt; 文字列</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12147,10 +12139,10 @@ elifはelse ifのこと。ifのみ、if-else、if-elif-elif-...などももち�
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">100</span>
@@ -12179,7 +12171,7 @@ elifはelse ifのこと。ifのみ、if-else、if-elif-elif-...などももち�
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12195,12 +12187,12 @@ elifはelse ifのこと。ifのみ、if-else、if-elif-elif-...などももち�
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ABC&quot;</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
-    <span class="n">shout</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="s2">&quot;!&quot;</span>
+    <span class="n">shout</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="s2">&quot;!&quot;</span> <span class="c1"># 文字列の「足し算」は結合</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">shout</span><span class="p">)</span>
 </pre></div>
 
@@ -12224,7 +12216,7 @@ C!
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12236,15 +12228,15 @@ C!
     [処理]</code></pre>
 <p>とすればよい。<strong>range</strong>関数は、startからstopまで、step幅の等差数列を返す<br>
 <strong>stopは含まれない</strong>ことに注意!</p>
-<p>range(start,stop)ならstep=1
-range(stop)ならstart=0, step=1</p>
+<p>range(start,stop)なら[start, start+1, ..., stop-1]<br>
+range(stop)なら[0, 1, ..., stop-1]</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span> <span class="c1"># i=0,1,2,3,4</span>
@@ -12273,7 +12265,7 @@ range(stop)ならstart=0, step=1</p>
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12292,10 +12284,10 @@ x = func_name(引数) # 戻り値を代入</code></pre>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 引数を3乗して返す関数</span>
@@ -12330,7 +12322,7 @@ Bow-wow!
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12350,7 +12342,7 @@ def area(r):
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">my_module</span>
@@ -12382,7 +12374,7 @@ def area(r):
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12394,7 +12386,7 @@ def area(r):
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">my_module</span> <span class="k">as</span> <span class="nn">mm</span>     <span class="c1"># 別名をつける</span>
@@ -12408,7 +12400,7 @@ def area(r):
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12419,17 +12411,13 @@ def area(r):
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="NumPy-ndarray">NumPy ndarray<a class="anchor-link" href="#NumPy-ndarray">&#182;</a></h1><p>Pythonのリストやタプルは大きなデータを扱うのには向かない</p>
-<ul>
-<li>基本的に1次元配列</li>
-<li>forループが遅い</li>
-</ul>
+<h1 id="NumPy-ndarray">NumPy ndarray<a class="anchor-link" href="#NumPy-ndarray">&#182;</a></h1><p>Pythonのリストやタプルは大きなデータを扱うのには向かない... 基本的に遅い！</p>
 <p>NumPy ndarrayは、高速な多次元配列計算を提供するユーザー定義型である</p>
 
 </div>
@@ -12437,7 +12425,7 @@ def area(r):
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>               <span class="c1"># NumPyモジュールをインポート</span>
@@ -12449,29 +12437,26 @@ def area(r):
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="ndarray&#12398;&#29983;&#25104;">ndarray&#12398;&#29983;&#25104;<a class="anchor-link" href="#ndarray&#12398;&#29983;&#25104;">&#182;</a></h1><h3 id="zeros,-ones:-0&#12414;&#12383;&#12399;1&#12391;&#22475;&#12414;&#12387;&#12383;&#37197;&#21015;&#12434;&#29983;&#25104;">zeros, ones: 0&#12414;&#12383;&#12399;1&#12391;&#22475;&#12414;&#12387;&#12383;&#37197;&#21015;&#12434;&#29983;&#25104;<a class="anchor-link" href="#zeros,-ones:-0&#12414;&#12383;&#12399;1&#12391;&#22475;&#12414;&#12387;&#12383;&#37197;&#21015;&#12434;&#29983;&#25104;">&#182;</a></h3>
-<pre><code>a = np.zeros(10)
-b = np.ones((16,16,16))</code></pre>
-<p>引数に整数またはタプルで配列の形を指定する</p>
+<h1 id="ndarray&#12398;&#29983;&#25104;">ndarray&#12398;&#29983;&#25104;<a class="anchor-link" href="#ndarray&#12398;&#29983;&#25104;">&#182;</a></h1><h3 id="zeros,-ones:-0&#12414;&#12383;&#12399;1&#12391;&#22475;&#12414;&#12387;&#12383;&#37197;&#21015;&#12434;&#29983;&#25104;">zeros, ones: 0&#12414;&#12383;&#12399;1&#12391;&#22475;&#12414;&#12387;&#12383;&#37197;&#21015;&#12434;&#29983;&#25104;<a class="anchor-link" href="#zeros,-ones:-0&#12414;&#12383;&#12399;1&#12391;&#22475;&#12414;&#12387;&#12383;&#37197;&#21015;&#12434;&#29983;&#25104;">&#182;</a></h3><p>引数に整数またはタプルで配列の形を指定する</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
-<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
 
@@ -12486,9 +12471,9 @@ b = np.ones((16,16,16))</code></pre>
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[ 0.  0.  0.  0.  0.]
-[[ 0.  0.  0.]
- [ 0.  0.  0.]
- [ 0.  0.  0.]]
+[[ 1.  1.  1.]
+ [ 1.  1.  1.]
+ [ 1.  1.  1.]]
 </pre>
 </div>
 </div>
@@ -12496,7 +12481,7 @@ b = np.ones((16,16,16))</code></pre>
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12513,7 +12498,7 @@ linspaceは、stepを指定する代わりに分割数numを指定</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
@@ -12546,7 +12531,7 @@ linspaceは、stepを指定する代わりに分割数numを指定</p>
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12558,7 +12543,7 @@ linspaceは、stepを指定する代わりに分割数numを指定</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -12573,7 +12558,7 @@ linspaceは、stepを指定する代わりに分割数numを指定</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># 3x3, 成分はすべて1</span>
@@ -12603,7 +12588,7 @@ linspaceは、stepを指定する代わりに分割数numを指定</p>
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12613,22 +12598,33 @@ linspaceは、stepを指定する代わりに分割数numを指定</p>
 
 <pre><code>オブジェクト名.メソッド名(引数)</code></pre>
 <p>の形をとる</p>
+<p>ndarrayには計算をスムーズにするための様々なメソッドがある</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="ndarray.sum(axis)">ndarray.sum(<em>axis</em>)<a class="anchor-link" href="#ndarray.sum(axis)">&#182;</a></h1><p>axis（整数またはタプル）で指定した軸に沿って和をとる<br>
+指定しなければ全体の和を取る<br>
+mean（平均）、max（最大）、min（最小）、var（分散）、std（標準偏差）なども同様</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 文字列型のメソッド例</span>
-<span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;I like tomatoes&quot;</span>
-<span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;12&quot;</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="c1"># a.sum((0,1))と同じ</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -12641,9 +12637,12 @@ linspaceは、stepを指定する代わりに分割数numを指定</p>
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[&#39;I&#39;, &#39;like&#39;, &#39;tomatoes&#39;]
-I LIKE TOMATOES
-0012
+<pre>[[0 1 2]
+ [3 4 5]
+ [6 7 8]]
+[ 9 12 15]
+36
+[6 7 8]
 </pre>
 </div>
 </div>
@@ -12651,7 +12650,7 @@ I LIKE TOMATOES
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12664,7 +12663,7 @@ I LIKE TOMATOES
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
@@ -12700,55 +12699,7 @@ I LIKE TOMATOES
 </div>
 </div>
 
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
 </div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="ndarray.sum(axis)">ndarray.sum(<em>axis</em>)<a class="anchor-link" href="#ndarray.sum(axis)">&#182;</a></h1><p>axis（整数またはタプル）で指定した軸に沿って和をとる<br>
-指定しなければ全体の和を取る<br>
-mean（平均）、max（最大）、min（最小）、var（分散）、std（標準偏差）なども同様</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[[0 1 2]
- [3 4 5]
- [6 7 8]]
-[ 9 12 15]
-36
-[6 7 8]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12760,7 +12711,7 @@ mean（平均）、max（最大）、min（最小）、var（分散）、std（�
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12785,7 +12736,7 @@ mean（平均）、max（最大）、min（最小）、var（分散）、std（�
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12807,7 +12758,7 @@ mean（平均）、max（最大）、min（最小）、var（分散）、std（�
 <div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="c1"># [0.0,1.0)の一様乱数</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
 <span class="n">fx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -12824,10 +12775,10 @@ mean（平均）、max（最大）、min（最小）、var（分散）、std（�
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[ 0.33686208  0.39706649  0.4032407   0.78413155  0.1172098   0.74075018
-  0.29518758  0.59386633]
-[ 3.66831470+0.j         -0.15790661+0.00043013j -0.24435640+0.2401812j
-  0.59721117+0.21653636j -1.36331440+0.j        ]
+<pre>[ 0.25416692  0.32500636  0.68071801  0.36391927  0.59905223  0.0540401
+  0.41626943  0.77837525]
+[ 3.47154758+0.j          0.13978141-0.16298603j -0.24376830+0.76324806j
+ -0.82955202+0.36591113j  0.42886560+0.j        ]
 </pre>
 </div>
 </div>
@@ -12835,7 +12786,7 @@ mean（平均）、max（最大）、min（最小）、var（分散）、std（�
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12846,7 +12797,7 @@ NumPyのベクトル演算機能を活かし、forループをできるだけ無
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[24]:</div>
@@ -12867,8 +12818,8 @@ y = np.sin(x)
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 12 ms, sys: 4 ms, total: 16 ms
-Wall time: 16.7 ms
+<pre>CPU times: user 8 ms, sys: 4 ms, total: 12 ms
+Wall time: 13.3 ms
 </pre>
 </div>
 </div>
@@ -12899,8 +12850,8 @@ for i in range(100000):
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 264 ms, sys: 0 ns, total: 264 ms
-Wall time: 263 ms
+<pre>CPU times: user 256 ms, sys: 0 ns, total: 256 ms
+Wall time: 255 ms
 </pre>
 </div>
 </div>
@@ -12908,7 +12859,7 @@ Wall time: 263 ms
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -13161,7 +13112,7 @@ MRhjjDmFFYMxxphTWDEYY4w5xf8DEqOhh57Fk2sAAAAASUVORK5CYII=
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -13179,7 +13130,7 @@ MRhjjDmFFYMxxphTWDEYY4w5xf8DEqOhh57Fk2sAAAAASUVORK5CYII=
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -13199,7 +13150,7 @@ MRhjjDmFFYMxxphTWDEYY4w5xf8DEqOhh57Fk2sAAAAASUVORK5CYII=
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[27]:</div>
@@ -13416,7 +13367,7 @@ KbBoa6YaAAAAAElFTkSuQmCC
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -13429,7 +13380,7 @@ KbBoa6YaAAAAAElFTkSuQmCC
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[28]:</div>
@@ -13863,7 +13814,7 @@ KMdxHCeWuIFyHMdxYsn/A1AcSyhpggXGAAAAAElFTkSuQmCC
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -13920,7 +13871,7 @@ KMdxHCeWuIFyHMdxYsn/A1AcSyhpggXGAAAAAElFTkSuQmCC
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -13960,11 +13911,11 @@ KMdxHCeWuIFyHMdxYsn/A1AcSyhpggXGAAAAAElFTkSuQmCC
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{-60: ([&lt;matplotlib.lines.Line2D at 0x7f7f7e236198&gt;], []),
- -30: ([&lt;matplotlib.lines.Line2D at 0x7f7f7e236940&gt;], []),
- 0: ([&lt;matplotlib.lines.Line2D at 0x7f7f7e23b160&gt;], []),
- 30: ([&lt;matplotlib.lines.Line2D at 0x7f7f7e23b940&gt;], []),
- 60: ([&lt;matplotlib.lines.Line2D at 0x7f7f7e243160&gt;], [])}</pre>
+<pre>{-60: ([&lt;matplotlib.lines.Line2D at 0x7f0962ed31d0&gt;], []),
+ -30: ([&lt;matplotlib.lines.Line2D at 0x7f0962ed3978&gt;], []),
+ 0: ([&lt;matplotlib.lines.Line2D at 0x7f0962ed9198&gt;], []),
+ 30: ([&lt;matplotlib.lines.Line2D at 0x7f0962ed9978&gt;], []),
+ 60: ([&lt;matplotlib.lines.Line2D at 0x7f0962ee2198&gt;], [])}</pre>
 </div>
 
 </div>
@@ -13972,7 +13923,7 @@ KMdxHCeWuIFyHMdxYsn/A1AcSyhpggXGAAAAAElFTkSuQmCC
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[32]:</div>
@@ -15031,7 +14982,7 @@ SUVORK5CYII=
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -15060,7 +15011,7 @@ SUVORK5CYII=
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -15075,63 +15026,8 @@ Matplotlib: <a href="http://matplotlib.org/api/pyplot_api.html">公式ドキュ�
 
 </div>
 </div>
-</div></section></section>
 </div>
-</div>
-
-<script>
-
-require(
-    {
-      // it makes sense to wait a little bit when you are loading
-      // reveal from a cdn in a slow connection environment
-      waitSeconds: 15
-    },
-    [
-      "reveal.js/lib/js/head.min.js",
-      "reveal.js/js/reveal.js"
-    ],
-
-    function(head, Reveal){
-
-        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
-        Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
-
-            theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-            transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
-
-            // Optional libraries used to extend on reveal.js
-            dependencies: [
-                { src: "reveal.js/lib/js/classList.js",
-                  condition: function() { return !document.body.classList; } },
-                { src: "reveal.js/plugin/notes/notes.js",
-                  async: true,
-                  condition: function() { return !!document.body.classList; } }
-            ]
-        });
-
-        var update = function(event){
-          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
-            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
-          }
-        };
-
-        Reveal.addEventListener('slidechanged', update);
-
-        var update_scroll = function(event){
-          $(".reveal").scrollTop(0);
-        };
-
-        Reveal.addEventListener('slidechanged', update_scroll);
-
-    }
-);
-</script>
-
+    </div>
+  </div>
 </body>
-
-
 </html>
