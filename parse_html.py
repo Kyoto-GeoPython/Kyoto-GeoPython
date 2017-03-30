@@ -79,8 +79,8 @@ res += markdown("[ライブラリ集]({})".format("/".join(["html", "ライブ�
 res += markdown("[リンク集]({})".format("/".join(["html", "Links.html"])))
 
 
-with open(path_template, "r", encoding="utf-8") as fp:
-    template = "".join(fp.readlines())
-with open(path_index, "w", encoding="utf-8") as fp:
-    fp.write(template.format(style_sheet, res))
-print(res)
+#with open(path_template, "r", encoding="utf-8") as fp:
+#    template = "".join(fp.readlines())
+#with open(path_index, "w", encoding="utf-8") as fp:
+#    fp.write(template.format(style_sheet, res))
+#print(res)
