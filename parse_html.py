@@ -27,7 +27,7 @@ style_sheet = """hr {
 }
 """
 chapres = {}
-chaps = ["基礎編", "応用編", "スライド"]
+chaps = ["基礎編", "応用編"]
 for chap in chaps:
     chapres[chap] = ""
 
@@ -72,15 +72,15 @@ res = ""
 for chap in chaps:
     res += chapres[chap]
 
-res += markdown("## その他")
+#res += markdown("## その他")
 # リンク集へのリンクを追加
 # ライブラリ集へのリンクを追加
-res += markdown("[ライブラリ集]({})".format("/".join(["html", "ライブラリ集.html"])))
-res += markdown("[リンク集]({})".format("/".join(["html", "Links.html"])))
+#res += markdown("[ライブラリ集]({})".format("/".join(["html", "ライブラリ集.html"])))
+#res += markdown("[リンク集]({})".format("/".join(["html", "Links.html"])))
 
 
-#with open(path_template, "r", encoding="utf-8") as fp:
-#    template = "".join(fp.readlines())
-#with open(path_index, "w", encoding="utf-8") as fp:
-#    fp.write(template.format(style_sheet, res))
-#print(res)
+with open(path_template, "r", encoding="utf-8") as fp:
+    template = "".join(fp.readlines())
+with open(path_index, "w", encoding="utf-8") as fp:
+    fp.write(template.format(style_sheet, res))
+print(res)
