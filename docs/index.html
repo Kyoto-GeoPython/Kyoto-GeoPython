@@ -1,67 +1,101 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <!-- <link href="css/github.css" rel="stylesheet"> -->
-        <title>Pythonチュートリアル</title>
-        <style>
-            hr {
-  -moz-border-bottom-colors: none;
-  -moz-border-image: none;
-  -moz-border-left-colors: none;
-  -moz-border-right-colors: none;
-  -moz-border-top-colors: none;
-  border-color: #EEEEEE -moz-use-text-color #FFFFFF;
-  border-style: solid none;
-  border-width: 1px 0;
-  margin: 18px 0;
-}
+<head>
+	<meta charset="utf-8">
+	<title>Pythonチュートリアル</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<style>
+	/*
+1. #002D5E
+2. #1760A0
+3. #8DABC5
+4. #DBEDF0
+5. #4699CA
+6. #7FC1D0
+7. #4A8060
+8. #80A491
+9. #C5B897
 
-        </style>
-    </head>
-    <body style="background-color: #eeeeee">
-        <br/>
-        <div
-            class="center-block"
-            style="width: 1000px; text-align: center; background-color: #c6bdbd; border: 1px solid gray;"
-        >
-            <h1 style="margin: 10px;">KyotoGeoPython ホームページへようこそ</h1>
-        </div>
-        <br/>
-        <div
-            class="center-block"
-            style="width: 500px; text-align: center; background-color: #ffffff; border: 1px solid gray;"
-        >
+1,3,4,5,6
+	*/
+		body{
+			background-color: #002D5E;
+		}
+		.background{
+			background-color: #002D5E;
+			color: #DBEDF0;
+		}
+		.title{
+			background-color: #002D5E;
+			color: #DBEDF0;
+		}
+		.kiso{
+			background-color: #f8d500	;
+			color: #002D5E;
+		}
+		.ouyou{
+			background-color: #f8d500	;
+			color: #002D5E;
+		}
+		.slide{
+			background-color: #f8d500	;
+			color: #002D5E;
+		}
+		.sonota{
+			background-color: #f8d500	;
+			color: #002D5E;
+		}
+	</style>
+</head>
+<body>
+	<div class="w3-main w3-center background">
+		<div class="w3-center title w3-padding-64">
+			<h1 class="w3-jumbo">KyotoGeo<font color="#f8d500">Python</font> ホームページへようこそ</h1>
+		</div>
+		<div class="w3-row-padding w3-left-align">
+			<div class="w3-third w3-padding">
+				<h2 class="w3-xxlarge kiso w3-padding">基礎編</h2>
+				<div class="w3-padding">
+					<p><a href="html/基礎編/Pythonの基礎1.html">Pythonの基礎1</a></p>
+					<p><a href="html/基礎編/Pythonの基礎2.html">Pythonの基礎2</a></p>
+					<p><a href="html/基礎編/Matplotlib.html">Matplotlib</a></p>
+					<p><a href="html/基礎編/numpy（基礎編）.html">numpy（基礎編）</a></p>
+					<p><a href="html/基礎編/ファイル読み込み.html">ファイル読み込み</a></p>
+					<p><a href="html/基礎編/文字列操作.html">文字列操作</a></p>
+				</div>
+			</div>
+			<div class="w3-third w3-padding">
+				<h2 class="w3-xxlarge ouyou w3-padding">応用編</h2>
+				<div class="w3-padding">
+					<p><a href="html/応用編/Animation.html">Animation</a></p>
+					<p><a href="html/応用編/Fortran, C言語 との連携.html">Fortran, C言語 との連携</a></p>
+					<p><a href="html/応用編/Pandas　―　データ分析.html">Pandas　―　データ分析</a></p>
+					<p><a href="html/応用編/Seaborn ― matplotlib をより美しく、使いやすく.html">Seaborn ― matplotlib をより美しく、使いやすく</a></p>
+					<p><a href="html/応用編/shやBashの代わりにPythonを使う.html">shやBashの代わりにPythonを使う</a></p>
+				</div>
+			</div>
+			<div class="w3-third w3-row w3-padding">
+				<div class="w3-container">
+					<h2 class="w3-xxlarge slide w3-padding">スライド</h2>
+					<div class="w3-padding">
+						<p><a href="html/スライド/1日目スライド.html">1日目スライド</a></p>
+						<p><a href="html/スライド/2日目スライド-01-（前半PDF）.pdf">2日目スライド（前半 PDF）</a></p>
+						<p><a href="html/スライド/Python講習会（応用編）.html">2日目スライド（後半）</a></p>
+						<p><a href="html/スライド/Sympy―代数演算.html">Sympy―代数演算</a></p>
+					</div>
+				</div>
+				<div class="w3-container">
+					<h2 class="w3-xxlarge sonota w3-padding">その他</h2>
+					<div class="w3-padding">
+						<p><a href="html/ライブラリ集.html">ライブラリ集</a></p>
+						<p><a href="html/Links.html">リンク集</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
 
-        <!-- ↓テンプレート始め -->
-        <h2>基礎編</h2>
-<p><a href="html/基礎編/Pythonの基礎1.html">Pythonの基礎1</a></p>
-<p><a href="html/基礎編/Pythonの基礎2.html">Pythonの基礎2</a></p>
-<p><a href="html/基礎編/Matplotlib.html">Matplotlib</a></p>
-<p><a href="html/基礎編/numpy（基礎編）.html">numpy（基礎編）</a></p>
-<p><a href="html/基礎編/ファイル読み込み.html">ファイル読み込み</a></p>
-<p><a href="html/基礎編/文字列操作.html">文字列操作</a></p>
-<hr>
-<h2>応用編</h2>
-<p><a href="html/応用編/Animation.html">Animation</a></p>
-<p><a href="html/応用編/Fortran, C言語 との連携.html">Fortran, C言語 との連携</a></p>
-<p><a href="html/応用編/Pandas　―　データ分析.html">Pandas　―　データ分析</a></p>
-<p><a href="html/応用編/Seaborn ― matplotlib をより美しく、使いやすく.html">Seaborn ― matplotlib をより美しく、使いやすく</a></p>
-<p><a href="html/応用編/shやBashの代わりにPythonを使う.html">shやBashの代わりにPythonを使う</a></p>
-<hr>
 
-		
-			<h2>スライド</h2>
-			<p><a href="html/スライド/1日目スライド.html">1日目スライド</a></p>
-			<p><a href="html/スライド/2日目スライド-01-（前半PDF）.pdf">2日目スライド（前半 PDF）</a></p>
-			<p><a href="html/スライド/Python講習会（応用編）.html">2日目スライド（後半）</a></p>
-			<p><a href="html/スライド/Sympy―代数演算.html">Sympy―代数演算</a></p>
-			<hr>
-			<h2>その他</h2>
-			<p><a href="html/ライブラリ集.html">ライブラリ集</a></p>
-			<p><a href="html/Links.html">リンク集</a></p>
-        <!-- ↑テンプレート終わり -->
-        </div>
-    </body>
+	</div>
+</body>
 </html>
