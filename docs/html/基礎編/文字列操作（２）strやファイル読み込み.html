@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>Numpyの基礎（５）要素の参照</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>文字列操作（２）strやファイル読み込み</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11776,12 +11776,25 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="&#30446;&#27425;">&#30446;&#27425;<a class="anchor-link" href="#&#30446;&#27425;">&#182;</a></h1><ul>
-<li><a href="#インデックス参照">インデックス参照</a><ul>
-<li><a href="#スライス">スライス</a></li>
-<li><a href="#ファンシーインデックス参照">ファンシーインデックス参照</a></li>
+<li>strクラスの便利な関数<ul>
+<li>str.strip</li>
+<li>str.split</li>
+<li>str.replace</li>
 </ul>
 </li>
+<li>テキストファイル読み込み</li>
 </ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="str&#12463;&#12521;&#12473;&#12398;&#20415;&#21033;&#12394;&#38306;&#25968;">str&#12463;&#12521;&#12473;&#12398;&#20415;&#21033;&#12394;&#38306;&#25968;<a class="anchor-link" href="#str&#12463;&#12521;&#12473;&#12398;&#20415;&#21033;&#12394;&#38306;&#25968;">&#182;</a></h2><p>strクラスには、str.format以外にも使い勝手の良い関数が多数用意されています。<br>
+ここでは、そのうちファイル入力を処理する際などに役立つ関数を紹介します。</p>
+<h3 id="str.strip">str.strip<a class="anchor-link" href="#str.strip">&#182;</a></h3><p>stripは「取り除く、奪う」などの意味を持つ単語ですが、その名の通りこの関数は文字列の最初や最後にある余計な空白や改行文字を取り除いてくれます。</p>
 
 </div>
 </div>
@@ -11791,36 +11804,42 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#最初と最後の空白を取り除く</span>
+<span class="s2">&quot;       空白が        たくさん     あるよ　　　&quot;</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[1]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;空白が        たくさん     あるよ&#39;</pre>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+
 </div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;">&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;<a class="anchor-link" href="#&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;">&#182;</a></h2><p>Numpyでは、部分配列の取り出し方に様々な種類があり、使いこなせると便利です。</p>
-<p>ただ、取り出し方が<strong>コピー</strong>であるか<strong>ビュー（参照）</strong>であるかを混乱することがあるので、チェックしておいてください。</p>
-<h3 id="&#12473;&#12521;&#12452;&#12473;">&#12473;&#12521;&#12452;&#12473;<a class="anchor-link" href="#&#12473;&#12521;&#12452;&#12473;">&#182;</a></h3><p>Pythonのリストやタプルにも実装されているスライスをndarrayに対してするとその部分配列が<strong>ビュー（参照）</strong>で返ってきます。<br>
-つまり、その取り出した部分配列を書き換えると元々の配列も変わるということです。<br>
-スライスは高速に動作するので、使えるときはガンガン使っていきましょう。<br>
-一例を見てみます。</p>
 
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">arr</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 改行文字も取り除く</span>
+<span class="s2">&quot;      最後に  改行文字が   含まれる例    </span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -11839,10 +11858,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0,  1,  2,  3],
-       [ 4,  5,  6,  7],
-       [ 8,  9, 10, 11],
-       [12, 13, 14, 15]])</pre>
+<pre>&#39;最後に  改行文字が   含まれる例&#39;</pre>
 </div>
 
 </div>
@@ -11850,17 +11866,23 @@ div#notebook {
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="str.split">str.split<a class="anchor-link" href="#str.split">&#182;</a></h3><p>この関数では、指定した区切り文字で文字列を分割して文字列のリストを返します。区切り文字を指定しない場合、スペースやタブのような空白でうまいこと分割してくれるので、まずは区切り文字を指定しないでやってみることをおすすめします。</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># スライスした部分配列（行1, 2）の要素に全て-1を代入する</span>
-<span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="c1"># オリジナルの配列</span>
-<span class="n">arr</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#スペースで分割</span>
+<span class="s2">&quot;a b c&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -11879,10 +11901,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0,  1,  2,  3],
-       [ 0,  0,  0,  0],
-       [ 0,  0,  0,  0],
-       [12, 13, 14, 15]])</pre>
+<pre>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</pre>
 </div>
 
 </div>
@@ -11896,9 +11915,8 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 全て0に初期化（配列を再生成せず、要素のみ書き換えている）</span>
-<span class="n">arr</span><span class="p">[:]</span>  <span class="o">=</span> <span class="mi">0</span>
-<span class="n">arr</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#タブやスペースが混在しててもうまく分割してくれる</span>
+<span class="s2">&quot;a </span><span class="se">\t</span><span class="s2">   b  </span><span class="se">\t</span><span class="s2">  c&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -11917,10 +11935,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[0, 0, 0, 0],
-       [0, 0, 0, 0],
-       [0, 0, 0, 0],
-       [0, 0, 0, 0]])</pre>
+<pre>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</pre>
 </div>
 
 </div>
@@ -11928,24 +11943,14 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>使い道としては、各軸の値をなんらかの計算をしたあと、再び代入するのに使います。</p>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 一様乱数</span>
-<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">arr</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#区切り文字を指定する場合</span>
+<span class="s2">&quot;csvファイルなどに,使う場合を,想定しています&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11964,9 +11969,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[0.38683417, 0.98741038, 0.94777143, 0.96893218],
-       [0.0051495 , 0.72041113, 0.32446774, 0.96436879],
-       [0.19261006, 0.38485942, 0.15739849, 0.1588059 ]])</pre>
+<pre>[&#39;csvファイルなどに&#39;, &#39;使う場合を&#39;, &#39;想定しています&#39;]</pre>
 </div>
 
 </div>
@@ -11974,15 +11977,22 @@ div#notebook {
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="str.replace">str.replace<a class="anchor-link" href="#str.replace">&#182;</a></h3><p>その名の通り、文字列に含まれるある文字を別の文字に置き換えた文字列を返す関数です。</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ３行目を書き換える</span>
-<span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="n">arr</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="s2">&quot;あいうあいう&quot;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;あ&quot;</span><span class="p">,</span><span class="s2">&quot;い&quot;</span><span class="p">)</span> <span class="c1"># &quot;あ&quot;を&quot;い&quot;に置き換える</span>
 </pre></div>
 
 </div>
@@ -12001,9 +12011,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0.38683417,  0.98741038,  0.94777143,  0.96893218],
-       [ 0.0051495 ,  0.72041113,  0.32446774,  0.96436879],
-       [-0.80738994, -0.61514058, -0.84260151, -0.8411941 ]])</pre>
+<pre>&#39;いいういいう&#39;</pre>
 </div>
 
 </div>
@@ -12011,85 +12019,45 @@ div#notebook {
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#12486;&#12461;&#12473;&#12488;&#12501;&#12449;&#12452;&#12523;&#35501;&#12415;&#36796;&#12415;">&#12486;&#12461;&#12473;&#12488;&#12501;&#12449;&#12452;&#12523;&#35501;&#12415;&#36796;&#12415;<a class="anchor-link" href="#&#12486;&#12461;&#12473;&#12488;&#12501;&#12449;&#12452;&#12523;&#35501;&#12415;&#36796;&#12415;">&#182;</a></h2><p><strong>with</strong>構文をファイル入出力の際に使いましょう。<br>
+エラーが起きても、ファイルを自動的に閉じてくれるため、安全にファイル入出力を行うことができます。</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ２列めを書き換える</span>
-<span class="n">arr</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="n">arr</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ファイルの最後までを文字列としてdataに入れる</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[7]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0.38683417,  1.93518181,  0.94777143,  0.96893218],
-       [ 0.0051495 ,  1.04487887,  0.32446774,  0.96436879],
-       [-0.80738994, -1.45774208, -0.84260151, -0.8411941 ]])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>オリジナルの配列が変わってほしくないときは、copy関数で同じ配列を複製できます。</p>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">arr_copied</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">arr_copied</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 下はwith構文で書いた場合と大体等価ですが、</span>
+<span class="c1"># １行増えた上にインデントがなく、読みにくい</span>
+<span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[8]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0.38683417,  1.93518181,  0.94777143,  0.96893218],
-       [ 0.0051495 ,  1.04487887,  0.32446774,  0.96436879],
-       [-0.80738994, -1.45774208, -0.84260151, -0.8411941 ]])</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -12098,8 +12066,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="&#20195;&#20837;&#26178;&#12398;&#27880;&#24847;&#28857;">&#20195;&#20837;&#26178;&#12398;&#27880;&#24847;&#28857;<a class="anchor-link" href="#&#20195;&#20837;&#26178;&#12398;&#27880;&#24847;&#28857;">&#182;</a></h4><p>配列に値や配列を代入するときには、意識的にスライスを使うようにした方がいいです。<br>
-例えばスカラーを配列の全要素に代入しようとしたとき、スライスを使わないといけません。</p>
+<p>一行ずつ読み取りたい場合は、fpに対してforループを回すと良いです。<br>
+下の例では、各行が改行文字を含んだまま取り出されているので<strong>str.strip</strong>関数でそれを取り除いています。</p>
 
 </div>
 </div>
@@ -12109,8 +12077,9 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">a</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fp</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
 </pre></div>
 
 </div>
@@ -12123,87 +12092,20 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[9]:</div>
+<div class="prompt"></div>
 
 
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&#34;都道府県コード&#34;,&#34;都道府県名&#34;,&#34;元号&#34;,&#34;和暦（年）&#34;,&#34;西暦（年）&#34;,&#34;注&#34;,&#34;人口（総数）&#34;,&#34;人口（男）&#34;,&#34;人口（女）&#34;
+&#34;00&#34;,&#34;全国&#34;,&#34;大正&#34;,9,1920,&#34;&#34;,55963053,28044185,27918868
+&#34;01&#34;,&#34;北海道&#34;,&#34;大正&#34;,9,1920,&#34;&#34;,2359183,1244322,1114861
+&#34;02&#34;,&#34;青森県&#34;,&#34;大正&#34;,9,1920,&#34;&#34;,756454,381293,375161
+&#34;03&#34;,&#34;岩手県&#34;,&#34;大正&#34;,9,1920,&#34;&#34;,845540,421069,424471
+&#34;04&#34;,&#34;宮城県&#34;,&#34;大正&#34;,9,1920,&#34;&#34;,961768,485309,476459
+&#34;05&#34;,&#34;秋田県&#34;,&#34;大正&#34;,9,1920,&#34;&#34;,898537,453682,444855
+&#34;06&#34;,&#34;山形県&#34;,&#34;大正&#34;,9,1920,&#34;&#34;,968925,478328,490597
+</pre>
 </div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ↓-100をaの全要素に代入するつもりで書いたら</span>
-<span class="c1"># 配列ですらなくなっている！？</span>
-<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span>
-<span class="n">a</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[10]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>-100</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 正しくは</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">a</span><span class="p">[:]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span>
-<span class="n">a</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[11]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([-100, -100, -100, -100, -100, -100, -100, -100, -100, -100])</pre>
-</div>
-
 </div>
 
 </div>
@@ -12214,574 +12116,19 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>配列として扱いたい場合は、スライスを使った代入を心がけましょう。</p>
+<p>テキストファイルはそれぞれに異なる文字コードが使われています。<br>
+もともとの文字コードと違う文字コードで読み込もうとすると「文字化け」と言われる現象が起きます。<br>
+うまくテキストファイルをopenできない場合、以下のencodingを試してみると良いです。</p>
+<ul>
+<li>utf-8</li>
+<li>shift-jis</li>
+<li>cp932</li>
+<li>euc-jp</li>
+</ul>
+<p>大概のテキストファイルはどれかに当てはまります。</p>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#12501;&#12449;&#12531;&#12471;&#12540;&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;">&#12501;&#12449;&#12531;&#12471;&#12540;&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;<a class="anchor-link" href="#&#12501;&#12449;&#12531;&#12471;&#12540;&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;">&#182;</a></h3><p>スライスよりも柔軟に部分配列を取り出せるインデックス参照が<strong>ファンシーインデックス参照</strong>です。<br>
-配列（ndarrayやリスト、タプルなど）をインデックスに入れると、部分配列（コピー）を返すという機能です。<br>
-Numpyの使いやすさを格段に上げる機能であり、使う機会も多くなると思います。　　<br>
-インデックスに配列を入れることで、対応する軸を抜き出すということをしてくれます。</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">a</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[12]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0,  1,  2],
-       [ 3,  4,  5],
-       [ 6,  7,  8],
-       [ 9, 10, 11]])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ファンシーインデックス参照の一例（行1, 3を抜き出す）</span>
-<span class="n">a</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[13]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 3,  4,  5],
-       [ 9, 10, 11]])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ファンシーインデックス参照の一例（列0, 1を抜き出す）</span>
-<span class="n">a</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[14]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0,  1],
-       [ 3,  4],
-       [ 6,  7],
-       [ 9, 10]])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ファンシーインデックス参照を使った代入の例（列0, 1をそれぞれ10倍する）</span>
-<span class="n">a</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">*</span> <span class="mi">10</span>
-<span class="n">a</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[15]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[  0,  10,   2],
-       [ 30,  40,   5],
-       [ 60,  70,   8],
-       [ 90, 100,  11]])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>ファンシーインデックス参照は直接代入するときは上のようにビューとして振る舞いますが、変数に格納するときはコピーされます。</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[16]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[  0,  10,   2],
-       [ 30,  40,   5],
-       [ 60,  70,   8],
-       [ 90, 100,  11]])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 列0, 1を抜き出す（コピーになる）</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
-<span class="n">b</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[17]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[  0,  10],
-       [ 30,  40],
-       [ 60,  70],
-       [ 90, 100]])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 全要素を0</span>
-<span class="n">b</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">b</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[18]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[0, 0],
-       [0, 0],
-       [0, 0],
-       [0, 0]])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># もともとの配列は書き換わらない（コピーされている！）</span>
-<span class="n">a</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[19]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[  0,  10,   2],
-       [ 30,  40,   5],
-       [ 60,  70,   8],
-       [ 90, 100,  11]])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="bool&#12395;&#12424;&#12427;&#12452;&#12531;&#12487;&#12463;&#12471;&#12531;&#12464;">bool&#12395;&#12424;&#12427;&#12452;&#12531;&#12487;&#12463;&#12471;&#12531;&#12464;<a class="anchor-link" href="#bool&#12395;&#12424;&#12427;&#12452;&#12531;&#12487;&#12463;&#12471;&#12531;&#12464;">&#182;</a></h3><p>ある条件の値だけを抜き出すといったとき、boolによるインデクシングが利用できます。</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 10個の正規分布乱数</span>
-<span class="n">rand_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">rand_values</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[20]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([-1.06746729, -0.1338436 , -0.74867261, -0.01552645,  0.05015313,
-        0.09484174, -1.03269536,  1.92978143, -0.962761  ,  0.13945506,
-       -0.29867732,  0.65328508, -0.64104386,  0.37756419, -0.80470757])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>1より大きい値を抜き出したい場合、以下のような真偽値の配列を作り、それをインデックスにわたすことでTrueの場所だけを抜き出すことができます。</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rand_values</span> <span class="o">&gt;=</span> <span class="mi">1</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[21]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([False, False, False, False, False, False, False,  True, False,
-       False, False, False, False, False, False])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1より大きい値を抜き出す</span>
-<span class="n">rand_values</span><span class="p">[</span><span class="n">rand_values</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[22]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([1.92978143])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>これを応用すると、２次元配列で特定の条件の列（行）を抜き出すといったことが簡単にできます。</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rand_2d</span> <span class="o">=</span> <span class="n">rand_values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="n">rand_2d</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[23]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[-1.06746729, -0.1338436 , -0.74867261, -0.01552645,  0.05015313],
-       [ 0.09484174, -1.03269536,  1.92978143, -0.962761  ,  0.13945506],
-       [-0.29867732,  0.65328508, -0.64104386,  0.37756419, -0.80470757]])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1より大きい値を少なくとも１つ含む列を抜き出す</span>
-<span class="n">rand_2d</span><span class="p">[:,</span> <span class="p">(</span><span class="n">rand_2d</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[24]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[-0.74867261],
-       [ 1.92978143],
-       [-0.64104386]])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>any</strong>関数は、一つでもTrueがあればTrueを返す関数です。<br>
-これにaxis=0を指定すると、列にTrueが含まれているかを真偽値で返す関数になります。</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="n">rand_2d</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[25]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([False, False,  True, False, False])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
     </div>
   </div>

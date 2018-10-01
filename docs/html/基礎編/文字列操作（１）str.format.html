@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>Numpyの基礎（５）要素の参照</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>文字列操作（１）str.format</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11775,13 +11775,40 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>本記事では、Python3.6以降で導入された機能も紹介しています。<br>
+特別な理由がなければ、Python3.6以降の新しいバージョンを使用することをおすすめします。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="&#30446;&#27425;">&#30446;&#27425;<a class="anchor-link" href="#&#30446;&#27425;">&#182;</a></h1><ul>
-<li><a href="#インデックス参照">インデックス参照</a><ul>
-<li><a href="#スライス">スライス</a></li>
-<li><a href="#ファンシーインデックス参照">ファンシーインデックス参照</a></li>
+<li>Pythonにおける文字列（string型）</li>
+<li>文字列の結合<ul>
+<li>+を使った結合</li>
+<li>str.format関数<ul>
+<li>基本的な使い方</li>
+<li>（気になる人向け）書式指定子の構造</li>
+</ul>
+</li>
+<li>f-string</li>
 </ul>
 </li>
 </ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Python&#12395;&#12362;&#12369;&#12427;&#25991;&#23383;&#21015;&#65288;string&#22411;&#65289;">Python&#12395;&#12362;&#12369;&#12427;&#25991;&#23383;&#21015;&#65288;string&#22411;&#65289;<a class="anchor-link" href="#Python&#12395;&#12362;&#12369;&#12427;&#25991;&#23383;&#21015;&#65288;string&#22411;&#65289;">&#182;</a></h1><p>Pythonで文字列を扱うための組み込みクラスとして、<strong>string</strong>という型があります。別の言い方として、<strong>文字列型</strong>や<strong>str</strong>などと呼ばれることもあります。<br>
+大概の文字列操作はこのクラスだけで出来ちゃうので、マスターするとファイル入出力などで困ることがぐっと減ります。数値をフォーマットして文字列に変換したり、必要な部分を抜き出したり、特定文字を区切り文字として複数の文字列に分割したりと多機能なクラスです。<br>
+文字列は"（ダブルクォーテーション）もしくは'（シングルクォーテーション）で囲むことで作れます（２つの違いはまったくない）。</p>
 
 </div>
 </div>
@@ -11791,11 +11818,32 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>
+<span class="c1"># s = &#39;hello&#39; &lt;-- これでもよい</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[1]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>str</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -11804,12 +11852,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;">&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;<a class="anchor-link" href="#&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;">&#182;</a></h2><p>Numpyでは、部分配列の取り出し方に様々な種類があり、使いこなせると便利です。</p>
-<p>ただ、取り出し方が<strong>コピー</strong>であるか<strong>ビュー（参照）</strong>であるかを混乱することがあるので、チェックしておいてください。</p>
-<h3 id="&#12473;&#12521;&#12452;&#12473;">&#12473;&#12521;&#12452;&#12473;<a class="anchor-link" href="#&#12473;&#12521;&#12452;&#12473;">&#182;</a></h3><p>Pythonのリストやタプルにも実装されているスライスをndarrayに対してするとその部分配列が<strong>ビュー（参照）</strong>で返ってきます。<br>
-つまり、その取り出した部分配列を書き換えると元々の配列も変わるということです。<br>
-スライスは高速に動作するので、使えるときはガンガン使っていきましょう。<br>
-一例を見てみます。</p>
+<p>Cでの<strong>char</strong>やFortranでの<strong>character</strong>と違い、文字そのものも長さが１の文字列として扱います。事前に配列を定義する必要があったり、結合しているうちに最初に定義した配列サイズを超えるといったことはなく、直感的な操作が可能です。</p>
 
 </div>
 </div>
@@ -11819,8 +11862,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">arr</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11839,10 +11881,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0,  1,  2,  3],
-       [ 4,  5,  6,  7],
-       [ 8,  9, 10, 11],
-       [12, 13, 14, 15]])</pre>
+<pre>1</pre>
 </div>
 
 </div>
@@ -11850,17 +11889,26 @@ div#notebook {
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#25991;&#23383;&#21015;&#12398;&#32080;&#21512;">&#25991;&#23383;&#21015;&#12398;&#32080;&#21512;<a class="anchor-link" href="#&#25991;&#23383;&#21015;&#12398;&#32080;&#21512;">&#182;</a></h1><h2 id="+&#35352;&#21495;&#12434;&#20351;&#12387;&#12383;&#25991;&#23383;&#21015;&#12398;&#32080;&#21512;">+&#35352;&#21495;&#12434;&#20351;&#12387;&#12383;&#25991;&#23383;&#21015;&#12398;&#32080;&#21512;<a class="anchor-link" href="#+&#35352;&#21495;&#12434;&#20351;&#12387;&#12383;&#25991;&#23383;&#21015;&#12398;&#32080;&#21512;">&#182;</a></h2><p>多くのスクリプト言語と同様に、文字列を結合するためには<strong>+</strong>記号を使います。</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># スライスした部分配列（行1, 2）の要素に全て-1を代入する</span>
-<span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># +記号を使った文字列の結合</span>
+<span class="s2">&quot;hello&quot;</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="s2">&quot;world&quot;</span> <span class="c1"># --&gt; &#39;hello,world&#39;</span>
 
-<span class="c1"># オリジナルの配列</span>
-<span class="n">arr</span>
+<span class="c1"># +を使わずこんな結合もできる</span>
+<span class="s2">&quot;hello&quot;&quot;,&quot;&quot;world&quot;</span> <span class="c1"># --&gt; &#39;hello,world&#39;</span>
 </pre></div>
 
 </div>
@@ -11879,10 +11927,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0,  1,  2,  3],
-       [ 0,  0,  0,  0],
-       [ 0,  0,  0,  0],
-       [12, 13, 14, 15]])</pre>
+<pre>&#39;hello,world&#39;</pre>
 </div>
 
 </div>
@@ -11890,15 +11935,23 @@ div#notebook {
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>ここで一つ注意しなければならないのは、<strong>int</strong>や<strong>float</strong>といった数値の型はstring型と「＋」を用いた結合ができないということです。数値をstring型と結合するためには、数値をstring型に明示的にキャスト（型の変換）する必要があります。</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 全て0に初期化（配列を再生成せず、要素のみ書き換えている）</span>
-<span class="n">arr</span><span class="p">[:]</span>  <span class="o">=</span> <span class="mi">0</span>
-<span class="n">arr</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1 + &quot;a&quot;　#TypeError</span>
+<span class="nb">str</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;a&quot;</span>
 </pre></div>
 
 </div>
@@ -11917,10 +11970,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[0, 0, 0, 0],
-       [0, 0, 0, 0],
-       [0, 0, 0, 0],
-       [0, 0, 0, 0]])</pre>
+<pre>&#39;1a&#39;</pre>
 </div>
 
 </div>
@@ -11933,7 +11983,9 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>使い道としては、各軸の値をなんらかの計算をしたあと、再び代入するのに使います。</p>
+<p>このような少し面倒な仕様になっているのは、意図していない結合をした場合に必ずエラーが出るようにするためです。<br>
+CやFortranのように型を事前に指定して変数を定義するコンパイル言語と違い、Pythonを始めとしたスクリプト言語では、変数に異なる型を代入できるために、間違った型を入れたままコードを書いてしまうことがあります。<br>
+一例を上げると、</p>
 
 </div>
 </div>
@@ -11943,9 +11995,9 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 一様乱数</span>
-<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">arr</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num1</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">num2</span> <span class="o">=</span> <span class="s2">&quot;3&quot;</span> <span class="c1">#ファイルからの読み取りの際、stringのままに変数に保存</span>
+<span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span> <span class="c1">#TypeError</span>
 </pre></div>
 
 </div>
@@ -11958,31 +12010,59 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[5]:</div>
+<div class="prompt"></div>
 
 
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-5-63084913d688&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-fg">      1</span> num1 <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-cyan-intense-fg ansi-bold">1</span>
+<span class="ansi-green-fg">      2</span> num2 <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-blue-intense-fg ansi-bold">&#34;3&#34;</span> <span class="ansi-red-intense-fg ansi-bold">#ファイルからの読み取りの際、stringのままに変数に保存</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 3</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>num1 <span class="ansi-yellow-intense-fg ansi-bold">+</span> num2 <span class="ansi-red-intense-fg ansi-bold">#TypeError</span>
 
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[0.38683417, 0.98741038, 0.94777143, 0.96893218],
-       [0.0051495 , 0.72041113, 0.32446774, 0.96436879],
-       [0.19261006, 0.38485942, 0.15739849, 0.1588059 ]])</pre>
+<span class="ansi-red-intense-fg ansi-bold">TypeError</span>: unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;</pre>
+</div>
 </div>
 
 </div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>このコードを書いた人は最後の行では何をしようとしたのでしょうか？可能性は２つあります。</p>
+<ul>
+<li>num1, num2のどちらも<strong>string</strong>だと思って計算し、出力では「13」を出そうとした</li>
+<li>num1, num2のどちらも<strong>int</strong>だと思って計算し、出力では「4」を出そうとした</li>
+</ul>
+<p>もちろん、Pythonのインタプリタ（コードを一行ごと読み込んで実行するもの）はどちらが本来意図されていたかを知る由もないのでエラーを吐き出すわけです。<br>
+この面倒な仕様は、スクリプト言語の宿命とも言える産物なのです。</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="str.format&#38306;&#25968;">str.format&#38306;&#25968;<a class="anchor-link" href="#str.format&#38306;&#25968;">&#182;</a></h2><p>上記のような宿命は納得したとしても、さすがに毎回キャストするのは面倒です。
+２つの文字列を結合するぐらいならキャストでいいかもしれませんが、大抵の場合、もっと多くの文字列を結合したいはずなので、これを簡単にする関数として<strong>str.format</strong>が用意されています。<br>
+複数の文字列、数値などを連結する場合に非常によく使います。特に、科学技術計算などで数値をフォーマット（桁数を指定するなど）する際に役立ちます。<br>
+生の文字列もstringなので、実は関数を呼び出すことができ、format関数を使うときには大抵このように記述します。</p>
 
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ３行目を書き換える</span>
-<span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="n">arr</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="s2">&quot;正の整数で一番小さいものは、「</span><span class="si">{}</span><span class="s2">」&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12001,9 +12081,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0.38683417,  0.98741038,  0.94777143,  0.96893218],
-       [ 0.0051495 ,  0.72041113,  0.32446774,  0.96436879],
-       [-0.80738994, -0.61514058, -0.84260151, -0.8411941 ]])</pre>
+<pre>&#39;正の整数で一番小さいものは、「1」&#39;</pre>
 </div>
 
 </div>
@@ -12011,15 +12089,25 @@ div#notebook {
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>基本的にformat関数は、文字列中の「{ }」の場所に、引数をstringにキャストして埋め込むという機能を持ちます。<br>
+formatの引数は複数入れることも可能で、その場合、引数の個数に対応した「{}」を文字列の中に含んでいなければなりません。</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ２列めを書き換える</span>
-<span class="n">arr</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="n">arr</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num1</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">num2</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> + </span><span class="si">{}</span><span class="s2"> = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">,</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span><span class="p">)</span> 
 </pre></div>
 
 </div>
@@ -12038,9 +12126,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0.38683417,  1.93518181,  0.94777143,  0.96893218],
-       [ 0.0051495 ,  1.04487887,  0.32446774,  0.96436879],
-       [-0.80738994, -1.45774208, -0.84260151, -0.8411941 ]])</pre>
+<pre>&#39;1 + 3 = 4&#39;</pre>
 </div>
 
 </div>
@@ -12048,23 +12134,15 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>オリジナルの配列が変わってほしくないときは、copy関数で同じ配列を複製できます。</p>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">arr_copied</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">arr_copied</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#「{ }」の中に埋め込みたい引数の位置を明示的に番号で与えることもできる</span>
+<span class="c1"># 引数のタプルのインデックスを指定している</span>
+<span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> </span><span class="si">{1}</span><span class="s2"> </span><span class="si">{2}</span><span class="s2"> </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;一個目&quot;</span><span class="p">,</span><span class="s2">&quot;二個目&quot;</span><span class="p">,</span><span class="s2">&quot;三個目&quot;</span><span class="p">)</span> 
 </pre></div>
 
 </div>
@@ -12083,9 +12161,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0.38683417,  1.93518181,  0.94777143,  0.96893218],
-       [ 0.0051495 ,  1.04487887,  0.32446774,  0.96436879],
-       [-0.80738994, -1.45774208, -0.84260151, -0.8411941 ]])</pre>
+<pre>&#39;一個目 二個目 三個目 二個目&#39;</pre>
 </div>
 
 </div>
@@ -12093,24 +12169,15 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="&#20195;&#20837;&#26178;&#12398;&#27880;&#24847;&#28857;">&#20195;&#20837;&#26178;&#12398;&#27880;&#24847;&#28857;<a class="anchor-link" href="#&#20195;&#20837;&#26178;&#12398;&#27880;&#24847;&#28857;">&#182;</a></h4><p>配列に値や配列を代入するときには、意識的にスライスを使うようにした方がいいです。<br>
-例えばスカラーを配列の全要素に代入しようとしたとき、スライスを使わないといけません。</p>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">a</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#リストを展開して文字列に入れたい場合。「＊」でリストをばらして引数にできる。</span>
+<span class="n">greetings</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;こんにちは&quot;</span><span class="p">,</span> <span class="s2">&quot;ニーハオ&quot;</span><span class="p">]</span>
+<span class="s2">&quot;</span><span class="si">{}</span><span class="s2">, </span><span class="si">{}</span><span class="s2">, </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">greetings</span><span class="p">)</span> 
 </pre></div>
 
 </div>
@@ -12129,7 +12196,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</pre>
+<pre>&#39;hello, こんにちは, ニーハオ&#39;</pre>
 </div>
 
 </div>
@@ -12143,10 +12210,8 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ↓-100をaの全要素に代入するつもりで書いたら</span>
-<span class="c1"># 配列ですらなくなっている！？</span>
-<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span>
-<span class="n">a</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#floatを入れた場合</span>
+<span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> 
 </pre></div>
 
 </div>
@@ -12165,7 +12230,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>-100</pre>
+<pre>&#39;0.3333333333333333&#39;</pre>
 </div>
 
 </div>
@@ -12179,10 +12244,8 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 正しくは</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">a</span><span class="p">[:]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span>
-<span class="n">a</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#キーワード引数で可読性を上げる</span>
+<span class="s2">&quot;</span><span class="si">{arg1}</span><span class="s2"> </span><span class="si">{arg2}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arg1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">arg2</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span> 
 </pre></div>
 
 </div>
@@ -12201,7 +12264,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([-100, -100, -100, -100, -100, -100, -100, -100, -100, -100])</pre>
+<pre>&#39;1 100&#39;</pre>
 </div>
 
 </div>
@@ -12214,19 +12277,11 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>配列として扱いたい場合は、スライスを使った代入を心がけましょう。</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#12501;&#12449;&#12531;&#12471;&#12540;&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;">&#12501;&#12449;&#12531;&#12471;&#12540;&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;<a class="anchor-link" href="#&#12501;&#12449;&#12531;&#12471;&#12540;&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;">&#182;</a></h3><p>スライスよりも柔軟に部分配列を取り出せるインデックス参照が<strong>ファンシーインデックス参照</strong>です。<br>
-配列（ndarrayやリスト、タプルなど）をインデックスに入れると、部分配列（コピー）を返すという機能です。<br>
-Numpyの使いやすさを格段に上げる機能であり、使う機会も多くなると思います。　　<br>
-インデックスに配列を入れることで、対応する軸を抜き出すということをしてくれます。</p>
+<p>注：{ } の数字やキーワードを省略した場合、文字列の中に出てくる { } に0, 1, 2,…と番号をつけていくという処理が行われています。</p>
+<h3 id="&#26360;&#24335;&#25351;&#23450;&#23376;">&#26360;&#24335;&#25351;&#23450;&#23376;<a class="anchor-link" href="#&#26360;&#24335;&#25351;&#23450;&#23376;">&#182;</a></h3><p>細かいフォーマットの指定は { } の中に<strong>書式指定子</strong>を入れることで可能です。</p>
+<blockquote><p><strong>フォーマットの構造　：　{ [引数の指定] : [書式指定子] }</strong></p>
+</blockquote>
+<p>"{○:△}"の○部分で引数の指定（上記の0,1やarg1など）を行い、△の部分に書式指定子を書きます。○の部分を省略した場合（書式指定子のみを書く場合）、<strong>"{:△}"</strong>と書きます（コロンは省略できません）。</p>
 
 </div>
 </div>
@@ -12236,8 +12291,8 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">a</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#小数点以下2桁まで表示</span>
+<span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">123.4567</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12256,10 +12311,7 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0,  1,  2],
-       [ 3,  4,  5],
-       [ 6,  7,  8],
-       [ 9, 10, 11]])</pre>
+<pre>&#39;123.46&#39;</pre>
 </div>
 
 </div>
@@ -12273,8 +12325,8 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 <div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ファンシーインデックス参照の一例（行1, 3を抜き出す）</span>
-<span class="n">a</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#指数表示</span>
+<span class="s2">&quot;</span><span class="si">{:.2e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">123.4567</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12293,8 +12345,7 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ 3,  4,  5],
-       [ 9, 10, 11]])</pre>
+<pre>&#39;1.23e+02&#39;</pre>
 </div>
 
 </div>
@@ -12308,8 +12359,8 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ファンシーインデックス参照の一例（列0, 1を抜き出す）</span>
-<span class="n">a</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#指数表示</span>
+<span class="s2">&quot;</span><span class="si">{:.3e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">123.4567</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12328,10 +12379,7 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0,  1],
-       [ 3,  4],
-       [ 6,  7],
-       [ 9, 10]])</pre>
+<pre>&#39;1.235e+02&#39;</pre>
 </div>
 
 </div>
@@ -12345,9 +12393,8 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 <div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ファンシーインデックス参照を使った代入の例（列0, 1をそれぞれ10倍する）</span>
-<span class="n">a</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">*</span> <span class="mi">10</span>
-<span class="n">a</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#符号も含め全体で6文字、小数点以下は1桁まで表示</span>
+<span class="s2">&quot;</span><span class="si">{:6.1f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">-</span><span class="mf">12.34</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12366,10 +12413,7 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[  0,  10,   2],
-       [ 30,  40,   5],
-       [ 60,  70,   8],
-       [ 90, 100,  11]])</pre>
+<pre>&#39; -12.3&#39;</pre>
 </div>
 
 </div>
@@ -12377,22 +12421,14 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>ファンシーインデックス参照は直接代入するときは上のようにビューとして振る舞いますが、変数に格納するときはコピーされます。</p>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#符号も含め全体で12文字、小数点以下は2桁まで表示（空白埋め）</span>
+<span class="s2">&quot;</span><span class="si">{:12.2e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">-</span><span class="mf">12.3456</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12411,10 +12447,7 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[  0,  10,   2],
-       [ 30,  40,   5],
-       [ 60,  70,   8],
-       [ 90, 100,  11]])</pre>
+<pre>&#39;   -1.23e+01&#39;</pre>
 </div>
 
 </div>
@@ -12428,9 +12461,8 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 <div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 列0, 1を抜き出す（コピーになる）</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
-<span class="n">b</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#符号を前に出したい場合は、width（幅）の前に&quot;0&quot;をつける</span>
+<span class="s2">&quot;</span><span class="si">{:08}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">-</span><span class="mf">12.34</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12449,10 +12481,7 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[  0,  10],
-       [ 30,  40],
-       [ 60,  70],
-       [ 90, 100]])</pre>
+<pre>&#39;-0012.34&#39;</pre>
 </div>
 
 </div>
@@ -12466,9 +12495,8 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 <div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 全要素を0</span>
-<span class="n">b</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">b</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#空白埋めの場合はデフォルトにして幅だけ決めれば良い</span>
+<span class="s2">&quot;</span><span class="si">{:8}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">-</span><span class="mf">12.34</span><span class="p">)</span>  <span class="c1"># --&gt; &#39;  -12.34&#39;</span>
 </pre></div>
 
 </div>
@@ -12487,10 +12515,7 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[0, 0],
-       [0, 0],
-       [0, 0],
-       [0, 0]])</pre>
+<pre>&#39;  -12.34&#39;</pre>
 </div>
 
 </div>
@@ -12504,8 +12529,8 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 <div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># もともとの配列は書き換わらない（コピーされている！）</span>
-<span class="n">a</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#これをベースに小数点以下の桁数などを変更する</span>
+<span class="s2">&quot;</span><span class="si">{:06.1f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">-</span><span class="mf">12.34</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12524,10 +12549,7 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[  0,  10,   2],
-       [ 30,  40,   5],
-       [ 60,  70,   8],
-       [ 90, 100,  11]])</pre>
+<pre>&#39;-012.3&#39;</pre>
 </div>
 
 </div>
@@ -12535,24 +12557,14 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="bool&#12395;&#12424;&#12427;&#12452;&#12531;&#12487;&#12463;&#12471;&#12531;&#12464;">bool&#12395;&#12424;&#12427;&#12452;&#12531;&#12487;&#12463;&#12471;&#12531;&#12464;<a class="anchor-link" href="#bool&#12395;&#12424;&#12427;&#12452;&#12531;&#12487;&#12463;&#12471;&#12531;&#12464;">&#182;</a></h3><p>ある条件の値だけを抜き出すといったとき、boolによるインデクシングが利用できます。</p>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 10個の正規分布乱数</span>
-<span class="n">rand_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">rand_values</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#別の文字で埋めたい場合はこうすると良い</span>
+<span class="s2">&quot;</span><span class="si">{:*&gt;8}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">-</span><span class="mf">12.34</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12571,9 +12583,7 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([-1.06746729, -0.1338436 , -0.74867261, -0.01552645,  0.05015313,
-        0.09484174, -1.03269536,  1.92978143, -0.962761  ,  0.13945506,
-       -0.29867732,  0.65328508, -0.64104386,  0.37756419, -0.80470757])</pre>
+<pre>&#39;**-12.34&#39;</pre>
 </div>
 
 </div>
@@ -12581,22 +12591,14 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>1より大きい値を抜き出したい場合、以下のような真偽値の配列を作り、それをインデックスにわたすことでTrueの場所だけを抜き出すことができます。</p>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rand_values</span> <span class="o">&gt;=</span> <span class="mi">1</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#整数（空白埋め）</span>
+<span class="s2">&quot;</span><span class="si">{:6}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">-</span><span class="mi">123</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12615,8 +12617,7 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([False, False, False, False, False, False, False,  True, False,
-       False, False, False, False, False, False])</pre>
+<pre>&#39;  -123&#39;</pre>
 </div>
 
 </div>
@@ -12630,8 +12631,8 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 <div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1より大きい値を抜き出す</span>
-<span class="n">rand_values</span><span class="p">[</span><span class="n">rand_values</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#整数（ゼロ埋め）</span>
+<span class="s2">&quot;</span><span class="si">{:06}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">-</span><span class="mi">123</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12650,7 +12651,7 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([1.92978143])</pre>
+<pre>&#39;-00123&#39;</pre>
 </div>
 
 </div>
@@ -12663,7 +12664,10 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>これを応用すると、２次元配列で特定の条件の列（行）を抜き出すといったことが簡単にできます。</p>
+<h2 id="f-string">f-string<a class="anchor-link" href="#f-string">&#182;</a></h2><p>Python3.6から<strong>f-string</strong>という記法が新しく導入されました。<br>
+これは、上述のformat関数を毎回呼ばないといけず、記述がエレガントでない、という理由で生まれました。<br>
+通常の文字列の最初に <strong>f</strong> をつけるだけで<strong>f-string</strong>を使うことができます。<br>
+使い方は<strong>str.format</strong>とほとんど変わりませんが、 <strong>{ }</strong> の中に変数を埋め込むことができます。</p>
 
 </div>
 </div>
@@ -12673,8 +12677,8 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 <div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rand_2d</span> <span class="o">=</span> <span class="n">rand_values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="n">rand_2d</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">f</span><span class="s2">&quot;My favorite number is </span><span class="si">{a}</span><span class="s2">.&quot;</span>
 </pre></div>
 
 </div>
@@ -12693,9 +12697,7 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[-1.06746729, -0.1338436 , -0.74867261, -0.01552645,  0.05015313],
-       [ 0.09484174, -1.03269536,  1.92978143, -0.962761  ,  0.13945506],
-       [-0.29867732,  0.65328508, -0.64104386,  0.37756419, -0.80470757]])</pre>
+<pre>&#39;My favorite number is 6.&#39;</pre>
 </div>
 
 </div>
@@ -12709,8 +12711,9 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 <div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1より大きい値を少なくとも１つ含む列を抜き出す</span>
-<span class="n">rand_2d</span><span class="p">[:,</span> <span class="p">(</span><span class="n">rand_2d</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 書式指定子もstr.formatと同じものが使用できる</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">3.141592</span><span class="p">,</span> <span class="mf">3.05</span>
+<span class="n">f</span><span class="s2">&quot;</span><span class="si">{x:.2f}</span><span class="s2"> is much larger than </span><span class="si">{y}</span><span class="s2">.&quot;</span>
 </pre></div>
 
 </div>
@@ -12729,9 +12732,7 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[-0.74867261],
-       [ 1.92978143],
-       [-0.64104386]])</pre>
+<pre>&#39;3.14 is much larger than 3.05.&#39;</pre>
 </div>
 
 </div>
@@ -12739,23 +12740,14 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>any</strong>関数は、一つでもTrueがあればTrueを返す関数です。<br>
-これにaxis=0を指定すると、列にTrueが含まれているかを真偽値で返す関数になります。</p>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="n">rand_2d</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># {}内はインラインで実行される</span>
+<span class="n">f</span><span class="s2">&quot;{1 + 2 + 3}&quot;</span>
 </pre></div>
 
 </div>
@@ -12774,7 +12766,7 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([False, False,  True, False, False])</pre>
+<pre>&#39;6&#39;</pre>
 </div>
 
 </div>
@@ -12782,6 +12774,133 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># リストの要素を以下のように取り出せる</span>
+<span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">f</span><span class="s2">&quot;</span><span class="si">{mylist[0]}</span><span class="s2"> + </span><span class="si">{mylist[1]}</span><span class="s2"> = </span><span class="si">{mylist[2]}</span><span class="s2">&quot;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[26]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;6 + 4 = 10&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Python3.6で導入されたこの<strong>f-string</strong>は非常に便利であり、それだけでもバージョンアップする価値があるかと思います。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="&#65288;&#27671;&#12395;&#12394;&#12427;&#20154;&#21521;&#12369;&#65289;&#26360;&#24335;&#25351;&#23450;&#23376;&#12398;&#27083;&#36896;">&#65288;&#27671;&#12395;&#12394;&#12427;&#20154;&#21521;&#12369;&#65289;&#26360;&#24335;&#25351;&#23450;&#23376;&#12398;&#27083;&#36896;<a class="anchor-link" href="#&#65288;&#27671;&#12395;&#12394;&#12427;&#20154;&#21521;&#12369;&#65289;&#26360;&#24335;&#25351;&#23450;&#23376;&#12398;&#27083;&#36896;">&#182;</a></h4><p>書式指定子は指定する順番によってどれを指定するかが変わります。<br>
+少々分かりにくいですが、公式HPより一般的な書式指定子の書き方を引用してみます。</p>
+<blockquote><p>[ [fill] align] [sign] [#] [0] [width] [.precision] [type]</p>
+</blockquote>
+<p>以下に、指定子をまとめた表を載せます。
+利用可能なオプションの詳細は<a href="https://docs.python.jp/3/library/string.html#format-specification-mini-language">公式HP</a>で確認してください。<br>
+おすすめの部分は、数値をフォーマットする場合を前提として書いています。</p>
+<table>
+<thead><tr>
+<th style="text-align:center">指定子名</th>
+<th style="text-align:center">利用可能なオプション</th>
+<th style="text-align:center">意味</th>
+<th style="text-align:center">デフォルト</th>
+<th style="text-align:center">おすすめ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">fill</td>
+<td style="text-align:center">任意の文字</td>
+<td style="text-align:center">空白部分に埋める文字の指定<br>（alignとセット）</td>
+<td style="text-align:center">" "（空白部分はスペースで埋める）</td>
+<td style="text-align:center">デフォルト</td>
+</tr>
+<tr>
+<td style="text-align:center">align</td>
+<td style="text-align:center">"&lt;", "&gt;", "=", "^"</td>
+<td style="text-align:center">左詰めや右詰めなどの指定</td>
+<td style="text-align:center">数値なら右詰め、stringなら左詰め</td>
+<td style="text-align:center">同上</td>
+</tr>
+<tr>
+<td style="text-align:center">sign</td>
+<td style="text-align:center">"+", "-", " "</td>
+<td style="text-align:center">符号の表示の仕方</td>
+<td style="text-align:center">"-"（負数のみ符号を表示）</td>
+<td style="text-align:center">同上</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">なし、"0"</td>
+<td style="text-align:center">"0"にした場合、符号を前につけ、その間を0埋め</td>
+<td style="text-align:center">なし</td>
+<td style="text-align:center">0埋めしたい場合はこれのみ指定</td>
+</tr>
+<tr>
+<td style="text-align:center">#</td>
+<td style="text-align:center">なし, "#"</td>
+<td style="text-align:center">16進数のとき0xをつけるかどうかなどの指定</td>
+<td style="text-align:center">""（デフォルトでなし）</td>
+<td style="text-align:center">デフォルト</td>
+</tr>
+<tr>
+<td style="text-align:center">width</td>
+<td style="text-align:center">整数</td>
+<td style="text-align:center">全体幅の指定（幅より大きい数値ならばそれが収まるような全体幅に自動で変わる</td>
+<td style="text-align:center">収まるような幅</td>
+<td style="text-align:center">小さく取ると勝手に大きくなるので、あらかじめ大きめに取っておく</td>
+</tr>
+<tr>
+<td style="text-align:center">.precision</td>
+<td style="text-align:center">整数</td>
+<td style="text-align:center">小数点以下の桁数の指定</td>
+<td style="text-align:center">16桁くらい</td>
+<td style="text-align:center">自由にどうぞ</td>
+</tr>
+<tr>
+<td style="text-align:center">type</td>
+<td style="text-align:center">"b", "d", "e", "E", "f"など</td>
+<td style="text-align:center">整数や小数の表示方法<br>（指数表示とか）</td>
+<td style="text-align:center">小数：固定小数点<br>整数：10進数</td>
+<td style="text-align:center">"e", "E"（どちらも指数表示、"E"は1.E01のように大文字になる）もしくは "f"（固定小数点表示）</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
     </div>
   </div>

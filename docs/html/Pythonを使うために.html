@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115860818-2"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-115860818-2');
+	</script>
+        <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <title>Pythonを使うために</title>
+        <style>
+			body{
+				color: #3e3f3a;
+				background-color: #e6f2ff;
+			}
+        </style>
+    </head>
+    <body>
+        <div class="w3-center w3-row">
+			<div class="w3-container w3-left-align" style="max-width: 800px; width: 100%; height: 100%; margin: auto; background-color: #ffffff;">
+				<div class="w3-container w3-padding">
+					<h1>Pythonを使うために</h1>
+					<p>新しいプログラミング言語を学ぶ際の一番の障壁は、その導入にあると言っても過言ではありません。このページでは、Python環境をどのように構築すればよいかを簡単にまとめました。</p>
+				</div>
+				<div class="w3-container w3-padding">
+					<h2>インストール方法</h2>
+					<p>いくつかPythonをPCにインストールする方法はありますが、<strong>Anaconda</strong>による導入を強くおすすめします。</p>
+					<p><strong>Anaconda</strong>は、Python本体だけでなく、数値計算する上で必須となる<strong>NumPy</strong>などのライブラリなども一緒にインストールしてくれるディストリビューションというやつです。簡単に入れることができ、さらに必要なものは十分なほど揃うので、これで導入するようにしましょう。</p>
+					<p><a href="https://www.anaconda.com/download/" target="_blank">Anaconda公式HP</a>から、Python3.6以上のバージョンを手に入れてください。</p>
+					<p>その際、あなたのPCのOSに応じて、Windows,macOS,Linuxを選んでください。</p>
+					<p>エラーが出たりしたら、<a href="http://shirabeta.net/Anaconda-install-error.html#.W7J1Cmj7Q2w" target="_blank">Anacondaのインストールでエラーになった時に試してみるべきこと</a>とか読んで頑張ってください。</p>
+					<p>Windowsであれば、スタートメニューに<strong>Anaconda3</strong>のようなものがあれば成功です。</p>
+					<p>macOSやLinuxであれば端末で<strong>conda</strong>と打ち込んで色々出てきたら成功です。</p>
+					<h3>参考URL</h3>
+					<ul>
+						<li><a href="https://qiita.com/t2y/items/2a3eb58103e85d8064b6" target="_blank">Anaconda で Python 環境をインストールする</a></li>
+					</ul>
+				</div>
+				<div class="w3-container w3-padding">
+					<h2>実行環境</h2>
+					<p>ここで紹介する環境は、全てAnacondaに付属しています。</p>
+					<h3>IPython</h3>
+					<div class="w3-container">
+						<p>対話式の実行環境として、<strong>IPython</strong>というものがあります。デフォルトのIDLEとは比べ物にならないほど高機能であり、Pythonにおける開発環境としては基本となるものです。</p>
+						<p>端末から「<strong>ipython</strong>」で起動できます（「<strong>quit()</strong>」で終了）。</p>
+					</div>
+					<h3>Spyder</h3>
+					<div class="w3-container">
+						<p>エディタとIPythonが一体型の開発環境です。エディタのスクリプトを実行して変数をIPythonから呼び出したり、「<strong>#%%</strong>」でセルを作って、後述のJupyter Notebookと同じようにセルごとの実行ができたりできます。matlabのように、作業中に変数の一覧が見れる変数エクスプローラーがあるので、数値計算のときには非常に有用かと思います。</p>
+						<p>端末から「<strong>spyder</strong>」で起動できます。Windowsであれば、スタートメニューからも起動できます。</p>
+					</div>
+					<h3>Jupyter Notebook</h3>
+					<div class="w3-container">
+						<p>ローカルPCにサーバを立てて、ブラウザからIPythonを操作できるようにした実行環境です。個人的には、Pythonにおけるベストオブ開発環境です。ブラウザで操作できる利点は、JavaScriptとHTMLという強力なGUIを活用できる点にあります。ローカルサーバなのでオフラインでも問題なく使えます。</p>
+						<p><a href="https://peachcle.com/how-to-use-jupyter-notebook/" target="_blank">Jupyter Notebookの基本的な使い方</a>などを参考にして、notebookを作ってみてください。</p>
+						<p>キーボードショートカットのヘルプは、コマンドモードで「<strong>h</strong>」で開けます。</p>
+						<p>なお、このHPの記事のほとんどは、このJupyter Notebookで作られたものをhtmlにエクスポートしています。</p>
+						<p>端末で「<strong>jupyter notebook</strong>」でサーバが起動し、自動的にブラウザが開きます。Windowsであれば、スタートメニューからも起動できます。</p>
+					</div>
+				</div>
+			</div>
+        </div>
+    </body>
+</html>
