@@ -12,7 +12,7 @@ jobs:
       - run: echo 'hoge'
       - aws-s3/sync: #invokes the sync command declared in the s3 orb
           from: docs
-          to: "s3://intro.zawawahoge.com"
+          to: "s3://kyotogeopython.zawawahoge.com"
 
 workflows:
   build-test-deploy:
