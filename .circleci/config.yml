@@ -13,7 +13,7 @@ jobs:
       - aws-s3/sync: #invokes the sync command declared in the s3 orb
           from: docs
           to: "s3://kyotogeopython.zawawahoge.com"
-          arguments: "--acl public-read"
+          arguments: --acl public-read
 
 workflows:
   build-test-deploy:
