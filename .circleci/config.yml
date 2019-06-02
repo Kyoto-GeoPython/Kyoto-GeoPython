@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  aws-s3: circleci/aws-s3@1.0.0 #imports the s3 orb in the circleci namespace
+  aws-s3: circleci/aws-s3@1.0.10 #imports the s3 orb in the circleci namespace
 
 jobs:
   deploy2s3:
