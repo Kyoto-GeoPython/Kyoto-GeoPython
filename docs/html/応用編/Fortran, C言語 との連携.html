@@ -1,213 +1,1363 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Fortran, C言語 との連携</title>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115860818-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <title>Fortran, C言語 との連携</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115860818-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'UA-115860818-2');
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-<link rel="stylesheet" type="text/css" href="/css/notebook-000.css">
-<link rel="stylesheet" type="text/css" href="/css/notebook-001.css">
+    gtag('config', 'UA-115860818-2');
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
+  <link rel="stylesheet" type="text/css" href="/css/notebook-000.css">
+  <link rel="stylesheet" type="text/css" href="/css/notebook-001.css">
 
-<style type="text/css">
-/* Overrides of notebook CSS for static HTML export */
-body {
-  overflow: visible;
-  padding: 8px;
-}
 
-div#notebook {
-  overflow: visible;
-  border-top: none;
-}@media print {
-  div.cell {
-    display: block;
-    page-break-inside: avoid;
-  } 
-  div.output_wrapper { 
-    display: block;
-    page-break-inside: avoid; 
+
+  <style type="text/css">
+  /* Overrides of notebook CSS for static HTML export */
+  body {
+    overflow: visible;
+    padding: 8px;
   }
-  div.output { 
-    display: block;
-    page-break-inside: avoid; 
+
+  div#notebook {
+    overflow: visible;
+    border-top: none;
+  }@media print {
+    div.cell {
+      display: block;
+      page-break-inside: avoid;
+    } 
+    div.output_wrapper { 
+      display: block;
+      page-break-inside: avoid; 
+    }
+    div.output { 
+      display: block;
+      page-break-inside: avoid; 
+    }
   }
-}
-</style>
+  </style>
 
-<!-- Custom stylesheet, it must be in the same directory as the html file -->
-<link rel="stylesheet" href="custom.css">
+  <!-- Custom stylesheet, it must be in the same directory as the html file -->
+  <link rel="stylesheet" href="custom.css">
 
-<!-- Loading mathjax macro -->
-<!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
-    <!-- MathJax configuration -->
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-            processEscapes: true,
-            processEnvironments: true
-        },
-        // Center justify equations in code and markdown cells. Elsewhere
-        // we use CSS to left justify single line equations in code cells.
-        displayAlign: 'center',
-        "HTML-CSS": {
-            styles: {'.MathJax_Display': {"margin": 0}},
-            linebreaks: { automatic: true }
-        }
-    });
-    </script>
-    <!-- End of mathjax configuration --></head>
+  <!-- Loading mathjax macro -->
+  <!-- Load mathjax -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+  <!-- MathJax configuration -->
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+          processEscapes: true,
+          processEnvironments: true
+      },
+      // Center justify equations in code and markdown cells. Elsewhere
+      // we use CSS to left justify single line equations in code cells.
+      displayAlign: 'center',
+      "HTML-CSS": {
+          styles: {'.MathJax_Display': {"margin": 0}},
+          linebreaks: { automatic: true }
+      }
+  });
+  </script>
+  <!-- End of mathjax configuration -->
+</head>
 <body>
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
     <h4><a href='/'>トップページに戻る</a></h4>
-    <h1>Fortran, C言語 との連携</h1>
+    <h1 style="text-align: center;">Fortran, C言語 との連携</h1>
 
-[NbConvertApp] WARNING | pattern 'C言語' matched no files
-[NbConvertApp] WARNING | pattern 'との連携.ipynb' matched no files
-This application is used to convert notebook files (*.ipynb) to various other
-formats.
 
-WARNING: THE COMMANDLINE INTERFACE MAY CHANGE IN FUTURE RELEASES.
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Python-&#12363;&#12425;C&#35328;&#35486;&#12289;Fortran&#12434;&#21628;&#12403;&#20986;&#12377;">Python &#12363;&#12425;C&#35328;&#35486;&#12289;Fortran&#12434;&#21628;&#12403;&#20986;&#12377;<a class="anchor-link" href="#Python-&#12363;&#12425;C&#35328;&#35486;&#12289;Fortran&#12434;&#21628;&#12403;&#20986;&#12377;">&#182;</a></h1><p>C言語やFortranで書かれたライブラリは、直接Pythonから呼び出すことが出来ます。</p>
+<p>まず、C言語やFortranをコンパイルして共有ライブラリファイル(*.so (Linux) や *.dll)にして、
+そのライブラリをPythonで読み込みます。</p>
 
-Options
--------
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Python-&#12363;&#12425;-C&#35328;&#35486;&#12398;&#38306;&#25968;&#12434;&#21628;&#12403;&#20986;&#12377;">Python &#12363;&#12425; C&#35328;&#35486;&#12398;&#38306;&#25968;&#12434;&#21628;&#12403;&#20986;&#12377;<a class="anchor-link" href="#Python-&#12363;&#12425;-C&#35328;&#35486;&#12398;&#38306;&#25968;&#12434;&#21628;&#12403;&#20986;&#12377;">&#182;</a></h2><p>まず、呼び出される側のC言語のライブラリを用意します。</p>
+<p>ここではモンテカルロ法のための乱数の生成ライブラリ libsobol を使ってみましょう。</p>
 
-Arguments that take values are actually convenience aliases to full
-Configurables, whose aliases are listed on the help line. For more information
-on full configurables, see '--help-all'.
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat libsobol.c
+</pre></div>
 
---debug
-    set log level to logging.DEBUG (maximize logging output)
---generate-config
-    generate default config file
--y
-    Answer yes to any questions instead of prompting.
---execute
-    Execute the notebook prior to export.
---allow-errors
-    Continue notebook execution even if one of the cells throws an error and include the error message in the cell output (the default behaviour is to abort conversion). This flag is only relevant if '--execute' was specified, too.
---stdin
-    read a single notebook file from stdin. Write the resulting notebook with default basename 'notebook.*'
---stdout
-    Write notebook output to stdout instead of files.
---inplace
-    Run nbconvert in place, overwriting the existing notebook (only 
-    relevant when converting to notebook format)
---clear-output
-    Clear output of current file and save in place, 
-    overwriting the existing notebook.
---no-prompt
-    Exclude input and output prompts from converted document.
---no-input
-    Exclude input cells and output prompts from converted document. 
-    This mode is ideal for generating code-free reports.
---log-level=<Enum> (Application.log_level)
-    Default: 30
-    Choices: (0, 10, 20, 30, 40, 50, 'DEBUG', 'INFO', 'WARN', 'ERROR', 'CRITICAL')
-    Set the log level by value or name.
---config=<Unicode> (JupyterApp.config_file)
-    Default: ''
-    Full path of a config file.
---to=<Unicode> (NbConvertApp.export_format)
-    Default: 'html'
-    The export format to be used, either one of the built-in formats, or a
-    dotted object name that represents the import path for an `Exporter` class
---template=<Unicode> (TemplateExporter.template_file)
-    Default: ''
-    Name of the template file to use
---writer=<DottedObjectName> (NbConvertApp.writer_class)
-    Default: 'FilesWriter'
-    Writer class used to write the  results of the conversion
---post=<DottedOrNone> (NbConvertApp.postprocessor_class)
-    Default: ''
-    PostProcessor class used to write the results of the conversion
---output=<Unicode> (NbConvertApp.output_base)
-    Default: ''
-    overwrite base name use for output files. can only be used when converting
-    one notebook at a time.
---output-dir=<Unicode> (FilesWriter.build_directory)
-    Default: ''
-    Directory to write output(s) to. Defaults to output to the directory of each
-    notebook. To recover previous default behaviour (outputting to the current
-    working directory) use . as the flag value.
---reveal-prefix=<Unicode> (SlidesExporter.reveal_url_prefix)
-    Default: ''
-    The URL prefix for reveal.js (version 3.x). This defaults to the reveal CDN,
-    but can be any url pointing to a copy  of reveal.js.
-    For speaker notes to work, this must be a relative path to a local  copy of
-    reveal.js: e.g., "reveal.js".
-    If a relative path is given, it must be a subdirectory of the current
-    directory (from which the server is run).
-    See the usage documentation
-    (https://nbconvert.readthedocs.io/en/latest/usage.html#reveal-js-html-
-    slideshow) for more details.
---nbformat=<Enum> (NotebookExporter.nbformat_version)
-    Default: 4
-    Choices: [1, 2, 3, 4]
-    The nbformat version to write. Use this to downgrade notebooks.
+    </div>
+</div>
+</div>
 
-To see all available configurables, use `--help-all`
+<div class="output_wrapper">
+<div class="output">
 
-Examples
---------
 
-    The simplest way to use nbconvert is
-    
-    > jupyter nbconvert mynotebook.ipynb
-    
-    which will convert mynotebook.ipynb to the default format (probably HTML).
-    
-    You can specify the export format with `--to`.
-    Options include ['asciidoc', 'custom', 'html', 'latex', 'markdown', 'notebook', 'pdf', 'python', 'rst', 'script', 'slides']
-    
-    > jupyter nbconvert --to latex mynotebook.ipynb
-    
-    Both HTML and LaTeX support multiple output templates. LaTeX includes
-    'base', 'article' and 'report'.  HTML includes 'basic' and 'full'. You
-    can specify the flavor of the format used.
-    
-    > jupyter nbconvert --to html --template basic mynotebook.ipynb
-    
-    You can also pipe the output to stdout, rather than a file
-    
-    > jupyter nbconvert mynotebook.ipynb --stdout
-    
-    PDF is generated via latex
-    
-    > jupyter nbconvert mynotebook.ipynb --to pdf
-    
-    You can get (and serve) a Reveal.js-powered slideshow
-    
-    > jupyter nbconvert myslides.ipynb --to slides --post serve
-    
-    Multiple notebooks can be given at the command line in a couple of 
-    different ways:
-    
-    > jupyter nbconvert notebook*.ipynb
-    > jupyter nbconvert notebook1.ipynb notebook2.ipynb
-    
-    or you can specify the notebooks list in a config file, containing::
-    
-        c.NbConvertApp.notebooks = ["my_notebook.ipynb"]
-    
-    > jupyter nbconvert --config mycfg.py
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>#include &lt;math.h&gt;
+#include &lt;stdint.h&gt;
+#include &lt;stdlib.h&gt;
+int rightmost_unset_bit(int i) {
+  return log2(~i &amp; -~i) + 1; // rightmost unset bit
+}
+void sobol(double *points, int N) {
+  int L = (unsigned)ceil(log2((double)N));
+  uint64_t V[64];
+  for (int j = 0; j &lt; 2; j++) {
+    for (int i = 0; i &lt; L; i++) {
+      uint64_t m = 0;
+      for (int k = 0; k &lt; 64; k += 30) {
+        m = m * (RAND_MAX + 1Lu) + rand(); // 64 bit random integer
+      }
+      V[i] = m &lt;&lt; (uint64_t) (63-i);
+    }
+    uint64_t X = 0;
+    for (int i = 0; i &lt; N; i++) {
+      X = X ^ V[rightmost_unset_bit(i)];
+      points[2*i+j] = X / 0x1.0p64; /* floating-point hexadecimal literal 2**64 */
+    }
+  }
+}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>gcc -cpp -fPIC -shared libsobol.c -lm -o libsobol.so
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>ライブラリが出来ました。では早速Pythonから呼び出してみましょう。
+ライブラリ <strong>ctypes</strong> と <strong>numpy</strong> を読み込みます。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">ctypes</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>ついでに、動いていることを確認するためにMatplotlibも読み込みました。</p>
+<p><strong><code>np.ctypeslib.load_library</code></strong> で読み込む共有ライブラリファイルを指定します。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">libsobol</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">load_library</span><span class="p">(</span><span class="s2">&quot;libsobol.so&quot;</span><span class="p">,</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>libsobol.c で定義した関数がすべて読み込まれました。</p>
+<p>次に、関数の引数・戻り値の型を教えてあげます。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># C の関数宣言式:</span>
+<span class="c1"># void sobol(double *points, int N);</span>
+
+<span class="c1"># 引数の型を指定</span>
+<span class="c1">#         v 関数の名前</span>
+<span class="n">libsobol</span><span class="o">.</span><span class="n">sobol</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">ndpointer</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="n">c_int32</span><span class="p">]</span>
+
+<span class="c1"># 戻り値の型を指定</span>
+<span class="n">libsobol</span><span class="o">.</span><span class="n">sobol</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">c_void_p</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>代表的な型は以下のように指定します。</p>
+<table>
+<thead><tr>
+<th></th>
+<th>型(C言語)</th>
+<th>型 (C99 stdint.h)</th>
+<th>Python での型指定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>倍精度浮動小数点数の配列</td>
+<td>double *</td>
+<td></td>
+<td>np.ctypeslib.ndpointer(dtype=np.float64)</td>
+</tr>
+<tr>
+<td>単精度浮動小数点数の配列</td>
+<td>float *</td>
+<td></td>
+<td>np.ctypeslib.ndpointer(dtype=np.float32)</td>
+</tr>
+<tr>
+<td>64bit整数の配列</td>
+<td>long long int *</td>
+<td>int64_t *</td>
+<td>np.ctypeslib.ndpointer(dtype=np.int64)</td>
+</tr>
+<tr>
+<td>32bit整数の配列</td>
+<td>int *</td>
+<td>int32_t *</td>
+<td>np.ctypeslib.ndpointer(dtype=np.int32)</td>
+</tr>
+<tr>
+<td>倍精度浮動小数点数</td>
+<td>double</td>
+<td></td>
+<td>c_float64</td>
+</tr>
+<tr>
+<td>単精度浮動小数点数</td>
+<td>float</td>
+<td></td>
+<td>c_float32</td>
+</tr>
+<tr>
+<td>64bit整数</td>
+<td>long long int</td>
+<td>int64_t</td>
+<td>c_int64</td>
+</tr>
+<tr>
+<td>32bit整数</td>
+<td>int</td>
+<td>int32_t</td>
+<td>c_int32</td>
+</tr>
+<tr>
+<td>void</td>
+<td>void</td>
+<td></td>
+<td>c_void_p</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># C言語の関数 sobol に渡す numpy の配列を用意します</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># 関数を呼び出します。</span>
+<span class="n">libsobol</span><span class="o">.</span><span class="n">sobol</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[6]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1024</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>C言語の関数に引数として渡された多次元配列は、C言語からは1次元配列として見えます。(<code>a[0, 0], a[0, 1], a[1, 0], a[1, 1] ...</code>)</p>
+<p>では結果を確認してみましょう。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[  7.50000000e-01,   7.50000000e-01],
+       [  2.50000000e-01,   0.00000000e+00],
+       [  5.00000000e-01,   7.50000000e-01],
+       ..., 
+       [  7.50007613e-01,   7.50007613e-01],
+       [  7.61304574e-06,   7.61304574e-06],
+       [  1.67316778e-08,   1.67316778e-08]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">a</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">a</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[8]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.collections.PathCollection at 0x7fb9a7d29e10&gt;</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+QmCC
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>うまくできました。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Python-&#12363;&#12425;-Fortran-&#12398;&#38306;&#25968;&#12434;&#21628;&#12403;&#20986;&#12377;">Python &#12363;&#12425; Fortran &#12398;&#38306;&#25968;&#12434;&#21628;&#12403;&#20986;&#12377;<a class="anchor-link" href="#Python-&#12363;&#12425;-Fortran-&#12398;&#38306;&#25968;&#12434;&#21628;&#12403;&#20986;&#12377;">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Fortran 2003 の機能により、 Fortran のサブルーチン・関数は C 言語の関数と同様に扱うことができます。Fortran 2003 に対応していないコンパイラでも、場合によっては動かすことができます。</p>
+<p>まず、Python から呼び出したいサブルーチン、関数の宣言の最後に bind(C) を書き加えます。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat RK4.f90
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>subroutine rungekutta(dt, nend, values) bind(C)
+  implicit none
+  double precision, intent(in) :: dt
+  integer, intent(in)  :: nend
+  double precision, intent(out) :: values(nend)
+  double precision :: t, p1, p2, p3, p4, u
+  integer :: n
+  u = 1d0
+  do n = 1, nend
+    t = dt * real(n)
+    p1 = u
+    p2 = u + 0.5d0 * dt * p1
+    p3 = u + 0.5d0 * dt * p2
+    p4 = u + dt * p3
+    u = u + dt * 1/6d0 * (p1 + 2 * p2 + 2 * p3 + p4)
+    values(n) = u
+  end do
+end subroutine
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>これを共有ライブラリにコンパイルします。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>gfortran -cpp -fPIC -shared RK4.f90 -o RK4.so
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Python から呼び出してみます。Fortran は参照渡しであるため、関数の引数の型を、すべてポインタとして教えていることに注意してください。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">libRK</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">load_library</span><span class="p">(</span><span class="s2">&quot;RK4.so&quot;</span><span class="p">,</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+
+<span class="n">libRK</span><span class="o">.</span><span class="n">rungekutta</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">),</span>
+                             <span class="n">POINTER</span><span class="p">(</span><span class="n">c_int32</span><span class="p">),</span>
+                             <span class="n">np</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">ndpointer</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)]</span>
+<span class="n">libRK</span><span class="o">.</span><span class="n">rungekutta</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">c_void_p</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">500</span><span class="p">,))</span>
+<span class="c1"># まず、Python の float 型変数 0.01 を c_double 型に変換し、</span>
+<span class="c1"># つぎにその値の入った場所へのポインタに変換している。</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">)(</span><span class="n">c_double</span><span class="p">(</span><span class="mf">0.01</span><span class="p">))</span>
+<span class="nb">len</span> <span class="o">=</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">c_int32</span><span class="p">)(</span><span class="n">c_int</span><span class="p">(</span><span class="mi">500</span><span class="p">))</span>
+
+<span class="n">libRK</span><span class="o">.</span><span class="n">rungekutta</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="nb">len</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[11]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&lt;matplotlib.lines.Line2D at 0x7fb9a7ac65f8&gt;]</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Fortran 2003 の bind(C) に対応していないコンパイラの場合は、C言語やPythonから呼び出す時に、Fortranで宣言された関数名の末尾にアンダースコア( _ )をつけると呼び出せることが多いです。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="f2py-&#12434;&#20351;&#12358;">f2py &#12434;&#20351;&#12358;<a class="anchor-link" href="#f2py-&#12434;&#20351;&#12358;">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>scipy に同梱されている f2py を使えば簡単に Python から Fortran を呼び出せます。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>6スペース空けてFortranプログラムを書き、入出力の変数を Cf2py intent(in) :: (変数名) で指示します。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat RK4_f2py.f90
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>      subroutine rungekutta(dt, nend, ret)
+        implicit none
+        double precision :: dt
+        integer :: nend
+        double precision :: ret(nend)
+Cf2py intent(in) :: dt
+Cf2py intent(in)  :: nend
+Cf2py intent(out) :: ret
+      double precision :: t, p1, p2, p3, p4, u
+      integer :: n
+      u = 1d0
+      do n = 1, nend
+        t = dt * real(n)
+        p1 = u
+        p2 = u + 0.5d0 * dt * p1
+        p3 = u + 0.5d0 * dt * p2
+        p4 = u + dt * p3
+        u = u + dt * 1/6d0 * (p1 + 2 * p2 + 2 * p3 + p4)
+        ret(n) = u
+      end do
+      end subroutine
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>コンパイルします。-mオプションで出来上がりのモジュール名を指定します。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>f2py -c -m rk RK4_f2py.f90
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>running build
+running config_cc
+unifing config_cc, config, build_clib, build_ext, build commands --compiler options
+running config_fc
+unifing config_fc, config, build_clib, build_ext, build commands --fcompiler options
+running build_src
+build_src
+building extension &#34;rk&#34; sources
+f2py options: []
+f2py:&gt; /tmp/tmpf61pdgjh/src.linux-x86_64-3.6/rkmodule.c
+creating /tmp/tmpf61pdgjh/src.linux-x86_64-3.6
+Reading fortran codes...
+	Reading file &#39;RK4_f2py.f90&#39; (format:fix)
+Post-processing...
+	Block: rk
+			Block: rungekutta
+Post-processing (stage 2)...
+Building modules...
+	Building module &#34;rk&#34;...
+		Constructing wrapper function &#34;rungekutta&#34;...
+		  ret = rungekutta(dt,nend)
+	Wrote C/API module &#34;rk&#34; to file &#34;/tmp/tmpf61pdgjh/src.linux-x86_64-3.6/rkmodule.c&#34;
+  adding &#39;/tmp/tmpf61pdgjh/src.linux-x86_64-3.6/fortranobject.c&#39; to sources.
+  adding &#39;/tmp/tmpf61pdgjh/src.linux-x86_64-3.6&#39; to include_dirs.
+copying /usr/lib/python3.6/site-packages/numpy/f2py/src/fortranobject.c -&gt; /tmp/tmpf61pdgjh/src.linux-x86_64-3.6
+copying /usr/lib/python3.6/site-packages/numpy/f2py/src/fortranobject.h -&gt; /tmp/tmpf61pdgjh/src.linux-x86_64-3.6
+build_src: building npy-pkg config files
+running build_ext
+customize UnixCCompiler
+customize UnixCCompiler using build_ext
+customize Gnu95FCompiler
+Found executable /usr/bin/gfortran
+customize Gnu95FCompiler
+customize Gnu95FCompiler using build_ext
+building &#39;rk&#39; extension
+compiling C sources
+C compiler: gcc -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -fPIC
+
+creating /tmp/tmpf61pdgjh/tmp
+creating /tmp/tmpf61pdgjh/tmp/tmpf61pdgjh
+creating /tmp/tmpf61pdgjh/tmp/tmpf61pdgjh/src.linux-x86_64-3.6
+compile options: &#39;-I/tmp/tmpf61pdgjh/src.linux-x86_64-3.6 -I/usr/lib/python3.6/site-packages/numpy/core/include -I/usr/include/python3.6m -c&#39;
+gcc: /tmp/tmpf61pdgjh/src.linux-x86_64-3.6/rkmodule.c
+In file included from /usr/lib/python3.6/site-packages/numpy/core/include/numpy/ndarraytypes.h:1788:0,
+                 from /usr/lib/python3.6/site-packages/numpy/core/include/numpy/ndarrayobject.h:18,
+                 from /usr/lib/python3.6/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                 from /tmp/tmpf61pdgjh/src.linux-x86_64-3.6/fortranobject.h:13,
+                 from /tmp/tmpf61pdgjh/src.linux-x86_64-3.6/rkmodule.c:19:
+/usr/lib/python3.6/site-packages/numpy/core/include/numpy/npy_1_7_deprecated_api.h:15:2: warning: #warning &#34;Using deprecated NumPy API, disable it by &#34; &#34;#defining NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION&#34; [-Wcpp]
+ #warning &#34;Using deprecated NumPy API, disable it by &#34; \
+  ^~~~~~~
+/tmp/tmpf61pdgjh/src.linux-x86_64-3.6/rkmodule.c:105:12: warning: ‘f2py_size’ defined but not used [-Wunused-function]
+ static int f2py_size(PyArrayObject* var, ...)
+            ^~~~~~~~~
+gcc: /tmp/tmpf61pdgjh/src.linux-x86_64-3.6/fortranobject.c
+In file included from /usr/lib/python3.6/site-packages/numpy/core/include/numpy/ndarraytypes.h:1788:0,
+                 from /usr/lib/python3.6/site-packages/numpy/core/include/numpy/ndarrayobject.h:18,
+                 from /usr/lib/python3.6/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                 from /tmp/tmpf61pdgjh/src.linux-x86_64-3.6/fortranobject.h:13,
+                 from /tmp/tmpf61pdgjh/src.linux-x86_64-3.6/fortranobject.c:2:
+/usr/lib/python3.6/site-packages/numpy/core/include/numpy/npy_1_7_deprecated_api.h:15:2: warning: #warning &#34;Using deprecated NumPy API, disable it by &#34; &#34;#defining NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION&#34; [-Wcpp]
+ #warning &#34;Using deprecated NumPy API, disable it by &#34; \
+  ^~~~~~~
+/tmp/tmpf61pdgjh/src.linux-x86_64-3.6/fortranobject.c: In function ‘format_def’:
+/tmp/tmpf61pdgjh/src.linux-x86_64-3.6/fortranobject.c:139:18: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         if (size &lt; sizeof(notalloc)) {
+                  ^
+compiling Fortran sources
+Fortran f77 compiler: /usr/bin/gfortran -Wall -g -ffixed-form -fno-second-underscore -fPIC -O3 -funroll-loops
+Fortran f90 compiler: /usr/bin/gfortran -Wall -g -fno-second-underscore -fPIC -O3 -funroll-loops
+Fortran fix compiler: /usr/bin/gfortran -Wall -g -ffixed-form -fno-second-underscore -Wall -g -fno-second-underscore -fPIC -O3 -funroll-loops
+compile options: &#39;-I/tmp/tmpf61pdgjh/src.linux-x86_64-3.6 -I/usr/lib/python3.6/site-packages/numpy/core/include -I/usr/include/python3.6m -c&#39;
+gfortran:fix: RK4_f2py.f90
+/usr/bin/gfortran -Wall -g -Wall -g -shared /tmp/tmpf61pdgjh/tmp/tmpf61pdgjh/src.linux-x86_64-3.6/rkmodule.o /tmp/tmpf61pdgjh/tmp/tmpf61pdgjh/src.linux-x86_64-3.6/fortranobject.o /tmp/tmpf61pdgjh/RK4_f2py.o -L/usr/lib -lpython3.6m -lgfortran -o ./rk.cpython-36m-x86_64-linux-gnu.so
+Removing build directory /tmp/tmpf61pdgjh
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>モジュールができたので、使ってみます。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">rk</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>intent(in) で指定した変数のみを渡します。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">rk</span><span class="o">.</span><span class="n">rungekutta</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[15]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&lt;matplotlib.lines.Line2D at 0x7fb9a7533ef0&gt;]</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>うまくできました。</p>
+
+</div>
+</div>
+</div>
+ 
 
 
     <h4><a href='/'>トップページに戻る</a></h4>
