@@ -13801,7 +13801,7 @@ def area(r):
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">my_module</span> <span class="k">as</span> <span class="nn">mod</span>   <span class="c1"># 別名をつける</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mod</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">my_module</span> <span class="k">import</span> <span class="n">pi</span>  <span class="c1"># モジュール内の特定のオブジェクトのみをインポート</span>
+<span class="kn">from</span> <span class="nn">my_module</span> <span class="kn">import</span> <span class="n">pi</span>  <span class="c1"># モジュール内の特定のオブジェクトのみをインポート</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>                  <span class="c1"># この場合、モジュール内の選ばれたオブジェクトがこのスクリプトの名前空間内に定義される</span>
 </pre></div>
 
@@ -13862,7 +13862,7 @@ path.append("/home/username/where/module/is/located") # リストのappendメソ
 <span class="c1"># この時点でmy_module.pyを書き換えたとする</span>
 <span class="kn">import</span> <span class="nn">my_module</span>
 <span class="c1"># ここではモジュールの更新が適用されていない</span>
-<span class="kn">from</span> <span class="nn">importlib</span> <span class="k">import</span> <span class="n">reload</span>
+<span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">reload</span>
 <span class="n">my_module</span> <span class="o">=</span> <span class="n">reload</span><span class="p">(</span><span class="n">my_module</span><span class="p">)</span>
 <span class="c1"># モジュールの更新が適用される</span>
 </pre></div>
@@ -13890,7 +13890,7 @@ path.append("/home/username/where/module/is/located") # リストのappendメソ
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># randomサブモジュール内のrand関数</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>          <span class="c1"># numpyモジュール内のcos関数</span>
 
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">special</span> <span class="k">as</span> <span class="n">sp</span> <span class="c1"># 特殊関数関連のサブモジュール</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">special</span> <span class="k">as</span> <span class="n">sp</span> <span class="c1"># 特殊関数関連のサブモジュール</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">erf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>          <span class="c1"># 誤差関数</span>
 </pre></div>
 
@@ -13985,6 +13985,7 @@ path.append("/home/username/where/module/is/located") # リストのappendメソ
 </div>
 </div>
  
+
 
 
     <h4><a href='/'>トップページに戻る</a></h4>

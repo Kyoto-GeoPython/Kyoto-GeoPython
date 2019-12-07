@@ -13514,7 +13514,7 @@ $$\left \{ \frac{d^{2}}{d t^{2}}  \theta_{1}{\left (t \right )} : \frac{1}{r_{1}
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 数値計算</span>
-<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="k">import</span> <span class="n">ode</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">ode</span>
 
 <span class="k">def</span> <span class="nf">time_evolve</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
     <span class="n">theta1</span><span class="p">,</span> <span class="n">theta2</span><span class="p">,</span> <span class="n">theta1_dot</span><span class="p">,</span> <span class="n">theta2_dot</span> <span class="o">=</span> <span class="n">y</span>
@@ -13658,7 +13658,7 @@ $$\left \{ \frac{d^{2}}{d t^{2}}  \theta_{1}{\left (t \right )} : \frac{1}{r_{1}
 <span class="n">func2</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">theta2_ddot</span><span class="p">,</span> <span class="s2">&quot;numpy&quot;</span><span class="p">)</span>
 
 <span class="c1"># 数値計算</span>
-<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="k">import</span> <span class="n">ode</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">ode</span>
 
 <span class="k">def</span> <span class="nf">time_evolve</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
     <span class="n">theta1</span><span class="p">,</span> <span class="n">theta2</span><span class="p">,</span> <span class="n">theta1_dot</span><span class="p">,</span> <span class="n">theta2_dot</span> <span class="o">=</span> <span class="n">y</span>
@@ -13692,6 +13692,7 @@ $$\left \{ \frac{d^{2}}{d t^{2}}  \theta_{1}{\left (t \right )} : \frac{1}{r_{1}
 
 </div>
  
+
 
 
     <h4><a href='/'>トップページに戻る</a></h4>
