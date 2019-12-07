@@ -1,9 +1,6 @@
 
 # coding: utf-8
 
-# In[1]:
-
-
 import os
 from jinja2 import Template
 import glob
@@ -23,8 +20,6 @@ with open(f'{PWD}/template/notebook-template.html', 'r') as fp:
 template = Template(template_html)
 
 target = f'{PWD}/docs/html'
-
-# In[]
 
 
 def write_body(path, body):
@@ -60,9 +55,11 @@ def render(element, title):
     return template.render(body=element, title=title)
 
 
-for path_nb in find_nb():
-    element = nbconvert_stdout(path_nb)
-    title = extract_title(path_nb)
-    rendered = render(element, title)
-    path_html = path_nb_to_html(path_nb)
-    write_body(path_html, rendered)
+if __name__ == '__main__':
+
+    for path_nb in find_nb():
+        element = nbconvert_stdout(path_nb)
+        title = extract_title(path_nb)
+        rendered = render(element, title)
+        path_html = path_nb_to_html(path_nb)
+        write_body(path_html, rendered)
