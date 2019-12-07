@@ -1,2 +1,2 @@
-convert: *.ipynb
-	python html_renderer.py
+convert: src
+	python scripts/html_renderer.py

@@ -16,11 +16,13 @@ handler.setLevel(DEBUG)
 logger.setLevel(DEBUG)
 logger.addHandler(handler)
 
-with open('notebook-template.html', 'r') as fp:
+PWD = os.getcwd()
+
+with open(f'{PWD}/template/notebook-template.html', 'r') as fp:
     template_html = fp.read()
 template = Template(template_html)
 
-target = 'docs/html'
+target = f'{PWD}/docs/html'
 
 # In[]
 
@@ -31,11 +33,13 @@ def write_body(path, body):
 
 
 def path_nb_to_html(path_nb):
-    return os.path.join(target, path_nb.replace('.ipynb', '.html'))
+    path_html = path_nb.replace('.ipynb', '.html')
+    path_html = path_html.replace('src/', '')
+    return os.path.join(target, path_html)
 
 
 def find_nb():
-    return glob.glob('*/*.ipynb')
+    return glob.glob('src/*/*.ipynb')
 
 
 def nbconvert_stdout(path_nb):
