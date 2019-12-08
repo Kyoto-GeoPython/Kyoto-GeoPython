@@ -13282,6 +13282,56 @@ glob.glob(<em>path</em>)で、<em>path</em>に一致するファイルをリス�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#20877;&#24112;&#30340;&#12394;&#12501;&#12449;&#12452;&#12523;&#12522;&#12473;&#12488;&#21270;">&#20877;&#24112;&#30340;&#12394;&#12501;&#12449;&#12452;&#12523;&#12522;&#12473;&#12488;&#21270;<a class="anchor-link" href="#&#20877;&#24112;&#30340;&#12394;&#12501;&#12449;&#12452;&#12523;&#12522;&#12473;&#12488;&#21270;">&#182;</a></h2><p><code>glob.glob()</code> 関数に <code>recursive=True</code> を与えてやると再帰的にファイル検索をします。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;../**/*.ipynb&quot;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[4]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;../スライド/1日目スライド.ipynb&#39;,
+ &#39;../応用編/Pandas\u3000―\u3000データ分析.ipynb&#39;,
+ &#39;../応用編/Pandas―データ分析（３）GroupBy.ipynb&#39;,
+ &#39;../応用編/Seaborn ― matplotlib をより美しく、使いやすく.ipynb&#39;,
+ &#39;../応用編/Fortran, C言語 との連携.ipynb&#39;,
+ &#39;../応用編/Pandas―データ分析（５）応用：都道府県別人口推移.ipynb&#39;,
+ &#39;../応用編/Pandas―データ分析（４）ファイル入出力.ipynb&#39;,
+ &#39;../応用編/SymPyー代数演算（２）応用：二重振り子.ipynb&#39;,
+ &#39;../応用編/Pandas―データ分析（１）Series.ipynb&#39;,
+ &#39;../応用編/SymPyー代数演算（１）使い方.ipynb&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="pathlib:-&#20877;&#24112;&#30340;&#12394;&#12501;&#12449;&#12452;&#12523;&#19968;&#35239;">pathlib: &#20877;&#24112;&#30340;&#12394;&#12501;&#12449;&#12452;&#12523;&#19968;&#35239;<a class="anchor-link" href="#pathlib:-&#20877;&#24112;&#30340;&#12394;&#12501;&#12449;&#12452;&#12523;&#19968;&#35239;">&#182;</a></h1><p>さらに高機能なPath操作をしたい場合は、<strong>pathlib</strong>ライブラリが便利です。<br>
 <strong>Path</strong>オブジェクトでディレクトリを指定し、<strong>glob</strong>関数をワイルドカードとともに呼び出すと、サブディレクトリまで再帰的にファイルを検索します。Pathオブジェクトはイテレータになっているため、最初から全部のファイルを探すのではなく、forループごとに次のファイルへ進んでいきます。普通にリストが欲しい場合は、<code>list(path.glob('xxxx'))</code>を呼び出してください。</p>
 
@@ -13290,7 +13340,7 @@ glob.glob(<em>path</em>)で、<em>path</em>に一致するファイルをリス�
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
@@ -13317,8 +13367,7 @@ glob.glob(<em>path</em>)で、<em>path</em>に一致するファイルをリス�
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>../ipynb2html.ipynb
-../スライド/1日目スライド.ipynb
+<pre>../スライド/1日目スライド.ipynb
 ../応用編/Pandas　―　データ分析.ipynb
 ../応用編/Pandas―データ分析（３）GroupBy.ipynb
 ../応用編/Seaborn ― matplotlib をより美しく、使いやすく.ipynb
@@ -13333,7 +13382,6 @@ glob.glob(<em>path</em>)で、<em>path</em>に一致するファイルをリス�
 ../応用編/Pandas―データ分析（２）DataFrame.ipynb
 ../応用編/Animation.ipynb
 ../応用編/.ipynb_checkpoints/shやBashの代わりにPythonを使う-checkpoint.ipynb
-../.ipynb_checkpoints/ipynb2html-checkpoint.ipynb
 ../ライブラリ集/Sympy―代数演算.ipynb
 ../基礎編/Numpyを使う際の注意点.ipynb
 ../基礎編/Numpyの基礎（１）導入.ipynb
@@ -13378,13 +13426,92 @@ Python上での作業ディレクトリの変更は、Pythonのセッション�
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;../基礎編&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="mkdir:-&#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#12434;&#20316;&#12427;">mkdir: &#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#12434;&#20316;&#12427;<a class="anchor-link" href="#mkdir:-&#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#12434;&#20316;&#12427;">&#182;</a></h1><p>mkdir <em>dirname</em> は os.makedirs(<em>dirname</em>) です。</p>
+<p><code>os.mkdir</code> もありますが、再帰的にディレクトリを作る時に少し面倒なので、 <code>os.makedirs</code> を使うと良いです。</p>
+<p>参照： <a href="https://note.nkmk.me/python-os-mkdir-makedirs/">Pythonでディレクトリ（フォルダ）を作成するmkdir, makedirs</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s1">&#39;./new-dir&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;./new-dir/dep1/dep2/dep3&#39;</span><span class="p">)</span>
+
+<span class="c1"># os.mkdir(&#39;./new-dir/dep1/dep2/dep3&#39;) はエラー</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#12501;&#12449;&#12452;&#12523;&#12539;&#12501;&#12457;&#12523;&#12480;&#12364;&#23384;&#22312;&#12375;&#12390;&#12356;&#12427;&#12363;&#30906;&#12363;&#12417;&#12427;">&#12501;&#12449;&#12452;&#12523;&#12539;&#12501;&#12457;&#12523;&#12480;&#12364;&#23384;&#22312;&#12375;&#12390;&#12356;&#12427;&#12363;&#30906;&#12363;&#12417;&#12427;<a class="anchor-link" href="#&#12501;&#12449;&#12452;&#12523;&#12539;&#12501;&#12457;&#12523;&#12480;&#12364;&#23384;&#22312;&#12375;&#12390;&#12356;&#12427;&#12363;&#30906;&#12363;&#12417;&#12427;">&#182;</a></h1><p><code>os.path.exists</code> 関数を使います。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;new-dir&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[9]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -13400,7 +13527,7 @@ cp <em>src</em> <em>dst</em>  は shutil.copy(<em>src</em>, <em>dst</em>) です
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
@@ -13451,7 +13578,7 @@ cp <em>src</em> <em>dst</em>  は shutil.copy(<em>src</em>, <em>dst</em>) です
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;./*.f90&quot;</span><span class="p">))</span>
@@ -13493,7 +13620,7 @@ cp <em>src</em> <em>dst</em>  は shutil.copy(<em>src</em>, <em>dst</em>) です
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;./*.f90&quot;</span><span class="p">))</span>
@@ -13528,51 +13655,19 @@ cp <em>src</em> <em>dst</em>  は shutil.copy(<em>src</em>, <em>dst</em>) です
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>また、空のディレクトリの消去（rm -r <em>dirname</em>）はos.rmdir(<em>dirname</em>)、<br>
-中のファイルも含めたディレクトリまるごとの消去（rm -rf <em>dirname</em>）はshutil.rmtree(<em>dirname</em>)です。</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="mkdir:-&#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#12434;&#20316;&#12427;">mkdir: &#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#12434;&#20316;&#12427;<a class="anchor-link" href="#mkdir:-&#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#12434;&#20316;&#12427;">&#182;</a></h1><p>mkdir <em>dirname</em> は os.mkdir(<em>dirname</em>) です。</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#12501;&#12449;&#12452;&#12523;&#25805;&#20316;&#12381;&#12398;&#20182;">&#12501;&#12449;&#12452;&#12523;&#25805;&#20316;&#12381;&#12398;&#20182;<a class="anchor-link" href="#&#12501;&#12449;&#12452;&#12523;&#25805;&#20316;&#12381;&#12398;&#20182;">&#182;</a></h1><p>osのサブモジュール<strong>path</strong>は、パスの操作に便利な関数を提供しています。</p>
-<p>os.path.exists(<em>path</em>) <em>path</em>で表されるファイル・ディレクトリが存在していればTrue、存在していなければFalseを返す。<br>
-os.path.isdir(<em>path</em>) <em>path</em>がディレクトリならばTrue、ファイルやシンボリックリンクならばFalseを返す。<br>
-os.path.isfile(<em>path</em>) <em>path</em>がファイルならばTrue、ディレクトリやシンボリックリンクならばFalseを返す。</p>
-<p>次の2つは、パスの文字列を場所+ファイル名に分割したり、拡張子を取り出すのに使えます。<br>
-<em>dir</em>, <em>file</em> = os.path.split(<em>path</em>) <em>path</em>のファイル等の場所を<em>dir</em>に、ファイル名を<em>file</em>に文字列として返す。<br>
-<em>root</em>, <em>ext</em> = os.path.splitext(<em>path</em>) <em>path</em>のファイル等の拡張子を<em>ext</em>に、拡張子の手前までを<em>root</em>に文字列として返す。</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#12503;&#12525;&#12475;&#12473;&#12398;&#23455;&#34892;---&#12471;&#12455;&#12523;&#12434;&#21628;&#12406;&#22580;&#21512;">&#12503;&#12525;&#12475;&#12473;&#12398;&#23455;&#34892; - &#12471;&#12455;&#12523;&#12434;&#21628;&#12406;&#22580;&#21512;<a class="anchor-link" href="#&#12503;&#12525;&#12475;&#12473;&#12398;&#23455;&#34892;---&#12471;&#12455;&#12523;&#12434;&#21628;&#12406;&#22580;&#21512;">&#182;</a></h1><p>上記のファイル操作コマンドだけでなく、Pythonからシェルを呼ぶことで任意のコマンドを実行することができます。
-Python 3.5以降は<strong>subprocess</strong>モジュールのsubprocess.runを用いることが推奨されていますが、Python 2.xでも<strong>os.system</strong>から同様のことができます。</p>
+<h1 id="&#12501;&#12457;&#12523;&#12480;&#12434;&#21066;&#38500;&#12377;&#12427;">&#12501;&#12457;&#12523;&#12480;&#12434;&#21066;&#38500;&#12377;&#12427;<a class="anchor-link" href="#&#12501;&#12457;&#12523;&#12480;&#12434;&#21066;&#38500;&#12377;&#12427;">&#182;</a></h1><p><code>os.rmdir()</code> 関数を使います。空でないとエラーが出ます。</p>
+<p>フォルダ内のファイルも丸ごと削除したいときは、 <code>shutil.rmtree()</code> 関数を使います。</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
-<span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;./a.out &gt; redirected.txt&quot;</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Python 3.5以降</span>
-<span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;./a.out &gt; redirected.txt&quot;</span><span class="p">)</span> <span class="c1"># Python 2.x, 現在は非推奨らしい。./a.outがないため正常終了の結果（0）を返さない</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="s1">&#39;new-dir/dep1/dep2/dep3&#39;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;new-dir/dep1/dep2/dep3&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13585,13 +13680,183 @@ Python 3.5以降は<strong>subprocess</strong>モジュールのsubprocess.run�
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[9]:</div>
+    <div class="prompt output_prompt">Out[13]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>32512</pre>
+<pre>False</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="s1">&#39;new-dir&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#12501;&#12449;&#12452;&#12523;&#25805;&#20316;&#12381;&#12398;&#20182;">&#12501;&#12449;&#12452;&#12523;&#25805;&#20316;&#12381;&#12398;&#20182;<a class="anchor-link" href="#&#12501;&#12449;&#12452;&#12523;&#25805;&#20316;&#12381;&#12398;&#20182;">&#182;</a></h1><p>osのサブモジュール<strong>path</strong>は、パスの操作に便利な関数を提供しています。</p>
+<p>os.path.exists(<em>path</em>) <em>path</em>で表されるファイル・ディレクトリが存在していればTrue、存在していなければFalseを返す。<br>
+os.path.isdir(<em>path</em>) <em>path</em>がディレクトリならばTrue、ファイルやシンボリックリンクならばFalseを返す。<br>
+os.path.isfile(<em>path</em>) <em>path</em>がファイルならばTrue、ディレクトリやシンボリックリンクならばFalseを返す。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;../**&#39;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;is_dir = {os.path.isdir(file)} :  is_path = {os.path.isfile(file)}&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>is_dir = True :  is_path = False
+is_dir = True :  is_path = False
+is_dir = False :  is_path = True
+is_dir = False :  is_path = True
+is_dir = True :  is_path = False
+is_dir = False :  is_path = True
+is_dir = False :  is_path = True
+is_dir = False :  is_path = True
+is_dir = False :  is_path = True
+is_dir = True :  is_path = False
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>次の2つは、パスの文字列を場所+ファイル名に分割したり、拡張子を取り出すのに使えます。<br>
+<em>dir</em>, <em>file</em> = os.path.split(<em>path</em>) <em>path</em>のファイル等の場所を<em>dir</em>に、ファイル名を<em>file</em>に文字列として返す。<br>
+<em>root</em>, <em>ext</em> = os.path.splitext(<em>path</em>) <em>path</em>のファイル等の拡張子を<em>ext</em>に、拡張子の手前までを<em>root</em>に文字列として返す。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#12503;&#12525;&#12475;&#12473;&#12398;&#23455;&#34892;---&#12471;&#12455;&#12523;&#12434;&#21628;&#12406;&#22580;&#21512;">&#12503;&#12525;&#12475;&#12473;&#12398;&#23455;&#34892; - &#12471;&#12455;&#12523;&#12434;&#21628;&#12406;&#22580;&#21512;<a class="anchor-link" href="#&#12503;&#12525;&#12475;&#12473;&#12398;&#23455;&#34892;---&#12471;&#12455;&#12523;&#12434;&#21628;&#12406;&#22580;&#21512;">&#182;</a></h1><p>上記のファイル操作コマンドだけでなく、Pythonからシェルを呼ぶことで任意のコマンドを実行することができます。</p>
+<p><code>subprocess</code> モジュールを使いましょう( <code>os.system</code> は非推奨)。</p>
+<p><a href="https://docs.python.org/ja/3/library/subprocess.html#subprocess.run">subprocess.run - 公式ドキュメント</a> によると、基本的にPythonから子プロセスを実行する場合は、 <code>subprocess.run</code> <strong>のみ</strong>を使えば良いように作られているらしいです。</p>
+<p>試しに、　ディレクトリ構成をみやすく表示してくれる <code>tree</code> というプログラムを実行してみます。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 表示例</span>
+<span class="o">!</span> tree -L <span class="m">1</span> ../..
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><span class="ansi-blue-intense-fg ansi-bold">../..</span>
+├── Makefile
+├── README.md
+├── <span class="ansi-blue-intense-fg ansi-bold">docs</span>
+├── <span class="ansi-blue-intense-fg ansi-bold">resource</span>
+├── <span class="ansi-blue-intense-fg ansi-bold">scripts</span>
+├── <span class="ansi-blue-intense-fg ansi-bold">src</span>
+└── <span class="ansi-blue-intense-fg ansi-bold">template</span>
+
+5 directories, 2 files
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>これを <code>subprocess</code> モジュールを使って実行してみましょう。</p>
+<p><code>subprocess.run</code> の引数には、空白で区切ったコマンドをリストで渡してあげます。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">&#39;tree&#39;</span><span class="p">,</span> <span class="s1">&#39;../..&#39;</span><span class="p">,</span> <span class="s1">&#39;-L&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[17]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>CompletedProcess(args=[&#39;tree&#39;, &#39;../..&#39;, &#39;-L&#39;, &#39;1&#39;], returncode=0)</pre>
 </div>
 
 </div>
@@ -13603,10 +13868,213 @@ Python 3.5以降は<strong>subprocess</strong>モジュールのsubprocess.run�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>subprocessモジュールからシェルを呼ばない場合や、標準出力・標準エラー出力を得る方法については、<a href="https://docs.python.jp/3/library/subprocess.html">こちら</a>や<a href="http://qiita.com/tdrk/items/9b23ad6a58ac4032bb3b">こちら</a>をご覧ください。</p>
+<p><code>CompletedProcess</code> というオブジェクトが返っており、 <code>returncode=0</code> つまりコマンドが正常終了したことがわかります。</p>
+<p>標準出力や標準エラーを受け取りたいときは、 <code>capture_output=True</code> をセットしてあげます。</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">proc</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">&#39;tree&#39;</span><span class="p">,</span> <span class="s1">&#39;../..&#39;</span><span class="p">,</span> <span class="s1">&#39;-L&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">],</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">proc</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[18]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>CompletedProcess(args=[&#39;tree&#39;, &#39;../..&#39;, &#39;-L&#39;, &#39;1&#39;], returncode=0, stdout=b&#39;../..\n\xe2\x94\x9c\xe2\x94\x80\xe2\x94\x80 Makefile\n\xe2\x94\x9c\xe2\x94\x80\xe2\x94\x80 README.md\n\xe2\x94\x9c\xe2\x94\x80\xe2\x94\x80 docs\n\xe2\x94\x9c\xe2\x94\x80\xe2\x94\x80 resource\n\xe2\x94\x9c\xe2\x94\x80\xe2\x94\x80 scripts\n\xe2\x94\x9c\xe2\x94\x80\xe2\x94\x80 src\n\xe2\x94\x94\xe2\x94\x80\xe2\x94\x80 template\n\n5 directories, 2 files\n&#39;, stderr=b&#39;&#39;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># proc.stdoutはバイナリなので decode してやると文字列に変換できる</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">proc</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>../..
+├── Makefile
+├── README.md
+├── docs
+├── resource
+├── scripts
+├── src
+└── template
+
+5 directories, 2 files
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># あえてエラーを起こしてみる (tree に存在しないオプション -hoge を与えてみる)</span>
+<span class="n">proc_failed</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">&#39;tree&#39;</span><span class="p">,</span> <span class="s1">&#39;-hoge&#39;</span><span class="p">],</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">proc_failed</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>tree: missing argument to -o option.
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#12467;&#12510;&#12531;&#12489;&#23455;&#34892;&#32080;&#26524;&#12398;&#27161;&#28310;&#12456;&#12521;&#12540;&#12418;&#12414;&#12392;&#12417;&#12390;&#27161;&#28310;&#20986;&#21147;&#12395;&#12377;&#12427;">&#12467;&#12510;&#12531;&#12489;&#23455;&#34892;&#32080;&#26524;&#12398;&#27161;&#28310;&#12456;&#12521;&#12540;&#12418;&#12414;&#12392;&#12417;&#12390;&#27161;&#28310;&#20986;&#21147;&#12395;&#12377;&#12427;<a class="anchor-link" href="#&#12467;&#12510;&#12531;&#12489;&#23455;&#34892;&#32080;&#26524;&#12398;&#27161;&#28310;&#12456;&#12521;&#12540;&#12418;&#12414;&#12392;&#12417;&#12390;&#27161;&#28310;&#20986;&#21147;&#12395;&#12377;&#12427;">&#182;</a></h2><p><code>stdout=PIPE</code> と <code>stderr=STDOUT</code> を <code>subprocess.run</code> に渡すと、エラーも標準出力と一緒に出力されます。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">proc</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">&#39;tree&#39;</span><span class="p">,</span> <span class="s1">&#39;-hoge&#39;</span><span class="p">],</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">proc</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>tree: missing argument to -o option.
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#12467;&#12510;&#12531;&#12489;&#23455;&#34892;&#32080;&#26524;&#12434;&#12501;&#12449;&#12452;&#12523;&#12395;&#20445;&#23384;&#12377;&#12427;">&#12467;&#12510;&#12531;&#12489;&#23455;&#34892;&#32080;&#26524;&#12434;&#12501;&#12449;&#12452;&#12523;&#12395;&#20445;&#23384;&#12377;&#12427;<a class="anchor-link" href="#&#12467;&#12510;&#12531;&#12489;&#23455;&#34892;&#32080;&#26524;&#12434;&#12501;&#12449;&#12452;&#12523;&#12395;&#20445;&#23384;&#12377;&#12427;">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># file objectをstdoutに渡す</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;result.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="n">proc</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">&#39;tree&#39;</span><span class="p">,</span> <span class="s1">&#39;../..&#39;</span><span class="p">,</span> <span class="s1">&#39;-L&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">],</span> <span class="n">stdout</span><span class="o">=</span><span class="n">fp</span><span class="p">)</span>
+
+<span class="o">!</span> cat result.txt
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>../..
+├── Makefile
+├── README.md
+├── docs
+├── resource
+├── scripts
+├── src
+└── template
+
+5 directories, 2 files
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -13619,7 +14087,7 @@ Python 3.5以降は<strong>subprocess</strong>モジュールのsubprocess.run�
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_wd</span> <span class="o">=</span> <span class="o">%</span><span class="k">pwd</span>
@@ -13644,7 +14112,7 @@ Python 3.5以降は<strong>subprocess</strong>モジュールのsubprocess.run�
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>which python
@@ -13664,7 +14132,7 @@ Python 3.5以降は<strong>subprocess</strong>モジュールのsubprocess.run�
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>/usr/local/bin/python
+<pre>/Users/zawawahoge/.pyenv/versions/3.8.0/bin/python
 </pre>
 </div>
 </div>
@@ -13683,7 +14151,7 @@ Python 3.5以降は<strong>subprocess</strong>モジュールのsubprocess.run�
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">python_location</span> <span class="o">=</span> <span class="o">!</span>which python
@@ -13700,13 +14168,13 @@ Python 3.5以降は<strong>subprocess</strong>モジュールのsubprocess.run�
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[12]:</div>
+    <div class="prompt output_prompt">Out[25]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&#39;/usr/local/bin/python&#39;]</pre>
+<pre>[&#39;/Users/zawawahoge/.pyenv/versions/3.8.0/bin/python&#39;]</pre>
 </div>
 
 </div>
@@ -13725,7 +14193,7 @@ Python 3.5以降は<strong>subprocess</strong>モジュールのsubprocess.run�
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;基礎編&#39;</span>
@@ -13738,7 +14206,7 @@ Python 3.5以降は<strong>subprocess</strong>モジュールのsubprocess.run�
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls ../<span class="nv">$a</span>
@@ -13761,6 +14229,7 @@ Python 3.5以降は<strong>subprocess</strong>モジュールのsubprocess.run�
 <pre>Matplotlib.ipynb
 NINO.3.csv
 Numpyの基礎（３）ufunc.ipynb
+Numpyの基礎（１）導入.html
 Numpyの基礎（１）導入.ipynb
 Numpyを使う際の注意点.ipynb
 Numpyの基礎（２）生成関数.ipynb
@@ -13777,7 +14246,8 @@ ersst.v4.201702.nc
 my_module.py
 numpy（基礎編）.ipynb
 redirected.txt
-<span class="ansi-cyan-intense-fg ansi-bold">temp</span>
+result.txt
+temp
 write_binary.f90
 ファイル読み込み.ipynb
 文字列操作（１）str.format.ipynb
@@ -13800,7 +14270,7 @@ write_binary.f90
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">langs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="s1">&#39;ruby&#39;</span><span class="p">,</span> <span class="s1">&#39;java&#39;</span><span class="p">]</span>
@@ -13823,7 +14293,7 @@ write_binary.f90
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[&#39;/usr/local/bin/python&#39;]
+<pre>[&#39;/Users/zawawahoge/.pyenv/versions/3.8.0/bin/python&#39;]
 [&#39;/usr/bin/ruby&#39;]
 [&#39;/usr/bin/java&#39;]
 </pre>
