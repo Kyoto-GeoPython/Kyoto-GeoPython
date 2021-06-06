@@ -12,6 +12,7 @@ jobs:
       - aws-s3/sync:
           from: docs
           to: "s3://kyotogeopython.zawawahoge.com"
+          arguments: --acl public-read
 
 workflows:
   build-test-deploy:
