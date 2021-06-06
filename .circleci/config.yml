@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  aws-s3: circleci/aws-s3@1.0.10 #imports the s3 orb in the circleci namespace
+  aws-s3: circleci/aws-s3@2.0.0
 
 jobs:
   deploy2s3:
@@ -9,11 +9,9 @@ jobs:
       - image: 'circleci/python:2.7'
     steps:
       - checkout
-      - run: echo 'hoge'
-      - aws-s3/sync: #invokes the sync command declared in the s3 orb
+      - aws-s3/sync:
           from: docs
           to: "s3://kyotogeopython.zawawahoge.com"
-          arguments: --acl public-read
 
 workflows:
   build-test-deploy:
