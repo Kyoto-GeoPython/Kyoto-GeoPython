@@ -1,0 +1,16 @@
+p {
+    font-size: 15px;
+}
+
+.top-button-container {
+    max-width: 1110px;
+    margin: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-button-container {
+    margin: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}

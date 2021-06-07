@@ -3,6 +3,10 @@ body {
     background-color: #e6f2ff;
 }
 
+p {
+    font-size: 15px;
+}
+
 .center-container {
     max-width: 800px;
     width: 100%;
