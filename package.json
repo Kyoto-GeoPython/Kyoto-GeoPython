@@ -7,7 +7,6 @@
     "scripts": {
         "lint:html": "prettier -l --parser html **/*.html",
         "lint:css": "stylelint '**/*.css'"
-
     },
     "devDependencies": {
         "eslint": "^7.28.0",
