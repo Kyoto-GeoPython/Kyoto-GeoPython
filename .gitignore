@@ -1,5 +1,6 @@
 .ipynb_checkpoints/
 *-checkpoint.ipynb
-.gitignore
+
+node_modules
 
 __pycache__
