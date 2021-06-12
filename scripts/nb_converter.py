@@ -62,8 +62,7 @@ async def main():
         )
         tasks.append(task)
 
-    for task in tasks:
-        await task
+    await asyncio.gather(*tasks)
 
 
 if __name__ == '__main__':
