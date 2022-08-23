@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Numpyの基礎（５）要素の取り出し方</title>
+    <title>Numpyの基礎（５）要素の参照</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
       async
@@ -60,16 +60,16 @@
     <div tabindex="-1" id="notebook" class="border-box-sizing must-no-padding">
       <div class="container my-notebook-container must-no-padding" id="notebook-container">
         <div class="w3-panel">
-          <h1 class="w3-center">Numpyの基礎（５）要素の取り出し方</h1>
+          <h1 class="w3-center">Numpyの基礎（５）要素の参照</h1>
         </div>
 
         <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#30446;&#27425;">&#30446;&#27425;<a class="anchor-link" href="#&#30446;&#27425;">&#182;</a></h1><ul>
-<li><a href="#インデックス参照">インデックス参照</a><ul>
-<li><a href="#スライス">スライス</a></li>
-<li><a href="#ファンシーインデックス参照">ファンシーインデックス参照</a></li>
+<h1 id="%E7%9B%AE%E6%AC%A1">&#30446;&#27425;<a class="anchor-link" href="#%E7%9B%AE%E6%AC%A1">&#182;</a></h1><ul>
+<li><a href="#%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E5%8F%82%E7%85%A7">インデックス参照</a><ul>
+<li><a href="#%E3%82%B9%E3%83%A9%E3%82%A4%E3%82%B9">スライス</a></li>
+<li><a href="#%E3%83%95%E3%82%A1%E3%83%B3%E3%82%B7%E3%83%BC%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E5%8F%82%E7%85%A7">ファンシーインデックス参照</a></li>
 </ul>
 </li>
 </ul>
@@ -94,11 +94,11 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;">&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;<a class="anchor-link" href="#&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;">&#182;</a></h2><p>Numpyでは、部分配列の取り出し方に様々な種類があり、使いこなせると便利です。</p>
+<h2 id="%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E5%8F%82%E7%85%A7">&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;<a class="anchor-link" href="#%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E5%8F%82%E7%85%A7">&#182;</a></h2><p>Numpyでは、部分配列の取り出し方に様々な種類があり、使いこなせると便利です。</p>
 <p>ただ、取り出し方が<strong>コピー</strong>であるか<strong>ビュー（参照）</strong>であるかを混乱することがあるので、チェックしておいてください。</p>
-<h3 id="&#12473;&#12521;&#12452;&#12473;">&#12473;&#12521;&#12452;&#12473;<a class="anchor-link" href="#&#12473;&#12521;&#12452;&#12473;">&#182;</a></h3><p>Pythonのリストやタプルにも実装されているスライスをndarrayに対してするとその部分配列が<strong>ビュー（参照）</strong>で返ってきます。<br>
-つまり、その取り出した部分配列を書き換えると元々の配列も変わるということです。<br>
-スライスは高速に動作するので、使えるときはガンガン使っていきましょう。<br>
+<h3 id="%E3%82%B9%E3%83%A9%E3%82%A4%E3%82%B9">&#12473;&#12521;&#12452;&#12473;<a class="anchor-link" href="#%E3%82%B9%E3%83%A9%E3%82%A4%E3%82%B9">&#182;</a></h3><p>Pythonのリストやタプルにも実装されているスライスをndarrayに対してするとその部分配列が<strong>ビュー（参照）</strong>で返ってきます。<br />
+つまり、その取り出した部分配列を書き換えると元々の配列も変わるということです。<br />
+スライスは高速に動作するので、使えるときはガンガン使っていきましょう。<br />
 一例を見てみます。</p>
 
 </div>
@@ -385,7 +385,7 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="&#20195;&#20837;&#26178;&#12398;&#27880;&#24847;&#28857;">&#20195;&#20837;&#26178;&#12398;&#27880;&#24847;&#28857;<a class="anchor-link" href="#&#20195;&#20837;&#26178;&#12398;&#27880;&#24847;&#28857;">&#182;</a></h4><p>配列に値や配列を代入するときには、意識的にスライスを使うようにした方がいいです。<br>
+<h4 id="%E4%BB%A3%E5%85%A5%E6%99%82%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9">&#20195;&#20837;&#26178;&#12398;&#27880;&#24847;&#28857;<a class="anchor-link" href="#%E4%BB%A3%E5%85%A5%E6%99%82%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9">&#182;</a></h4><p>配列に値や配列を代入するときには、意識的にスライスを使うようにした方がいいです。<br />
 例えばスカラーを配列の全要素に代入しようとしたとき、スライスを使わないといけません。</p>
 
 </div>
@@ -508,9 +508,9 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#12501;&#12449;&#12531;&#12471;&#12540;&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;">&#12501;&#12449;&#12531;&#12471;&#12540;&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;<a class="anchor-link" href="#&#12501;&#12449;&#12531;&#12471;&#12540;&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;">&#182;</a></h3><p>スライスよりも柔軟に部分配列を取り出せるインデックス参照が<strong>ファンシーインデックス参照</strong>です。<br>
-配列（ndarrayやリスト、タプルなど）をインデックスに入れると、部分配列（コピー）を返すという機能です。<br>
-Numpyの使いやすさを格段に上げる機能であり、使う機会も多くなると思います。　　<br>
+<h3 id="%E3%83%95%E3%82%A1%E3%83%B3%E3%82%B7%E3%83%BC%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E5%8F%82%E7%85%A7">&#12501;&#12449;&#12531;&#12471;&#12540;&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;<a class="anchor-link" href="#%E3%83%95%E3%82%A1%E3%83%B3%E3%82%B7%E3%83%BC%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E5%8F%82%E7%85%A7">&#182;</a></h3><p>スライスよりも柔軟に部分配列を取り出せるインデックス参照が<strong>ファンシーインデックス参照</strong>です。<br />
+配列（ndarrayやリスト、タプルなど）をインデックスに入れると、部分配列（コピー）を返すという機能です。<br />
+Numpyの使いやすさを格段に上げる機能であり、使う機会も多くなると思います。　　<br />
 インデックスに配列を入れることで、対応する軸を抜き出すということをしてくれます。</p>
 
 </div>
@@ -823,7 +823,7 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="bool&#12395;&#12424;&#12427;&#12452;&#12531;&#12487;&#12463;&#12471;&#12531;&#12464;">bool&#12395;&#12424;&#12427;&#12452;&#12531;&#12487;&#12463;&#12471;&#12531;&#12464;<a class="anchor-link" href="#bool&#12395;&#12424;&#12427;&#12452;&#12531;&#12487;&#12463;&#12471;&#12531;&#12464;">&#182;</a></h3><p>ある条件の値だけを抜き出すといったとき、boolによるインデクシングが利用できます。</p>
+<h3 id="bool%E3%81%AB%E3%82%88%E3%82%8B%E3%82%A4%E3%83%B3%E3%83%87%E3%82%AF%E3%82%B7%E3%83%B3%E3%82%B0">bool&#12395;&#12424;&#12427;&#12452;&#12531;&#12487;&#12463;&#12471;&#12531;&#12464;<a class="anchor-link" href="#bool%E3%81%AB%E3%82%88%E3%82%8B%E3%82%A4%E3%83%B3%E3%83%87%E3%82%AF%E3%82%B7%E3%83%B3%E3%82%B0">&#182;</a></h3><p>ある条件の値だけを抜き出すといったとき、boolによるインデクシングが利用できます。</p>
 
 </div>
 </div>
@@ -1024,7 +1024,7 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>any</strong>関数は、一つでもTrueがあればTrueを返す関数です。<br>
+<p><strong>any</strong>関数は、一つでもTrueがあればTrueを返す関数です。<br />
 これにaxis=0を指定すると、列にTrueが含まれているかを真偽値で返す関数になります。</p>
 
 </div>
@@ -1063,7 +1063,7 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 </div>
 
 </div>
- 
+
 
 </div>
       </div>

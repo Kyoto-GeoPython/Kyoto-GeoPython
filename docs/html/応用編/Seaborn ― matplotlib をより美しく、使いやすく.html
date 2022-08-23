@@ -683,7 +683,7 @@ ZIKlTUREJBP/P0tUYIO92QrJAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">"whitegrid"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 
@@ -1019,7 +1019,7 @@ Dubz2sHMZDJBp9PBZrN5P8AGm+59UFpaKrujbkFT2kRERHIXFIfHiYiIAgFLm4iISCZY2kRERDLB
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;c02.csv&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"c02.csv"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
 
@@ -1037,8 +1037,7 @@ Dubz2sHMZDJBp9PBZrN5P8AGm+59UFpaKrujbkFT2kRERHIXFIfHiYiIAgFLm4iISCZY2kRERDLB
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1790,8 +1789,7 @@ Dubz2sHMZDJBp9PBZrN5P8AGm+59UFpaKrujbkFT2kRERHIXFIfHiYiIAgFLm4iISCZY2kRERDLB
   </tbody>
 </table>
 <p>979 rows × 9 columns</p>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1812,7 +1810,7 @@ Dubz2sHMZDJBp9PBZrN5P8AGm+59UFpaKrujbkFT2kRERHIXFIfHiYiIAgFLm4iISCZY2kRERDLB
 <div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;population&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;prefecturecode&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"year"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"population"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">'prefecturecode'</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2538,8 +2536,8 @@ eEFwAABeEBwAgBcEBwDgBcEBAHhBcAAAXhAcAIAXBAcA4MUXxYo/qHTgsbkAAAAASUVORK5CYII=
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1920</span><span class="p">,</span><span class="mi">2015</span><span class="p">,</span><span class="mi">40</span><span class="p">)))</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">48</span><span class="p">):</span>
-  <span class="n">dfi</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">ix</span><span class="p">[:,</span><span class="s1">&#39;prefecturecode&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="si">{:02d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">),[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;population&#39;</span><span class="p">]]</span>
-  <span class="n">df2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dfi</span><span class="p">[</span><span class="s1">&#39;population&#39;</span><span class="p">]))[</span><span class="mi">1</span><span class="p">::</span><span class="mi">8</span><span class="p">]</span>
+  <span class="n">dfi</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">ix</span><span class="p">[:,</span><span class="s1">'prefecturecode'</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"</span><span class="si">{:02d}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">),[</span><span class="s1">'year'</span><span class="p">,</span><span class="s1">'population'</span><span class="p">]]</span>
+  <span class="n">df2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dfi</span><span class="p">[</span><span class="s1">'population'</span><span class="p">]))[</span><span class="mi">1</span><span class="p">::</span><span class="mi">8</span><span class="p">]</span>
 <span class="n">df2</span>
 </pre></div>
 
@@ -2557,8 +2555,7 @@ eEFwAABeEBwAgBcEBwDgBcEBAHhBcAAAXhAcAIAXBAcA4MUXxYo/qHTgsbkAAAAASUVORK5CYII=
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2853,8 +2850,7 @@ eEFwAABeEBwAgBcEBwDgBcEBAHhBcAAAXhAcAIAXBAcA4MUXxYo/qHTgsbkAAAAASUVORK5CYII=
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -3319,7 +3315,7 @@ gkkHERERyeL/AWFyebt5EPUEAAAAAElFTkSuQmCC
 </div>
 
 </div>
- 
+
 
 </div>
       </div>

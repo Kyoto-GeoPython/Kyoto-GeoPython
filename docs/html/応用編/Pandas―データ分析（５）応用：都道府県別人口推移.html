@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Pandas ― データ分析（５）応用：都道府県別人口推移</title>
+    <title>Pandas―データ分析（５）応用：都道府県別人口推移</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
       async
@@ -60,19 +60,19 @@
     <div tabindex="-1" id="notebook" class="border-box-sizing must-no-padding">
       <div class="container my-notebook-container must-no-padding" id="notebook-container">
         <div class="w3-panel">
-          <h1 class="w3-center">Pandas ― データ分析（５）応用：都道府県別人口推移</h1>
+          <h1 class="w3-center">Pandas―データ分析（５）応用：都道府県別人口推移</h1>
         </div>
 
         <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#12300;&#20998;&#38626;&#12540;&#36969;&#29992;&#12540;&#32080;&#21512;&#12301;&#12398;&#19968;&#20363;">&#12300;&#20998;&#38626;&#12540;&#36969;&#29992;&#12540;&#32080;&#21512;&#12301;&#12398;&#19968;&#20363;<a class="anchor-link" href="#&#12300;&#20998;&#38626;&#12540;&#36969;&#29992;&#12540;&#32080;&#21512;&#12301;&#12398;&#19968;&#20363;">&#182;</a></h1><p>国勢調査をもとにした人口推移のCSVを使います。<br>
-このデータの中には、都道府県別の人口推移があるので、pandasで解析してみましょう。<br>
+<h1 id="%E3%80%8C%E5%88%86%E9%9B%A2%E3%83%BC%E9%81%A9%E7%94%A8%E3%83%BC%E7%B5%90%E5%90%88%E3%80%8D%E3%81%AE%E4%B8%80%E4%BE%8B">&#12300;&#20998;&#38626;&#12540;&#36969;&#29992;&#12540;&#32080;&#21512;&#12301;&#12398;&#19968;&#20363;<a class="anchor-link" href="#%E3%80%8C%E5%88%86%E9%9B%A2%E3%83%BC%E9%81%A9%E7%94%A8%E3%83%BC%E7%B5%90%E5%90%88%E3%80%8D%E3%81%AE%E4%B8%80%E4%BE%8B">&#182;</a></h1><p>国勢調査をもとにした人口推移のCSVを使います。<br />
+このデータの中には、都道府県別の人口推移があるので、pandasで解析してみましょう。<br />
 とりあえず</p>
 <ul>
 <li>都道府県別の人口増減を一次近似で求め、その勾配ランキングを作る</li>
 </ul>
-<p>という目的でやってみましょう。<br>
+<p>という目的でやってみましょう。<br />
 データは<a href="https://www.e-stat.go.jp/stat-search/files?page=1&amp;layout=datalist&amp;toukei=00200521&amp;tstat=000001011777&amp;cycle=0&amp;tclass1=000001094741">政府統計の総合窓口(e-Stat)</a>からもらってきました。</p>
 
 </div>
@@ -102,7 +102,7 @@
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 最初の５行を出力</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;c01.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;shift-jis&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"c01.csv"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"shift-jis"</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fp</span><span class="o">.</span><span class="n">readlines</span><span class="p">()[:</span><span class="mi">5</span><span class="p">]:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
 </pre></div>
@@ -148,8 +148,8 @@
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 一行でcsvファイルをDataFrameに変換できる</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;c01.csv&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;shift-jis&quot;</span><span class="p">,</span> <span class="n">skipfooter</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;人口（総数）&quot;</span><span class="p">:</span> <span class="s2">&quot;全人口&quot;</span><span class="p">,</span> <span class="s2">&quot;人口（男）&quot;</span><span class="p">:</span> <span class="s2">&quot;男&quot;</span><span class="p">,</span> <span class="s2">&quot;人口（女）&quot;</span><span class="p">:</span> <span class="s2">&quot;女&quot;</span><span class="p">})</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"c01.csv"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"shift-jis"</span><span class="p">,</span> <span class="n">skipfooter</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">"python"</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">"人口（総数）"</span><span class="p">:</span> <span class="s2">"全人口"</span><span class="p">,</span> <span class="s2">"人口（男）"</span><span class="p">:</span> <span class="s2">"男"</span><span class="p">,</span> <span class="s2">"人口（女）"</span><span class="p">:</span> <span class="s2">"女"</span><span class="p">})</span>
 
 <span class="c1"># 最初の５行</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -169,8 +169,7 @@
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -262,8 +261,7 @@
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -294,8 +292,7 @@
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -387,8 +384,7 @@
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -479,8 +475,8 @@ dtype: object</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 人口を数値データに変換</span>
-<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;全人口&quot;</span><span class="p">,</span> <span class="s2">&quot;男&quot;</span><span class="p">,</span> <span class="s2">&quot;女&quot;</span><span class="p">]:</span>
-    <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"全人口"</span><span class="p">,</span> <span class="s2">"男"</span><span class="p">,</span> <span class="s2">"女"</span><span class="p">]:</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">"coerce"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -492,17 +488,18 @@ dtype: object</pre>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>pd.to_numeric?をみると</p>
-<blockquote><p>Signature: pd.to_numeric(arg, errors='raise')</p>
+<blockquote>
+<p>Signature: pd.to_numeric(arg, errors='raise')</p>
+</blockquote>
+<blockquote>
 <p>errors : {'ignore', 'raise', 'coerce'}, default 'raise'</p>
 <ul>
 <li>If 'raise', then invalid parsing will raise an exception</li>
-<li>If 'coerce', then invalid parsing will be set as NaN<ul>
+<li>If 'coerce', then invalid parsing will be set as NaN</li>
 <li>If 'ignore', then invalid parsing will return the input</li>
 </ul>
-</li>
-</ul>
 </blockquote>
-<p>errors="coerce"とキーワード引数を与えてやれば、キャストできないものを欠損値として置き換えてくれるそうです。<br>
+<p>errors=&quot;coerce&quot;とキーワード引数を与えてやれば、キャストできないものを欠損値として置き換えてくれるそうです。<br />
 デフォルトではエラーを吐き出すという設定になっていますね。</p>
 
 </div>
@@ -556,7 +553,7 @@ dtype: object</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 組み込み関数のset()と似た働き</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;都道府県名&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"都道府県名"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -592,7 +589,7 @@ dtype: object</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>都道府県別の時系列を見てみたいので、「全国」と最後の２つは取り除きましょう。<br>
+<p>都道府県別の時系列を見てみたいので、「全国」と最後の２つは取り除きましょう。<br />
 DataFrame.dropはindexが引数に一致している行を削除したDataFrameを返す関数です。</p>
 
 </div>
@@ -604,7 +601,7 @@ DataFrame.dropはindexが引数に一致している行を削除したDataFrame�
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 都道府県の行だけを抽出する</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;都道府県名&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;都道府県名&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">])]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"都道府県名"</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"都道府県名"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">])]</span>
 </pre></div>
 
     </div>
@@ -615,8 +612,8 @@ DataFrame.dropはindexが引数に一致している行を削除したDataFrame�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>さて、解析のための準備が整いました。<br>
-都道府県名をkeyにしてgroupbyし、その勾配を求める自作関数を作れば良さそうです。<br>
+<p>さて、解析のための準備が整いました。<br />
+都道府県名をkeyにしてgroupbyし、その勾配を求める自作関数を作れば良さそうです。<br />
 indexはこれから時系列として扱うので西暦に変更しておきます。</p>
 
 </div>
@@ -627,7 +624,7 @@ indexはこれから時系列として扱うので西暦に変更しておきま
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;西暦（年）&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'西暦（年）'</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -648,7 +645,7 @@ indexはこれから時系列として扱うので西暦に変更しておきま
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;都道府県名&quot;</span><span class="p">)[</span><span class="s2">&quot;全人口&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;西暦&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"都道府県名"</span><span class="p">)[</span><span class="s2">"全人口"</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"西暦"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
@@ -1428,8 +1425,8 @@ okePW4Fe3bFHjx497jH0LgV69OjR4x5DT9h79OjR4x5DT9h79OjR4x5DT9h79OjR4x5DT9h79OjR
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>さて、このDataFrameから人口増減勾配を求める方法を考えましょう。<br>
-そのような方法はたくさんありますが今回は擬似逆行列を使って素早く求めましょう。<br>
+<p>さて、このDataFrameから人口増減勾配を求める方法を考えましょう。<br />
+そのような方法はたくさんありますが今回は擬似逆行列を使って素早く求めましょう。<br />
 $$d=Gm$$
 のとき$、G^\dagger$を擬似逆行列とすると
 $$m=G^\dagger d$$
@@ -1473,7 +1470,7 @@ $$m=G^\dagger d$$
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">increase_rate</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;都道府県名&quot;</span><span class="p">)[[</span><span class="s2">&quot;全人口&quot;</span><span class="p">,</span> <span class="s2">&quot;男&quot;</span><span class="p">,</span> <span class="s2">&quot;女&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">calc_slope</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">increase_rate</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"都道府県名"</span><span class="p">)[[</span><span class="s2">"全人口"</span><span class="p">,</span> <span class="s2">"男"</span><span class="p">,</span> <span class="s2">"女"</span><span class="p">]]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">calc_slope</span><span class="p">)</span>
 <span class="n">increase_rate</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
@@ -1491,8 +1488,7 @@ $$m=G^\dagger d$$
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1554,8 +1550,7 @@ $$m=G^\dagger d$$
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1577,9 +1572,9 @@ $$m=G^\dagger d$$
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
-<span class="n">increase_rate</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;全人口&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;都道府県別人口増減率&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;人口増減率（人／年）&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">increase_rate</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"全人口"</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"都道府県別人口増減率"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"人口増減率（人／年）"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -3796,8 +3791,8 @@ ZmZmVioHnMzMzMzMzMzMrFQOOJmZmZmZmZmZWakccDIzMzMzMzMzs1I54GRmZmZmZmZmZqX6f9sY
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>完成です。<br>
-今回は都道府県別を調べましたが、データさえあれば、（コードをほとんど変えずに）市町村でもできることが分かってもらえると思います。<br>
+<p>完成です。<br />
+今回は都道府県別を調べましたが、データさえあれば、（コードをほとんど変えずに）市町村でもできることが分かってもらえると思います。<br />
 このようにpandasには汎用性の高い機能がたくさんあり、それらを組み合わせる技術が問われていくのだろうと思います。</p>
 
 </div>
@@ -3806,14 +3801,14 @@ ZmZmVioHnMzMzMzMzMzMrFQOOJmZmZmZmZmZWakccDIzMzMzMzMzs1I54GRmZmZmZmZmZqX6f9sY
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#12418;&#12387;&#12392;Pandas&#12434;&#30693;&#12426;&#12383;&#12356;&#20154;&#12408;">&#12418;&#12387;&#12392;Pandas&#12434;&#30693;&#12426;&#12383;&#12356;&#20154;&#12408;<a class="anchor-link" href="#&#12418;&#12387;&#12392;Pandas&#12434;&#30693;&#12426;&#12383;&#12356;&#20154;&#12408;">&#182;</a></h1><p>参考にしてほしい本として「<a href="https://www.oreilly.co.jp/books/9784873116556/">Pythonによるデータ分析入門</a>（O'REILLY）」があります。<br>
-これはPandasを作った人の本であり、（当然ながら）Pandasについてとても詳細に書かれています。<br>
+<h1 id="%E3%82%82%E3%81%A3%E3%81%A8Pandas%E3%82%92%E7%9F%A5%E3%82%8A%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8">&#12418;&#12387;&#12392;Pandas&#12434;&#30693;&#12426;&#12383;&#12356;&#20154;&#12408;<a class="anchor-link" href="#%E3%82%82%E3%81%A3%E3%81%A8Pandas%E3%82%92%E7%9F%A5%E3%82%8A%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8">&#182;</a></h1><p>参考にしてほしい本として「<a href="https://www.oreilly.co.jp/books/9784873116556/">Pythonによるデータ分析入門</a>（O'REILLY）」があります。<br />
+これはPandasを作った人の本であり、（当然ながら）Pandasについてとても詳細に書かれています。<br />
 読んだら当然理解できるはずですが、読まなくてもPandasを使いながらググったり、ドキュメントを読んでいると自然と必要な機能は分かってくると思います。</p>
 
 </div>
 </div>
 </div>
- 
+
 
 </div>
       </div>

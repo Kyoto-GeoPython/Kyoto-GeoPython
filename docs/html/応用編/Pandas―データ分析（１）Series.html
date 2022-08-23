@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Pandas ― データ分析（１）時系列などをうまく扱えるようにする</title>
+    <title>Pandas―データ分析（１）Series</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
       async
@@ -60,13 +60,13 @@
     <div tabindex="-1" id="notebook" class="border-box-sizing must-no-padding">
       <div class="container my-notebook-container must-no-padding" id="notebook-container">
         <div class="w3-panel">
-          <h1 class="w3-center">Pandas ― データ分析（１）時系列などをうまく扱えるようにする</h1>
+          <h1 class="w3-center">Pandas―データ分析（１）Series</h1>
         </div>
 
         <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Pandas&#12288;&#8213;&#12288;&#12487;&#12540;&#12479;&#20998;&#26512;">Pandas&#12288;&#8213;&#12288;&#12487;&#12540;&#12479;&#20998;&#26512;<a class="anchor-link" href="#Pandas&#12288;&#8213;&#12288;&#12487;&#12540;&#12479;&#20998;&#26512;">&#182;</a></h1><p>Pythonでのデータ解析の決定版とも言えるライブラリです。 特徴としては、</p>
+<h1 id="Pandas%E3%80%80%E2%80%95%E3%80%80%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90">Pandas&#12288;&#8213;&#12288;&#12487;&#12540;&#12479;&#20998;&#26512;<a class="anchor-link" href="#Pandas%E3%80%80%E2%80%95%E3%80%80%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90">&#182;</a></h1><p>Pythonでのデータ解析の決定版とも言えるライブラリです。 特徴としては、</p>
 <ul>
 <li>時系列データを扱うことに長けている</li>
 <li>numpy.ndarrayで実装されており、大量のデータでも高速に動作する</li>
@@ -74,8 +74,8 @@
 <li>欠損値に対する処理を書かなくても大抵うまくやってくれる</li>
 <li>データの列や行に名前をつけることができ、可読性が格段に上がる</li>
 </ul>
-<p>と言った感じです。<br>
-特に、可読性（コードの読みやすさ）の向上の恩恵はとても大きいものです。<br>
+<p>と言った感じです。<br />
+特に、可読性（コードの読みやすさ）の向上の恩恵はとても大きいものです。<br />
 NumPyでは、整数しかインデックスに使えませんが、Pandasでは文字列をキーとしてデータを操作できます。</p>
 
 </div>
@@ -101,7 +101,7 @@ NumPyでは、整数しかインデックスに使えませんが、Pandasでは
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Series">Series<a class="anchor-link" href="#Series">&#182;</a></h1><p>Pandasの基本はSeriesとDataFrameですが、その内一列のデータ構造を表すSeriesをまず紹介します。<br>
+<h1 id="Series">Series<a class="anchor-link" href="#Series">&#182;</a></h1><p>Pandasの基本はSeriesとDataFrameですが、その内一列のデータ構造を表すSeriesをまず紹介します。<br />
 イメージとしては、Excelの縦に並んだ一列のデータを表すオブジェクトだと思ってもらうといいと思います。</p>
 
 </div>
@@ -113,7 +113,7 @@ NumPyでは、整数しかインデックスに使えませんが、Pandasでは
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Seriesは配列を渡すとできる、内部ではndarrayを持っているのでdtypeがある</span>
-<span class="n">sr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">])</span>
+<span class="n">sr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">])</span>
 <span class="n">sr</span>
 </pre></div>
 
@@ -222,7 +222,7 @@ dtype: int64</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># インデックスを指定すると値を取り出せる</span>
-<span class="n">sr</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span>
+<span class="n">sr</span><span class="p">[</span><span class="s2">"a"</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -256,7 +256,7 @@ dtype: int64</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># NumPyで言うファンシーインデックスが使える</span>
-<span class="n">sr</span><span class="p">[[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">]]</span>
+<span class="n">sr</span><span class="p">[[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">]]</span>
 </pre></div>
 
     </div>
@@ -326,7 +326,7 @@ dtype: int64</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Seriesにnameとindexを付ける</span>
-<span class="n">sr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;random&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">&quot;abcdefgh&quot;</span><span class="p">))</span>
+<span class="n">sr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">"random"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">"abcdefgh"</span><span class="p">))</span>
 <span class="n">sr</span>
 </pre></div>
 
@@ -447,8 +447,8 @@ dtype: float64</pre>
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># プロット</span>
 <span class="n">sr</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;index&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"index"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"value"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
@@ -778,7 +778,7 @@ dtype: float64</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># indexを日付などにすると時系列が表現できる</span>
-<span class="n">sr_time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2017/1/1&quot;</span><span class="p">,</span><span class="s2">&quot;2017/1/10&quot;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s2">&quot;Asia/Tokyo&quot;</span><span class="p">))</span>
+<span class="n">sr_time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">"2017/1/1"</span><span class="p">,</span><span class="s2">"2017/1/10"</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s2">"Asia/Tokyo"</span><span class="p">))</span>
 <span class="n">sr_time</span>
 </pre></div>
 
@@ -823,7 +823,7 @@ Freq: D, dtype: float64</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># pandasには日付や期間を表すオブジェクトが充実している（これは1秒ごとのインデックスを作ったもの）</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2017/1/1/0:0&quot;</span><span class="p">,</span> <span class="s2">&quot;2017/1/1/10:00&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">"2017/1/1/0:0"</span><span class="p">,</span> <span class="s2">"2017/1/1/10:00"</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">"S"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -868,7 +868,7 @@ Freq: D, dtype: float64</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># スライスと同じ記法で日付の範囲を抜き出せる</span>
-<span class="n">sr_time</span><span class="p">[</span><span class="s2">&quot;2017/1/5&quot;</span><span class="p">:]</span>
+<span class="n">sr_time</span><span class="p">[</span><span class="s2">"2017/1/5"</span><span class="p">:]</span>
 </pre></div>
 
     </div>
@@ -1192,7 +1192,7 @@ YTUAAAAASUVORK5CYII=
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#27424;&#25613;&#20516;&#12434;&#21547;&#12416;&#22580;&#21512;">&#27424;&#25613;&#20516;&#12434;&#21547;&#12416;&#22580;&#21512;<a class="anchor-link" href="#&#27424;&#25613;&#20516;&#12434;&#21547;&#12416;&#22580;&#21512;">&#182;</a></h3><p>デフォルトだと、平均などは欠損値を覗いて計算されます。<br>
+<h3 id="%E6%AC%A0%E6%90%8D%E5%80%A4%E3%82%92%E5%90%AB%E3%82%80%E5%A0%B4%E5%90%88">&#27424;&#25613;&#20516;&#12434;&#21547;&#12416;&#22580;&#21512;<a class="anchor-link" href="#%E6%AC%A0%E6%90%8D%E5%80%A4%E3%82%92%E5%90%AB%E3%82%80%E5%A0%B4%E5%90%88">&#182;</a></h3><p>デフォルトだと、平均などは欠損値を覗いて計算されます。<br />
 データが汚い場合でも、データの整理に時間を取られず、本当にやりたい解析に集中することが出来ます。</p>
 
 </div>
@@ -1311,7 +1311,7 @@ dtype: float64</pre>
 </div>
 
 </div>
- 
+
 
 </div>
       </div>

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Numpyの基礎（４）データ型（C,Fortranとの比較）</title>
+    <title>Numpyの基礎（４）データ型</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
       async
@@ -60,14 +60,14 @@
     <div tabindex="-1" id="notebook" class="border-box-sizing must-no-padding">
       <div class="container my-notebook-container must-no-padding" id="notebook-container">
         <div class="w3-panel">
-          <h1 class="w3-center">Numpyの基礎（４）データ型（C,Fortranとの比較）</h1>
+          <h1 class="w3-center">Numpyの基礎（４）データ型</h1>
         </div>
 
         <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#30446;&#27425;">&#30446;&#27425;<a class="anchor-link" href="#&#30446;&#27425;">&#182;</a></h1><ul>
-<li><a href="#Numpyのデータ型">Numpyのデータ型</a></li>
+<h1 id="%E7%9B%AE%E6%AC%A1">&#30446;&#27425;<a class="anchor-link" href="#%E7%9B%AE%E6%AC%A1">&#182;</a></h1><ul>
+<li><a href="#Numpy%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E5%9E%8B">Numpyのデータ型</a></li>
 </ul>
 
 </div>
@@ -90,80 +90,21 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Numpy&#12398;&#12487;&#12540;&#12479;&#22411;">Numpy&#12398;&#12487;&#12540;&#12479;&#22411;<a class="anchor-link" href="#Numpy&#12398;&#12487;&#12540;&#12479;&#22411;">&#182;</a></h2><p>既に出てきたように、ndarrayには様々なdtypeが存在します。<br>
-Cなどと連携するときやバイナリ入出力のときに知らないと困ると思います。<br>
+<h2 id="Numpy%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E5%9E%8B">Numpy&#12398;&#12487;&#12540;&#12479;&#22411;<a class="anchor-link" href="#Numpy%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E5%9E%8B">&#182;</a></h2><p>既に出てきたように、ndarrayには様々なdtypeが存在します。<br />
+Cなどと連携するときやバイナリ入出力のときに知らないと困ると思います。<br />
 Numpyでの型とそれに対応するC言語、Fortranでの型を表でまとめると以下のようになります。</p>
-<table>
-<thead><tr>
-<th style="text-align:center">型</th>
-<th style="text-align:center">説明</th>
-<th style="text-align:center">C言語</th>
-<th style="text-align:center">Fortran</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">int32 / uint32</td>
-<td style="text-align:center">符号あり/なし　32ビット整数型（４バイト）</td>
-<td style="text-align:center">long もしくは int</td>
-<td style="text-align:center">INTEGER</td>
-</tr>
-<tr>
-<td style="text-align:center">int64 / uint64</td>
-<td style="text-align:center">符号あり/なし　64ビット整数型（８バイト）</td>
-<td style="text-align:center">long long int</td>
-<td style="text-align:center">INTEGER(8)</td>
-</tr>
-<tr>
-<td style="text-align:center">float32</td>
-<td style="text-align:center">単精度浮動小数点数型</td>
-<td style="text-align:center">float</td>
-<td style="text-align:center">REAL もしくはREAL(4)</td>
-</tr>
-<tr>
-<td style="text-align:center">float64</td>
-<td style="text-align:center">倍精度浮動小数点数型</td>
-<td style="text-align:center">double</td>
-<td style="text-align:center">REAL(8)</td>
-</tr>
-<tr>
-<td style="text-align:center">complex64</td>
-<td style="text-align:center">実部・虚部それぞれ単精度</td>
-<td style="text-align:center">float complex</td>
-<td style="text-align:center">COMPLEX もしくは COMPLEX(4)</td>
-</tr>
-<tr>
-<td style="text-align:center">complex128</td>
-<td style="text-align:center">実部・虚部それぞれ倍精度</td>
-<td style="text-align:center">double complex</td>
-<td style="text-align:center">COMPLEX(8)</td>
-</tr>
-<tr>
-<td style="text-align:center">bool</td>
-<td style="text-align:center">真偽値（TrueとFalse）</td>
-<td style="text-align:center">(bool)</td>
-<td style="text-align:center">LOGICAL</td>
-</tr>
-<tr>
-<td style="text-align:center">object</td>
-<td style="text-align:center">任意のPythonオブジェクト</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">string_</td>
-<td style="text-align:center">固定長文字列型</td>
-<td style="text-align:center">char*</td>
-<td style="text-align:center">CHARACTER(LEN=○)</td>
-</tr>
-<tr>
-<td style="text-align:center">unicode_</td>
-<td style="text-align:center">固定長ユニコード文字列型</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-</tbody>
-</table>
+<p>|型|説明|C言語|Fortran|
+|:--:|:-----:|:------:|:--------:|
+|int32 / uint32|符号あり/なし　32ビット整数型（４バイト）|long もしくは int|INTEGER|
+|int64 / uint64|符号あり/なし　64ビット整数型（８バイト）|long long int|INTEGER(8)|
+|float32|単精度浮動小数点数型|float|REAL もしくはREAL(4)|
+|float64|倍精度浮動小数点数型|double|REAL(8)|
+|complex64|実部・虚部それぞれ単精度|float complex|COMPLEX もしくは COMPLEX(4)|
+|complex128|実部・虚部それぞれ倍精度|double complex|COMPLEX(8)|
+|bool|真偽値（TrueとFalse）|(bool)|LOGICAL|
+|object|任意のPythonオブジェクト| | |
+|string_|固定長文字列型|char*|CHARACTER(LEN=○)|
+|unicode_|固定長ユニコード文字列型| | | |</p>
 <p>ndarrayのdtypeのキャストは<strong>astype</strong>を使います。</p>
 
 </div>
@@ -309,7 +250,7 @@ Numpyでの型とそれに対応するC言語、Fortranでの型を表でまと�
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 文字列を小数に変換</span>
-<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;1.&#39;</span><span class="p">,</span> <span class="s1">&#39;-0.001&#39;</span><span class="p">,</span> <span class="s1">&#39;6.823e256&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">'1.'</span><span class="p">,</span> <span class="s1">'-0.001'</span><span class="p">,</span> <span class="s1">'6.823e256'</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -405,7 +346,7 @@ Numpyでの型とそれに対応するC言語、Fortranでの型を表でまと�
 </div>
 
 </div>
- 
+
 
 </div>
       </div>

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>SymPy ― 代数演算（１）文字を文字のまま計算する</title>
+    <title>SymPyー代数演算（１）使い方</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
       async
@@ -60,13 +60,13 @@
     <div tabindex="-1" id="notebook" class="border-box-sizing must-no-padding">
       <div class="container my-notebook-container must-no-padding" id="notebook-container">
         <div class="w3-panel">
-          <h1 class="w3-center">SymPy ― 代数演算（１）文字を文字のまま計算する</h1>
+          <h1 class="w3-center">SymPyー代数演算（１）使い方</h1>
         </div>
 
         <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="SymPy&#12392;&#12399;">SymPy&#12392;&#12399;<a class="anchor-link" href="#SymPy&#12392;&#12399;">&#182;</a></h1><p>代数演算のライブラリです。<br>
+<h1 id="SymPy%E3%81%A8%E3%81%AF">SymPy&#12392;&#12399;<a class="anchor-link" href="#SymPy%E3%81%A8%E3%81%AF">&#182;</a></h1><p>代数演算のライブラリです。<br />
 Symbolicな演算（文字を数値としてではなくそのまま計算する演算）を可能にします。</p>
 
 </div>
@@ -104,7 +104,7 @@ Symbolicな演算（文字を数値としてではなくそのまま計算する
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#12471;&#12531;&#12508;&#12523;&#12398;&#23450;&#32681;">&#12471;&#12531;&#12508;&#12523;&#12398;&#23450;&#32681;<a class="anchor-link" href="#&#12471;&#12531;&#12508;&#12523;&#12398;&#23450;&#32681;">&#182;</a></h2>
+<h2 id="%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%81%AE%E5%AE%9A%E7%BE%A9">&#12471;&#12531;&#12508;&#12523;&#12398;&#23450;&#32681;<a class="anchor-link" href="#%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%81%AE%E5%AE%9A%E7%BE%A9">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -114,7 +114,7 @@ Symbolicな演算（文字を数値としてではなくそのまま計算する
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># シンボルを定義</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">"a"</span><span class="p">)</span>
 <span class="n">a</span>
 </pre></div>
 
@@ -149,7 +149,7 @@ $$a$$
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 複数のシンボルを同時に定義</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;x y&quot;</span><span class="p">)</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">"x y"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -163,7 +163,7 @@ $$a$$
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># LaTexの記法を使える（raw文字列にしないとエスケープ文字と認識する）</span>
-<span class="n">theta</span><span class="p">,</span> <span class="n">gamma</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\theta \gamma&quot;</span><span class="p">)</span>
+<span class="n">theta</span><span class="p">,</span> <span class="n">gamma</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\theta \gamma"</span><span class="p">)</span>
 <span class="n">theta</span><span class="p">,</span> <span class="n">gamma</span>
 </pre></div>
 
@@ -198,10 +198,10 @@ $$\left ( \theta, \quad \gamma\right )$$
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 正の実数として定義</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">"r"</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># 実数として定義</span>
-<span class="n">q</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">"q"</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -220,7 +220,7 @@ $$\left ( \theta, \quad \gamma\right )$$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#22522;&#26412;&#28436;&#31639;">&#22522;&#26412;&#28436;&#31639;<a class="anchor-link" href="#&#22522;&#26412;&#28436;&#31639;">&#182;</a></h2>
+<h2 id="%E5%9F%BA%E6%9C%AC%E6%BC%94%E7%AE%97">&#22522;&#26412;&#28436;&#31639;<a class="anchor-link" href="#%E5%9F%BA%E6%9C%AC%E6%BC%94%E7%AE%97">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -326,7 +326,7 @@ $$\left(x + y\right)^{3}$$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#24335;&#12398;&#23637;&#38283;&#12394;&#12393;">&#24335;&#12398;&#23637;&#38283;&#12394;&#12393;<a class="anchor-link" href="#&#24335;&#12398;&#23637;&#38283;&#12394;&#12393;">&#182;</a></h3>
+<h3 id="%E5%BC%8F%E3%81%AE%E5%B1%95%E9%96%8B%E3%81%AA%E3%81%A9">&#24335;&#12398;&#23637;&#38283;&#12394;&#12393;<a class="anchor-link" href="#%E5%BC%8F%E3%81%AE%E5%B1%95%E9%96%8B%E3%81%AA%E3%81%A9">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -401,7 +401,7 @@ $$3 y$$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#24494;&#20998;&#12420;&#26997;&#38480;">&#24494;&#20998;&#12420;&#26997;&#38480;<a class="anchor-link" href="#&#24494;&#20998;&#12420;&#26997;&#38480;">&#182;</a></h2>
+<h2 id="%E5%BE%AE%E5%88%86%E3%82%84%E6%A5%B5%E9%99%90">&#24494;&#20998;&#12420;&#26997;&#38480;<a class="anchor-link" href="#%E5%BE%AE%E5%88%86%E3%82%84%E6%A5%B5%E9%99%90">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -511,8 +511,8 @@ $$a^{4} x + 3 a^{2} x^{2}$$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="NumPy&#12398;ufunc&#12395;&#22793;&#25563;">NumPy&#12398;ufunc&#12395;&#22793;&#25563;<a class="anchor-link" href="#NumPy&#12398;ufunc&#12395;&#22793;&#25563;">&#182;</a></h2><p>シンボリックな表現をNumPyのufuncに変換できます。<br>
-これは結構すごいと思います。<br>
+<h2 id="NumPy%E3%81%AEufunc%E3%81%AB%E5%A4%89%E6%8F%9B">NumPy&#12398;ufunc&#12395;&#22793;&#25563;<a class="anchor-link" href="#NumPy%E3%81%AEufunc%E3%81%AB%E5%A4%89%E6%8F%9B">&#182;</a></h2><p>シンボリックな表現をNumPyのufuncに変換できます。<br />
+これは結構すごいと思います。<br />
 シンボリックな計算をしたあと、数値計算を簡単にすることができます。</p>
 
 </div>
@@ -523,7 +523,7 @@ $$a^{4} x + 3 a^{2} x^{2}$$
 <div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;x a b c&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">"x a b c"</span><span class="p">)</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">c</span>
 <span class="n">f</span>
 </pre></div>
@@ -560,7 +560,7 @@ $$a x^{2} + b x + c$$
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ４引数を持つ関数を定義</span>
 <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
-<span class="n">func</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s2">&quot;numpy&quot;</span><span class="p">)</span>
+<span class="n">func</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s2">"numpy"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -763,7 +763,7 @@ wpDKXUQkDKncRUTCkMpdRCQMqdxFRMKQyl1EJAz9L1RwDmrJ2eF5AAAAAElFTkSuQmCC
 </div>
 
 </div>
- 
+
 
 </div>
       </div>

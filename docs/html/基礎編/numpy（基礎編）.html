@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Numpy（基礎編）</title>
+    <title>numpy（基礎編）</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
       async
@@ -60,31 +60,31 @@
     <div tabindex="-1" id="notebook" class="border-box-sizing must-no-padding">
       <div class="container my-notebook-container must-no-padding" id="notebook-container">
         <div class="w3-panel">
-          <h1 class="w3-center">Numpy（基礎編）</h1>
+          <h1 class="w3-center">numpy（基礎編）</h1>
         </div>
 
         <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#30446;&#27425;">&#30446;&#27425;<a class="anchor-link" href="#&#30446;&#27425;">&#182;</a></h1><ul>
-<li><a href="#Numpyとは？">Numpyとは？</a><ul>
-<li><a href="#なぜNumpyが必要？">なぜNumpyが必要？</a></li>
-<li><a href="#Numpyの特徴とは？">Numpyの特徴とは？</a></li>
-<li><a href="#ndarrayオブジェクト">ndarrayオブジェクト</a></li>
-<li><a href="#Numpyを使う際の注意点">Numpyを使う際の注意点</a></li>
+<h1 id="%E7%9B%AE%E6%AC%A1">&#30446;&#27425;<a class="anchor-link" href="#%E7%9B%AE%E6%AC%A1">&#182;</a></h1><ul>
+<li><a href="#Numpy%E3%81%A8%E3%81%AF%EF%BC%9F">Numpyとは？</a><ul>
+<li><a href="#%E3%81%AA%E3%81%9CNumpy%E3%81%8C%E5%BF%85%E8%A6%81%EF%BC%9F">なぜNumpyが必要？</a></li>
+<li><a href="#Numpy%E3%81%AE%E7%89%B9%E5%BE%B4%E3%81%A8%E3%81%AF%EF%BC%9F">Numpyの特徴とは？</a></li>
+<li><a href="#ndarray%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88">ndarrayオブジェクト</a></li>
+<li><a href="#Numpy%E3%82%92%E4%BD%BF%E3%81%86%E9%9A%9B%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9">Numpyを使う際の注意点</a></li>
 </ul>
 </li>
-<li><a href="#実際に使ってみる">実際に使ってみる</a><ul>
-<li><a href="#インポートする">インポートする</a></li>
-<li><a href="#簡単な演算">簡単な演算</a></li>
-<li><a href="#関数を使ってみよう">関数を使ってみよう</a><ul>
+<li><a href="#%E5%AE%9F%E9%9A%9B%E3%81%AB%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B">実際に使ってみる</a><ul>
+<li><a href="#%E3%82%A4%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%88%E3%81%99%E3%82%8B">インポートする</a></li>
+<li><a href="#%E7%B0%A1%E5%8D%98%E3%81%AA%E6%BC%94%E7%AE%97">簡単な演算</a></li>
+<li><a href="#%E9%96%A2%E6%95%B0%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86">関数を使ってみよう</a><ul>
 <li><a href="#np.reshape">np.reshape</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#Numpyの基礎">Numpyの基礎</a><ul>
-<li><a href="#ndarrayの生成関数">ndarrayの生成関数</a><ul>
+<li><a href="#Numpy%E3%81%AE%E5%9F%BA%E7%A4%8E">Numpyの基礎</a><ul>
+<li><a href="#ndarray%E3%81%AE%E7%94%9F%E6%88%90%E9%96%A2%E6%95%B0">ndarrayの生成関数</a><ul>
 <li><a href="#np.array,-np.asarray">np.array, np.asarray</a></li>
 <li><a href="#np.arange">np.arange</a></li>
 <li><a href="#np.ones,-np.ones_like">np.ones, np.ones_like</a></li>
@@ -93,26 +93,26 @@
 <li><a href="#np.eye,-np.identity">np.eye, np.identity</a></li>
 </ul>
 </li>
-<li><a href="#ndarrayにおけるaxisとは">ndarrayにおけるaxisとは</a></li>
-<li><a href="#Numpyのデータ型">Numpyのデータ型</a></li>
-<li><a href="#インデックス参照">インデックス参照</a><ul>
-<li><a href="#スライス">スライス</a></li>
-<li><a href="#ファンシーインデックス参照">ファンシーインデックス参照</a></li>
+<li><a href="#ndarray%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Baxis%E3%81%A8%E3%81%AF">ndarrayにおけるaxisとは</a></li>
+<li><a href="#Numpy%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E5%9E%8B">Numpyのデータ型</a></li>
+<li><a href="#%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E5%8F%82%E7%85%A7">インデックス参照</a><ul>
+<li><a href="#%E3%82%B9%E3%83%A9%E3%82%A4%E3%82%B9">スライス</a></li>
+<li><a href="#%E3%83%95%E3%82%A1%E3%83%B3%E3%82%B7%E3%83%BC%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E5%8F%82%E7%85%A7">ファンシーインデックス参照</a></li>
 </ul>
 </li>
-<li><a href="#ユニバーサル関数（ufunc）">ユニバーサル関数（ufunc）</a></li>
-<li><a href="#ブロードキャスト">ブロードキャスト</a></li>
+<li><a href="#%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB%E9%96%A2%E6%95%B0%EF%BC%88ufunc%EF%BC%89">ユニバーサル関数（ufunc）</a></li>
+<li><a href="#%E3%83%96%E3%83%AD%E3%83%BC%E3%83%89%E3%82%AD%E3%83%A3%E3%82%B9%E3%83%88">ブロードキャスト</a></li>
 </ul>
 </li>
-<li><a href="#C言語ライブラリのラッパー">C言語ライブラリのラッパー</a><ul>
-<li><a href="#線形代数（np.linalg）">線形代数（np.linalg）</a></li>
-<li><a href="#乱数生成（np.random）">乱数生成（np.random）</a></li>
-<li><a href="#フーリエ変換（np.fft）">フーリエ変換（np.fft）</a></li>
+<li><a href="#C%E8%A8%80%E8%AA%9E%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%83%A9%E3%83%83%E3%83%91%E3%83%BC">C言語ライブラリのラッパー</a><ul>
+<li><a href="#%E7%B7%9A%E5%BD%A2%E4%BB%A3%E6%95%B0%EF%BC%88np.linalg%EF%BC%89">線形代数（np.linalg）</a></li>
+<li><a href="#%E4%B9%B1%E6%95%B0%E7%94%9F%E6%88%90%EF%BC%88np.random%EF%BC%89">乱数生成（np.random）</a></li>
+<li><a href="#%E3%83%95%E3%83%BC%E3%83%AA%E3%82%A8%E5%A4%89%E6%8F%9B%EF%BC%88np.fft%EF%BC%89">フーリエ変換（np.fft）</a></li>
 </ul>
 </li>
-<li><a href="#ndarrayのファイル入出力">ndarrayのファイル入出力</a><ul>
-<li><a href="#npyとnpz形式でのバイナリ保存">npyとnpz形式でのバイナリ保存</a></li>
-<li><a href="#テキストでの保存">テキストでの保存</a></li>
+<li><a href="#ndarray%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%85%A5%E5%87%BA%E5%8A%9B">ndarrayのファイル入出力</a><ul>
+<li><a href="#npy%E3%81%A8npz%E5%BD%A2%E5%BC%8F%E3%81%A7%E3%81%AE%E3%83%90%E3%82%A4%E3%83%8A%E3%83%AA%E4%BF%9D%E5%AD%98">npyとnpz形式でのバイナリ保存</a></li>
+<li><a href="#%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%81%A7%E3%81%AE%E4%BF%9D%E5%AD%98">テキストでの保存</a></li>
 </ul>
 </li>
 </ul>
@@ -123,41 +123,41 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Numpy&#12392;&#12399;&#65311;">Numpy&#12392;&#12399;&#65311;<a class="anchor-link" href="#Numpy&#12392;&#12399;&#65311;">&#182;</a></h1><p><strong>Numpy</strong>は、標準の演算が遅いというPythonの欠点を補うために開発された高速なベクトル演算をサポートするライブラリです。<br>
-Pythonで科学技術計算をする上では必須と言っても良いライブラリです。<br>
-（本稿の大部分は、「<a href="https://www.oreilly.co.jp/books/9784873116556/">Pythonによるデータ分析入門</a>（O'REILLY）」の第４章を参考にして書かれています。<br>
+<h1 id="Numpy%E3%81%A8%E3%81%AF%EF%BC%9F">Numpy&#12392;&#12399;&#65311;<a class="anchor-link" href="#Numpy%E3%81%A8%E3%81%AF%EF%BC%9F">&#182;</a></h1><p><strong>Numpy</strong>は、標準の演算が遅いというPythonの欠点を補うために開発された高速なベクトル演算をサポートするライブラリです。<br />
+Pythonで科学技術計算をする上では必須と言っても良いライブラリです。<br />
+（本稿の大部分は、「<a href="https://www.oreilly.co.jp/books/9784873116556/">Pythonによるデータ分析入門</a>（O'REILLY）」の第４章を参考にして書かれています。<br />
 この本は翻訳もわかりやすく、とても読みやすい本なのでおすすめです。）</p>
-<h2 id="&#12394;&#12380;Numpy&#12364;&#24517;&#35201;&#65311;">&#12394;&#12380;Numpy&#12364;&#24517;&#35201;&#65311;<a class="anchor-link" href="#&#12394;&#12380;Numpy&#12364;&#24517;&#35201;&#65311;">&#182;</a></h2><p>C言語やFortranのような<strong>静的型付け言語（コンパイル時に型を決定する言語）</strong>では、配列や変数を宣言する際、型を明示的にコンパイラに伝えます。<br>
-このようにコンパイルの段階で型が決まっていると、マシンとしては余計な動作をする必要が無いために効率よくメモリを使用できる上に高速に動作します。<br>
-一方、Pythonのような<strong>動的型付け言語（実行時に型を決める言語）</strong>では、そのような高速な動作を失う代わりに、型を気にせずにリストに入れたり、宣言の手間が省けたりと、柔軟で短いコードが書けるようになります。<br>
-しかし、科学技術計算においては動作の遅さは致命的になります。<br>
-もしPythonで科学技術計算しようとするならば、高速な動作が必要になるところでは型を指定して高速な計算ができるようにする必要があります。<br>
-そこで生まれたのが<strong>Numpy</strong>です（Numerical Pythonの略）。<br>
-Numpyでは、C言語の配列をPythonで扱いやすいオブジェクト（ndarray）として使うことで、<strong>高速でありながら柔軟なプログラミング</strong>が可能です。<br>
-また、CやFortranと同様に大規模配列を扱うことにも長けているため、使いこなせればかなり強力なツールです。<br>
-Numpyは非常に高機能であり、全ての機能を1ページで説明することは難しいです。<br>
+<h2 id="%E3%81%AA%E3%81%9CNumpy%E3%81%8C%E5%BF%85%E8%A6%81%EF%BC%9F">&#12394;&#12380;Numpy&#12364;&#24517;&#35201;&#65311;<a class="anchor-link" href="#%E3%81%AA%E3%81%9CNumpy%E3%81%8C%E5%BF%85%E8%A6%81%EF%BC%9F">&#182;</a></h2><p>C言語やFortranのような<strong>静的型付け言語（コンパイル時に型を決定する言語）</strong>では、配列や変数を宣言する際、型を明示的にコンパイラに伝えます。<br />
+このようにコンパイルの段階で型が決まっていると、マシンとしては余計な動作をする必要が無いために効率よくメモリを使用できる上に高速に動作します。<br />
+一方、Pythonのような<strong>動的型付け言語（実行時に型を決める言語）</strong>では、そのような高速な動作を失う代わりに、型を気にせずにリストに入れたり、宣言の手間が省けたりと、柔軟で短いコードが書けるようになります。<br />
+しかし、科学技術計算においては動作の遅さは致命的になります。<br />
+もしPythonで科学技術計算しようとするならば、高速な動作が必要になるところでは型を指定して高速な計算ができるようにする必要があります。<br />
+そこで生まれたのが<strong>Numpy</strong>です（Numerical Pythonの略）。<br />
+Numpyでは、C言語の配列をPythonで扱いやすいオブジェクト（ndarray）として使うことで、<strong>高速でありながら柔軟なプログラミング</strong>が可能です。<br />
+また、CやFortranと同様に大規模配列を扱うことにも長けているため、使いこなせればかなり強力なツールです。<br />
+Numpyは非常に高機能であり、全ての機能を1ページで説明することは難しいです。<br />
 本稿では、詳しい実装には立ち入らず、とりあえず使えるようになることを目的としています。</p>
-<h2 id="Numpy&#12398;&#29305;&#24500;&#12392;&#12399;&#65311;">Numpy&#12398;&#29305;&#24500;&#12392;&#12399;&#65311;<a class="anchor-link" href="#Numpy&#12398;&#29305;&#24500;&#12392;&#12399;&#65311;">&#182;</a></h2><p>ざっとNumpyの特徴を上げてみると、</p>
+<h2 id="Numpy%E3%81%AE%E7%89%B9%E5%BE%B4%E3%81%A8%E3%81%AF%EF%BC%9F">Numpy&#12398;&#29305;&#24500;&#12392;&#12399;&#65311;<a class="anchor-link" href="#Numpy%E3%81%AE%E7%89%B9%E5%BE%B4%E3%81%A8%E3%81%AF%EF%BC%9F">&#182;</a></h2><p>ざっとNumpyの特徴を上げてみると、</p>
 <ul>
 <li>ベクトル演算をベースにした省メモリで高速な多次元配列（ndarrayオブジェクト）</li>
 <li>行列演算（逆行列など）や乱数生成、フーリエ変換を簡単に呼び出せる</li>
 <li>PythonとC, C++, Fortranとの連携を可能にする低級インターフェイスの提供</li>
 <li>バイナリやテキストでのファイル入出力を簡単にできる</li>
 </ul>
-<p>のようなものがあります。<br>
+<p>のようなものがあります。<br />
 行列演算などの実装はCやFortranで使われているライブラリを使用しており、同等の速度を発揮します。</p>
-<h2 id="ndarray&#12458;&#12502;&#12472;&#12455;&#12463;&#12488;">ndarray&#12458;&#12502;&#12472;&#12455;&#12463;&#12488;<a class="anchor-link" href="#ndarray&#12458;&#12502;&#12472;&#12455;&#12463;&#12488;">&#182;</a></h2><p>Numpyで配列と言うとき、たいていndarray（N-dimensional array）オブジェクトのことを指します。<br>
-ndarrayはCの配列に加え、その形状や型、関数などを情報として持っています。<br>
+<h2 id="ndarray%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88">ndarray&#12458;&#12502;&#12472;&#12455;&#12463;&#12488;<a class="anchor-link" href="#ndarray%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88">&#182;</a></h2><p>Numpyで配列と言うとき、たいていndarray（N-dimensional array）オブジェクトのことを指します。<br />
+ndarrayはCの配列に加え、その形状や型、関数などを情報として持っています。<br />
 本稿でも、特に断らない限り、配列はndarrayのことを意味することにします。</p>
-<h2 id="Numpy&#12434;&#20351;&#12358;&#38555;&#12398;&#27880;&#24847;&#28857;">Numpy&#12434;&#20351;&#12358;&#38555;&#12398;&#27880;&#24847;&#28857;<a class="anchor-link" href="#Numpy&#12434;&#20351;&#12358;&#38555;&#12398;&#27880;&#24847;&#28857;">&#182;</a></h2><p>Numpyも万能ではなく、得意ではない処理もあります。それは、配列要素ごとに回すforループです。<br>
-要素ごとにforループを回すと、Pythonの遅さが如実に出てしまい、Numpyの利点が活かせません。<br>
-Numpyが本当に力を発揮するのは<strong>ベクトル演算</strong>であり、それは並列化によって実現されています。<br>
+<h2 id="Numpy%E3%82%92%E4%BD%BF%E3%81%86%E9%9A%9B%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9">Numpy&#12434;&#20351;&#12358;&#38555;&#12398;&#27880;&#24847;&#28857;<a class="anchor-link" href="#Numpy%E3%82%92%E4%BD%BF%E3%81%86%E9%9A%9B%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9">&#182;</a></h2><p>Numpyも万能ではなく、得意ではない処理もあります。それは、配列要素ごとに回すforループです。<br />
+要素ごとにforループを回すと、Pythonの遅さが如実に出てしまい、Numpyの利点が活かせません。<br />
+Numpyが本当に力を発揮するのは<strong>ベクトル演算</strong>であり、それは並列化によって実現されています。<br />
 もし、要素ごとの計算をしたい場合は、</p>
 <ul>
 <li>CやFortranでその部分だけを書き、それをPythonで呼び出す</li>
 <li>NumbaやCythonといった他のライブラリを使用しコンパイルを行う</li>
 </ul>
-<p>と言った方法があります。<br>
+<p>と言った方法があります。<br />
 まずはなるべくベクトル化を試みて、それが難しい場合は上記のような手段を考えてみると良いでしょう。</p>
 
 </div>
@@ -166,7 +166,7 @@ Numpyが本当に力を発揮するのは<strong>ベクトル演算</strong>で�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#23455;&#38555;&#12395;&#20351;&#12387;&#12390;&#12415;&#12427;">&#23455;&#38555;&#12395;&#20351;&#12387;&#12390;&#12415;&#12427;<a class="anchor-link" href="#&#23455;&#38555;&#12395;&#20351;&#12387;&#12390;&#12415;&#12427;">&#182;</a></h1><h2 id="&#12452;&#12531;&#12509;&#12540;&#12488;&#12377;&#12427;">&#12452;&#12531;&#12509;&#12540;&#12488;&#12377;&#12427;<a class="anchor-link" href="#&#12452;&#12531;&#12509;&#12540;&#12488;&#12377;&#12427;">&#182;</a></h2>
+<h1 id="%E5%AE%9F%E9%9A%9B%E3%81%AB%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B">&#23455;&#38555;&#12395;&#20351;&#12387;&#12390;&#12415;&#12427;<a class="anchor-link" href="#%E5%AE%9F%E9%9A%9B%E3%81%AB%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B">&#182;</a></h1><h2 id="%E3%82%A4%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%88%E3%81%99%E3%82%8B">&#12452;&#12531;&#12509;&#12540;&#12488;&#12377;&#12427;<a class="anchor-link" href="#%E3%82%A4%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%88%E3%81%99%E3%82%8B">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -191,9 +191,9 @@ Numpyが本当に力を発揮するのは<strong>ベクトル演算</strong>で�
 <li>Anacondaの場合「conda install numpy」</li>
 <li>pipの場合「pip install numpy」</li>
 </ul>
-<p>condaはコンパイル済みのものをインストールするためにインストールエラーが起きにくいです。<br>
+<p>condaはコンパイル済みのものをインストールするためにインストールエラーが起きにくいです。<br />
 pipはインストール時にコンパイルするため、コンパイルエラーが起きる場合があります。</p>
-<h2 id="ndarray&#12398;&#27083;&#36896;">ndarray&#12398;&#27083;&#36896;<a class="anchor-link" href="#ndarray&#12398;&#27083;&#36896;">&#182;</a></h2><p>さっそく、一次元配列を作ってみましょう。np.array関数にリストやタプルを渡すことで作ることが出来ます。</p>
+<h2 id="ndarray%E3%81%AE%E6%A7%8B%E9%80%A0">ndarray&#12398;&#27083;&#36896;<a class="anchor-link" href="#ndarray%E3%81%AE%E6%A7%8B%E9%80%A0">&#182;</a></h2><p>さっそく、一次元配列を作ってみましょう。np.array関数にリストやタプルを渡すことで作ることが出来ます。</p>
 
 </div>
 </div>
@@ -371,11 +371,11 @@ pipはインストール時にコンパイルするため、コンパイルエ�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>ndarrayの重要な属性として、<strong>shape</strong>、<strong>dtype</strong>があります。<br>
-<strong>shape</strong>は、まさに配列の形状で、多次元配列であれば、軸に沿った要素の個数をそれぞれの軸について並べたタプルです。一次元であれば、(n,)のようなタプルになります。タプルの要素が一つしか含まれない場合、(n)とすると単なるnになってしまうので、(n,)のようにカンマを付ける必要があります。<br>
-<strong>dtype</strong>は、配列の型を表すものです（floatやint、complexなど）。<br>
-<strong>ndim</strong>は、配列の次元を表します。 上の場合、１次元配列なのでndim=1です。<br>
-<strong>type()</strong>はPythonの組み込み関数で、引数が何のオブジェクトかを教えてくれます（dtypeとは違うものなので注意）。<br>
+<p>ndarrayの重要な属性として、<strong>shape</strong>、<strong>dtype</strong>があります。<br />
+<strong>shape</strong>は、まさに配列の形状で、多次元配列であれば、軸に沿った要素の個数をそれぞれの軸について並べたタプルです。一次元であれば、(n,)のようなタプルになります。タプルの要素が一つしか含まれない場合、(n)とすると単なるnになってしまうので、(n,)のようにカンマを付ける必要があります。<br />
+<strong>dtype</strong>は、配列の型を表すものです（floatやint、complexなど）。<br />
+<strong>ndim</strong>は、配列の次元を表します。 上の場合、１次元配列なのでndim=1です。<br />
+<strong>type()</strong>はPythonの組み込み関数で、引数が何のオブジェクトかを教えてくれます（dtypeとは違うものなので注意）。<br />
 いくつか例を挙げましょう。</p>
 
 </div>
@@ -687,7 +687,7 @@ pipはインストール時にコンパイルするため、コンパイルエ�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#35201;&#32032;&#12408;&#12398;&#12450;&#12463;&#12475;&#12473;">&#35201;&#32032;&#12408;&#12398;&#12450;&#12463;&#12475;&#12473;<a class="anchor-link" href="#&#35201;&#32032;&#12408;&#12398;&#12450;&#12463;&#12475;&#12473;">&#182;</a></h3><p>また、各要素にアクセスするためには、リストやタプルのようにインデックスを指定します。<br>
+<h3 id="%E8%A6%81%E7%B4%A0%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9">&#35201;&#32032;&#12408;&#12398;&#12450;&#12463;&#12475;&#12473;<a class="anchor-link" href="#%E8%A6%81%E7%B4%A0%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9">&#182;</a></h3><p>また、各要素にアクセスするためには、リストやタプルのようにインデックスを指定します。<br />
 多次元配列でのアクセスは、リストなどと違う記法なので注意してください。</p>
 
 </div>
@@ -758,7 +758,7 @@ pipはインストール時にコンパイルするため、コンパイルエ�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#31777;&#21336;&#12394;&#28436;&#31639;">&#31777;&#21336;&#12394;&#28436;&#31639;<a class="anchor-link" href="#&#31777;&#21336;&#12394;&#28436;&#31639;">&#182;</a></h2><p>スカラーとの四則演算は普通のベクトルのような書き方ができます（Fortranと一緒）。<br>
+<h2 id="%E7%B0%A1%E5%8D%98%E3%81%AA%E6%BC%94%E7%AE%97">&#31777;&#21336;&#12394;&#28436;&#31639;<a class="anchor-link" href="#%E7%B0%A1%E5%8D%98%E3%81%AA%E6%BC%94%E7%AE%97">&#182;</a></h2><p>スカラーとの四則演算は普通のベクトルのような書き方ができます（Fortranと一緒）。<br />
 このような演算はリストやタプルでは出来ないので、そのためにndarrayに変換することもよくあります。</p>
 
 </div>
@@ -803,8 +803,8 @@ pipはインストール時にコンパイルするため、コンパイルエ�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>同じ形状の配列同士の四則演算は、要素ごとに演算した結果になります。<br>
-（異なる形状の配列であっても、場合によっては演算できることがあり、それを<a href="#ブロードキャスト"><strong>ブロードキャスト</strong></a>と言います）</p>
+<p>同じ形状の配列同士の四則演算は、要素ごとに演算した結果になります。<br />
+（異なる形状の配列であっても、場合によっては演算できることがあり、それを<a href="#%E3%83%96%E3%83%AD%E3%83%BC%E3%83%89%E3%82%AD%E3%83%A3%E3%82%B9%E3%83%88"><strong>ブロードキャスト</strong></a>と言います）</p>
 
 </div>
 </div>
@@ -850,7 +850,7 @@ pipはインストール時にコンパイルするため、コンパイルエ�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>多次元配列でも同じように要素ごとの演算になります。<br>
+<p>多次元配列でも同じように要素ごとの演算になります。<br />
 行列積を計算したい場合は、np.dot関数を用いるか、Python3.5以降であれば@マークを使えます。</p>
 
 </div>
@@ -928,7 +928,7 @@ pipはインストール時にコンパイルするため、コンパイルエ�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#38306;&#25968;&#12434;&#20351;&#12387;&#12390;&#12415;&#12424;&#12358;">&#38306;&#25968;&#12434;&#20351;&#12387;&#12390;&#12415;&#12424;&#12358;<a class="anchor-link" href="#&#38306;&#25968;&#12434;&#20351;&#12387;&#12390;&#12415;&#12424;&#12358;">&#182;</a></h2><h3 id="np.reshape">np.reshape<a class="anchor-link" href="#np.reshape">&#182;</a></h3><p>Numpyを使っていると、しょっちゅう出会うのがこのreshape関数です。</p>
+<h2 id="%E9%96%A2%E6%95%B0%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86">&#38306;&#25968;&#12434;&#20351;&#12387;&#12390;&#12415;&#12424;&#12358;<a class="anchor-link" href="#%E9%96%A2%E6%95%B0%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86">&#182;</a></h2><h3 id="np.reshape">np.reshape<a class="anchor-link" href="#np.reshape">&#182;</a></h3><p>Numpyを使っていると、しょっちゅう出会うのがこのreshape関数です。</p>
 
 </div>
 </div>
@@ -971,8 +971,8 @@ pipはインストール時にコンパイルするため、コンパイルエ�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>文字通り、ndarrayのshapeを変更する関数なのですが、２つほど注意する点があります。<br>
-一つ目は、全体のsizeを変更しないようにしなければならないということです。<br>
+<p>文字通り、ndarrayのshapeを変更する関数なのですが、２つほど注意する点があります。<br />
+一つ目は、全体のsizeを変更しないようにしなければならないということです。<br />
 つまり、新しいshapeの各要素を掛け合わせた値が元々の要素の総数を一致する必要があるということです。</p>
 
 </div>
@@ -1072,7 +1072,7 @@ pipはインストール時にコンパイルするため、コンパイルエ�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>このような変形は、次元の異なる配列同士の計算をするために用いることがあります（<a href="#ブロードキャスト">ブロードキャスト</a>）。<br>
+<p>このような変形は、次元の異なる配列同士の計算をするために用いることがあります（<a href="#%E3%83%96%E3%83%AD%E3%83%BC%E3%83%89%E3%82%AD%E3%83%A3%E3%82%B9%E3%83%88">ブロードキャスト</a>）。<br />
 また、reshapeの引数に-1を入れると、sizeを変えないようなshapeを計算してくれます。</p>
 
 </div>
@@ -1116,8 +1116,8 @@ pipはインストール時にコンパイルするため、コンパイルエ�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>二つ目の注意する点は、reshapeによって返ってくるndarrayは、元々のndarrayと同じメモリを参照している点です。<br>
-つまり、reshapeによって返ってきたndarrayを書き換えると、オリジナルも変化するということです。<br>
+<p>二つ目の注意する点は、reshapeによって返ってくるndarrayは、元々のndarrayと同じメモリを参照している点です。<br />
+つまり、reshapeによって返ってきたndarrayを書き換えると、オリジナルも変化するということです。<br />
 このような参照をコピーと対比させて、<strong>ビュー</strong>と言います。</p>
 
 </div>
@@ -1162,7 +1162,7 @@ pipはインストール時にコンパイルするため、コンパイルエ�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>科学技術計算の上ではこの性質は重要です。なぜなら、大規模な配列をいちいちreshapeのたびにコピーされると困るからです。<br>
+<p>科学技術計算の上ではこの性質は重要です。なぜなら、大規模な配列をいちいちreshapeのたびにコピーされると困るからです。<br />
 もし、オリジナルを書き換えたくないならば、<strong>copy</strong>関数を使う必要があります。</p>
 
 </div>
@@ -1207,8 +1207,8 @@ pipはインストール時にコンパイルするため、コンパイルエ�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="(&#30330;&#23637;)-reshape&#12398;&#23455;&#35013;&#12434;&#35443;&#12375;&#12367;&#12415;&#12390;&#12415;&#12427;">(&#30330;&#23637;) reshape&#12398;&#23455;&#35013;&#12434;&#35443;&#12375;&#12367;&#12415;&#12390;&#12415;&#12427;<a class="anchor-link" href="#(&#30330;&#23637;)-reshape&#12398;&#23455;&#35013;&#12434;&#35443;&#12375;&#12367;&#12415;&#12390;&#12415;&#12427;">&#182;</a></h4><p>C言語では、多次元配列であってもメモリ上に連続に配置され、インデックスを１変えたときに参照する位置を１次元の場合よりも大きくジャンプさせることであたかも隣接しているかのように操作することが出来ます。<br>
-shapeを変えるということは、ある軸のインデックスが１増えたときにメモリ上への参照を何バイトだけジャンプするかを変更することを意味します。<br>
+<h4 id="(%E7%99%BA%E5%B1%95)-reshape%E3%81%AE%E5%AE%9F%E8%A3%85%E3%82%92%E8%A9%B3%E3%81%97%E3%81%8F%E3%81%BF%E3%81%A6%E3%81%BF%E3%82%8B">(&#30330;&#23637;) reshape&#12398;&#23455;&#35013;&#12434;&#35443;&#12375;&#12367;&#12415;&#12390;&#12415;&#12427;<a class="anchor-link" href="#(%E7%99%BA%E5%B1%95)-reshape%E3%81%AE%E5%AE%9F%E8%A3%85%E3%82%92%E8%A9%B3%E3%81%97%E3%81%8F%E3%81%BF%E3%81%A6%E3%81%BF%E3%82%8B">&#182;</a></h4><p>C言語では、多次元配列であってもメモリ上に連続に配置され、インデックスを１変えたときに参照する位置を１次元の場合よりも大きくジャンプさせることであたかも隣接しているかのように操作することが出来ます。<br />
+shapeを変えるということは、ある軸のインデックスが１増えたときにメモリ上への参照を何バイトだけジャンプするかを変更することを意味します。<br />
 このジャンプの量を<strong>strides</strong>といいます。</p>
 
 </div>
@@ -1252,8 +1252,8 @@ shapeを変えるということは、ある軸のインデックスが１増え
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>この例では、変数cの一つ目の軸（axis 0といいます）のインデックスが１増えたとき、メモリの参照を20バイト飛ばすということです。<br>
-今、dtypeがint32で一つの変数が4バイトなので、int32型の5個分先に移動することになります。<br>
+<p>この例では、変数cの一つ目の軸（axis 0といいます）のインデックスが１増えたとき、メモリの参照を20バイト飛ばすということです。<br />
+今、dtypeがint32で一つの変数が4バイトなので、int32型の5個分先に移動することになります。<br />
 したがって、b[5]とc[1,0]が（参照しているメモリアドレスについても）等しくなるということです。</p>
 
 </div>
@@ -1265,7 +1265,7 @@ shapeを変えるということは、ある軸のインデックスが１増え
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># int32型なので一つの値を表現するために４バイト必要</span>
-<span class="n">c</span><span class="o">.</span><span class="n">dtype</span> <span class="c1"># ==&gt; dtype(&#39;int32&#39;)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">dtype</span> <span class="c1"># ==&gt; dtype('int32')</span>
 
 <span class="c1"># 同じ値になる</span>
 <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># ==&gt; 5</span>
@@ -1368,10 +1368,10 @@ shapeを変えるということは、ある軸のインデックスが１増え
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>C言語の多次元配列は、後ろの軸であればあるほどメモリが隣接するような設計になっています。<br>
-１次元配列を多次元配列に変更するときには、２つの流派があります。<br>
-一つは、C言語と同じように、後ろの軸が隣接するようなもの（<strong>行優先</strong>)と、Fortranのように前の方の軸が隣接するようなもの（<strong>列優先</strong>)です。<br>
-reshape関数は、キーワード引数orderがあり、この２つを選べるようになっています。<br>
+<p>C言語の多次元配列は、後ろの軸であればあるほどメモリが隣接するような設計になっています。<br />
+１次元配列を多次元配列に変更するときには、２つの流派があります。<br />
+一つは、C言語と同じように、後ろの軸が隣接するようなもの（<strong>行優先</strong>)と、Fortranのように前の方の軸が隣接するようなもの（<strong>列優先</strong>)です。<br />
+reshape関数は、キーワード引数orderがあり、この２つを選べるようになっています。<br />
 もちろん、そこまで使う機会はないと思うのですが（デフォルトで十分）、このような実装を理解しておくと、困ったときに対処しやすいと思います。</p>
 
 </div>
@@ -1383,7 +1383,7 @@ reshape関数は、キーワード引数orderがあり、この２つを選べ�
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># C言語での多次元配列（デフォルトの動作）</span>
-<span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s2">"c"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1418,7 +1418,7 @@ reshape関数は、キーワード引数orderがあり、この２つを選べ�
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Fortranでの多次元配列</span>
-<span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s2">"F"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1450,7 +1450,7 @@ reshape関数は、キーワード引数orderがあり、この２つを選べ�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="reshape&#38306;&#25968;&#12414;&#12392;&#12417;">reshape&#38306;&#25968;&#12414;&#12392;&#12417;<a class="anchor-link" href="#reshape&#38306;&#25968;&#12414;&#12392;&#12417;">&#182;</a></h4><ul>
+<h4 id="reshape%E9%96%A2%E6%95%B0%E3%81%BE%E3%81%A8%E3%82%81">reshape&#38306;&#25968;&#12414;&#12392;&#12417;<a class="anchor-link" href="#reshape%E9%96%A2%E6%95%B0%E3%81%BE%E3%81%A8%E3%82%81">&#182;</a></h4><ul>
 <li>sizeを変化させない。引数に-1を使うと便利。</li>
 <li>reshapeはコピーではなくビューを返す。コピーしたいときはcopy()を使う。</li>
 </ul>
@@ -1461,8 +1461,8 @@ reshape関数は、キーワード引数orderがあり、この２つを選べ�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Numpy&#12398;&#22522;&#30990;">Numpy&#12398;&#22522;&#30990;<a class="anchor-link" href="#Numpy&#12398;&#22522;&#30990;">&#182;</a></h1><h2 id="ndarray&#12398;&#29983;&#25104;&#38306;&#25968;">ndarray&#12398;&#29983;&#25104;&#38306;&#25968;<a class="anchor-link" href="#ndarray&#12398;&#29983;&#25104;&#38306;&#25968;">&#182;</a></h2><p>色々な配列を作る便利な関数が用意されています。ここではそれらを紹介します。</p>
-<h3 id="np.array,-np.asarray">np.array, np.asarray<a class="anchor-link" href="#np.array,-np.asarray">&#182;</a></h3><p>上でも述べた関数です。リストやタプルを引数に取り、配列を返す関数です。<br>
+<h1 id="Numpy%E3%81%AE%E5%9F%BA%E7%A4%8E">Numpy&#12398;&#22522;&#30990;<a class="anchor-link" href="#Numpy%E3%81%AE%E5%9F%BA%E7%A4%8E">&#182;</a></h1><h2 id="ndarray%E3%81%AE%E7%94%9F%E6%88%90%E9%96%A2%E6%95%B0">ndarray&#12398;&#29983;&#25104;&#38306;&#25968;<a class="anchor-link" href="#ndarray%E3%81%AE%E7%94%9F%E6%88%90%E9%96%A2%E6%95%B0">&#182;</a></h2><p>色々な配列を作る便利な関数が用意されています。ここではそれらを紹介します。</p>
+<h3 id="np.array,-np.asarray">np.array, np.asarray<a class="anchor-link" href="#np.array,-np.asarray">&#182;</a></h3><p>上でも述べた関数です。リストやタプルを引数に取り、配列を返す関数です。<br />
 型を指定しない場合は、勝手に推測してくれますが、キーワード引数で指定することも出来ます。
 np.asarrayは引数がndarrayであれば、そのままndarrayを返し、そうでないならnp.arrayと同じ働きをする関数です。</p>
 
@@ -1475,10 +1475,10 @@ np.asarrayは引数がndarrayであれば、そのままndarrayを返し、そ�
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># dtypeを指定</span>
-<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">dtype</span> <span class="c1"># ==&gt; dtype(&#39;float64&#39;)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">dtype</span> <span class="c1"># ==&gt; dtype('float64')</span>
 
 <span class="c1">#指定しない場合は推測してくれる</span>
-<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">dtype</span> <span class="c1"># ==&gt; dtype(&#39;int32&#39;)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">dtype</span> <span class="c1"># ==&gt; dtype('int32')</span>
 </pre></div>
 
     </div>
@@ -1509,7 +1509,7 @@ np.asarrayは引数がndarrayであれば、そのままndarrayを返し、そ�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="np.arange">np.arange<a class="anchor-link" href="#np.arange">&#182;</a></h3><p>Python組み込み関数のrange()と同じ働きをする関数で、ndarrayを返します。<br>
+<h3 id="np.arange">np.arange<a class="anchor-link" href="#np.arange">&#182;</a></h3><p>Python組み込み関数のrange()と同じ働きをする関数で、ndarrayを返します。<br />
 stepには小数も入れることが出来ます。</p>
 
 </div>
@@ -1564,7 +1564,7 @@ stepには小数も入れることが出来ます。</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="np.ones,-np.ones_like">np.ones, np.ones_like<a class="anchor-link" href="#np.ones,-np.ones_like">&#182;</a></h3><p>np.onesは、引数で与えられたshapeで、全ての要素が１であるようなndarrayを返します。<br>
+<h3 id="np.ones,-np.ones_like">np.ones, np.ones_like<a class="anchor-link" href="#np.ones,-np.ones_like">&#182;</a></h3><p>np.onesは、引数で与えられたshapeで、全ての要素が１であるようなndarrayを返します。<br />
 np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshapeで全ての要素が１となるndarrayを返します。</p>
 
 </div>
@@ -1627,9 +1627,9 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="np.zeros,-np.zeros_like">np.zeros, np.zeros_like<a class="anchor-link" href="#np.zeros,-np.zeros_like">&#182;</a></h3><p>全ての要素を0にする他は、np.ones, np.ones_likeと同じなのでそちらを見てください。</p>
-<h3 id="np.empty,-np.empty_like">np.empty, np.empty_like<a class="anchor-link" href="#np.empty,-np.empty_like">&#182;</a></h3><p>上の２つと似ていますが、こちらは初期化をせずに配列の領域だけを確保する関数です。<br>
-巨大な配列を自分で初期化したい場合や、値は何でもいいが配列だけ作りたいときに使います。<br>
-初期化のプロセスを省略するためにnp.zerosなどよりも高速に動作します。<br>
+<h3 id="np.empty,-np.empty_like">np.empty, np.empty_like<a class="anchor-link" href="#np.empty,-np.empty_like">&#182;</a></h3><p>上の２つと似ていますが、こちらは初期化をせずに配列の領域だけを確保する関数です。<br />
+巨大な配列を自分で初期化したい場合や、値は何でもいいが配列だけ作りたいときに使います。<br />
+初期化のプロセスを省略するためにnp.zerosなどよりも高速に動作します。<br />
 ときどき変な値が入ってることがあるので、自分で初期化するときのみ使うのが吉です。</p>
 
 </div>
@@ -1672,9 +1672,10 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="np.linspace">np.linspace<a class="anchor-link" href="#np.linspace">&#182;</a></h3><p>start, stopの２つを引数に取り、startからendまで均等に分けた配列を返します。<br>
+<h3 id="np.linspace">np.linspace<a class="anchor-link" href="#np.linspace">&#182;</a></h3><p>start, stopの２つを引数に取り、startからendまで均等に分けた配列を返します。<br />
 キーワード引数としてnumがあり、均等に分ける個数を指定できます。デフォルトではnum=50です。</p>
-<blockquote><p>np.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)</p>
+<blockquote>
+<p>np.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)</p>
 </blockquote>
 <p>endpointはstopを含むかどうかをboolで渡す引数です。</p>
 
@@ -1841,7 +1842,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="ndarray&#12395;&#12362;&#12369;&#12427;axis&#12392;&#12399;">ndarray&#12395;&#12362;&#12369;&#12427;axis&#12392;&#12399;<a class="anchor-link" href="#ndarray&#12395;&#12362;&#12369;&#12427;axis&#12392;&#12399;">&#182;</a></h2><p>ndarrayで関数の引数として度々出てくるのが「axis（軸）」です。慣れていないと混乱することもあると思うので説明します。<br>
+<h2 id="ndarray%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Baxis%E3%81%A8%E3%81%AF">ndarray&#12395;&#12362;&#12369;&#12427;axis&#12392;&#12399;<a class="anchor-link" href="#ndarray%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Baxis%E3%81%A8%E3%81%AF">&#182;</a></h2><p>ndarrayで関数の引数として度々出てくるのが「axis（軸）」です。慣れていないと混乱することもあると思うので説明します。<br />
 <a href="http://using-python-in-research.site44.com/numpy-mpl-args">ここ</a>に分かりやすい画像がありましたので引用します。配列の軸の方向が矢印で書かれています。</p>
 
 </div>
@@ -1850,7 +1851,7 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img  src="axis.png"/></p>
+<img  src="axis.png"/>
 
 </div>
 </div>
@@ -1944,64 +1945,24 @@ np.ones_likeは、引数にndarrayを取り、そのndarrayのshapeと同じshap
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>上の結果を見てもらえると分かるように、axis=0やaxis=1である軸について和を取ると次元が１つ落ちます。<br>
-axisを指定しないとスカラーまで次元が落ちます。このように特定の軸について次元を落とす操作を<strong>Reduction</strong>といいます。<br>
-axis=0でReductionを行うと、shapeが(n, m)が (m,)になります。<br>
+<p>上の結果を見てもらえると分かるように、axis=0やaxis=1である軸について和を取ると次元が１つ落ちます。<br />
+axisを指定しないとスカラーまで次元が落ちます。このように特定の軸について次元を落とす操作を<strong>Reduction</strong>といいます。<br />
+axis=0でReductionを行うと、shapeが(n, m)が (m,)になります。<br />
 axisは、潰す軸を指定すると考えると忘れないと思います。</p>
 <p>引数にaxisを取るndarrayの主な関数の表がこちらです。より詳細に知りたい方は<a href="https://docs.scipy.org/doc/numpy/reference/arrays.ndarray.html#calculation">ここ</a>を見てください。</p>
-<table>
-<thead><tr>
-<th style="text-align:center">関数名</th>
-<th style="text-align:center">説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">sum</td>
-<td style="text-align:center">和</td>
-</tr>
-<tr>
-<td style="text-align:center">max</td>
-<td style="text-align:center">最大値</td>
-</tr>
-<tr>
-<td style="text-align:center">min</td>
-<td style="text-align:center">最小値</td>
-</tr>
-<tr>
-<td style="text-align:center">argmax</td>
-<td style="text-align:center">最大値を取るインデックス</td>
-</tr>
-<tr>
-<td style="text-align:center">argmin</td>
-<td style="text-align:center">最小値を取るインデックス</td>
-</tr>
-<tr>
-<td style="text-align:center">cumsum</td>
-<td style="text-align:center">累積和</td>
-</tr>
-<tr>
-<td style="text-align:center">mean</td>
-<td style="text-align:center">平均値</td>
-</tr>
-<tr>
-<td style="text-align:center">var</td>
-<td style="text-align:center">分散</td>
-</tr>
-<tr>
-<td style="text-align:center">std</td>
-<td style="text-align:center">標準偏差</td>
-</tr>
-<tr>
-<td style="text-align:center">all</td>
-<td style="text-align:center">全てTrueならTrue</td>
-</tr>
-<tr>
-<td style="text-align:center">any</td>
-<td style="text-align:center">一つでもTrueがあればTrue</td>
-</tr>
-</tbody>
-</table>
+<p>|関数名|説明|
+|:------:|:--:|
+|sum|和|
+|max|最大値|
+|min|最小値|
+|argmax|最大値を取るインデックス|
+|argmin|最小値を取るインデックス|
+|cumsum|累積和|
+|mean|平均値|
+|var|分散|
+|std|標準偏差|
+|all|全てTrueならTrue|
+|any|一つでもTrueがあればTrue|</p>
 
 </div>
 </div>
@@ -2009,80 +1970,21 @@ axisは、潰す軸を指定すると考えると忘れないと思います。<
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Numpy&#12398;&#12487;&#12540;&#12479;&#22411;">Numpy&#12398;&#12487;&#12540;&#12479;&#22411;<a class="anchor-link" href="#Numpy&#12398;&#12487;&#12540;&#12479;&#22411;">&#182;</a></h2><p>既に出てきたように、ndarrayには様々なdtypeが存在します。<br>
-基本的には精度の高い型が使われているためにそこまで意識する必要はないかもしれませんが、Cなどと連携するときやバイナリ入出力のときに知らないと困ると思います。<br>
+<h2 id="Numpy%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E5%9E%8B">Numpy&#12398;&#12487;&#12540;&#12479;&#22411;<a class="anchor-link" href="#Numpy%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E5%9E%8B">&#182;</a></h2><p>既に出てきたように、ndarrayには様々なdtypeが存在します。<br />
+基本的には精度の高い型が使われているためにそこまで意識する必要はないかもしれませんが、Cなどと連携するときやバイナリ入出力のときに知らないと困ると思います。<br />
 Numpyでの型とそれに対応するC言語、Fortranでの型を表でまとめると以下のようになります。</p>
-<table>
-<thead><tr>
-<th style="text-align:center">型</th>
-<th style="text-align:center">説明</th>
-<th style="text-align:center">C言語</th>
-<th style="text-align:center">Fortran</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">int32 / uint32</td>
-<td style="text-align:center">符号あり/なし　32ビット整数型（４バイト）</td>
-<td style="text-align:center">long もしくは int</td>
-<td style="text-align:center">INTEGER</td>
-</tr>
-<tr>
-<td style="text-align:center">int64 / uint64</td>
-<td style="text-align:center">符号あり/なし　64ビット整数型（８バイト）</td>
-<td style="text-align:center">long long int</td>
-<td style="text-align:center">INTEGER(8)</td>
-</tr>
-<tr>
-<td style="text-align:center">float32</td>
-<td style="text-align:center">単精度浮動小数点数型</td>
-<td style="text-align:center">float</td>
-<td style="text-align:center">REAL もしくはREAL(4)</td>
-</tr>
-<tr>
-<td style="text-align:center">float64</td>
-<td style="text-align:center">倍精度浮動小数点数型</td>
-<td style="text-align:center">double</td>
-<td style="text-align:center">REAL(8)</td>
-</tr>
-<tr>
-<td style="text-align:center">complex64</td>
-<td style="text-align:center">実部・虚部それぞれ単精度</td>
-<td style="text-align:center">float complex</td>
-<td style="text-align:center">COMPLEX もしくは COMPLEX(4)</td>
-</tr>
-<tr>
-<td style="text-align:center">complex128</td>
-<td style="text-align:center">実部・虚部それぞれ倍精度</td>
-<td style="text-align:center">double complex</td>
-<td style="text-align:center">COMPLEX(8)</td>
-</tr>
-<tr>
-<td style="text-align:center">bool</td>
-<td style="text-align:center">真偽値（TrueとFalse）</td>
-<td style="text-align:center">(bool)</td>
-<td style="text-align:center">LOGICAL</td>
-</tr>
-<tr>
-<td style="text-align:center">object</td>
-<td style="text-align:center">任意のPythonオブジェクト</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">string_</td>
-<td style="text-align:center">固定長文字列型</td>
-<td style="text-align:center">char*</td>
-<td style="text-align:center">CHARACTER(LEN=○)</td>
-</tr>
-<tr>
-<td style="text-align:center">unicode_</td>
-<td style="text-align:center">固定長ユニコード文字列型</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-</tbody>
-</table>
+<p>|型|説明|C言語|Fortran|
+|:--:|:-----:|:------:|:--------:|
+|int32 / uint32|符号あり/なし　32ビット整数型（４バイト）|long もしくは int|INTEGER|
+|int64 / uint64|符号あり/なし　64ビット整数型（８バイト）|long long int|INTEGER(8)|
+|float32|単精度浮動小数点数型|float|REAL もしくはREAL(4)|
+|float64|倍精度浮動小数点数型|double|REAL(8)|
+|complex64|実部・虚部それぞれ単精度|float complex|COMPLEX もしくは COMPLEX(4)|
+|complex128|実部・虚部それぞれ倍精度|double complex|COMPLEX(8)|
+|bool|真偽値（TrueとFalse）|(bool)|LOGICAL|
+|object|任意のPythonオブジェクト| | |
+|string_|固定長文字列型|char*|CHARACTER(LEN=○)|
+|unicode_|固定長ユニコード文字列型| | | |</p>
 <p>ndarrayのdtypeのキャストは<strong>astype</strong>を使います。</p>
 
 </div>
@@ -2098,17 +2000,17 @@ Numpyでの型とそれに対応するC言語、Fortranでの型を表でまと�
 <span class="c1"># ==&gt; array([ 0. ,  0.2,  0.4,  0.6,  0.8,  1. ,  1.2,  1.4,  1.6,  1.8])</span>
 
 <span class="n">a</span><span class="o">.</span><span class="n">dtype</span> 
-<span class="c1"># ==&gt; dtype(&#39;float64&#39;)</span>
+<span class="c1"># ==&gt; dtype('float64')</span>
 
 <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
 <span class="n">b</span> 
 <span class="c1"># ==&gt; array([0, 0, 0, 0, 0, 1, 1, 1, 1, 1])</span>
 
 <span class="n">b</span><span class="o">.</span><span class="n">dtype</span> 
-<span class="c1"># ==&gt; dtype(&#39;int32&#39;)</span>
+<span class="c1"># ==&gt; dtype('int32')</span>
 
 <span class="c1"># stringからfloatへのキャスト</span>
-<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;123.&quot;</span><span class="p">,</span> <span class="s2">&quot;-0.0001&quot;</span><span class="p">,</span> <span class="s2">&quot;6.843e256&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">"123."</span><span class="p">,</span> <span class="s2">"-0.0001"</span><span class="p">,</span> <span class="s2">"6.843e256"</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2139,11 +2041,11 @@ Numpyでの型とそれに対応するC言語、Fortranでの型を表でまと�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;">&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;<a class="anchor-link" href="#&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;">&#182;</a></h2><p>Numpyでは、部分配列の取り出し方に様々な種類があり、使いこなせると便利です。<br>
+<h2 id="%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E5%8F%82%E7%85%A7">&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;<a class="anchor-link" href="#%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E5%8F%82%E7%85%A7">&#182;</a></h2><p>Numpyでは、部分配列の取り出し方に様々な種類があり、使いこなせると便利です。<br />
 ただ、取り出し方が<strong>コピー</strong>であるか<strong>ビュー（参照）</strong>であるかを混乱することがあるので、チェックしておいてください。</p>
-<h3 id="&#12473;&#12521;&#12452;&#12473;">&#12473;&#12521;&#12452;&#12473;<a class="anchor-link" href="#&#12473;&#12521;&#12452;&#12473;">&#182;</a></h3><p>Pythonのリストやタプルにも実装されているスライスをndarrayに対してするとその部分配列が<strong>ビュー（参照）</strong>で返ってきます。<br>
-つまり、その部分配列を書き換えると元々の配列も変わるということです。<br>
-スライスは高速に動作するので、使えるときはガンガン使っていきましょう。<br>
+<h3 id="%E3%82%B9%E3%83%A9%E3%82%A4%E3%82%B9">&#12473;&#12521;&#12452;&#12473;<a class="anchor-link" href="#%E3%82%B9%E3%83%A9%E3%82%A4%E3%82%B9">&#182;</a></h3><p>Pythonのリストやタプルにも実装されているスライスをndarrayに対してするとその部分配列が<strong>ビュー（参照）</strong>で返ってきます。<br />
+つまり、その部分配列を書き換えると元々の配列も変わるということです。<br />
+スライスは高速に動作するので、使えるときはガンガン使っていきましょう。<br />
 一例を見てみます。</p>
 
 </div>
@@ -2265,8 +2167,8 @@ Numpyでの型とそれに対応するC言語、Fortranでの型を表でまと�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>オリジナル配列のスライスされた部分が全て-1に変わっていることがわかります。<br>
-多次元配列のスライスは、一つ一つの軸を順番にスライスしていって小さくなっていくと考えると分かりやすいと思います。<br>
+<p>オリジナル配列のスライスされた部分が全て-1に変わっていることがわかります。<br />
+多次元配列のスライスは、一つ一つの軸を順番にスライスしていって小さくなっていくと考えると分かりやすいと思います。<br />
 直接ビューに代入することも出来ます。</p>
 
 </div>
@@ -2421,7 +2323,7 @@ Numpyでの型とそれに対応するC言語、Fortranでの型を表でまと�
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>コピーをするともちろんオリジナルは変化しません。</p>
-<h4 id="&#20195;&#20837;&#26178;&#12398;&#27880;&#24847;&#28857;">&#20195;&#20837;&#26178;&#12398;&#27880;&#24847;&#28857;<a class="anchor-link" href="#&#20195;&#20837;&#26178;&#12398;&#27880;&#24847;&#28857;">&#182;</a></h4><p>配列に値や配列を代入するときには、意識的にスライスを使うようにした方がいいです。<br>
+<h4 id="%E4%BB%A3%E5%85%A5%E6%99%82%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9">&#20195;&#20837;&#26178;&#12398;&#27880;&#24847;&#28857;<a class="anchor-link" href="#%E4%BB%A3%E5%85%A5%E6%99%82%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9">&#182;</a></h4><p>配列に値や配列を代入するときには、意識的にスライスを使うようにした方がいいです。<br />
 例えばスカラーを配列の全要素に代入しようとしたとき、スライスを使わないと、配列を表していた変数が、新しく代入しようとしたスカラーを表す変数に置き換わってしまう事があります。</p>
 
 </div>
@@ -2468,9 +2370,9 @@ Numpyでの型とそれに対応するC言語、Fortranでの型を表でまと�
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>ひと目見ただけでも面倒なバグを生みそうな気配がします。</p>
-<p>配列に配列を代入するときはもっと深刻なバグの原因になるので気を付けるべきです。<br>
-コピーされたものだと思ってオリジナルを書き換えていると、コピー先が変わっているということが起こり得ます。<br>
-このようなバグはスカラーの場合と異なり、気付きにくいエラーなので要注意です。<br>
+<p>配列に配列を代入するときはもっと深刻なバグの原因になるので気を付けるべきです。<br />
+コピーされたものだと思ってオリジナルを書き換えていると、コピー先が変わっているということが起こり得ます。<br />
+このようなバグはスカラーの場合と異なり、気付きにくいエラーなので要注意です。<br />
 例えば、配列aの値を配列tempに保存して、aを書き換えたい状況だとします。</p>
 
 </div>
@@ -2521,7 +2423,7 @@ Numpyでの型とそれに対応するC言語、Fortranでの型を表でまと�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>この問題を避けるためには、２つの手段があります。<br>
+<p>この問題を避けるためには、２つの手段があります。<br />
 一つ目は（自分自身だとしても）スライスを使うということです。</p>
 
 </div>
@@ -2571,7 +2473,7 @@ Numpyでの型とそれに対応するC言語、Fortranでの型を表でまと�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>もう一つは、コピーを渡すことです。<br>
+<p>もう一つは、コピーを渡すことです。<br />
 前もって配列を用意する必要がないために素早く書ける方法なので、比較的小さな配列であればおすすめ出来ます。</p>
 
 </div>
@@ -2621,7 +2523,7 @@ Numpyでの型とそれに対応するC言語、Fortranでの型を表でまと�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>コピーを作ることは新しい配列を作るということなので、コンピュータにとっては負担が大きくなる可能性があります。<br>
+<p>コピーを作ることは新しい配列を作るということなので、コンピュータにとっては負担が大きくなる可能性があります。<br />
 ただ、まずはこのように素早く書ける方法で書いてみて、そこがプログラムを遅くする原因（ボトルネック）だと分かってから、プログラムの書き換えを行っても良いと思います。Pythonはそもそも高速な動作を失う代わりに柔軟性やコードの短さで勝負している言語です。最初から一番早いものを目指すのではなく、必要であればその部分を高速化するという気持ちでいたほうが有効に使えるはずです。</p>
 
 </div>
@@ -2630,9 +2532,9 @@ Numpyでの型とそれに対応するC言語、Fortranでの型を表でまと�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#12501;&#12449;&#12531;&#12471;&#12540;&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;">&#12501;&#12449;&#12531;&#12471;&#12540;&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;<a class="anchor-link" href="#&#12501;&#12449;&#12531;&#12471;&#12540;&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;">&#182;</a></h3><p>スライスよりも柔軟に部分配列を取り出せるインデックス参照が<strong>ファンシーインデックス参照</strong>です。配列（ndarrayやリスト、タプルなど）をインデックスに入れると、部分配列（コピー）を返すという機能です。<br>
-Numpyの使いやすさを格段に上げる機能であり、使う機会も多くなると思います。<br>
-ただし、これはビューではなく、コピーを返すことに注意してください。<br>
+<h3 id="%E3%83%95%E3%82%A1%E3%83%B3%E3%82%B7%E3%83%BC%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E5%8F%82%E7%85%A7">&#12501;&#12449;&#12531;&#12471;&#12540;&#12452;&#12531;&#12487;&#12483;&#12463;&#12473;&#21442;&#29031;<a class="anchor-link" href="#%E3%83%95%E3%82%A1%E3%83%B3%E3%82%B7%E3%83%BC%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E5%8F%82%E7%85%A7">&#182;</a></h3><p>スライスよりも柔軟に部分配列を取り出せるインデックス参照が<strong>ファンシーインデックス参照</strong>です。配列（ndarrayやリスト、タプルなど）をインデックスに入れると、部分配列（コピー）を返すという機能です。<br />
+Numpyの使いやすさを格段に上げる機能であり、使う機会も多くなると思います。<br />
+ただし、これはビューではなく、コピーを返すことに注意してください。<br />
 インデックスに配列を入れることで、対応する軸を抜き出すということをしてくれます。</p>
 
 </div>
@@ -2762,7 +2664,7 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>多次元配列の各軸のインデックスに配列を入れると、その軸を抜き出します。<br>
+<p>多次元配列の各軸のインデックスに配列を入れると、その軸を抜き出します。<br />
 インデックスに用いるリストによってどのような形状の配列が返ってきているかを確認してください。</p>
 
 </div>
@@ -2914,7 +2816,7 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>ファンシーインデックス参照の記法を用いて、代入ができます。<br>
+<p>ファンシーインデックス参照の記法を用いて、代入ができます。<br />
 ファンシーインデックス参照そのものはコピーを返すのですが、代入のときはビューに代入しているかのように扱えます。</p>
 
 </div>
@@ -3029,9 +2931,9 @@ Numpyの使いやすさを格段に上げる機能であり、使う機会も多
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#12518;&#12491;&#12496;&#12540;&#12469;&#12523;&#38306;&#25968;&#65288;ufunc&#65289;">&#12518;&#12491;&#12496;&#12540;&#12469;&#12523;&#38306;&#25968;&#65288;ufunc&#65289;<a class="anchor-link" href="#&#12518;&#12491;&#12496;&#12540;&#12469;&#12523;&#38306;&#25968;&#65288;ufunc&#65289;">&#182;</a></h2><p>Numpyでは、三角関数(np.sinなど）や指数関数（np.exp）のような関数は<strong>ユニバーサル関数オブジェクト（略すとufunc）</strong>になっています。<br>
-<a href="https://docs.scipy.org/doc/numpy/reference/ufuncs.html">公式ドキュメント</a>によると、ufuncは、要素ごと（element-by-element）にndarrayへ作用する関数であるという説明があります。<br>
-そして、Numpyに標準で入っているufuncは、コンパイルされたC言語で実装されているということも書かれています。<br>
+<h2 id="%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB%E9%96%A2%E6%95%B0%EF%BC%88ufunc%EF%BC%89">&#12518;&#12491;&#12496;&#12540;&#12469;&#12523;&#38306;&#25968;&#65288;ufunc&#65289;<a class="anchor-link" href="#%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB%E9%96%A2%E6%95%B0%EF%BC%88ufunc%EF%BC%89">&#182;</a></h2><p>Numpyでは、三角関数(np.sinなど）や指数関数（np.exp）のような関数は<strong>ユニバーサル関数オブジェクト（略すとufunc）</strong>になっています。<br />
+<a href="https://docs.scipy.org/doc/numpy/reference/ufuncs.html">公式ドキュメント</a>によると、ufuncは、要素ごと（element-by-element）にndarrayへ作用する関数であるという説明があります。<br />
+そして、Numpyに標準で入っているufuncは、コンパイルされたC言語で実装されているということも書かれています。<br />
 ufuncの関数による計算結果はndarrayで返ってきます。</p>
 
 </div>
@@ -3113,7 +3015,7 @@ ufuncの関数による計算結果はndarrayで返ってきます。</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>ufuncは、Pythonのループの遅さという欠点を補うために生まれ、そしてより便利な機能も追加されています。<br>
+<p>ufuncは、Pythonのループの遅さという欠点を補うために生まれ、そしてより便利な機能も追加されています。<br />
 例えば、ラジアン（弧度法）から度（度数法）を変換するufuncなどがあります。</p>
 
 </div>
@@ -3198,8 +3100,8 @@ ufuncの関数による計算結果はndarrayで返ってきます。</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#12502;&#12525;&#12540;&#12489;&#12461;&#12515;&#12473;&#12488;">&#12502;&#12525;&#12540;&#12489;&#12461;&#12515;&#12473;&#12488;<a class="anchor-link" href="#&#12502;&#12525;&#12540;&#12489;&#12461;&#12515;&#12473;&#12488;">&#182;</a></h2><p>形状が違う配列同士の演算をシンプルに書くことができる機能として<strong>ブロードキャスト</strong>があります。<br>
-ただ、便利な機能なのですが、なぜそういう書き方をするのかを説明することが難しい機能でもあります。<br>
+<h2 id="%E3%83%96%E3%83%AD%E3%83%BC%E3%83%89%E3%82%AD%E3%83%A3%E3%82%B9%E3%83%88">&#12502;&#12525;&#12540;&#12489;&#12461;&#12515;&#12473;&#12488;<a class="anchor-link" href="#%E3%83%96%E3%83%AD%E3%83%BC%E3%83%89%E3%82%AD%E3%83%A3%E3%82%B9%E3%83%88">&#182;</a></h2><p>形状が違う配列同士の演算をシンプルに書くことができる機能として<strong>ブロードキャスト</strong>があります。<br />
+ただ、便利な機能なのですが、なぜそういう書き方をするのかを説明することが難しい機能でもあります。<br />
 ブロードキャストを説明しているページとして</p>
 <ul>
 <li><a href="http://www.kamishima.net/mlmpyja/nbayes2/broadcasting.html">機械学習の Python との出会い　ブロードキャスト</a></li>
@@ -3207,64 +3109,30 @@ ufuncの関数による計算結果はndarrayで返ってきます。</p>
 <li><a href="https://docs.scipy.org/doc/numpy/user/basics.broadcasting.html">公式ドキュメント　Broadcasting</a></li>
 </ul>
 <p>などがあるので、参照してください。</p>
-<p>まず、ブロードキャストによって出力されるshapeはどのように決定されるかについてです。<br>
-次元が揃っていない場合、小さい次元の配列のshapeに小さい次元から1を付け加えていき、最終的に次元が揃うようにします。<br>
-例えば (3, 3) と (3,)を演算しようとした場合、(3,)の左側に1を加えて(1, 3)にすることで次元を揃えるという感じです。<br>
+<p>まず、ブロードキャストによって出力されるshapeはどのように決定されるかについてです。<br />
+次元が揃っていない場合、小さい次元の配列のshapeに小さい次元から1を付け加えていき、最終的に次元が揃うようにします。<br />
+例えば (3, 3) と (3,)を演算しようとした場合、(3,)の左側に1を加えて(1, 3)にすることで次元を揃えるという感じです。<br />
 次元が揃った後、２つのndarrayのshapeの各次元を比べていったとき</p>
 <ul>
 <li>少なくとも一方が1</li>
 <li>どちらも1より大きく、それらが等しい</li>
 </ul>
-<p>のどちらかが全ての次元で成り立っていれば、ブロードキャストが可能になります。<br>
-ブロードキャストによって出力される配列のshapeは、各次元で、２つの配列のshapeで大きい方の値となります。<br>
-例えば先程の例でいうと、(3, 3), (1, 3)を比べると、上の条件が全ての次元で成り立っているので、ブロードキャスト可能ということになります。<br>
-そして出力されるshapeは、各次元の大きい方なので、(3, 3)となります。<br>
+<p>のどちらかが全ての次元で成り立っていれば、ブロードキャストが可能になります。<br />
+ブロードキャストによって出力される配列のshapeは、各次元で、２つの配列のshapeで大きい方の値となります。<br />
+例えば先程の例でいうと、(3, 3), (1, 3)を比べると、上の条件が全ての次元で成り立っているので、ブロードキャスト可能ということになります。<br />
+そして出力されるshapeは、各次元の大きい方なので、(3, 3)となります。<br />
 ブロードキャスト出来ない例として、(3, 1), (4, 1)などで、これはshape[0]がどちらも１より大きいが、それらが等しくないために出来ません。</p>
-<table>
-<thead><tr>
-<th style="text-align:center">shape1</th>
-<th style="text-align:center">shape2</th>
-<th style="text-align:center">ブロードキャスト可能性</th>
-<th style="text-align:center">出力されるshape</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">(3, 5, 2,)</td>
-<td style="text-align:center">(1, 5, 1)</td>
-<td style="text-align:center">可能</td>
-<td style="text-align:center">(3, 5, 2)</td>
-</tr>
-<tr>
-<td style="text-align:center">(2, 1)</td>
-<td style="text-align:center">(1, 8)</td>
-<td style="text-align:center">可能</td>
-<td style="text-align:center">(2, 8)</td>
-</tr>
-<tr>
-<td style="text-align:center">(9,)</td>
-<td style="text-align:center">(9, 8)</td>
-<td style="text-align:center">不可能</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">(8,)</td>
-<td style="text-align:center">(9, 8)</td>
-<td style="text-align:center">可能</td>
-<td style="text-align:center">(9, 8)</td>
-</tr>
-<tr>
-<td style="text-align:center">(9, 1)</td>
-<td style="text-align:center">(9, 8)</td>
-<td style="text-align:center">可能</td>
-<td style="text-align:center">(9, 8)</td>
-</tr>
-</tbody>
-</table>
-<p>配列のある次元のshapeが1であれば、その次元における計算ではずっとその値を使うことで、コピーする必要がなくなる利点があります。<br>
+<p>|shape1|shape2|ブロードキャスト可能性|出力されるshape|
+|:------:|:------:|:-----------------------:|:-----------------:|
+|(3, 5, 2,)|(1, 5, 1)|可能|(3, 5, 2)|
+|(2, 1)|(1, 8)|可能|(2, 8)|
+|(9,)|(9, 8)|不可能||
+|(8,)|(9, 8)|可能|(9, 8)|
+|(9, 1)|(9, 8)|可能|(9, 8)|</p>
+<p>配列のある次元のshapeが1であれば、その次元における計算ではずっとその値を使うことで、コピーする必要がなくなる利点があります。<br />
 もしshapeが２つとも同じであれば、計算では対応する位置の値を使うことになります。</p>
-<p>例として、２次元配列の列に平均を取り、各列の値から平均を引くという操作を考えます（各列の和が0になる）。<br>
-各列の平均を取るという操作は <a href="#ndarrayにおけるaxisとは">axisについての説明</a> を参照してください。</p>
+<p>例として、２次元配列の列に平均を取り、各列の値から平均を引くという操作を考えます（各列の和が0になる）。<br />
+各列の平均を取るという操作は <a href="#ndarray%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Baxis%E3%81%A8%E3%81%AF">axisについての説明</a> を参照してください。</p>
 
 </div>
 </div>
@@ -3702,9 +3570,9 @@ ufuncの関数による計算結果はndarrayで返ってきます。</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="C&#35328;&#35486;&#12521;&#12452;&#12502;&#12521;&#12522;&#12398;&#12521;&#12483;&#12497;&#12540;">C&#35328;&#35486;&#12521;&#12452;&#12502;&#12521;&#12522;&#12398;&#12521;&#12483;&#12497;&#12540;<a class="anchor-link" href="#C&#35328;&#35486;&#12521;&#12452;&#12502;&#12521;&#12522;&#12398;&#12521;&#12483;&#12497;&#12540;">&#182;</a></h1><p>Numpyでは、C言語のライブラリをPythonから簡単に呼び出すことができるモジュールが用意されています。<br>
-このように、他言語のライブラリの関数をPythonで呼び出せるようにしたものを<strong>ラッパー（wrapper）</strong>といいます（包み込むイメージ）。<br>
-これらはNumpyをインポートしたらすぐに使うことが出来ます。<br>
+<h1 id="C%E8%A8%80%E8%AA%9E%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%83%A9%E3%83%83%E3%83%91%E3%83%BC">C&#35328;&#35486;&#12521;&#12452;&#12502;&#12521;&#12522;&#12398;&#12521;&#12483;&#12497;&#12540;<a class="anchor-link" href="#C%E8%A8%80%E8%AA%9E%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%83%A9%E3%83%83%E3%83%91%E3%83%BC">&#182;</a></h1><p>Numpyでは、C言語のライブラリをPythonから簡単に呼び出すことができるモジュールが用意されています。<br />
+このように、他言語のライブラリの関数をPythonで呼び出せるようにしたものを<strong>ラッパー（wrapper）</strong>といいます（包み込むイメージ）。<br />
+これらはNumpyをインポートしたらすぐに使うことが出来ます。<br />
 モジュール名をクリックするとNumpy公式ドキュメントに飛ぶようになっています。</p>
 
 </div>
@@ -3713,8 +3581,8 @@ ufuncの関数による計算結果はndarrayで返ってきます。</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#32218;&#24418;&#20195;&#25968;&#65288;np.linalg&#65289;"><a href="https://docs.scipy.org/doc/numpy/reference/routines.linalg.html">&#32218;&#24418;&#20195;&#25968;&#65288;np.linalg&#65289;</a><a class="anchor-link" href="#&#32218;&#24418;&#20195;&#25968;&#65288;np.linalg&#65289;">&#182;</a></h2><p><strong>np.linalg</strong>は、元々Fortranで書かれた<a href="http://www.netlib.org/lapack/"><strong>LAPACK</strong></a>がC言語に変換されたものをラップしたものです。<br>
-LAPACKの関数と一対一に対応しているわけではなく、より単純なインターフェイスで呼び出せるようになっています。<br>
+<h2 id="%E7%B7%9A%E5%BD%A2%E4%BB%A3%E6%95%B0%EF%BC%88np.linalg%EF%BC%89"><a href="https://docs.scipy.org/doc/numpy/reference/routines.linalg.html">&#32218;&#24418;&#20195;&#25968;&#65288;np.linalg&#65289;</a><a class="anchor-link" href="#%E7%B7%9A%E5%BD%A2%E4%BB%A3%E6%95%B0%EF%BC%88np.linalg%EF%BC%89">&#182;</a></h2><p><strong>np.linalg</strong>は、元々Fortranで書かれた<a href="http://www.netlib.org/lapack/"><strong>LAPACK</strong></a>がC言語に変換されたものをラップしたものです。<br />
+LAPACKの関数と一対一に対応しているわけではなく、より単純なインターフェイスで呼び出せるようになっています。<br />
 逆行列を求めたり、固有値分解、特異値分解など線形代数を網羅するライブラリです（詳細は<a href="https://docs.scipy.org/doc/numpy/reference/routines.linalg.html">公式ドキュメント</a>を参照）。</p>
 
 </div>
@@ -3833,8 +3701,8 @@ LAPACKの関数と一対一に対応しているわけではなく、より単�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Numpyの強みの一つとして、１次元配列をスカラーにする計算のように次元が下がる関数であれば、多次元配列を引数に取ることが出来、軸を指定することによって、その軸に沿った一括計算が可能になります。<br>
-分かりにくいので例をあげます。<br>
+<p>Numpyの強みの一つとして、１次元配列をスカラーにする計算のように次元が下がる関数であれば、多次元配列を引数に取ることが出来、軸を指定することによって、その軸に沿った一括計算が可能になります。<br />
+分かりにくいので例をあげます。<br />
 １次元配列をスカラーにするような関数としてノルムを取る<strong>norm</strong>関数があります。</p>
 
 </div>
@@ -3877,8 +3745,8 @@ LAPACKの関数と一対一に対応しているわけではなく、より単�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>このnorm関数に多次元配列を渡し、軸を指定すると、その軸に沿ってノルムを取ります。<br>
-つまりその軸がスカラーに縮約され、軸がなくなります。<br>
+<p>このnorm関数に多次元配列を渡し、軸を指定すると、その軸に沿ってノルムを取ります。<br />
+つまりその軸がスカラーに縮約され、軸がなくなります。<br />
 例えば、shapeが(5, 3)の配列で軸１（横方向）を指定すると、その軸に沿ってノルムが計算され、shapeが(5,)の配列が返されます。</p>
 
 </div>
@@ -3994,39 +3862,17 @@ LAPACKの関数と一対一に対応しているわけではなく、より単�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#20081;&#25968;&#29983;&#25104;&#65288;np.random&#65289;"><a href="https://docs.scipy.org/doc/numpy/reference/routines.random.html">&#20081;&#25968;&#29983;&#25104;&#65288;np.random&#65289;</a><a class="anchor-link" href="#&#20081;&#25968;&#29983;&#25104;&#65288;np.random&#65289;">&#182;</a></h2><p>科学技術計算で広く使われている擬似乱数生成器である<strong>メルセンヌ・ツイスター</strong>をラップしているモジュールです。<br>
-高品質でかつ、高速な乱数生成で有名なライブラリです。<br>
-np.randomでは、様々な確率分布で乱数を生成できるような関数群が用意されています（<a href="https://docs.scipy.org/doc/numpy/reference/routines.random.html#distributions">Distributions</a>）。<br>
+<h2 id="%E4%B9%B1%E6%95%B0%E7%94%9F%E6%88%90%EF%BC%88np.random%EF%BC%89"><a href="https://docs.scipy.org/doc/numpy/reference/routines.random.html">&#20081;&#25968;&#29983;&#25104;&#65288;np.random&#65289;</a><a class="anchor-link" href="#%E4%B9%B1%E6%95%B0%E7%94%9F%E6%88%90%EF%BC%88np.random%EF%BC%89">&#182;</a></h2><p>科学技術計算で広く使われている擬似乱数生成器である<strong>メルセンヌ・ツイスター</strong>をラップしているモジュールです。<br />
+高品質でかつ、高速な乱数生成で有名なライブラリです。<br />
+np.randomでは、様々な確率分布で乱数を生成できるような関数群が用意されています（<a href="https://docs.scipy.org/doc/numpy/reference/routines.random.html#distributions">Distributions</a>）。<br />
 主な関数を表にまとめました。</p>
-<table>
-<thead><tr>
-<th style="text-align:center">関数名</th>
-<th style="text-align:center">説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">rand</td>
-<td style="text-align:center">一様乱数</td>
-</tr>
-<tr>
-<td style="text-align:center">randn</td>
-<td style="text-align:center">標準正規分布乱数</td>
-</tr>
-<tr>
-<td style="text-align:center">randint</td>
-<td style="text-align:center">整数乱数</td>
-</tr>
-<tr>
-<td style="text-align:center">choice</td>
-<td style="text-align:center">与えられたndarrayからランダムに選び出す</td>
-</tr>
-<tr>
-<td style="text-align:center">normal</td>
-<td style="text-align:center">正規分布乱数</td>
-</tr>
-</tbody>
-</table>
+<p>|関数名|説明|
+|:-----:|:--:|
+|rand|一様乱数|
+|randn|標準正規分布乱数|
+|randint|整数乱数|
+|choice|与えられたndarrayからランダムに選び出す|
+|normal|正規分布乱数|</p>
 <p>どの関数もshapeまたはsizeが指定でき、簡単に乱数を生成できます。</p>
 
 </div>
@@ -4109,7 +3955,7 @@ np.randomでは、様々な確率分布で乱数を生成できるような関�
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 任意のオブジェクトのリストからランダムに取り出す</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s2">&quot;abcde&quot;</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s2">"abcde"</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -4311,51 +4157,20 @@ NgYLSZKUjcFCkiRlY7CQJEnZGCwkSVI2BgtJkpTN/we704Z+80N5EQAAAABJRU5ErkJggg==
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#12501;&#12540;&#12522;&#12456;&#22793;&#25563;&#65288;np.fft&#65289;"><a href="https://docs.scipy.org/doc/numpy/reference/routines.fft.html">&#12501;&#12540;&#12522;&#12456;&#22793;&#25563;&#65288;np.fft&#65289;</a><a class="anchor-link" href="#&#12501;&#12540;&#12522;&#12456;&#22793;&#25563;&#65288;np.fft&#65289;">&#182;</a></h2><p>Cooley-Tukey型の高速離散フーリエ変換（FFT)のラッパーです。<br>
-フーリエ変換一般に言えることですが、変換と逆変換の係数が実装によって異なります（定数倍するだけですが）。<br>
-実装の詳細を知りたい人は <a href="https://docs.scipy.org/doc/numpy/reference/routines.fft.html#implementation-details">Implementation details</a> を参照してください。<br>
+<h2 id="%E3%83%95%E3%83%BC%E3%83%AA%E3%82%A8%E5%A4%89%E6%8F%9B%EF%BC%88np.fft%EF%BC%89"><a href="https://docs.scipy.org/doc/numpy/reference/routines.fft.html">&#12501;&#12540;&#12522;&#12456;&#22793;&#25563;&#65288;np.fft&#65289;</a><a class="anchor-link" href="#%E3%83%95%E3%83%BC%E3%83%AA%E3%82%A8%E5%A4%89%E6%8F%9B%EF%BC%88np.fft%EF%BC%89">&#182;</a></h2><p>Cooley-Tukey型の高速離散フーリエ変換（FFT)のラッパーです。<br />
+フーリエ変換一般に言えることですが、変換と逆変換の係数が実装によって異なります（定数倍するだけですが）。<br />
+実装の詳細を知りたい人は <a href="https://docs.scipy.org/doc/numpy/reference/routines.fft.html#implementation-details">Implementation details</a> を参照してください。<br />
 下の表は<a href="https://docs.scipy.org/doc/numpy/reference/routines.fft.html#standard-ffts">様々な関数</a>をまとめたものです。</p>
-<table>
-<thead><tr>
-<th style="text-align:center">関数名</th>
-<th style="text-align:center">説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">fft</td>
-<td style="text-align:center">１次元FFT</td>
-</tr>
-<tr>
-<td style="text-align:center">ifft</td>
-<td style="text-align:center">↑の逆変換</td>
-</tr>
-<tr>
-<td style="text-align:center">rfft</td>
-<td style="text-align:center">１次元実FFT</td>
-</tr>
-<tr>
-<td style="text-align:center">irfft</td>
-<td style="text-align:center">↑の逆変換</td>
-</tr>
-<tr>
-<td style="text-align:center">fft2</td>
-<td style="text-align:center">２次元FFT</td>
-</tr>
-<tr>
-<td style="text-align:center">ifft2</td>
-<td style="text-align:center">↑の逆変換</td>
-</tr>
-<tr>
-<td style="text-align:center">rfft2</td>
-<td style="text-align:center">２次元実FFT</td>
-</tr>
-<tr>
-<td style="text-align:center">irfft2</td>
-<td style="text-align:center">↑の逆変換</td>
-</tr>
-</tbody>
-</table>
+<p>|関数名|説明|
+|:-:|:-:|
+|fft|１次元FFT|
+|ifft|↑の逆変換|
+|rfft|１次元実FFT|
+|irfft|↑の逆変換|
+|fft2|２次元FFT|
+|ifft2|↑の逆変換|
+|rfft2|２次元実FFT|
+|irfft2|↑の逆変換|</p>
 
 </div>
 </div>
@@ -4503,7 +4318,7 @@ NgYLSZKUjcFCkiRlY7CQJEnZGCwkSVI2BgtJkpTN/we704Z+80N5EQAAAABJRU5ErkJggg==
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>信号処理の一例です。<br>
+<p>信号処理の一例です。<br />
 フィルターなどの高度な信号処理は<a href="https://docs.scipy.org/doc/scipy/reference/signal.html"><strong>scipy.signal</strong></a>を用いてください。</p>
 
 </div>
@@ -4529,9 +4344,9 @@ NgYLSZKUjcFCkiRlY7CQJEnZGCwkSVI2BgtJkpTN/we704Z+80N5EQAAAABJRU5ErkJggg==
 <span class="c1"># サンプリングレート（の逆数）を与えると各成分の周波数を返す</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfftfreq</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mf">1.</span><span class="o">/</span><span class="n">rate</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency [Hz]&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Power spectrum&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Frequency [Hz]"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Power spectrum"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
 </pre></div>
 
@@ -5015,7 +4830,7 @@ MTMzs0JwUmJmZmaF4KTEzMzMCuF/1wozz8ijmfMAAAAASUVORK5CYII=
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="ndarray&#12398;&#12501;&#12449;&#12452;&#12523;&#20837;&#20986;&#21147;">ndarray&#12398;&#12501;&#12449;&#12452;&#12523;&#20837;&#20986;&#21147;<a class="anchor-link" href="#ndarray&#12398;&#12501;&#12449;&#12452;&#12523;&#20837;&#20986;&#21147;">&#182;</a></h1>
+<h1 id="ndarray%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%85%A5%E5%87%BA%E5%8A%9B">ndarray&#12398;&#12501;&#12449;&#12452;&#12523;&#20837;&#20986;&#21147;<a class="anchor-link" href="#ndarray%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%85%A5%E5%87%BA%E5%8A%9B">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -5029,11 +4844,11 @@ MTMzs0JwUmJmZmaF4KTEzMzMCuF/1wozz8ijmfMAAAAASUVORK5CYII=
 <li>一般的なバイナリ保存</li>
 </ul>
 <p>の３つが基本となります。本稿では上の２つを説明します。</p>
-<h2 id="npy&#12392;npz&#24418;&#24335;&#12391;&#12398;&#12496;&#12452;&#12490;&#12522;&#20445;&#23384;">npy&#12392;npz&#24418;&#24335;&#12391;&#12398;&#12496;&#12452;&#12490;&#12522;&#20445;&#23384;<a class="anchor-link" href="#npy&#12392;npz&#24418;&#24335;&#12391;&#12398;&#12496;&#12452;&#12490;&#12522;&#20445;&#23384;">&#182;</a></h2><p>これらはNumpy独自のバイナリ形式です。<br>
-<strong>np.save</strong>関数では、ndarrayを <strong>npy</strong> という拡張子を付けて保存します。<br>
-この形式だと、配列のshapeやdtypeなどの情報も保存するので、<strong>np.load</strong>で情報を保ったまま読み込むことが出来ます。<br>
-複数のndarrayを保存するときは <strong>np.savez</strong> 関数を用いて、<strong>npz</strong> という拡張子で保存します。<br>
-npz形式の場合のロードも <strong>np.load</strong> 関数を使います（拡張子で判断される）。<br>
+<h2 id="npy%E3%81%A8npz%E5%BD%A2%E5%BC%8F%E3%81%A7%E3%81%AE%E3%83%90%E3%82%A4%E3%83%8A%E3%83%AA%E4%BF%9D%E5%AD%98">npy&#12392;npz&#24418;&#24335;&#12391;&#12398;&#12496;&#12452;&#12490;&#12522;&#20445;&#23384;<a class="anchor-link" href="#npy%E3%81%A8npz%E5%BD%A2%E5%BC%8F%E3%81%A7%E3%81%AE%E3%83%90%E3%82%A4%E3%83%8A%E3%83%AA%E4%BF%9D%E5%AD%98">&#182;</a></h2><p>これらはNumpy独自のバイナリ形式です。<br />
+<strong>np.save</strong>関数では、ndarrayを <strong>npy</strong> という拡張子を付けて保存します。<br />
+この形式だと、配列のshapeやdtypeなどの情報も保存するので、<strong>np.load</strong>で情報を保ったまま読み込むことが出来ます。<br />
+複数のndarrayを保存するときは <strong>np.savez</strong> 関数を用いて、<strong>npz</strong> という拡張子で保存します。<br />
+npz形式の場合のロードも <strong>np.load</strong> 関数を使います（拡張子で判断される）。<br />
 まずはnpyの保存をみてみましょう。</p>
 
 </div>
@@ -5047,10 +4862,10 @@ npz形式の場合のロードも <strong>np.load</strong> 関数を使います
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># arrをnpy形式で保存</span>
-<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;test_arr.npy&quot;</span><span class="p">,</span> <span class="n">arr</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"test_arr.npy"</span><span class="p">,</span> <span class="n">arr</span><span class="p">)</span>
 
 <span class="c1"># npyをロード</span>
-<span class="n">arr_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;test_arr.npy&quot;</span><span class="p">)</span>
+<span class="n">arr_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">"test_arr.npy"</span><span class="p">)</span>
 
 <span class="c1"># 全ての要素が等しいならTrue</span>
 <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">arr</span> <span class="o">==</span> <span class="n">arr_new</span><span class="p">)</span>
@@ -5098,11 +4913,11 @@ npz形式の場合のロードも <strong>np.load</strong> 関数を使います
 <span class="n">my_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="c1"># キーワード引数でndarrayをsavezに渡す</span>
-<span class="n">np</span><span class="o">.</span><span class="n">savez</span><span class="p">(</span><span class="s2">&quot;test_arrs.npz&quot;</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">my_x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">my_y</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savez</span><span class="p">(</span><span class="s2">"test_arrs.npz"</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">my_x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">my_y</span><span class="p">)</span>
 
-<span class="n">arrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;test_arrs.npz&quot;</span><span class="p">)</span>
+<span class="n">arrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">"test_arrs.npz"</span><span class="p">)</span>
 
-<span class="n">arrs</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span>
+<span class="n">arrs</span><span class="p">[</span><span class="s2">"x"</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -5134,7 +4949,7 @@ npz形式の場合のロードも <strong>np.load</strong> 関数を使います
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#12486;&#12461;&#12473;&#12488;&#12391;&#12398;&#20445;&#23384;">&#12486;&#12461;&#12473;&#12488;&#12391;&#12398;&#20445;&#23384;<a class="anchor-link" href="#&#12486;&#12461;&#12473;&#12488;&#12391;&#12398;&#20445;&#23384;">&#182;</a></h2><p>ndarrayをテキスト形式で保存する関数は<strong>np.savetxt</strong>です。</p>
+<h2 id="%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%81%A7%E3%81%AE%E4%BF%9D%E5%AD%98">&#12486;&#12461;&#12473;&#12488;&#12391;&#12398;&#20445;&#23384;<a class="anchor-link" href="#%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%81%A7%E3%81%AE%E4%BF%9D%E5%AD%98">&#182;</a></h2><p>ndarrayをテキスト形式で保存する関数は<strong>np.savetxt</strong>です。</p>
 
 </div>
 </div>
@@ -5148,7 +4963,7 @@ npz形式の場合のロードも <strong>np.load</strong> 関数を使います
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="c1"># xをテキスト形式で保存</span>
-<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s2">&quot;my_np.txt&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s2">"my_np.txt"</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -5200,7 +5015,7 @@ npz形式の場合のロードも <strong>np.load</strong> 関数を使います
 </div>
 </div>
 </div>
- 
+
 
 </div>
       </div>

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Numpyの基礎（３）配列に関数を作用させる</title>
+    <title>Numpyの基礎（３）ufunc</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
       async
@@ -60,15 +60,15 @@
     <div tabindex="-1" id="notebook" class="border-box-sizing must-no-padding">
       <div class="container my-notebook-container must-no-padding" id="notebook-container">
         <div class="w3-panel">
-          <h1 class="w3-center">Numpyの基礎（３）配列に関数を作用させる</h1>
+          <h1 class="w3-center">Numpyの基礎（３）ufunc</h1>
         </div>
 
         <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#30446;&#27425;">&#30446;&#27425;<a class="anchor-link" href="#&#30446;&#27425;">&#182;</a></h1><ul>
-<li><a href="#ユニバーサル関数（ufunc）">ユニバーサル関数（ufunc）</a></li>
-<li><a href="#ndarrayにおけるaxisとは">ndarrayにおけるaxisとは</a></li>
+<h1 id="%E7%9B%AE%E6%AC%A1">&#30446;&#27425;<a class="anchor-link" href="#%E7%9B%AE%E6%AC%A1">&#182;</a></h1><ul>
+<li><a href="#%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB%E9%96%A2%E6%95%B0%EF%BC%88ufunc%EF%BC%89">ユニバーサル関数（ufunc）</a></li>
+<li><a href="#ndarray%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Baxis%E3%81%A8%E3%81%AF">ndarrayにおけるaxisとは</a></li>
 </ul>
 
 </div>
@@ -94,10 +94,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#12518;&#12491;&#12496;&#12540;&#12469;&#12523;&#38306;&#25968;&#65288;ufunc&#65289;">&#12518;&#12491;&#12496;&#12540;&#12469;&#12523;&#38306;&#25968;&#65288;ufunc&#65289;<a class="anchor-link" href="#&#12518;&#12491;&#12496;&#12540;&#12469;&#12523;&#38306;&#25968;&#65288;ufunc&#65289;">&#182;</a></h2><p>Numpyでは、三角関数(np.sinなど）や指数関数（np.exp）のような関数は<strong>ユニバーサル関数オブジェクト（略すとufunc）</strong>になっています。<br>
+<h2 id="%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB%E9%96%A2%E6%95%B0%EF%BC%88ufunc%EF%BC%89">&#12518;&#12491;&#12496;&#12540;&#12469;&#12523;&#38306;&#25968;&#65288;ufunc&#65289;<a class="anchor-link" href="#%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB%E9%96%A2%E6%95%B0%EF%BC%88ufunc%EF%BC%89">&#182;</a></h2><p>Numpyでは、三角関数(np.sinなど）や指数関数（np.exp）のような関数は<strong>ユニバーサル関数オブジェクト（略すとufunc）</strong>になっています。<br />
 <a href="https://docs.scipy.org/doc/numpy/reference/ufuncs.html">公式ドキュメント</a>によると、</p>
 <ul>
-<li>要素ごと（element-by-element）にndarrayへ作用する関数  </li>
+<li>要素ごと（element-by-element）にndarrayへ作用する関数</li>
 <li>コンパイルされたC言語で実装されている</li>
 </ul>
 <p>といったことが書かれています。</p>
@@ -377,7 +377,7 @@ ZhpnrtwZRNnuA5KAeU3vhQeDKJvnjpPrMaB/0/TP54Br2/ITk87wFRGJQGF15C8iIidH5S8iEoFU
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>ufuncは、Pythonのループの遅さという欠点を補うために生まれました。<br>
+<p>ufuncは、Pythonのループの遅さという欠点を補うために生まれました。<br />
 比較してみましょう。</p>
 
 </div>
@@ -464,7 +464,7 @@ ZhpnrtwZRNnuA5KAeU3vhQeDKJvnjpPrMaB/0/TP54Br2/ITk87wFRGJQGF15C8iIidH5S8iEoFU
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>少なくとも100倍以上は速くなっています。<br>
+<p>少なくとも100倍以上は速くなっています。<br />
 なるべく配列を一気にufuncに投げるようにしましょう。</p>
 
 </div>
@@ -652,7 +652,7 @@ ZhpnrtwZRNnuA5KAeU3vhQeDKJvnjpPrMaB/0/TP54Br2/ITk87wFRGJQGF15C8iIidH5S8iEoFU
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="ufunc&#12395;&#12362;&#12369;&#12427;axis&#12392;&#12399;">ufunc&#12395;&#12362;&#12369;&#12427;axis&#12392;&#12399;<a class="anchor-link" href="#ufunc&#12395;&#12362;&#12369;&#12427;axis&#12392;&#12399;">&#182;</a></h2><p>ufuncで度々出てくるのが「axis（軸）」です。慣れていないと混乱することもあると思うので説明します。<br>
+<h2 id="ufunc%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Baxis%E3%81%A8%E3%81%AF">ufunc&#12395;&#12362;&#12369;&#12427;axis&#12392;&#12399;<a class="anchor-link" href="#ufunc%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Baxis%E3%81%A8%E3%81%AF">&#182;</a></h2><p>ufuncで度々出てくるのが「axis（軸）」です。慣れていないと混乱することもあると思うので説明します。<br />
 <a href="http://using-python-in-research.site44.com/numpy-mpl-args">ここ</a>に分かりやすい画像がありましたので引用します。配列の軸の方向が矢印で書かれています。</p>
 
 </div>
@@ -661,7 +661,7 @@ ZhpnrtwZRNnuA5KAeU3vhQeDKJvnjpPrMaB/0/TP54Br2/ITk87wFRGJQGF15C8iIidH5S8iEoFU
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img  src="axis.png"/></p>
+<img  src="axis.png"/>
 
 </div>
 </div>
@@ -812,64 +812,24 @@ ZhpnrtwZRNnuA5KAeU3vhQeDKJvnjpPrMaB/0/TP54Br2/ITk87wFRGJQGF15C8iIidH5S8iEoFU
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>上の結果を見てもらえると分かるように、axis=0やaxis=1である軸について和を取ると次元が１つ落ちます。<br>
-axisを指定しないとスカラーまで次元が落ちます。このように特定の軸について次元を落とす操作を<strong>Reduction</strong>といいます。<br>
-axis=0でReductionを行うと、shapeが(n, m)が (m,)になります。<br>
+<p>上の結果を見てもらえると分かるように、axis=0やaxis=1である軸について和を取ると次元が１つ落ちます。<br />
+axisを指定しないとスカラーまで次元が落ちます。このように特定の軸について次元を落とす操作を<strong>Reduction</strong>といいます。<br />
+axis=0でReductionを行うと、shapeが(n, m)が (m,)になります。<br />
 axisは、潰す軸を指定すると考えると忘れないと思います。</p>
 <p>引数にaxisを取るndarrayの主な関数の表がこちらです。より詳細に知りたい方は<a href="https://docs.scipy.org/doc/numpy/reference/arrays.ndarray.html#calculation">ここ</a>を見てください。</p>
-<table>
-<thead><tr>
-<th style="text-align:center">関数名</th>
-<th style="text-align:center">説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">sum</td>
-<td style="text-align:center">和</td>
-</tr>
-<tr>
-<td style="text-align:center">max</td>
-<td style="text-align:center">最大値</td>
-</tr>
-<tr>
-<td style="text-align:center">min</td>
-<td style="text-align:center">最小値</td>
-</tr>
-<tr>
-<td style="text-align:center">argmax</td>
-<td style="text-align:center">最大値を取るインデックス</td>
-</tr>
-<tr>
-<td style="text-align:center">argmin</td>
-<td style="text-align:center">最小値を取るインデックス</td>
-</tr>
-<tr>
-<td style="text-align:center">cumsum</td>
-<td style="text-align:center">累積和</td>
-</tr>
-<tr>
-<td style="text-align:center">mean</td>
-<td style="text-align:center">平均値</td>
-</tr>
-<tr>
-<td style="text-align:center">var</td>
-<td style="text-align:center">分散</td>
-</tr>
-<tr>
-<td style="text-align:center">std</td>
-<td style="text-align:center">標準偏差</td>
-</tr>
-<tr>
-<td style="text-align:center">all</td>
-<td style="text-align:center">全てTrueならTrue</td>
-</tr>
-<tr>
-<td style="text-align:center">any</td>
-<td style="text-align:center">一つでもTrueがあればTrue</td>
-</tr>
-</tbody>
-</table>
+<p>|関数名|説明|
+|:------:|:--:|
+|sum|和|
+|max|最大値|
+|min|最小値|
+|argmax|最大値を取るインデックス|
+|argmin|最小値を取るインデックス|
+|cumsum|累積和|
+|mean|平均値|
+|var|分散|
+|std|標準偏差|
+|all|全てTrueならTrue|
+|any|一つでもTrueがあればTrue|</p>
 
 </div>
 </div>
@@ -1943,7 +1903,7 @@ QqFQjBKUwFcoFIpRghL4CoVCMUpQAl+hUChGCf8P0e+0juOcOVcAAAAASUVORK5CYII=
 </div>
 
 </div>
- 
+
 
 </div>
       </div>

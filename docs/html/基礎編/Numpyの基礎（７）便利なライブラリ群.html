@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Numpyの基礎（７）線形代数やフーリエ変換</title>
+    <title>Numpyの基礎（７）便利なライブラリ群</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
       async
@@ -60,20 +60,20 @@
     <div tabindex="-1" id="notebook" class="border-box-sizing must-no-padding">
       <div class="container my-notebook-container must-no-padding" id="notebook-container">
         <div class="w3-panel">
-          <h1 class="w3-center">Numpyの基礎（７）線形代数やフーリエ変換</h1>
+          <h1 class="w3-center">Numpyの基礎（７）便利なライブラリ群</h1>
         </div>
 
         <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#30446;&#27425;">&#30446;&#27425;<a class="anchor-link" href="#&#30446;&#27425;">&#182;</a></h1><ul>
-<li><a href="#C言語ライブラリのラッパー">C言語ライブラリのラッパー</a><ul>
-<li><a href="#線形代数（np.linalg）">線形代数（np.linalg）</a><ul>
-<li><a href="#np.linalgを用いた最小二乗法">np.linalgを用いた最小二乗法</a></li>
+<h1 id="%E7%9B%AE%E6%AC%A1">&#30446;&#27425;<a class="anchor-link" href="#%E7%9B%AE%E6%AC%A1">&#182;</a></h1><ul>
+<li><a href="#C%E8%A8%80%E8%AA%9E%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%83%A9%E3%83%83%E3%83%91%E3%83%BC">C言語ライブラリのラッパー</a><ul>
+<li><a href="#%E7%B7%9A%E5%BD%A2%E4%BB%A3%E6%95%B0%EF%BC%88np.linalg%EF%BC%89">線形代数（np.linalg）</a><ul>
+<li><a href="#np.linalg%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%97%E6%B3%95">np.linalgを用いた最小二乗法</a></li>
 </ul>
 </li>
-<li><a href="#乱数生成（np.random）">乱数生成（np.random）</a></li>
-<li><a href="#フーリエ変換（np.fft）">フーリエ変換（np.fft）</a></li>
+<li><a href="#%E4%B9%B1%E6%95%B0%E7%94%9F%E6%88%90%EF%BC%88np.random%EF%BC%89">乱数生成（np.random）</a></li>
+<li><a href="#%E3%83%95%E3%83%BC%E3%83%AA%E3%82%A8%E5%A4%89%E6%8F%9B%EF%BC%88np.fft%EF%BC%89">フーリエ変換（np.fft）</a></li>
 </ul>
 </li>
 </ul>
@@ -101,9 +101,9 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="C&#35328;&#35486;&#12521;&#12452;&#12502;&#12521;&#12522;&#12398;&#12521;&#12483;&#12497;&#12540;">C&#35328;&#35486;&#12521;&#12452;&#12502;&#12521;&#12522;&#12398;&#12521;&#12483;&#12497;&#12540;<a class="anchor-link" href="#C&#35328;&#35486;&#12521;&#12452;&#12502;&#12521;&#12522;&#12398;&#12521;&#12483;&#12497;&#12540;">&#182;</a></h1><p>Numpyでは、C言語のライブラリをPythonから簡単に呼び出すことができるモジュールが用意されています。<br>
-このように、他言語のライブラリの関数をPythonで呼び出せるようにしたものを<strong>ラッパー（wrapper）</strong>といいます。<br>
-もともとのライブラリをPython関数で包み込むイメージです。<br>
+<h1 id="C%E8%A8%80%E8%AA%9E%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%83%A9%E3%83%83%E3%83%91%E3%83%BC">C&#35328;&#35486;&#12521;&#12452;&#12502;&#12521;&#12522;&#12398;&#12521;&#12483;&#12497;&#12540;<a class="anchor-link" href="#C%E8%A8%80%E8%AA%9E%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%83%A9%E3%83%83%E3%83%91%E3%83%BC">&#182;</a></h1><p>Numpyでは、C言語のライブラリをPythonから簡単に呼び出すことができるモジュールが用意されています。<br />
+このように、他言語のライブラリの関数をPythonで呼び出せるようにしたものを<strong>ラッパー（wrapper）</strong>といいます。<br />
+もともとのライブラリをPython関数で包み込むイメージです。<br />
 モジュール名をクリックするとNumpy公式ドキュメントに飛ぶようになっています。</p>
 
 </div>
@@ -112,8 +112,8 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#32218;&#24418;&#20195;&#25968;&#65288;np.linalg&#65289;"><a href="https://docs.scipy.org/doc/numpy/reference/routines.linalg.html">&#32218;&#24418;&#20195;&#25968;&#65288;np.linalg&#65289;</a><a class="anchor-link" href="#&#32218;&#24418;&#20195;&#25968;&#65288;np.linalg&#65289;">&#182;</a></h2><p><strong>np.linalg</strong>は、元々Fortranで書かれた<a href="http://www.netlib.org/lapack/"><strong>LAPACK</strong></a>がC言語に変換されたものをラップしたものです。<br>
-LAPACKの関数と一対一に対応しているわけではなく、より単純なインターフェイスで呼び出せるようになっています。<br>
+<h2 id="%E7%B7%9A%E5%BD%A2%E4%BB%A3%E6%95%B0%EF%BC%88np.linalg%EF%BC%89"><a href="https://docs.scipy.org/doc/numpy/reference/routines.linalg.html">&#32218;&#24418;&#20195;&#25968;&#65288;np.linalg&#65289;</a><a class="anchor-link" href="#%E7%B7%9A%E5%BD%A2%E4%BB%A3%E6%95%B0%EF%BC%88np.linalg%EF%BC%89">&#182;</a></h2><p><strong>np.linalg</strong>は、元々Fortranで書かれた<a href="http://www.netlib.org/lapack/"><strong>LAPACK</strong></a>がC言語に変換されたものをラップしたものです。<br />
+LAPACKの関数と一対一に対応しているわけではなく、より単純なインターフェイスで呼び出せるようになっています。<br />
 逆行列を求めたり、固有値分解、特異値分解など線形代数を網羅するライブラリです（詳細は<a href="https://docs.scipy.org/doc/numpy/reference/routines.linalg.html">公式ドキュメント</a>を参照）。</p>
 
 </div>
@@ -274,7 +274,7 @@ LAPACKの関数と一対一に対応しているわけではなく、より単�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>このnorm関数に多次元配列を渡し、軸を指定すると、その軸に沿ってノルムを取ります。<br>
+<p>このnorm関数に多次元配列を渡し、軸を指定すると、その軸に沿ってノルムを取ります。<br />
 つまりその軸がスカラーに縮約され、軸がなくなります。</p>
 
 </div>
@@ -390,7 +390,7 @@ LAPACKの関数と一対一に対応しているわけではなく、より単�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="np.linalg&#12434;&#29992;&#12356;&#12383;&#26368;&#23567;&#20108;&#20055;&#27861;">np.linalg&#12434;&#29992;&#12356;&#12383;&#26368;&#23567;&#20108;&#20055;&#27861;<a class="anchor-link" href="#np.linalg&#12434;&#29992;&#12356;&#12383;&#26368;&#23567;&#20108;&#20055;&#27861;">&#182;</a></h3><p>下のような線形に増加するデータを最小二乗法でフィッティングすることを考えます。</p>
+<h3 id="np.linalg%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%97%E6%B3%95">np.linalg&#12434;&#29992;&#12356;&#12383;&#26368;&#23567;&#20108;&#20055;&#27861;<a class="anchor-link" href="#np.linalg%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%97%E6%B3%95">&#182;</a></h3><p>下のような線形に増加するデータを最小二乗法でフィッティングすることを考えます。</p>
 
 </div>
 </div>
@@ -403,7 +403,7 @@ LAPACKの関数と一対一に対応しているわけではなく、より単�
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">signal</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">t</span> <span class="o">-</span> <span class="mf">0.3</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">signal</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Time'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
@@ -831,7 +831,7 @@ CuTib2ZWoP8BNJgJc/rvRw8AAAAASUVORK5CYII=
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>データ$d$、Green関数$G$、パラメータ$m$を使うと
 $$d = Gm$$
-のようになります。<br>
+のようになります。<br />
 これを$m$について解くと
 $$m = (G^T G)^{-1}G^Td$$</p>
 
@@ -923,7 +923,7 @@ $$m = (G^T G)^{-1}G^Td$$</p>
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">signal</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t [s]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'t [s]'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
@@ -1415,39 +1415,17 @@ NPgrpVQB0uCvlFIFSIO/UkoVoP8PJS7mfkpo/bcAAAAASUVORK5CYII=
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#20081;&#25968;&#29983;&#25104;&#65288;np.random&#65289;"><a href="https://docs.scipy.org/doc/numpy/reference/routines.random.html">&#20081;&#25968;&#29983;&#25104;&#65288;np.random&#65289;</a><a class="anchor-link" href="#&#20081;&#25968;&#29983;&#25104;&#65288;np.random&#65289;">&#182;</a></h2><p>科学技術計算で広く使われている擬似乱数生成器である<strong>メルセンヌ・ツイスター</strong>をラップしているモジュールです。<br>
-高品質でかつ、高速な乱数生成で有名なライブラリです。<br>
-np.randomでは、様々な確率分布で乱数を生成できるような関数群が用意されています（<a href="https://docs.scipy.org/doc/numpy/reference/routines.random.html#distributions">Distributions</a>）。<br>
+<h2 id="%E4%B9%B1%E6%95%B0%E7%94%9F%E6%88%90%EF%BC%88np.random%EF%BC%89"><a href="https://docs.scipy.org/doc/numpy/reference/routines.random.html">&#20081;&#25968;&#29983;&#25104;&#65288;np.random&#65289;</a><a class="anchor-link" href="#%E4%B9%B1%E6%95%B0%E7%94%9F%E6%88%90%EF%BC%88np.random%EF%BC%89">&#182;</a></h2><p>科学技術計算で広く使われている擬似乱数生成器である<strong>メルセンヌ・ツイスター</strong>をラップしているモジュールです。<br />
+高品質でかつ、高速な乱数生成で有名なライブラリです。<br />
+np.randomでは、様々な確率分布で乱数を生成できるような関数群が用意されています（<a href="https://docs.scipy.org/doc/numpy/reference/routines.random.html#distributions">Distributions</a>）。<br />
 主な関数を表にまとめました。</p>
-<table>
-<thead><tr>
-<th style="text-align:center">関数名</th>
-<th style="text-align:center">説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">rand</td>
-<td style="text-align:center">一様乱数</td>
-</tr>
-<tr>
-<td style="text-align:center">randn</td>
-<td style="text-align:center">標準正規分布乱数</td>
-</tr>
-<tr>
-<td style="text-align:center">randint</td>
-<td style="text-align:center">整数乱数</td>
-</tr>
-<tr>
-<td style="text-align:center">choice</td>
-<td style="text-align:center">与えられたndarrayからランダムに選び出す</td>
-</tr>
-<tr>
-<td style="text-align:center">normal</td>
-<td style="text-align:center">正規分布乱数</td>
-</tr>
-</tbody>
-</table>
+<p>|関数名|説明|
+|:-----:|:--:|
+|rand|一様乱数|
+|randn|標準正規分布乱数|
+|randint|整数乱数|
+|choice|与えられたndarrayからランダムに選び出す|
+|normal|正規分布乱数|</p>
 <p>どの関数もshapeまたはsizeが指定でき、簡単に乱数を生成できます。</p>
 
 </div>
@@ -1530,7 +1508,7 @@ np.randomでは、様々な確率分布で乱数を生成できるような関�
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 任意のオブジェクトのリストからランダムに取り出す</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s2">&quot;abcde&quot;</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s2">"abcde"</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1689,51 +1667,20 @@ S1JDDH1JaoihL0kN+f9s5BzCnblMUwAAAABJRU5ErkJggg==
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#12501;&#12540;&#12522;&#12456;&#22793;&#25563;&#65288;np.fft&#65289;"><a href="https://docs.scipy.org/doc/numpy/reference/routines.fft.html">&#12501;&#12540;&#12522;&#12456;&#22793;&#25563;&#65288;np.fft&#65289;</a><a class="anchor-link" href="#&#12501;&#12540;&#12522;&#12456;&#22793;&#25563;&#65288;np.fft&#65289;">&#182;</a></h2><p>Cooley-Tukey型の高速離散フーリエ変換（FFT)のラッパーです。<br>
-フーリエ変換一般に言えることですが、変換と逆変換の係数が実装によって異なります（定数倍するだけですが）。<br>
-実装の詳細を知りたい人は <a href="https://docs.scipy.org/doc/numpy/reference/routines.fft.html#implementation-details">Implementation details</a> を参照してください。<br>
+<h2 id="%E3%83%95%E3%83%BC%E3%83%AA%E3%82%A8%E5%A4%89%E6%8F%9B%EF%BC%88np.fft%EF%BC%89"><a href="https://docs.scipy.org/doc/numpy/reference/routines.fft.html">&#12501;&#12540;&#12522;&#12456;&#22793;&#25563;&#65288;np.fft&#65289;</a><a class="anchor-link" href="#%E3%83%95%E3%83%BC%E3%83%AA%E3%82%A8%E5%A4%89%E6%8F%9B%EF%BC%88np.fft%EF%BC%89">&#182;</a></h2><p>Cooley-Tukey型の高速離散フーリエ変換（FFT)のラッパーです。<br />
+フーリエ変換一般に言えることですが、変換と逆変換の係数が実装によって異なります（定数倍するだけですが）。<br />
+実装の詳細を知りたい人は <a href="https://docs.scipy.org/doc/numpy/reference/routines.fft.html#implementation-details">Implementation details</a> を参照してください。<br />
 下の表は<a href="https://docs.scipy.org/doc/numpy/reference/routines.fft.html#standard-ffts">様々な関数</a>をまとめたものです。</p>
-<table>
-<thead><tr>
-<th style="text-align:center">関数名</th>
-<th style="text-align:center">説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">fft</td>
-<td style="text-align:center">１次元FFT</td>
-</tr>
-<tr>
-<td style="text-align:center">ifft</td>
-<td style="text-align:center">↑の逆変換</td>
-</tr>
-<tr>
-<td style="text-align:center">rfft</td>
-<td style="text-align:center">１次元実FFT</td>
-</tr>
-<tr>
-<td style="text-align:center">irfft</td>
-<td style="text-align:center">↑の逆変換</td>
-</tr>
-<tr>
-<td style="text-align:center">fft2</td>
-<td style="text-align:center">２次元FFT</td>
-</tr>
-<tr>
-<td style="text-align:center">ifft2</td>
-<td style="text-align:center">↑の逆変換</td>
-</tr>
-<tr>
-<td style="text-align:center">rfft2</td>
-<td style="text-align:center">２次元実FFT</td>
-</tr>
-<tr>
-<td style="text-align:center">irfft2</td>
-<td style="text-align:center">↑の逆変換</td>
-</tr>
-</tbody>
-</table>
+<p>|関数名|説明|
+|:-:|:-:|
+|fft|１次元FFT|
+|ifft|↑の逆変換|
+|rfft|１次元実FFT|
+|irfft|↑の逆変換|
+|fft2|２次元FFT|
+|ifft2|↑の逆変換|
+|rfft2|２次元実FFT|
+|irfft2|↑の逆変換|</p>
 
 </div>
 </div>
@@ -1881,7 +1828,7 @@ S1JDDH1JaoihL0kN+f9s5BzCnblMUwAAAABJRU5ErkJggg==
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>信号処理の一例です。<br>
+<p>信号処理の一例です。<br />
 フィルターなどの高度な信号処理は<a href="https://docs.scipy.org/doc/scipy/reference/signal.html"><strong>scipy.signal</strong></a>を用いてください。</p>
 
 </div>
@@ -1902,8 +1849,8 @@ S1JDDH1JaoihL0kN+f9s5BzCnblMUwAAAABJRU5ErkJggg==
 <span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">6</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">signal</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time [s]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Time series of signal&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'time [s]'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Time series of signal'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># power spectrum</span>
@@ -1912,9 +1859,9 @@ S1JDDH1JaoihL0kN+f9s5BzCnblMUwAAAABJRU5ErkJggg==
 <span class="c1"># サンプリングレート（の逆数）を与えると各成分の周波数を返す</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfftfreq</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mf">1.</span><span class="o">/</span><span class="n">rate</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency [Hz]&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Power spectrum&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Frequency [Hz]"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Power spectrum"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -2915,7 +2862,7 @@ Ls455zLnycU551zmPLk455zLnCcX55xzmfsvR0WWidimb/4AAAAASUVORK5CYII=
 </div>
 
 </div>
- 
+
 
 </div>
       </div>

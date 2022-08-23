@@ -66,8 +66,8 @@
         <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#30446;&#27425;">&#30446;&#27425;<a class="anchor-link" href="#&#30446;&#27425;">&#182;</a></h1><ul>
-<li><a href="#ndarrayの生成関数">ndarrayの生成関数</a><ul>
+<h1 id="%E7%9B%AE%E6%AC%A1">&#30446;&#27425;<a class="anchor-link" href="#%E7%9B%AE%E6%AC%A1">&#182;</a></h1><ul>
+<li><a href="#ndarray%E3%81%AE%E7%94%9F%E6%88%90%E9%96%A2%E6%95%B0">ndarrayの生成関数</a><ul>
 <li><a href="#np.array,-np.asarray">np.array, np.asarray</a></li>
 <li><a href="#np.arange">np.arange</a></li>
 <li><a href="#np.ones,-np.ones_like">np.ones, np.ones_like</a></li>
@@ -76,7 +76,7 @@
 <li><a href="#np.eye,-np.identity">np.eye, np.identity</a></li>
 </ul>
 </li>
-<li><a href="#関数を使ってみよう">関数を使ってみよう</a><ul>
+<li><a href="#%E9%96%A2%E6%95%B0%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86">関数を使ってみよう</a><ul>
 <li><a href="#np.reshape">np.reshape</a></li>
 </ul>
 </li>
@@ -105,8 +105,8 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="ndarray&#12398;&#29983;&#25104;&#38306;&#25968;">ndarray&#12398;&#29983;&#25104;&#38306;&#25968;<a class="anchor-link" href="#ndarray&#12398;&#29983;&#25104;&#38306;&#25968;">&#182;</a></h2><p>色々な配列を作る便利な関数が用意されています。ここではそれらを紹介します。</p>
-<h3 id="np.array,-np.asarray">np.array, np.asarray<a class="anchor-link" href="#np.array,-np.asarray">&#182;</a></h3><p>上でも述べた関数です。リストやタプルを引数に取り、配列を返す関数です。<br>
+<h2 id="ndarray%E3%81%AE%E7%94%9F%E6%88%90%E9%96%A2%E6%95%B0">ndarray&#12398;&#29983;&#25104;&#38306;&#25968;<a class="anchor-link" href="#ndarray%E3%81%AE%E7%94%9F%E6%88%90%E9%96%A2%E6%95%B0">&#182;</a></h2><p>色々な配列を作る便利な関数が用意されています。ここではそれらを紹介します。</p>
+<h3 id="np.array,-np.asarray">np.array, np.asarray<a class="anchor-link" href="#np.array,-np.asarray">&#182;</a></h3><p>上でも述べた関数です。リストやタプルを引数に取り、配列を返す関数です。<br />
 型を指定しない場合は、勝手に推測してくれますが、キーワード引数で指定することも出来ます。
 np.asarrayは引数がndarrayであれば、そのままndarrayを返し、そうでないならnp.arrayと同じ働きをする関数です。</p>
 
@@ -800,9 +800,9 @@ FxFxCQW6iIhLKNBFRFxCgS4i4hIKdBERl1Cgi4i4xP8CbRbuvk5KAh0AAAAASUVORK5CYII=
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="np.empty,-np.empty_like">np.empty, np.empty_like<a class="anchor-link" href="#np.empty,-np.empty_like">&#182;</a></h3><p>上の２つと似ていますが、こちらは初期化をせずに配列の領域だけを確保する関数です。<br>
-巨大な配列を自分で初期化したい場合や、値は何でもいいが配列だけ作りたいときに使います。<br>
-初期化のプロセスを省略するためにnp.zerosなどよりも高速に動作します。<br>
+<h3 id="np.empty,-np.empty_like">np.empty, np.empty_like<a class="anchor-link" href="#np.empty,-np.empty_like">&#182;</a></h3><p>上の２つと似ていますが、こちらは初期化をせずに配列の領域だけを確保する関数です。<br />
+巨大な配列を自分で初期化したい場合や、値は何でもいいが配列だけ作りたいときに使います。<br />
+初期化のプロセスを省略するためにnp.zerosなどよりも高速に動作します。<br />
 ときどき変な値が入ってることがあるので、自分ですべての要素をあとで初期化するときのみ使うのが吉です。</p>
 
 </div>
@@ -884,7 +884,7 @@ FxFxCQW6iIhLKNBFRFxCgS4i4hIKdBERl1Cgi4i4xP8CbRbuvk5KAh0AAAAASUVORK5CYII=
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="np.linspace">np.linspace<a class="anchor-link" href="#np.linspace">&#182;</a></h3><p>ある範囲を均等に分割する関数です。<br>
+<h3 id="np.linspace">np.linspace<a class="anchor-link" href="#np.linspace">&#182;</a></h3><p>ある範囲を均等に分割する関数です。<br />
 連続的な配列を作るときに非常に便利です。
 デフォルトで50個に分割します。</p>
 
@@ -1313,7 +1313,7 @@ SUVORK5CYII=
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#38306;&#25968;&#12434;&#20351;&#12387;&#12390;&#12415;&#12424;&#12358;">&#38306;&#25968;&#12434;&#20351;&#12387;&#12390;&#12415;&#12424;&#12358;<a class="anchor-link" href="#&#38306;&#25968;&#12434;&#20351;&#12387;&#12390;&#12415;&#12424;&#12358;">&#182;</a></h2><h3 id="np.reshape">np.reshape<a class="anchor-link" href="#np.reshape">&#182;</a></h3><p>配列の次元を自在に変えられる関数です。</p>
+<h2 id="%E9%96%A2%E6%95%B0%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86">&#38306;&#25968;&#12434;&#20351;&#12387;&#12390;&#12415;&#12424;&#12358;<a class="anchor-link" href="#%E9%96%A2%E6%95%B0%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86">&#182;</a></h2><h3 id="np.reshape">np.reshape<a class="anchor-link" href="#np.reshape">&#182;</a></h3><p>配列の次元を自在に変えられる関数です。</p>
 
 </div>
 </div>
@@ -1391,8 +1391,8 @@ SUVORK5CYII=
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>例えば、x, y, zが並んだバイナリデータを一次元配列として読み取ったあと、reshapeすれば、2次元配列として扱えます。</p>
-<p>文字通り、ndarrayのshapeを変更する関数なのですが、２つほど注意する点があります。<br>
-一つ目は、全体のsizeを変更しないようにしなければならないということです。<br>
+<p>文字通り、ndarrayのshapeを変更する関数なのですが、２つほど注意する点があります。<br />
+一つ目は、全体のsizeを変更しないようにしなければならないということです。<br />
 つまり、新しいshapeの各要素を掛け合わせた値が元々の要素の総数を一致する必要があるということです。</p>
 
 </div>
@@ -1492,7 +1492,7 @@ SUVORK5CYII=
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>このような変形は、次元の異なる配列同士の計算をするために用いることがあります（ブロードキャスト）。<br>
+<p>このような変形は、次元の異なる配列同士の計算をするために用いることがあります（ブロードキャスト）。<br />
 また、reshapeの引数に-1を入れると、sizeを変えないようなshapeを計算してくれます。</p>
 
 </div>
@@ -1548,8 +1548,8 @@ SUVORK5CYII=
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>二つ目の注意する点は、reshapeによって返ってくるndarrayは、元々のndarrayと同じメモリを参照している点です。<br>
-つまり、reshapeによって返ってきたndarrayを書き換えると、オリジナルも変化するということです。<br>
+<p>二つ目の注意する点は、reshapeによって返ってくるndarrayは、元々のndarrayと同じメモリを参照している点です。<br />
+つまり、reshapeによって返ってきたndarrayを書き換えると、オリジナルも変化するということです。<br />
 このような参照をコピーと対比させて、<strong>ビュー</strong>と言います。</p>
 
 </div>
@@ -1594,7 +1594,7 @@ SUVORK5CYII=
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>科学技術計算の上ではこの性質は重要です。なぜなら、大規模な配列をいちいちreshapeのたびにコピーされると困るからです。<br>
+<p>科学技術計算の上ではこの性質は重要です。なぜなら、大規模な配列をいちいちreshapeのたびにコピーされると困るからです。<br />
 もし、オリジナルを書き換えたくないならば、<strong>copy</strong>関数を使う必要があります。</p>
 
 </div>
@@ -1639,7 +1639,7 @@ SUVORK5CYII=
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="reshape&#38306;&#25968;&#12414;&#12392;&#12417;">reshape&#38306;&#25968;&#12414;&#12392;&#12417;<a class="anchor-link" href="#reshape&#38306;&#25968;&#12414;&#12392;&#12417;">&#182;</a></h4><ul>
+<h4 id="reshape%E9%96%A2%E6%95%B0%E3%81%BE%E3%81%A8%E3%82%81">reshape&#38306;&#25968;&#12414;&#12392;&#12417;<a class="anchor-link" href="#reshape%E9%96%A2%E6%95%B0%E3%81%BE%E3%81%A8%E3%82%81">&#182;</a></h4><ul>
 <li>sizeを変化させない。引数に-1を使うと便利。</li>
 <li>reshapeはコピーではなくビューを返す。コピーしたいときはcopy()を使う。</li>
 </ul>
@@ -1647,7 +1647,7 @@ SUVORK5CYII=
 </div>
 </div>
 </div>
- 
+
 
 </div>
       </div>

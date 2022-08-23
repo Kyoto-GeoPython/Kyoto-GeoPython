@@ -66,7 +66,7 @@
         <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Python-&#12363;&#12425;C&#35328;&#35486;&#12289;Fortran&#12434;&#21628;&#12403;&#20986;&#12377;">Python &#12363;&#12425;C&#35328;&#35486;&#12289;Fortran&#12434;&#21628;&#12403;&#20986;&#12377;<a class="anchor-link" href="#Python-&#12363;&#12425;C&#35328;&#35486;&#12289;Fortran&#12434;&#21628;&#12403;&#20986;&#12377;">&#182;</a></h1><p>C言語やFortranで書かれたライブラリは、直接Pythonから呼び出すことが出来ます。</p>
+<h1 id="Python-%E3%81%8B%E3%82%89C%E8%A8%80%E8%AA%9E%E3%80%81Fortran%E3%82%92%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%99">Python &#12363;&#12425;C&#35328;&#35486;&#12289;Fortran&#12434;&#21628;&#12403;&#20986;&#12377;<a class="anchor-link" href="#Python-%E3%81%8B%E3%82%89C%E8%A8%80%E8%AA%9E%E3%80%81Fortran%E3%82%92%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%99">&#182;</a></h1><p>C言語やFortranで書かれたライブラリは、直接Pythonから呼び出すことが出来ます。</p>
 <p>まず、C言語やFortranをコンパイルして共有ライブラリファイル(*.so (Linux) や *.dll)にして、
 そのライブラリをPythonで読み込みます。</p>
 
@@ -76,7 +76,7 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Python-&#12363;&#12425;-C&#35328;&#35486;&#12398;&#38306;&#25968;&#12434;&#21628;&#12403;&#20986;&#12377;">Python &#12363;&#12425; C&#35328;&#35486;&#12398;&#38306;&#25968;&#12434;&#21628;&#12403;&#20986;&#12377;<a class="anchor-link" href="#Python-&#12363;&#12425;-C&#35328;&#35486;&#12398;&#38306;&#25968;&#12434;&#21628;&#12403;&#20986;&#12377;">&#182;</a></h2><p>まず、呼び出される側のC言語のライブラリを用意します。</p>
+<h2 id="Python-%E3%81%8B%E3%82%89-C%E8%A8%80%E8%AA%9E%E3%81%AE%E9%96%A2%E6%95%B0%E3%82%92%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%99">Python &#12363;&#12425; C&#35328;&#35486;&#12398;&#38306;&#25968;&#12434;&#21628;&#12403;&#20986;&#12377;<a class="anchor-link" href="#Python-%E3%81%8B%E3%82%89-C%E8%A8%80%E8%AA%9E%E3%81%AE%E9%96%A2%E6%95%B0%E3%82%92%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%99">&#182;</a></h2><p>まず、呼び出される側のC言語のライブラリを用意します。</p>
 <p>ここではモンテカルロ法のための乱数の生成ライブラリ libsobol を使ってみましょう。</p>
 
 </div>
@@ -190,7 +190,7 @@ void sobol(double *points, int N) {
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">libsobol</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">load_library</span><span class="p">(</span><span class="s2">&quot;libsobol.so&quot;</span><span class="p">,</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">libsobol</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">load_library</span><span class="p">(</span><span class="s2">"libsobol.so"</span><span class="p">,</span><span class="s2">"."</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -232,71 +232,17 @@ void sobol(double *points, int N) {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>代表的な型は以下のように指定します。</p>
-<table>
-<thead><tr>
-<th></th>
-<th>型(C言語)</th>
-<th>型 (C99 stdint.h)</th>
-<th>Python での型指定</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>倍精度浮動小数点数の配列</td>
-<td>double *</td>
-<td></td>
-<td>np.ctypeslib.ndpointer(dtype=np.float64)</td>
-</tr>
-<tr>
-<td>単精度浮動小数点数の配列</td>
-<td>float *</td>
-<td></td>
-<td>np.ctypeslib.ndpointer(dtype=np.float32)</td>
-</tr>
-<tr>
-<td>64bit整数の配列</td>
-<td>long long int *</td>
-<td>int64_t *</td>
-<td>np.ctypeslib.ndpointer(dtype=np.int64)</td>
-</tr>
-<tr>
-<td>32bit整数の配列</td>
-<td>int *</td>
-<td>int32_t *</td>
-<td>np.ctypeslib.ndpointer(dtype=np.int32)</td>
-</tr>
-<tr>
-<td>倍精度浮動小数点数</td>
-<td>double</td>
-<td></td>
-<td>c_float64</td>
-</tr>
-<tr>
-<td>単精度浮動小数点数</td>
-<td>float</td>
-<td></td>
-<td>c_float32</td>
-</tr>
-<tr>
-<td>64bit整数</td>
-<td>long long int</td>
-<td>int64_t</td>
-<td>c_int64</td>
-</tr>
-<tr>
-<td>32bit整数</td>
-<td>int</td>
-<td>int32_t</td>
-<td>c_int32</td>
-</tr>
-<tr>
-<td>void</td>
-<td>void</td>
-<td></td>
-<td>c_void_p</td>
-</tr>
-</tbody>
-</table>
+<p>|   |型(C言語)        |型 (C99 stdint.h) |Python での型指定                        |
+|---|----------------|------------------|---------------------------------------|
+|倍精度浮動小数点数の配列|double *       |                  |np.ctypeslib.ndpointer(dtype=np.float64)|
+|単精度浮動小数点数の配列|float *        |                  |np.ctypeslib.ndpointer(dtype=np.float32)|
+|64bit整数の配列|long long int *|int64_t *        |np.ctypeslib.ndpointer(dtype=np.int64)  |
+|32bit整数の配列|int *          |int32_t *         |np.ctypeslib.ndpointer(dtype=np.int32)  |
+|倍精度浮動小数点数|double        |                  |c_float64|
+|単精度浮動小数点数|float         |                  |c_float32|
+|64bit整数|long long int |int64_t           |c_int64  |
+|32bit整数|int           |int32_t           |c_int32  |
+|void    |void          |                  | c_void_p |</p>
 
 </div>
 </div>
@@ -634,7 +580,7 @@ QmCC
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Python-&#12363;&#12425;-Fortran-&#12398;&#38306;&#25968;&#12434;&#21628;&#12403;&#20986;&#12377;">Python &#12363;&#12425; Fortran &#12398;&#38306;&#25968;&#12434;&#21628;&#12403;&#20986;&#12377;<a class="anchor-link" href="#Python-&#12363;&#12425;-Fortran-&#12398;&#38306;&#25968;&#12434;&#21628;&#12403;&#20986;&#12377;">&#182;</a></h2>
+<h2 id="Python-%E3%81%8B%E3%82%89-Fortran-%E3%81%AE%E9%96%A2%E6%95%B0%E3%82%92%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%99">Python &#12363;&#12425; Fortran &#12398;&#38306;&#25968;&#12434;&#21628;&#12403;&#20986;&#12377;<a class="anchor-link" href="#Python-%E3%81%8B%E3%82%89-Fortran-%E3%81%AE%E9%96%A2%E6%95%B0%E3%82%92%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%99">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -729,7 +675,7 @@ end subroutine
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">libRK</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">load_library</span><span class="p">(</span><span class="s2">&quot;RK4.so&quot;</span><span class="p">,</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">libRK</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">load_library</span><span class="p">(</span><span class="s2">"RK4.so"</span><span class="p">,</span><span class="s2">"."</span><span class="p">)</span>
 
 <span class="n">libRK</span><span class="o">.</span><span class="n">rungekutta</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_double</span><span class="p">),</span>
                              <span class="n">POINTER</span><span class="p">(</span><span class="n">c_int32</span><span class="p">),</span>
@@ -933,7 +879,7 @@ IuIxCnYREY9RsIuIeIyCXUTEYxTsIiIeo2AXEfGY/w88NBTlGvSSbAAAAABJRU5ErkJggg==
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="f2py-&#12434;&#20351;&#12358;">f2py &#12434;&#20351;&#12358;<a class="anchor-link" href="#f2py-&#12434;&#20351;&#12358;">&#182;</a></h2>
+<h2 id="f2py-%E3%82%92%E4%BD%BF%E3%81%86">f2py &#12434;&#20351;&#12358;<a class="anchor-link" href="#f2py-%E3%82%92%E4%BD%BF%E3%81%86">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -1338,7 +1284,7 @@ IuIxCnYREY9RsIuIeIyCXUTEYxTsIiIeo2AXEfGY/w88NBTlGvSSbAAAAABJRU5ErkJggg==
 </div>
 </div>
 </div>
- 
+
 
 </div>
       </div>

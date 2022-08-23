@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Pandas ― データ分析（３）データを分割し、個別に集計する</title>
+    <title>Pandas―データ分析（３）GroupBy</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
       async
@@ -60,20 +60,20 @@
     <div tabindex="-1" id="notebook" class="border-box-sizing must-no-padding">
       <div class="container my-notebook-container must-no-padding" id="notebook-container">
         <div class="w3-panel">
-          <h1 class="w3-center">Pandas ― データ分析（３）データを分割し、個別に集計する</h1>
+          <h1 class="w3-center">Pandas―データ分析（３）GroupBy</h1>
         </div>
 
         <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#20998;&#38626;&#12540;&#36969;&#29992;&#12540;&#32080;&#21512;">&#20998;&#38626;&#12540;&#36969;&#29992;&#12540;&#32080;&#21512;<a class="anchor-link" href="#&#20998;&#38626;&#12540;&#36969;&#29992;&#12540;&#32080;&#21512;">&#182;</a></h1><p>Pandasが得意としているのは、ある条件でデータを分類し、その特徴を調べるという処理です。具体的には、</p>
+<h1 id="%E5%88%86%E9%9B%A2%E3%83%BC%E9%81%A9%E7%94%A8%E3%83%BC%E7%B5%90%E5%90%88">&#20998;&#38626;&#12540;&#36969;&#29992;&#12540;&#32080;&#21512;<a class="anchor-link" href="#%E5%88%86%E9%9B%A2%E3%83%BC%E9%81%A9%E7%94%A8%E3%83%BC%E7%B5%90%E5%90%88">&#182;</a></h1><p>Pandasが得意としているのは、ある条件でデータを分類し、その特徴を調べるという処理です。具体的には、</p>
 <ol>
 <li>DataFrame.groupbyメソッドで小さいDataFrameに分割</li>
 <li>グループごとに計算を行う</li>
 <li>それらを集めてグループごとの計算結果を表示する</li>
 </ol>
-<p>という流れとなります。<br>
-どういうgroupに分けるか、分けたDataFrameでどのような計算を行うかは解析の最も難しく面白いところだと思います。<br>
+<p>という流れとなります。<br />
+どういうgroupに分けるか、分けたDataFrameでどのような計算を行うかは解析の最も難しく面白いところだと思います。<br />
 このあたりの手法は<a href="http://pandas.pydata.org/pandas-docs/stable/groupby.html">Group By: split-apply-combine</a>を参考にしました。</p>
 <h2 id="DataFrame.groupby">DataFrame.groupby<a class="anchor-link" href="#DataFrame.groupby">&#182;</a></h2><p>引数で与えた列をkeyとして、分割してDataFrameGroupByオブジェクトを返す関数です（<strong>分割</strong>）。</p>
 
@@ -102,9 +102,9 @@
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;key1&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">),</span> <span class="mi">15</span><span class="p">),</span>
-                <span class="s2">&quot;value1&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span>
-                <span class="s2">&quot;value2&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">15</span><span class="p">)})</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"key1"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s2">"abc"</span><span class="p">),</span> <span class="mi">15</span><span class="p">),</span>
+                <span class="s2">"value1"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span>
+                <span class="s2">"value2"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">15</span><span class="p">)})</span>
 <span class="n">df</span>
 </pre></div>
 
@@ -122,8 +122,7 @@
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -239,8 +238,7 @@
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -251,7 +249,7 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="DataFrameGroupBy&#12458;&#12502;&#12472;&#12455;&#12463;&#12488;">DataFrameGroupBy&#12458;&#12502;&#12472;&#12455;&#12463;&#12488;<a class="anchor-link" href="#DataFrameGroupBy&#12458;&#12502;&#12472;&#12455;&#12463;&#12488;">&#182;</a></h3><p>イテレータであり、for ~ in ...の...に置くと、グループ名と分割されたDataFrameを取り出すことが出来ます。</p>
+<h3 id="DataFrameGroupBy%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88">DataFrameGroupBy&#12458;&#12502;&#12472;&#12455;&#12463;&#12488;<a class="anchor-link" href="#DataFrameGroupBy%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88">&#182;</a></h3><p>イテレータであり、for ~ in ...の...に置くと、グループ名と分割されたDataFrameを取り出すことが出来ます。</p>
 
 </div>
 </div>
@@ -261,7 +259,7 @@
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">_name</span><span class="p">,</span> <span class="n">_df</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">_name</span><span class="p">,</span> <span class="n">_df</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"key1"</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">_name</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">_df</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">()</span>
@@ -319,7 +317,7 @@ c
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get_groupで特定のkeyを持つDataFrameを取得する</span>
-<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"key1"</span><span class="p">)</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s2">"a"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -336,8 +334,7 @@ c
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -375,8 +372,7 @@ c
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -387,7 +383,7 @@ c
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>DataFrameGroupByオブジェクトのメソッドを呼び出すことで、分割された各DataFrameで計算されます（<strong>適用</strong>）。<br>
+<p>DataFrameGroupByオブジェクトのメソッドを呼び出すことで、分割された各DataFrameで計算されます（<strong>適用</strong>）。<br />
 最終的に、グループごとに計算を行った結果がまとめられます（<strong>結合</strong>）。</p>
 
 </div>
@@ -399,7 +395,7 @@ c
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># GroupByオブジェクトの関数を呼ぶとグループごとに計算した結果を返す</span>
-<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"key1"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -416,8 +412,7 @@ c
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -462,8 +457,7 @@ c
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -489,7 +483,7 @@ c
     <span class="k">return</span> <span class="n">cols</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">cols</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
 
 <span class="c1"># aggメソッドで各グループ、各列に関数を適用し、値を得る</span>
-<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">func</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"key1"</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">func</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -623,7 +617,7 @@ g/4/feFbD4ngijMAAAAASUVORK5CYII=
 </div>
 </div>
 </div>
- 
+
 
 </div>
       </div>

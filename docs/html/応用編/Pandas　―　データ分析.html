@@ -66,7 +66,7 @@
         <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Pandas&#12288;&#8213;&#12288;&#12487;&#12540;&#12479;&#20998;&#26512;">Pandas&#12288;&#8213;&#12288;&#12487;&#12540;&#12479;&#20998;&#26512;<a class="anchor-link" href="#Pandas&#12288;&#8213;&#12288;&#12487;&#12540;&#12479;&#20998;&#26512;">&#182;</a></h1><p>Pythonでのデータ解析の決定版とも言えるライブラリです。 特徴としては、</p>
+<h1 id="Pandas%E3%80%80%E2%80%95%E3%80%80%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90">Pandas&#12288;&#8213;&#12288;&#12487;&#12540;&#12479;&#20998;&#26512;<a class="anchor-link" href="#Pandas%E3%80%80%E2%80%95%E3%80%80%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90">&#182;</a></h1><p>Pythonでのデータ解析の決定版とも言えるライブラリです。 特徴としては、</p>
 <ul>
 <li>時系列データを扱うことに長けている</li>
 <li>numpy.ndarrayで実装されており、大量のデータでも高速に動作する</li>
@@ -99,7 +99,7 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Series">Series<a class="anchor-link" href="#Series">&#182;</a></h1><p>Pandasの基本はSeriesとDataFrameですが、その内一列のデータ構造を表すSeriesをまず紹介します。<br>
+<h1 id="Series">Series<a class="anchor-link" href="#Series">&#182;</a></h1><p>Pandasの基本はSeriesとDataFrameですが、その内一列のデータ構造を表すSeriesをまず紹介します。<br />
 イメージとしては、Excelの縦に並んだ一列のデータを表すオブジェクトだと思ってもらうといいと思います。</p>
 
 </div>
@@ -220,7 +220,7 @@ dtype: int64</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Seriesにnameとindexを付ける（indexを明示的に与えない場合0, 1, 2,...と割り振られる）</span>
-<span class="n">sr</span> <span class="o">=</span> <span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;random&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">&quot;abcdefgh&quot;</span><span class="p">))</span>
+<span class="n">sr</span> <span class="o">=</span> <span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">"random"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">"abcdefgh"</span><span class="p">))</span>
 <span class="n">sr</span>
 </pre></div>
 
@@ -675,7 +675,7 @@ Name: random, dtype: float64</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># indexを日付などにすると時系列が表現できる</span>
-<span class="n">sr_time</span> <span class="o">=</span> <span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2017/1/1&quot;</span><span class="p">,</span><span class="s2">&quot;2017/1/10&quot;</span><span class="p">))</span>
+<span class="n">sr_time</span> <span class="o">=</span> <span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">"2017/1/1"</span><span class="p">,</span><span class="s2">"2017/1/10"</span><span class="p">))</span>
 <span class="n">sr_time</span>
 </pre></div>
 
@@ -720,7 +720,7 @@ Freq: D, dtype: float64</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># pandasには日付や期間を表すオブジェクトが充実している（これは1秒ごとのインデックスを作ったもの）</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2017/1/1/0:0&quot;</span><span class="p">,</span> <span class="s2">&quot;2017/1/1/10:00&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">"2017/1/1/0:0"</span><span class="p">,</span> <span class="s2">"2017/1/1/10:00"</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">"S"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -765,7 +765,7 @@ Freq: D, dtype: float64</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># スライスと同じ記法で日付の範囲を抜き出せる</span>
-<span class="n">sr_time</span><span class="p">[</span><span class="s2">&quot;2017/1/5&quot;</span><span class="p">:]</span>
+<span class="n">sr_time</span><span class="p">[</span><span class="s2">"2017/1/5"</span><span class="p">:]</span>
 </pre></div>
 
     </div>
@@ -802,7 +802,7 @@ Freq: D, dtype: float64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#27424;&#25613;&#20516;&#12434;&#21547;&#12416;&#22580;&#21512;">&#27424;&#25613;&#20516;&#12434;&#21547;&#12416;&#22580;&#21512;<a class="anchor-link" href="#&#27424;&#25613;&#20516;&#12434;&#21547;&#12416;&#22580;&#21512;">&#182;</a></h3><p>デフォルトだと、平均などは欠損値を覗いて計算されます。<br>
+<h3 id="%E6%AC%A0%E6%90%8D%E5%80%A4%E3%82%92%E5%90%AB%E3%82%80%E5%A0%B4%E5%90%88">&#27424;&#25613;&#20516;&#12434;&#21547;&#12416;&#22580;&#21512;<a class="anchor-link" href="#%E6%AC%A0%E6%90%8D%E5%80%A4%E3%82%92%E5%90%AB%E3%82%80%E5%A0%B4%E5%90%88">&#182;</a></h3><p>デフォルトだと、平均などは欠損値を覗いて計算されます。<br />
 データが汚い場合でも、データの整理に時間を取られず、本当にやりたい解析に集中することが出来ます。</p>
 
 </div>
@@ -885,8 +885,8 @@ dtype: float64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="DataFrame">DataFrame<a class="anchor-link" href="#DataFrame">&#182;</a></h1><p>Seriesが一列だとすれば、DataFrameは複数の列を持つデータ構造をしています。<br>
-イメージとして、Excelのようなデータ構造をndarrayで保持しているというのが近いと思います。<br>
+<h1 id="DataFrame">DataFrame<a class="anchor-link" href="#DataFrame">&#182;</a></h1><p>Seriesが一列だとすれば、DataFrameは複数の列を持つデータ構造をしています。<br />
+イメージとして、Excelのようなデータ構造をndarrayで保持しているというのが近いと思います。<br />
 一つ一つの要素を書き換えるような手動の処理はExcelの方が素早く出来ますが、一括計算をしたいときはDataFrameの方が遥かに素早く計算できます。</p>
 
 </div>
@@ -900,9 +900,9 @@ dtype: float64</pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 辞書型を引数にとり、DataFrameオブジェクトを返す。</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span>
     <span class="p">{</span>
-        <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
-        <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;apple&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
+        <span class="s2">"A"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+        <span class="s2">"B"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"apple"</span><span class="p">,</span> <span class="s2">"orange"</span><span class="p">,</span> <span class="s2">"banana"</span><span class="p">,</span> <span class="s2">"apple"</span><span class="p">],</span>
+        <span class="s2">"C"</span><span class="p">:</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
     <span class="p">})</span>
 <span class="n">df</span>
 </pre></div>
@@ -921,8 +921,7 @@ dtype: float64</pre>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -959,8 +958,7 @@ dtype: float64</pre>
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1010,11 +1008,11 @@ dtype: float64</pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># columnsをキーワード引数で与える場合、インデックスごとのデータのリストを渡す</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span>
     <span class="p">[</span>
-        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
-        <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
-        <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
-        <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
-    <span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">])</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"apple"</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"orange"</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="s2">"banana"</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
+        <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"apple"</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
+    <span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">])</span>
 <span class="n">df</span>
 </pre></div>
 
@@ -1032,8 +1030,7 @@ dtype: float64</pre>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1070,8 +1067,7 @@ dtype: float64</pre>
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1085,7 +1081,7 @@ dtype: float64</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Seriesは属性のように呼び出せる</span>
-<span class="n">df</span><span class="o">.</span><span class="n">B</span> <span class="c1"># または df[&quot;B&quot;]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">B</span> <span class="c1"># または df["B"]</span>
 </pre></div>
 
     </div>
@@ -1123,7 +1119,7 @@ Name: B, dtype: object</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 複数の列を抜き出したDataFrameを作る</span>
-<span class="n">df</span><span class="p">[[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">]]</span>
+<span class="n">df</span><span class="p">[[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">]]</span>
 </pre></div>
 
     </div>
@@ -1140,8 +1136,7 @@ Name: B, dtype: object</pre>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1173,8 +1168,7 @@ Name: B, dtype: object</pre>
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1187,7 +1181,7 @@ Name: B, dtype: object</pre>
 <div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Series &#39;C&#39;の値がTrueのものだけをDataFrameとして抜き出す</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Series 'C'の値がTrueのものだけをDataFrameとして抜き出す</span>
 <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">C</span><span class="p">]</span>
 </pre></div>
 
@@ -1205,8 +1199,7 @@ Name: B, dtype: object</pre>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1237,8 +1230,7 @@ Name: B, dtype: object</pre>
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1252,7 +1244,7 @@ Name: B, dtype: object</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Bがappleのものだけを抜き出す</span>
-<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">B</span> <span class="o">==</span> <span class="s2">&quot;apple&quot;</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">B</span> <span class="o">==</span> <span class="s2">"apple"</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -1269,8 +1261,7 @@ Name: B, dtype: object</pre>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1295,8 +1286,7 @@ Name: B, dtype: object</pre>
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1310,7 +1300,7 @@ Name: B, dtype: object</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Bがappleかつ、CがTrueのものだけを抜き出す</span>
-<span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">B</span> <span class="o">==</span> <span class="s2">&quot;apple&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">df</span><span class="o">.</span><span class="n">C</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">B</span> <span class="o">==</span> <span class="s2">"apple"</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">df</span><span class="o">.</span><span class="n">C</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -1327,8 +1317,7 @@ Name: B, dtype: object</pre>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1347,8 +1336,7 @@ Name: B, dtype: object</pre>
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1362,7 +1350,7 @@ Name: B, dtype: object</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># DataFrameへのSeriesの追加はこのようにする</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;D_new&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">A</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"D_new"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">A</span> <span class="o">**</span> <span class="mi">2</span>
 <span class="n">df</span>
 </pre></div>
 
@@ -1380,8 +1368,7 @@ Name: B, dtype: object</pre>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1423,8 +1410,7 @@ Name: B, dtype: object</pre>
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1476,7 +1462,7 @@ dtype: object</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># DataFrameの統計量をまとめて出す</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;rand&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span>  <span class="s2">&quot;randn&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)})</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">({</span><span class="s2">"rand"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span>  <span class="s2">"randn"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)})</span>
 <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 
@@ -1494,8 +1480,7 @@ dtype: object</pre>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1547,8 +1532,7 @@ dtype: object</pre>
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -2456,7 +2440,7 @@ IhwcHBwcHBwiwRkRDg4ODg4ODpHgjAgHBwcHBweHSHBGhIODg4ODg0MkOCPCwcHBwcHBIRKcEeHg
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ヒストグラムなどはkindで指定する。 「df.plot?」を見ると詳細あり。</span>
-<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"hist"</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2692,14 +2676,14 @@ D0mSVBiDhyRJKozBQ5IkFeb/A7nXEJHyp/tBAAAAAElFTkSuQmCC
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#20998;&#38626;&#12540;&#36969;&#29992;&#12540;&#32080;&#21512;">&#20998;&#38626;&#12540;&#36969;&#29992;&#12540;&#32080;&#21512;<a class="anchor-link" href="#&#20998;&#38626;&#12540;&#36969;&#29992;&#12540;&#32080;&#21512;">&#182;</a></h1><p>Pandasが得意としているのは、ある条件でデータを分類し、その特徴を調べるという処理です。具体的には、</p>
+<h1 id="%E5%88%86%E9%9B%A2%E3%83%BC%E9%81%A9%E7%94%A8%E3%83%BC%E7%B5%90%E5%90%88">&#20998;&#38626;&#12540;&#36969;&#29992;&#12540;&#32080;&#21512;<a class="anchor-link" href="#%E5%88%86%E9%9B%A2%E3%83%BC%E9%81%A9%E7%94%A8%E3%83%BC%E7%B5%90%E5%90%88">&#182;</a></h1><p>Pandasが得意としているのは、ある条件でデータを分類し、その特徴を調べるという処理です。具体的には、</p>
 <ol>
 <li>DataFrame.groupbyメソッドで小さいDataFrameに分割</li>
 <li>グループごとに計算を行う</li>
 <li>それらを集めてグループごとの計算結果を表示する</li>
 </ol>
-<p>という流れとなります。<br>
-どういうgroupに分けるか、分けたDataFrameでどのような計算を行うかは解析の最も難しく面白いところだと思います。<br>
+<p>という流れとなります。<br />
+どういうgroupに分けるか、分けたDataFrameでどのような計算を行うかは解析の最も難しく面白いところだと思います。<br />
 このあたりの手法は<a href="http://pandas.pydata.org/pandas-docs/stable/groupby.html">Group By: split-apply-combine</a>を参考にしました。</p>
 <h2 id="DataFrame.groupby">DataFrame.groupby<a class="anchor-link" href="#DataFrame.groupby">&#182;</a></h2><p>引数で与えた列をkeyとして、分割してDataFrameGroupByオブジェクトを返す関数です（<strong>分割</strong>）。</p>
 
@@ -2711,7 +2695,7 @@ D0mSVBiDhyRJKozBQ5IkFeb/A7nXEJHyp/tBAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;key1&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">),</span> <span class="mi">15</span><span class="p">),</span> <span class="s2">&quot;value1&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span> <span class="s2">&quot;value2&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">15</span><span class="p">)})</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">({</span><span class="s2">"key1"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s2">"abc"</span><span class="p">),</span> <span class="mi">15</span><span class="p">),</span> <span class="s2">"value1"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span> <span class="s2">"value2"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">15</span><span class="p">)})</span>
 <span class="n">df</span>
 </pre></div>
 
@@ -2729,8 +2713,7 @@ D0mSVBiDhyRJKozBQ5IkFeb/A7nXEJHyp/tBAAAAAElFTkSuQmCC
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2833,8 +2816,7 @@ D0mSVBiDhyRJKozBQ5IkFeb/A7nXEJHyp/tBAAAAAElFTkSuQmCC
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -2848,7 +2830,7 @@ D0mSVBiDhyRJKozBQ5IkFeb/A7nXEJHyp/tBAAAAAElFTkSuQmCC
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># key1をkeyとしてグループに分割する</span>
-<span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">)</span>
+<span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"key1"</span><span class="p">)</span>
 <span class="n">grouped</span>
 </pre></div>
 
@@ -2880,7 +2862,7 @@ D0mSVBiDhyRJKozBQ5IkFeb/A7nXEJHyp/tBAAAAAElFTkSuQmCC
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="DataFrameGroupBy&#12458;&#12502;&#12472;&#12455;&#12463;&#12488;">DataFrameGroupBy&#12458;&#12502;&#12472;&#12455;&#12463;&#12488;<a class="anchor-link" href="#DataFrameGroupBy&#12458;&#12502;&#12472;&#12455;&#12463;&#12488;">&#182;</a></h3><p>イテレータであり、for ~ in ...の...に置くと、グループ名と分割されたDataFrameを取り出すことが出来ます。</p>
+<h3 id="DataFrameGroupBy%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88">DataFrameGroupBy&#12458;&#12502;&#12472;&#12455;&#12463;&#12488;<a class="anchor-link" href="#DataFrameGroupBy%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88">&#182;</a></h3><p>イテレータであり、for ~ in ...の...に置くと、グループ名と分割されたDataFrameを取り出すことが出来ます。</p>
 
 </div>
 </div>
@@ -2948,7 +2930,7 @@ c
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get_groupで特定のkeyを持つDataFrameを取得する</span>
-<span class="n">grouped</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="n">grouped</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s2">"a"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2965,8 +2947,7 @@ c
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2991,8 +2972,7 @@ c
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -3003,7 +2983,7 @@ c
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>DataFrameGroupByオブジェクトのメソッドを呼び出すことで、分割された各DataFrameで計算されます（<strong>適用</strong>）。<br>
+<p>DataFrameGroupByオブジェクトのメソッドを呼び出すことで、分割された各DataFrameで計算されます（<strong>適用</strong>）。<br />
 最終的に、グループごとに計算を行った結果がまとめられます（<strong>結合</strong>）。</p>
 
 </div>
@@ -3032,8 +3012,7 @@ c
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -3065,8 +3044,7 @@ c
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -3137,8 +3115,7 @@ value2
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -3170,8 +3147,7 @@ value2
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -3182,8 +3158,8 @@ value2
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#12300;&#20998;&#38626;&#12540;&#36969;&#29992;&#12540;&#32080;&#21512;&#12301;&#12398;&#19968;&#20363;">&#12300;&#20998;&#38626;&#12540;&#36969;&#29992;&#12540;&#32080;&#21512;&#12301;&#12398;&#19968;&#20363;<a class="anchor-link" href="#&#12300;&#20998;&#38626;&#12540;&#36969;&#29992;&#12540;&#32080;&#21512;&#12301;&#12398;&#19968;&#20363;">&#182;</a></h1><p><a href="./文字列操作.html">文字列操作</a>でも使った国勢調査をもとにした人口推移のCSVを再び使います。<br>
-このデータの中には、都道府県別の人口推移もあるので、pandasで解析してみましょう。<br>
+<h1 id="%E3%80%8C%E5%88%86%E9%9B%A2%E3%83%BC%E9%81%A9%E7%94%A8%E3%83%BC%E7%B5%90%E5%90%88%E3%80%8D%E3%81%AE%E4%B8%80%E4%BE%8B">&#12300;&#20998;&#38626;&#12540;&#36969;&#29992;&#12540;&#32080;&#21512;&#12301;&#12398;&#19968;&#20363;<a class="anchor-link" href="#%E3%80%8C%E5%88%86%E9%9B%A2%E3%83%BC%E9%81%A9%E7%94%A8%E3%83%BC%E7%B5%90%E5%90%88%E3%80%8D%E3%81%AE%E4%B8%80%E4%BE%8B">&#182;</a></h1><p><a href="./%E6%96%87%E5%AD%97%E5%88%97%E6%93%8D%E4%BD%9C.html">文字列操作</a>でも使った国勢調査をもとにした人口推移のCSVを再び使います。<br />
+このデータの中には、都道府県別の人口推移もあるので、pandasで解析してみましょう。<br />
 とりあえず</p>
 <ul>
 <li>都道府県別の人口増減を一次近似で求め、その勾配ランキングを作る</li>
@@ -3199,7 +3175,7 @@ value2
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 最初の５行を出力</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;c01.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"c01.csv"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fp</span><span class="o">.</span><span class="n">readlines</span><span class="p">()[:</span><span class="mi">5</span><span class="p">]:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 </pre></div>
@@ -3250,7 +3226,7 @@ value2
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 一行でcsvファイルをDataFrameに変換できる</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;c01.csv&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="n">skipfooter</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"c01.csv"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">,</span> <span class="n">skipfooter</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">"python"</span><span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
 
@@ -3268,8 +3244,7 @@ value2
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -4021,8 +3996,7 @@ value2
   </tbody>
 </table>
 <p>980 rows × 9 columns</p>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -4112,7 +4086,7 @@ dtype: object</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>dtypeを確認すると、人口がobject（つまり文字列）としてデータを持ってしまっていました。<br>
+<p>dtypeを確認すると、人口がobject（つまり文字列）としてデータを持ってしまっていました。<br />
 pandasだと数値として認識してくれるとうまくキャストしてくれると思ってましたがなぜでしょうか？</p>
 
 </div>
@@ -4121,7 +4095,7 @@ pandasだと数値として認識してくれるとうまくキャストして�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>pd.to_numericという関数はSeriesを数値にキャストしてSeriesを返します。<br>
+<p>pd.to_numericという関数はSeriesを数値にキャストしてSeriesを返します。<br />
 実行してみると、不可解なエラーが出ました。</p>
 
 </div>
@@ -4168,7 +4142,7 @@ pandasだと数値として認識してくれるとうまくキャストして�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>こういうときは、遡ってエラーの原因を探るのが大事です。<br>
+<p>こういうときは、遡ってエラーの原因を探るのが大事です。<br />
 一個ずつ数値にキャストして最初にエラーを出すところを調べましょう。</p>
 
 </div>
@@ -4179,7 +4153,7 @@ pandasだと数値として認識してくれるとうまくキャストして�
 <div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;人口（総数）&quot;</span><span class="p">]:</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s2">"人口（総数）"</span><span class="p">]:</span>
     <span class="n">last</span> <span class="o">=</span> <span class="n">num</span>
     <span class="nb">int</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
 </pre></div>
@@ -4260,17 +4234,18 @@ pandasだと数値として認識してくれるとうまくキャストして�
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>pd.to_numeric?をみると</p>
-<blockquote><p>Signature: pd.to_numeric(arg, errors='raise')</p>
+<blockquote>
+<p>Signature: pd.to_numeric(arg, errors='raise')</p>
+</blockquote>
+<blockquote>
 <p>errors : {'ignore', 'raise', 'coerce'}, default 'raise'</p>
 <ul>
 <li>If 'raise', then invalid parsing will raise an exception</li>
-<li>If 'coerce', then invalid parsing will be set as NaN<ul>
+<li>If 'coerce', then invalid parsing will be set as NaN</li>
 <li>If 'ignore', then invalid parsing will return the input</li>
 </ul>
-</li>
-</ul>
 </blockquote>
-<p>errors="coerce"とキーワード引数を与えてやれば、キャストできないものを欠損値として置き換えてくれるそうです。<br>
+<p>errors=&quot;coerce&quot;とキーワード引数を与えてやれば、キャストできないものを欠損値として置き換えてくれるそうです。<br />
 デフォルトではエラーを吐き出すという設定になっていますね。</p>
 
 </div>
@@ -4282,7 +4257,7 @@ pandasだと数値として認識してくれるとうまくキャストして�
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 最初の５行のみ表示</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;人口（総数）&quot;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"人口（総数）"</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">"coerce"</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -4318,7 +4293,7 @@ Name: 人口（総数）, dtype: float64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>とりあえず変換は出来たようです。<br>
+<p>とりあえず変換は出来たようです。<br />
 numpyのintには欠損値を表す変数はないらしく、float64で解析をすることにします。</p>
 
 </div>
@@ -4332,7 +4307,7 @@ numpyのintには欠損値を表す変数はないらしく、float64で解析�
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 各Seriesを文字列から数値に変換</span>
 <span class="k">for</span> <span class="n">_name</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">_name</span><span class="p">)</span>
-    <span class="n">df</span><span class="p">[</span><span class="n">_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">_name</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">_name</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">"coerce"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -4405,13 +4380,14 @@ dtype: object</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>dtypeもうまく変換できてますね。<br>
+<p>dtypeもうまく変換できてますね。<br />
 pd.read_csvが欠損値として認識するのは</p>
-<blockquote><p>‘’, ‘#N/A’, ‘#N/A N/A’, ‘#NA’, ‘-1.#IND’, ‘-1.#QNAN’, ‘-NaN’,<br>
+<blockquote>
+<p>‘’, ‘#N/A’, ‘#N/A N/A’, ‘#NA’, ‘-1.#IND’, ‘-1.#QNAN’, ‘-NaN’,<br />
 ‘1.#IND’, ‘1.#QNAN’, ‘N/A’, ‘NA’, ‘NULL’, ‘NaN’, ‘nan’</p>
 </blockquote>
-<p>らしいので、今回は珍しいケースに出会ってしまったのかもしれません。<br>
-気を取り直して解析を続けましょう。<br>
+<p>らしいので、今回は珍しいケースに出会ってしまったのかもしれません。<br />
+気を取り直して解析を続けましょう。<br />
 都道府県名を重複を除いてみると</p>
 
 </div>
@@ -4423,7 +4399,7 @@ pd.read_csvが欠損値として認識するのは</p>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 組み込み関数のset()と似た働き</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;都道府県名&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"都道府県名"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -4459,7 +4435,7 @@ pd.read_csvが欠損値として認識するのは</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>都道府県別の時系列を見てみたいので、都道府県以外は取り除きましょう。<br>
+<p>都道府県別の時系列を見てみたいので、都道府県以外は取り除きましょう。<br />
 DataFrame.dropはindexが引数に一致している行を削除したDataFrameを返す関数です。</p>
 
 </div>
@@ -4471,10 +4447,10 @@ DataFrame.dropはindexが引数に一致している行を削除したDataFrame�
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># dropするためにindexを変更する（コピーを伴わないので高速）</span>
-<span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;都道府県名&quot;</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"都道府県名"</span><span class="p">]</span>
 
 <span class="c1"># indexが引数に一致していたらその行を削除する</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;全国&quot;</span><span class="p">,</span> <span class="s1">&#39;人口集中地区&#39;</span><span class="p">,</span> <span class="s1">&#39;人口集中地区以外の地区&#39;</span><span class="p">])</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">"全国"</span><span class="p">,</span> <span class="s1">'人口集中地区'</span><span class="p">,</span> <span class="s1">'人口集中地区以外の地区'</span><span class="p">])</span>
 <span class="n">df</span>
 </pre></div>
 
@@ -4492,8 +4468,7 @@ DataFrame.dropはindexが引数に一致している行を削除したDataFrame�
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -5257,8 +5232,7 @@ DataFrame.dropはindexが引数に一致している行を削除したDataFrame�
   </tbody>
 </table>
 <p>940 rows × 9 columns</p>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -5305,8 +5279,8 @@ DataFrame.dropはindexが引数に一致している行を削除したDataFrame�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>さて、解析のための準備が整いました。<br>
-都道府県名をkeyにしてgroupbyし、その勾配を求める自作関数を作れば良さそうです。<br>
+<p>さて、解析のための準備が整いました。<br />
+都道府県名をkeyにしてgroupbyし、その勾配を求める自作関数を作れば良さそうです。<br />
 indexはこれから時系列として扱うので西暦に変更しておきます。</p>
 
 </div>
@@ -5317,8 +5291,8 @@ indexはこれから時系列として扱うので西暦に変更しておきま
 <div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;西暦（年）&#39;</span><span class="p">]</span>
-<span class="n">gb</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;都道府県名&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'西暦（年）'</span><span class="p">]</span>
+<span class="n">gb</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"都道府県名"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -5344,7 +5318,7 @@ indexはこれから時系列として扱うので西暦に変更しておきま
 <span class="nb">print</span><span class="p">(</span><span class="n">_name</span><span class="p">)</span>
 
 <span class="c1"># 人口（総数）をプロット</span>
-<span class="n">_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;人口（総数）&quot;</span><span class="p">],</span> <span class="p">)</span>
+<span class="n">_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">"人口（総数）"</span><span class="p">],</span> <span class="p">)</span>
 </pre></div>
 
     </div>
@@ -5730,8 +5704,8 @@ ZpXzP6Zj6Ujcr9VcAAAAAElFTkSuQmCC
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>さて、このDataFrameから人口増減勾配を求める方法を考えましょう。<br>
-そのような方法はたくさんありますが今回は擬似逆行列を使って素早く求めましょう。<br>
+<p>さて、このDataFrameから人口増減勾配を求める方法を考えましょう。<br />
+そのような方法はたくさんありますが今回は擬似逆行列を使って素早く求めましょう。<br />
 $$d=Gm$$
 のとき$、G^\dagger$を擬似逆行列とすると
 $$m=G^\dagger d$$
@@ -5750,7 +5724,7 @@ $$m=G^\dagger d$$
 
 <span class="c1"># Green関数（直線なのでパラメータ２つ）</span>
 <span class="n">G</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span><span class="o">.</span><span class="n">T</span>
-<span class="n">d</span> <span class="o">=</span> <span class="n">_df</span><span class="p">[</span><span class="s2">&quot;人口（総数）&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">_df</span><span class="p">[</span><span class="s2">"人口（総数）"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 
 <span class="c1"># 直線のパラメータ（np.linalg.pinvは疑似逆行列を求める関数）</span>
 <span class="n">params</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">@</span> <span class="n">d</span>
@@ -6209,7 +6183,7 @@ ERERkYSlQkdEREQSlgodERERSVj/BXwR2fGtJlG1AAAAAElFTkSuQmCC
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>うまく直線が引けています。これを見ると無限に増えていくので一次近似は無理があることが分かります。<br>
+<p>うまく直線が引けています。これを見ると無限に増えていくので一次近似は無理があることが分かります。<br />
 今回はとりあえず単純に勾配だけを計算することにしているので、これを関数として定義します。</p>
 
 </div>
@@ -6246,7 +6220,7 @@ ERERkYSlQkdEREQSlgodERERSVj/BXwR2fGtJlG1AAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In&nbsp;[52]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">gb</span><span class="p">[</span><span class="n">pops</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">calc_slope</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">p_all</span><span class="p">:</span> <span class="s2">&quot;slope_all&quot;</span><span class="p">,</span> <span class="n">p_man</span><span class="p">:</span> <span class="s2">&quot;slope_man&quot;</span><span class="p">,</span> <span class="n">p_woman</span><span class="p">:</span> <span class="s2">&quot;slope_woman&quot;</span><span class="p">})</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">gb</span><span class="p">[</span><span class="n">pops</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">calc_slope</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">p_all</span><span class="p">:</span> <span class="s2">"slope_all"</span><span class="p">,</span> <span class="n">p_man</span><span class="p">:</span> <span class="s2">"slope_man"</span><span class="p">,</span> <span class="n">p_woman</span><span class="p">:</span> <span class="s2">"slope_woman"</span><span class="p">})</span>
 </pre></div>
 
     </div>
@@ -6263,8 +6237,7 @@ ERERkYSlQkdEREQSlgodERERSVj/BXwR2fGtJlG1AAAAAElFTkSuQmCC
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -6565,8 +6538,7 @@ ERERkYSlQkdEREQSlgodERERSVj/BXwR2fGtJlG1AAAAAElFTkSuQmCC
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -6619,7 +6591,7 @@ ERERkYSlQkdEREQSlgodERERSVj/BXwR2fGtJlG1AAAAAElFTkSuQmCC
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># もう一度、グループに適用、結合</span>
-<span class="n">df_res</span> <span class="o">=</span> <span class="n">gb</span><span class="p">[</span><span class="n">pops</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">calc_slope_new</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">p_all</span><span class="p">:</span> <span class="s2">&quot;slope_all&quot;</span><span class="p">,</span> <span class="n">p_man</span><span class="p">:</span> <span class="s2">&quot;slope_man&quot;</span><span class="p">,</span> <span class="n">p_woman</span><span class="p">:</span> <span class="s2">&quot;slope_woman&quot;</span><span class="p">})</span>
+<span class="n">df_res</span> <span class="o">=</span> <span class="n">gb</span><span class="p">[</span><span class="n">pops</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">calc_slope_new</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">p_all</span><span class="p">:</span> <span class="s2">"slope_all"</span><span class="p">,</span> <span class="n">p_man</span><span class="p">:</span> <span class="s2">"slope_man"</span><span class="p">,</span> <span class="n">p_woman</span><span class="p">:</span> <span class="s2">"slope_woman"</span><span class="p">})</span>
 <span class="n">df_res</span>
 </pre></div>
 
@@ -6637,8 +6609,7 @@ ERERkYSlQkdEREQSlgodERERSVj/BXwR2fGtJlG1AAAAAElFTkSuQmCC
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -6939,8 +6910,7 @@ ERERkYSlQkdEREQSlgodERERSVj/BXwR2fGtJlG1AAAAAElFTkSuQmCC
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -6951,7 +6921,7 @@ ERERkYSlQkdEREQSlgodERERSVj/BXwR2fGtJlG1AAAAAElFTkSuQmCC
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>ようやく、勾配を都道府県ごと、ついでに性別別にも求まりました。<br>
+<p>ようやく、勾配を都道府県ごと、ついでに性別別にも求まりました。<br />
 slope_allでソートしてみましょう。</p>
 
 </div>
@@ -6962,7 +6932,7 @@ slope_allでソートしてみましょう。</p>
 <div class="prompt input_prompt">In&nbsp;[55]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_res_sorted</span> <span class="o">=</span> <span class="n">df_res</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;slope_all&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_res_sorted</span> <span class="o">=</span> <span class="n">df_res</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">"slope_all"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">df_res_sorted</span>
 </pre></div>
 
@@ -6980,8 +6950,7 @@ slope_allでソートしてみましょう。</p>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -7282,8 +7251,7 @@ slope_allでソートしてみましょう。</p>
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -7294,8 +7262,8 @@ slope_allでソートしてみましょう。</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>完成です。<br>
-今回は都道府県別を調べましたが、データさえあれば、（コードをほとんど変えずに）市町村でもできることが分かってもらえると思います。<br>
+<p>完成です。<br />
+今回は都道府県別を調べましたが、データさえあれば、（コードをほとんど変えずに）市町村でもできることが分かってもらえると思います。<br />
 このようにpandasには汎用性の高い機能がたくさんあり、それらを組み合わせる技術が問われていくのだろうと思います。</p>
 
 </div>
@@ -7304,8 +7272,8 @@ slope_allでソートしてみましょう。</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#12418;&#12387;&#12392;Pandas&#12434;&#30693;&#12426;&#12383;&#12356;&#20154;&#12408;">&#12418;&#12387;&#12392;Pandas&#12434;&#30693;&#12426;&#12383;&#12356;&#20154;&#12408;<a class="anchor-link" href="#&#12418;&#12387;&#12392;Pandas&#12434;&#30693;&#12426;&#12383;&#12356;&#20154;&#12408;">&#182;</a></h1><p>参考にしてほしい本として「<a href="https://www.oreilly.co.jp/books/9784873116556/">Pythonによるデータ分析入門</a>（O'REILLY）」があります。<br>
-これはPandasを作った人の本であり、（当然ながら）Pandasについてとても詳細に書かれています。<br>
+<h1 id="%E3%82%82%E3%81%A3%E3%81%A8Pandas%E3%82%92%E7%9F%A5%E3%82%8A%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8">&#12418;&#12387;&#12392;Pandas&#12434;&#30693;&#12426;&#12383;&#12356;&#20154;&#12408;<a class="anchor-link" href="#%E3%82%82%E3%81%A3%E3%81%A8Pandas%E3%82%92%E7%9F%A5%E3%82%8A%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8">&#182;</a></h1><p>参考にしてほしい本として「<a href="https://www.oreilly.co.jp/books/9784873116556/">Pythonによるデータ分析入門</a>（O'REILLY）」があります。<br />
+これはPandasを作った人の本であり、（当然ながら）Pandasについてとても詳細に書かれています。<br />
 読んだら当然理解できるはずですが、読まなくてもPandasを使いながらググったり、ドキュメントを読んでいると自然と必要な機能は分かってくると思います。</p>
 
 </div>
@@ -7324,7 +7292,7 @@ slope_allでソートしてみましょう。</p>
 </div>
 
 </div>
- 
+
 
 </div>
       </div>

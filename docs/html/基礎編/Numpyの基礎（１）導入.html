@@ -74,17 +74,17 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#30446;&#27425;">&#30446;&#27425;<a class="anchor-link" href="#&#30446;&#27425;">&#182;</a></h1><ul>
-<li><a href="#Numpyとは？">Numpyとは？</a><ul>
-<li><a href="#なぜNumpyが必要？">なぜNumpyが必要？</a></li>
-<li><a href="#Numpyの特徴とは？">Numpyの特徴とは？</a></li>
-<li><a href="#ndarrayオブジェクト">ndarrayオブジェクト</a></li>
-<li><a href="#Numpyを使う際の注意点">Numpyを使う際の注意点</a></li>
+<h1 id="%E7%9B%AE%E6%AC%A1">&#30446;&#27425;<a class="anchor-link" href="#%E7%9B%AE%E6%AC%A1">&#182;</a></h1><ul>
+<li><a href="#Numpy%E3%81%A8%E3%81%AF%EF%BC%9F">Numpyとは？</a><ul>
+<li><a href="#%E3%81%AA%E3%81%9CNumpy%E3%81%8C%E5%BF%85%E8%A6%81%EF%BC%9F">なぜNumpyが必要？</a></li>
+<li><a href="#Numpy%E3%81%AE%E7%89%B9%E5%BE%B4%E3%81%A8%E3%81%AF%EF%BC%9F">Numpyの特徴とは？</a></li>
+<li><a href="#ndarray%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88">ndarrayオブジェクト</a></li>
+<li><a href="#Numpy%E3%82%92%E4%BD%BF%E3%81%86%E9%9A%9B%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9">Numpyを使う際の注意点</a></li>
 </ul>
 </li>
-<li><a href="#実際に使ってみる">実際に使ってみる</a><ul>
-<li><a href="#インポートする">インポートする</a></li>
-<li><a href="#簡単な演算">簡単な演算</a></li>
+<li><a href="#%E5%AE%9F%E9%9A%9B%E3%81%AB%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B">実際に使ってみる</a><ul>
+<li><a href="#%E3%82%A4%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%88%E3%81%99%E3%82%8B">インポートする</a></li>
+<li><a href="#%E7%B0%A1%E5%8D%98%E3%81%AA%E6%BC%94%E7%AE%97">簡単な演算</a></li>
 </ul>
 </li>
 </ul>
@@ -95,41 +95,41 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Numpy&#12392;&#12399;&#65311;">Numpy&#12392;&#12399;&#65311;<a class="anchor-link" href="#Numpy&#12392;&#12399;&#65311;">&#182;</a></h1><p><strong>Numpy</strong>は、標準の演算が遅いというPythonの欠点を補うために開発された高速なベクトル演算をサポートするライブラリです。<br>
-Pythonで科学技術計算をする上では必須と言っても良いライブラリです。<br>
-（本稿の大部分は、「<a href="https://www.oreilly.co.jp/books/9784873116556/">Pythonによるデータ分析入門</a>（O'REILLY、ピンク本！）」の第４章を参考にして書かれています。<br>
+<h1 id="Numpy%E3%81%A8%E3%81%AF%EF%BC%9F">Numpy&#12392;&#12399;&#65311;<a class="anchor-link" href="#Numpy%E3%81%A8%E3%81%AF%EF%BC%9F">&#182;</a></h1><p><strong>Numpy</strong>は、標準の演算が遅いというPythonの欠点を補うために開発された高速なベクトル演算をサポートするライブラリです。<br />
+Pythonで科学技術計算をする上では必須と言っても良いライブラリです。<br />
+（本稿の大部分は、「<a href="https://www.oreilly.co.jp/books/9784873116556/">Pythonによるデータ分析入門</a>（O'REILLY、ピンク本！）」の第４章を参考にして書かれています。<br />
 この本は翻訳もわかりやすく、とても読みやすい本なのでおすすめです。）</p>
-<h2 id="&#12394;&#12380;Numpy&#12364;&#24517;&#35201;&#65311;">&#12394;&#12380;Numpy&#12364;&#24517;&#35201;&#65311;<a class="anchor-link" href="#&#12394;&#12380;Numpy&#12364;&#24517;&#35201;&#65311;">&#182;</a></h2><p>C言語やFortranのような<strong>静的型付け言語（コンパイル時に型を決定する言語）</strong>では、配列や変数を宣言する際、型を明示的にコンパイラに伝えます。<br>
-このようにコンパイルの段階で型が決まっていると、マシンとしては余計な動作をする必要が無いために効率よくメモリを使用できる上に高速に動作します。<br>
-一方、Pythonのような<strong>動的型付け言語（実行時に型を決める言語）</strong>では、そのような高速な動作を失う代わりに、型を気にせずにリストに入れたり、宣言の手間が省けたりと、柔軟で短いコードが書けるようになります。<br>
-しかし、科学技術計算においては動作の遅さは致命的になります。<br>
-もしPythonで科学技術計算しようとするならば、高速な動作が必要になるところでは型を指定して高速な計算ができるようにする必要があります。<br>
-そこで生まれたのが<strong>Numpy</strong>です（Numerical Pythonの略）。<br>
-Numpyでは、C言語の配列をPythonで扱いやすいオブジェクト（ndarray）として使うことで、<strong>高速でありながら柔軟なプログラミング</strong>が可能です。<br>
-また、CやFortranと同様に大規模配列を扱うことにも長けているため、使いこなせればかなり強力なツールです。<br>
-Numpyは非常に高機能であり、全ての機能を1ページで説明することは難しいです。<br>
+<h2 id="%E3%81%AA%E3%81%9CNumpy%E3%81%8C%E5%BF%85%E8%A6%81%EF%BC%9F">&#12394;&#12380;Numpy&#12364;&#24517;&#35201;&#65311;<a class="anchor-link" href="#%E3%81%AA%E3%81%9CNumpy%E3%81%8C%E5%BF%85%E8%A6%81%EF%BC%9F">&#182;</a></h2><p>C言語やFortranのような<strong>静的型付け言語（コンパイル時に型を決定する言語）</strong>では、配列や変数を宣言する際、型を明示的にコンパイラに伝えます。<br />
+このようにコンパイルの段階で型が決まっていると、マシンとしては余計な動作をする必要が無いために効率よくメモリを使用できる上に高速に動作します。<br />
+一方、Pythonのような<strong>動的型付け言語（実行時に型を決める言語）</strong>では、そのような高速な動作を失う代わりに、型を気にせずにリストに入れたり、宣言の手間が省けたりと、柔軟で短いコードが書けるようになります。<br />
+しかし、科学技術計算においては動作の遅さは致命的になります。<br />
+もしPythonで科学技術計算しようとするならば、高速な動作が必要になるところでは型を指定して高速な計算ができるようにする必要があります。<br />
+そこで生まれたのが<strong>Numpy</strong>です（Numerical Pythonの略）。<br />
+Numpyでは、C言語の配列をPythonで扱いやすいオブジェクト（ndarray）として使うことで、<strong>高速でありながら柔軟なプログラミング</strong>が可能です。<br />
+また、CやFortranと同様に大規模配列を扱うことにも長けているため、使いこなせればかなり強力なツールです。<br />
+Numpyは非常に高機能であり、全ての機能を1ページで説明することは難しいです。<br />
 ここでは、いくつかの記事にわけ、ざっくりと概観していくことにします。</p>
-<h2 id="Numpy&#12398;&#29305;&#24500;&#12392;&#12399;&#65311;">Numpy&#12398;&#29305;&#24500;&#12392;&#12399;&#65311;<a class="anchor-link" href="#Numpy&#12398;&#29305;&#24500;&#12392;&#12399;&#65311;">&#182;</a></h2><p>ざっとNumpyの特徴を上げてみると、</p>
+<h2 id="Numpy%E3%81%AE%E7%89%B9%E5%BE%B4%E3%81%A8%E3%81%AF%EF%BC%9F">Numpy&#12398;&#29305;&#24500;&#12392;&#12399;&#65311;<a class="anchor-link" href="#Numpy%E3%81%AE%E7%89%B9%E5%BE%B4%E3%81%A8%E3%81%AF%EF%BC%9F">&#182;</a></h2><p>ざっとNumpyの特徴を上げてみると、</p>
 <ul>
 <li>ベクトル演算をベースにした省メモリで高速な多次元配列（ndarrayオブジェクト）</li>
 <li>行列演算（逆行列など）や乱数生成、フーリエ変換を簡単に呼び出せる</li>
 <li>PythonとC, C++, Fortranとの連携を可能にする低級インターフェイスの提供</li>
 <li>バイナリやテキストでのファイル入出力を簡単にできる</li>
 </ul>
-<p>のようなものがあります。<br>
+<p>のようなものがあります。<br />
 行列演算などの実装はCやFortranで使われているライブラリを使用しており、同等の速度を発揮します。</p>
-<h2 id="ndarray&#12458;&#12502;&#12472;&#12455;&#12463;&#12488;">ndarray&#12458;&#12502;&#12472;&#12455;&#12463;&#12488;<a class="anchor-link" href="#ndarray&#12458;&#12502;&#12472;&#12455;&#12463;&#12488;">&#182;</a></h2><p>Numpyで配列と言うとき、たいていndarray（N-dimensional array）オブジェクトのことを指します。<br>
-ndarrayはCの配列に加え、その形状や型、関数などを情報として持っています。<br>
+<h2 id="ndarray%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88">ndarray&#12458;&#12502;&#12472;&#12455;&#12463;&#12488;<a class="anchor-link" href="#ndarray%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88">&#182;</a></h2><p>Numpyで配列と言うとき、たいていndarray（N-dimensional array）オブジェクトのことを指します。<br />
+ndarrayはCの配列に加え、その形状や型、関数などを情報として持っています。<br />
 本稿でも、特に断らない限り、配列はndarrayのことを意味することにします。</p>
-<h2 id="Numpy&#12434;&#20351;&#12358;&#38555;&#12398;&#27880;&#24847;&#28857;">Numpy&#12434;&#20351;&#12358;&#38555;&#12398;&#27880;&#24847;&#28857;<a class="anchor-link" href="#Numpy&#12434;&#20351;&#12358;&#38555;&#12398;&#27880;&#24847;&#28857;">&#182;</a></h2><p>Numpyも万能ではなく、得意ではない処理もあります。それは、配列要素ごとに回すforループです。<br>
-要素ごとにforループを回すと、Pythonの遅さが如実に出てしまい、Numpyの利点が活かせません。<br>
-Numpyが本当に力を発揮するのは<strong>ベクトル演算</strong>であり、それは並列化によって実現されています。<br>
+<h2 id="Numpy%E3%82%92%E4%BD%BF%E3%81%86%E9%9A%9B%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9">Numpy&#12434;&#20351;&#12358;&#38555;&#12398;&#27880;&#24847;&#28857;<a class="anchor-link" href="#Numpy%E3%82%92%E4%BD%BF%E3%81%86%E9%9A%9B%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9">&#182;</a></h2><p>Numpyも万能ではなく、得意ではない処理もあります。それは、配列要素ごとに回すforループです。<br />
+要素ごとにforループを回すと、Pythonの遅さが如実に出てしまい、Numpyの利点が活かせません。<br />
+Numpyが本当に力を発揮するのは<strong>ベクトル演算</strong>であり、それは並列化によって実現されています。<br />
 もし、要素ごとの計算をしたい場合は、</p>
 <ul>
 <li>CやFortranでその部分だけを書き、それをPythonで呼び出す</li>
 <li>NumbaやCythonといった他のライブラリを使用しコンパイルを行う</li>
 </ul>
-<p>と言った方法があります。<br>
+<p>と言った方法があります。<br />
 まずはなるべくベクトル化を試みて、それが難しい場合は上記のような手段を考えてみると良いでしょう。</p>
 
 </div>
@@ -138,7 +138,7 @@ Numpyが本当に力を発揮するのは<strong>ベクトル演算</strong>で�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#23455;&#38555;&#12395;&#20351;&#12387;&#12390;&#12415;&#12427;">&#23455;&#38555;&#12395;&#20351;&#12387;&#12390;&#12415;&#12427;<a class="anchor-link" href="#&#23455;&#38555;&#12395;&#20351;&#12387;&#12390;&#12415;&#12427;">&#182;</a></h1><h2 id="&#12452;&#12531;&#12509;&#12540;&#12488;&#12377;&#12427;">&#12452;&#12531;&#12509;&#12540;&#12488;&#12377;&#12427;<a class="anchor-link" href="#&#12452;&#12531;&#12509;&#12540;&#12488;&#12377;&#12427;">&#182;</a></h2>
+<h1 id="%E5%AE%9F%E9%9A%9B%E3%81%AB%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B">&#23455;&#38555;&#12395;&#20351;&#12387;&#12390;&#12415;&#12427;<a class="anchor-link" href="#%E5%AE%9F%E9%9A%9B%E3%81%AB%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B">&#182;</a></h1><h2 id="%E3%82%A4%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%88%E3%81%99%E3%82%8B">&#12452;&#12531;&#12509;&#12540;&#12488;&#12377;&#12427;<a class="anchor-link" href="#%E3%82%A4%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%88%E3%81%99%E3%82%8B">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -164,10 +164,10 @@ Numpyが本当に力を発揮するのは<strong>ベクトル演算</strong>で�
 <li>Anacondaの場合「conda install numpy」</li>
 <li>pipの場合「pip install numpy」</li>
 </ul>
-<p>condaはコンパイル済みのものをインストールするためにインストールエラーが起きにくいです。<br>
-pipはインストール時にコンパイルするため、コンパイルエラーが起きる場合があります（特にWindows）。<br>
+<p>condaはコンパイル済みのものをインストールするためにインストールエラーが起きにくいです。<br />
+pipはインストール時にコンパイルするため、コンパイルエラーが起きる場合があります（特にWindows）。<br />
 なるべく、Anacondaで一気に導入すると良いでしょう。</p>
-<h2 id="ndarray&#12398;&#27083;&#36896;">ndarray&#12398;&#27083;&#36896;<a class="anchor-link" href="#ndarray&#12398;&#27083;&#36896;">&#182;</a></h2><p>さっそく、一次元配列を作ってみましょう。np.array関数にリストやタプルを渡すことで作ることが出来ます。</p>
+<h2 id="ndarray%E3%81%AE%E6%A7%8B%E9%80%A0">ndarray&#12398;&#27083;&#36896;<a class="anchor-link" href="#ndarray%E3%81%AE%E6%A7%8B%E9%80%A0">&#182;</a></h2><p>さっそく、一次元配列を作ってみましょう。np.array関数にリストやタプルを渡すことで作ることが出来ます。</p>
 
 </div>
 </div>
@@ -209,8 +209,8 @@ pipはインストール時にコンパイルするため、コンパイルエ�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>ndarrayの重要な属性として、<strong>shape</strong>、<strong>dtype</strong>があります。<br>
-<strong>type()</strong>はPythonの組み込み関数で、引数が何のオブジェクトかを教えてくれます（dtypeとは違うものなので注意）。<br>
+<p>ndarrayの重要な属性として、<strong>shape</strong>、<strong>dtype</strong>があります。<br />
+<strong>type()</strong>はPythonの組み込み関数で、引数が何のオブジェクトかを教えてくれます（dtypeとは違うものなので注意）。<br />
 いくつか例を挙げましょう。</p>
 
 </div>
@@ -253,8 +253,8 @@ pipはインストール時にコンパイルするため、コンパイルエ�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>shape</strong>は、まさに配列の形状で、多次元配列であれば、軸に沿った要素の個数をそれぞれの軸について並べたタプルです。<br>
-一次元であれば、(n,)のようなタプルになります。<br>
+<p><strong>shape</strong>は、まさに配列の形状で、多次元配列であれば、軸に沿った要素の個数をそれぞれの軸について並べたタプルです。<br />
+一次元であれば、(n,)のようなタプルになります。<br />
 軸が一つしか含まれない場合、(n)とすると単なるnになってしまうので、(n,)のようにカンマが付きます。</p>
 
 </div>
@@ -685,7 +685,7 @@ pipはインストール時にコンパイルするため、コンパイルエ�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#35201;&#32032;&#12408;&#12398;&#12450;&#12463;&#12475;&#12473;">&#35201;&#32032;&#12408;&#12398;&#12450;&#12463;&#12475;&#12473;<a class="anchor-link" href="#&#35201;&#32032;&#12408;&#12398;&#12450;&#12463;&#12475;&#12473;">&#182;</a></h3><p>また、各要素にアクセスするためには、リストやタプルのようにインデックスを指定します。<br>
+<h3 id="%E8%A6%81%E7%B4%A0%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9">&#35201;&#32032;&#12408;&#12398;&#12450;&#12463;&#12475;&#12473;<a class="anchor-link" href="#%E8%A6%81%E7%B4%A0%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9">&#182;</a></h3><p>また、各要素にアクセスするためには、リストやタプルのようにインデックスを指定します。<br />
 多次元配列でのアクセスは、リストなどと違う記法なので注意してください。</p>
 
 </div>
@@ -939,7 +939,7 @@ pipはインストール時にコンパイルするため、コンパイルエ�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#31777;&#21336;&#12394;&#28436;&#31639;">&#31777;&#21336;&#12394;&#28436;&#31639;<a class="anchor-link" href="#&#31777;&#21336;&#12394;&#28436;&#31639;">&#182;</a></h2><p>スカラーとの四則演算は普通のベクトルのような書き方ができます（Fortranと一緒）。<br>
+<h2 id="%E7%B0%A1%E5%8D%98%E3%81%AA%E6%BC%94%E7%AE%97">&#31777;&#21336;&#12394;&#28436;&#31639;<a class="anchor-link" href="#%E7%B0%A1%E5%8D%98%E3%81%AA%E6%BC%94%E7%AE%97">&#182;</a></h2><p>スカラーとの四則演算は普通のベクトルのような書き方ができます（Fortranと一緒）。<br />
 このような演算はリストやタプルでは出来ないので、そのためにndarrayに変換することもよくあります。</p>
 
 </div>
@@ -984,7 +984,7 @@ pipはインストール時にコンパイルするため、コンパイルエ�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>同じ形状の配列同士の四則演算は、要素ごとに演算した結果になります。<br>
+<p>同じ形状の配列同士の四則演算は、要素ごとに演算した結果になります。<br />
 （異なる形状の配列であっても、場合によっては演算できることがあり、それを<strong>ブロードキャスト</strong>（別記事）と言います）</p>
 
 </div>
@@ -1031,7 +1031,7 @@ pipはインストール時にコンパイルするため、コンパイルエ�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>多次元配列でも同じように要素ごとの演算になります。<br>
+<p>多次元配列でも同じように要素ごとの演算になります。<br />
 行列積を計算したい場合は、np.dot関数を用いるか、Python3.5以降であれば@マークを使えます。</p>
 
 </div>
@@ -1219,7 +1219,7 @@ pipはインストール時にコンパイルするため、コンパイルエ�
 </div>
 
 </div>
- 
+
 
 </div>
       </div>

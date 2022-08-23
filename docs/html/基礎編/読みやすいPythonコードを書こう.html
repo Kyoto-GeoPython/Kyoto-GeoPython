@@ -66,7 +66,7 @@
         <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#12399;&#12376;&#12417;&#12395;">&#12399;&#12376;&#12417;&#12395;<a class="anchor-link" href="#&#12399;&#12376;&#12417;&#12395;">&#182;</a></h1><p>Pythonは可読性の高い言語だとよく言われます。インデントが強制されることで、分岐や繰り返し、関数のスコープなどが一目見ただけでわかるようになっています。</p>
+<h1 id="%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">&#12399;&#12376;&#12417;&#12395;<a class="anchor-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">&#182;</a></h1><p>Pythonは可読性の高い言語だとよく言われます。インデントが強制されることで、分岐や繰り返し、関数のスコープなどが一目見ただけでわかるようになっています。</p>
 <p>また、言語の特性上、非常に柔軟な書き方ができるため、目的の動作を実現することが簡単にコードに表現することができます。</p>
 <p>しかし、これらの言語特性が裏目に出て、次のようなコードを量産する可能性もあります。</p>
 <ul>
@@ -81,8 +81,9 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Python-&#12467;&#12540;&#12489;&#12398;&#12473;&#12479;&#12452;&#12523;&#12460;&#12452;&#12489;">Python &#12467;&#12540;&#12489;&#12398;&#12473;&#12479;&#12452;&#12523;&#12460;&#12452;&#12489;<a class="anchor-link" href="#Python-&#12467;&#12540;&#12489;&#12398;&#12473;&#12479;&#12452;&#12523;&#12460;&#12452;&#12489;">&#182;</a></h1><p><a href="https://pep8-ja.readthedocs.io/ja/latest/">PEP: 8 Python コードのスタイルガイド</a> で公式のスタイルガイドが書かれています。</p>
-<blockquote><p>Guido の重要な洞察のひとつに、コードは書くよりも読まれることの方が多い、というものがあります。この文書で示すガイドラインの目的は、コードを読みやすくするとともに、Pythonで書かれた幅広いコードのスタイルを一貫させることです。PEP 20 にもあるように "可読性重要" です。</p>
+<h1 id="Python-%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%82%AC%E3%82%A4%E3%83%89">Python &#12467;&#12540;&#12489;&#12398;&#12473;&#12479;&#12452;&#12523;&#12460;&#12452;&#12489;<a class="anchor-link" href="#Python-%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%82%AC%E3%82%A4%E3%83%89">&#182;</a></h1><p><a href="https://pep8-ja.readthedocs.io/ja/latest/">PEP: 8 Python コードのスタイルガイド</a> で公式のスタイルガイドが書かれています。</p>
+<blockquote>
+<p>Guido の重要な洞察のひとつに、コードは書くよりも読まれることの方が多い、というものがあります。この文書で示すガイドラインの目的は、コードを読みやすくするとともに、Pythonで書かれた幅広いコードのスタイルを一貫させることです。PEP 20 にもあるように &quot;可読性重要&quot; です。</p>
 </blockquote>
 <p><em>Guido</em> さんは、Pythonの生みの親です。</p>
 <p>仮に、「自分だけが読むコードだから自分だけ読めればいいんだよ！」のように言いながら、 <strong>意味をなさない変数名</strong>や、 <strong>複雑な引数と戻り値を持つ関数</strong> を導入してしまう人がいます（昔の自分）。</p>
@@ -96,7 +97,7 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#12452;&#12531;&#12487;&#12531;&#12488;">&#12452;&#12531;&#12487;&#12531;&#12488;<a class="anchor-link" href="#&#12452;&#12531;&#12487;&#12531;&#12488;">&#182;</a></h2><p>Pythonのインデントは、 <strong>スペース４つ</strong>です。</p>
+<h2 id="%E3%82%A4%E3%83%B3%E3%83%87%E3%83%B3%E3%83%88">&#12452;&#12531;&#12487;&#12531;&#12488;<a class="anchor-link" href="#%E3%82%A4%E3%83%B3%E3%83%87%E3%83%B3%E3%83%88">&#182;</a></h2><p>Pythonのインデントは、 <strong>スペース４つ</strong>です。</p>
 <p>また、カッコの中身が長いときの改行の位置にも気をつけましょう。</p>
 
 </div>
@@ -132,8 +133,8 @@
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># リストの中身を改行するときには、以下のようにする</span>
 <span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="c1"># 最後に , をつけても良い</span>
+    <span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">,</span>
+    <span class="s2">"d"</span><span class="p">,</span> <span class="s2">"e"</span><span class="p">,</span> <span class="s2">"f"</span><span class="p">,</span> <span class="c1"># 最後に , をつけても良い</span>
 <span class="p">]</span>
 </pre></div>
 
@@ -167,7 +168,7 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#12452;&#12531;&#12509;&#12540;&#12488;">&#12452;&#12531;&#12509;&#12540;&#12488;<a class="anchor-link" href="#&#12452;&#12531;&#12509;&#12540;&#12488;">&#182;</a></h2><p>ファイルの先頭にずらっと並びがちなライブラリのインポートの文も見やすくしましょう。</p>
+<h2 id="%E3%82%A4%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%88">&#12452;&#12531;&#12509;&#12540;&#12488;<a class="anchor-link" href="#%E3%82%A4%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%88">&#182;</a></h2><p>ファイルの先頭にずらっと並びがちなライブラリのインポートの文も見やすくしましょう。</p>
 
 </div>
 </div>
@@ -199,7 +200,7 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#31354;&#30333;&#25991;&#23383;&#12434;&#20837;&#12428;&#12427;&#12363;&#20837;&#12428;&#12394;&#12356;&#12363;&#21839;&#38988;">&#31354;&#30333;&#25991;&#23383;&#12434;&#20837;&#12428;&#12427;&#12363;&#20837;&#12428;&#12394;&#12356;&#12363;&#21839;&#38988;<a class="anchor-link" href="#&#31354;&#30333;&#25991;&#23383;&#12434;&#20837;&#12428;&#12427;&#12363;&#20837;&#12428;&#12394;&#12356;&#12363;&#21839;&#38988;">&#182;</a></h2><p>空白文字（スペース）を入れる場所によって、可読性が大きく変わってきます。</p>
+<h2 id="%E7%A9%BA%E7%99%BD%E6%96%87%E5%AD%97%E3%82%92%E5%85%A5%E3%82%8C%E3%82%8B%E3%81%8B%E5%85%A5%E3%82%8C%E3%81%AA%E3%81%84%E3%81%8B%E5%95%8F%E9%A1%8C">&#31354;&#30333;&#25991;&#23383;&#12434;&#20837;&#12428;&#12427;&#12363;&#20837;&#12428;&#12394;&#12356;&#12363;&#21839;&#38988;<a class="anchor-link" href="#%E7%A9%BA%E7%99%BD%E6%96%87%E5%AD%97%E3%82%92%E5%85%A5%E3%82%8C%E3%82%8B%E3%81%8B%E5%85%A5%E3%82%8C%E3%81%AA%E3%81%84%E3%81%8B%E5%95%8F%E9%A1%8C">&#182;</a></h2><p>空白文字（スペース）を入れる場所によって、可読性が大きく変わってきます。</p>
 <p>必ず統一するようにしましょう。</p>
 
 </div>
@@ -213,10 +214,10 @@
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 
 <span class="c1"># [Good] , や : の後に空白文字を入れる</span>
-<span class="n">my_first_func</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">{</span><span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+<span class="n">my_first_func</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">{</span><span class="s2">"args"</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
 
 <span class="c1"># [Bad]  カッコの直後に空白文字</span>
-<span class="n">my_first_func</span><span class="p">(</span> <span class="n">my_list</span><span class="p">[</span> <span class="mi">1</span> <span class="p">]</span> <span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;args&quot;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">}</span> <span class="p">)</span>
+<span class="n">my_first_func</span><span class="p">(</span> <span class="n">my_list</span><span class="p">[</span> <span class="mi">1</span> <span class="p">]</span> <span class="p">,</span> <span class="p">{</span> <span class="s2">"args"</span> <span class="p">:</span> <span class="mi">2</span><span class="p">}</span> <span class="p">)</span>
 </pre></div>
 
     </div>
@@ -281,8 +282,9 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#12467;&#12513;&#12531;&#12488;">&#12467;&#12513;&#12531;&#12488;<a class="anchor-link" href="#&#12467;&#12513;&#12531;&#12488;">&#182;</a></h2><p><a href="https://pep8-ja.readthedocs.io/ja/latest/#id19">PEP: 8 Python コードのスタイルガイド</a>によると、</p>
-<blockquote><p>英語を話さない国出身の Python プログラマの方々へ：あなたのコードが、自分の言葉を話さない人に 120% 読まれないと確信していなければ、コメントを英語で書くようにお願いします。</p>
+<h2 id="%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88">&#12467;&#12513;&#12531;&#12488;<a class="anchor-link" href="#%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88">&#182;</a></h2><p><a href="https://pep8-ja.readthedocs.io/ja/latest/#id19">PEP: 8 Python コードのスタイルガイド</a>によると、</p>
+<blockquote>
+<p>英語を話さない国出身の Python プログラマの方々へ：あなたのコードが、自分の言葉を話さない人に 120% 読まれないと確信していなければ、コメントを英語で書くようにお願いします。</p>
 </blockquote>
 <p>とあります。</p>
 <p>科学技術計算でPythonコードを書く場合、必ず <strong>英語</strong> でコメントを書くようにしましょう。</p>
@@ -296,10 +298,10 @@
 <h2 id="pycodestyle">pycodestyle<a class="anchor-link" href="#pycodestyle">&#182;</a></h2><p>このようなスタイルを自動的にチェックしてくれるライブラリが作られています。</p>
 <p><a href="https://pypi.org/project/pycodestyle/">pycodestyle</a></p>
 <p>慣れてくると、わざわざ調べなくても通るコードが書けてきますが、最初のうちはなるべくチェックして感覚を身につけましょう。</p>
-<h3 id="&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;">&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;<a class="anchor-link" href="#&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;">&#182;</a></h3>
-<pre><code>$ pip install pycodestyle</code></pre>
-<h3 id="&#20351;&#12356;&#26041;">&#20351;&#12356;&#26041;<a class="anchor-link" href="#&#20351;&#12356;&#26041;">&#182;</a></h3>
-<pre><code>$ pycodestyle --show-source --show-pep8 &lt;file-name&gt;</code></pre>
+<h3 id="%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;<a class="anchor-link" href="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">&#182;</a></h3><pre><code>$ pip install pycodestyle
+</code></pre>
+<h3 id="%E4%BD%BF%E3%81%84%E6%96%B9">&#20351;&#12356;&#26041;<a class="anchor-link" href="#%E4%BD%BF%E3%81%84%E6%96%B9">&#182;</a></h3><pre><code>$ pycodestyle --show-source --show-pep8 &lt;file-name&gt;
+</code></pre>
 
 </div>
 </div>
@@ -309,18 +311,18 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="flake8">flake8<a class="anchor-link" href="#flake8">&#182;</a></h2><p>さらに高度なラッパーライブラリが　<strong>flake8</strong> です。</p>
 <p><a href="https://pypi.org/project/flake8/">flake8</a></p>
-<h3 id="&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;">&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;<a class="anchor-link" href="#&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;">&#182;</a></h3>
-<pre><code>$ pip install flake8</code></pre>
-<h3 id="&#12504;&#12523;&#12503;">&#12504;&#12523;&#12503;<a class="anchor-link" href="#&#12504;&#12523;&#12503;">&#182;</a></h3>
-<pre><code>$ flake8 --help</code></pre>
-<h3 id="&#20351;&#12356;&#26041;">&#20351;&#12356;&#26041;<a class="anchor-link" href="#&#20351;&#12356;&#26041;">&#182;</a></h3>
-<pre><code>$ flake8 your-file.py</code></pre>
+<h3 id="%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;<a class="anchor-link" href="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">&#182;</a></h3><pre><code>$ pip install flake8
+</code></pre>
+<h3 id="%E3%83%98%E3%83%AB%E3%83%97">&#12504;&#12523;&#12503;<a class="anchor-link" href="#%E3%83%98%E3%83%AB%E3%83%97">&#182;</a></h3><pre><code>$ flake8 --help
+</code></pre>
+<h3 id="%E4%BD%BF%E3%81%84%E6%96%B9">&#20351;&#12356;&#26041;<a class="anchor-link" href="#%E4%BD%BF%E3%81%84%E6%96%B9">&#182;</a></h3><pre><code>$ flake8 your-file.py
+</code></pre>
 <p>フォルダに対しても実行できます。</p>
-
-<pre><code>$ flake8 folder/</code></pre>
+<pre><code>$ flake8 folder/
+</code></pre>
 <p>実装の複雑度も測ってくれます。複雑な関数は直しましょう。</p>
-
-<pre><code>$ flake8 your-file.py --max-complexity 10</code></pre>
+<pre><code>$ flake8 your-file.py --max-complexity 10
+</code></pre>
 
 </div>
 </div>
@@ -328,7 +330,7 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#12456;&#12487;&#12451;&#12479;&#12391;&#12467;&#12540;&#12489;&#12473;&#12479;&#12452;&#12523;&#12481;&#12455;&#12483;&#12463;&#12377;&#12427;">&#12456;&#12487;&#12451;&#12479;&#12391;&#12467;&#12540;&#12489;&#12473;&#12479;&#12452;&#12523;&#12481;&#12455;&#12483;&#12463;&#12377;&#12427;<a class="anchor-link" href="#&#12456;&#12487;&#12451;&#12479;&#12391;&#12467;&#12540;&#12489;&#12473;&#12479;&#12452;&#12523;&#12481;&#12455;&#12483;&#12463;&#12377;&#12427;">&#182;</a></h2><p>AtomやVS CodeといったエディタにPEP8のスタイルチェックをしてくれる拡張機能を追加しておくと大変便利です。</p>
+<h2 id="%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%89%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%81%99%E3%82%8B">&#12456;&#12487;&#12451;&#12479;&#12391;&#12467;&#12540;&#12489;&#12473;&#12479;&#12452;&#12523;&#12481;&#12455;&#12483;&#12463;&#12377;&#12427;<a class="anchor-link" href="#%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%89%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%81%99%E3%82%8B">&#182;</a></h2><p>AtomやVS CodeといったエディタにPEP8のスタイルチェックをしてくれる拡張機能を追加しておくと大変便利です。</p>
 <p>PyCharm, Spyderといったエディタにはデフォルトでチェックする機能がついているので、ぜひ有効にして見てください。</p>
 
 </div>
@@ -337,7 +339,7 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#21442;&#32771;&#36039;&#26009;">&#21442;&#32771;&#36039;&#26009;<a class="anchor-link" href="#&#21442;&#32771;&#36039;&#26009;">&#182;</a></h1><ul>
+<h1 id="%E5%8F%82%E8%80%83%E8%B3%87%E6%96%99">&#21442;&#32771;&#36039;&#26009;<a class="anchor-link" href="#%E5%8F%82%E8%80%83%E8%B3%87%E6%96%99">&#182;</a></h1><ul>
 <li><a href="https://pep8-ja.readthedocs.io/ja/latest/">Python コードのスタイルガイド - 公式</a></li>
 <li><a href="https://blog.amedama.jp/entry/2017/06/13/222556">Python: pep8 は pycodestyle になったし pep257 は pydocstyle になった</a></li>
 <li><a href="https://www.xn--ebkc7kqd.com/entry/flake8">Pythonのコーディングチェックにflake8を使う</a></li>
@@ -346,7 +348,7 @@
 </div>
 </div>
 </div>
- 
+
 
 </div>
       </div>

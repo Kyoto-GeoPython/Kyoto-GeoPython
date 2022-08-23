@@ -66,7 +66,7 @@
         <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#30446;&#27425;">&#30446;&#27425;<a class="anchor-link" href="#&#30446;&#27425;">&#182;</a></h1><ul>
+<h1 id="%E7%9B%AE%E6%AC%A1">&#30446;&#27425;<a class="anchor-link" href="#%E7%9B%AE%E6%AC%A1">&#182;</a></h1><ul>
 <li>matplotlibとは</li>
 <li>簡単な1次元プロット<ul>
 <li>基礎</li>
@@ -84,9 +84,9 @@
 </ol>
 </li>
 </ul>
-<h1 id="matplotlib&#12392;&#12399;">matplotlib&#12392;&#12399;<a class="anchor-link" href="#matplotlib&#12392;&#12399;">&#182;</a></h1><p>matplotlibとは、Pythonで主に2次元の図を描画するときなどに使われる標準的なライブラリです。<br>
-このライブラリ一つで、学生が研究の際に作成するレベルの図はおおよそ作成することが可能です。<br>
-また、図だけでなくアニメーションを作成することも出来ます(別ファイル参照)。<br>
+<h1 id="matplotlib%E3%81%A8%E3%81%AF">matplotlib&#12392;&#12399;<a class="anchor-link" href="#matplotlib%E3%81%A8%E3%81%AF">&#182;</a></h1><p>matplotlibとは、Pythonで主に2次元の図を描画するときなどに使われる標準的なライブラリです。<br />
+このライブラリ一つで、学生が研究の際に作成するレベルの図はおおよそ作成することが可能です。<br />
+また、図だけでなくアニメーションを作成することも出来ます(別ファイル参照)。<br />
 ドキュメントは<a href="http://matplotlib.org/">http://matplotlib.org/</a>を参照してください。</p>
 
 </div>
@@ -112,8 +112,8 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#31777;&#21336;&#12394;1&#27425;&#20803;&#12503;&#12525;&#12483;&#12488;">&#31777;&#21336;&#12394;1&#27425;&#20803;&#12503;&#12525;&#12483;&#12488;<a class="anchor-link" href="#&#31777;&#21336;&#12394;1&#27425;&#20803;&#12503;&#12525;&#12483;&#12488;">&#182;</a></h1><h2 id="&#22522;&#30990;">&#22522;&#30990;<a class="anchor-link" href="#&#22522;&#30990;">&#182;</a></h2><p>まずは簡単な1次元の時系列の図を作成してみます。<br>
-plt.plot([横軸の値],[縦軸の値])<br>
+<h1 id="%E7%B0%A1%E5%8D%98%E3%81%AA1%E6%AC%A1%E5%85%83%E3%83%97%E3%83%AD%E3%83%83%E3%83%88">&#31777;&#21336;&#12394;1&#27425;&#20803;&#12503;&#12525;&#12483;&#12488;<a class="anchor-link" href="#%E7%B0%A1%E5%8D%98%E3%81%AA1%E6%AC%A1%E5%85%83%E3%83%97%E3%83%AD%E3%83%83%E3%83%88">&#182;</a></h1><h2 id="%E5%9F%BA%E7%A4%8E">&#22522;&#30990;<a class="anchor-link" href="#%E5%9F%BA%E7%A4%8E">&#182;</a></h2><p>まずは簡単な1次元の時系列の図を作成してみます。<br />
+plt.plot([横軸の値],[縦軸の値])<br />
 これだけで描写が可能です。</p>
 
 </div>
@@ -316,8 +316,8 @@ FO4iIhHofwHnCqWvAu/RWAAAAABJRU5ErkJggg==
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>複数の時系列を1つの図に重ねて描きたいときには、<br>
-plt.plot([横軸の値],[縦軸の値])<br>
+<p>複数の時系列を1つの図に重ねて描きたいときには、<br />
+plt.plot([横軸の値],[縦軸の値])<br />
 を続けて入力します。</p>
 
 </div>
@@ -557,44 +557,16 @@ eDt1TC03AAAAAElFTkSuQmCC
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#24540;&#29992;">&#24540;&#29992;<a class="anchor-link" href="#&#24540;&#29992;">&#182;</a></h2><p>色々なモジュールやオプションを使いこなすで、線のデザインを変えたりラベルをつけたりすることが出来ます。</p>
-<table>
-<thead><tr>
-<th style="text-align:center">モジュール名</th>
-<th style="text-align:left">内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">figure</td>
-<td style="text-align:left">figsizeで、図の縦・横の長さを指定する。plotで図示する前に用いる。</td>
-</tr>
-<tr>
-<td style="text-align:center">title</td>
-<td style="text-align:left">図にタイトルを付ける。</td>
-</tr>
-<tr>
-<td style="text-align:center">xlabel(ylabel)</td>
-<td style="text-align:left">図のx軸(y軸)にラベルを付ける。</td>
-</tr>
-<tr>
-<td style="text-align:center">xticks(yticks)</td>
-<td style="text-align:left">図のx軸(y軸)の目盛りを指定する。</td>
-</tr>
-<tr>
-<td style="text-align:center">text</td>
-<td style="text-align:left">図内に文字を挿入する。plt.text([x座標],[y座標],[文字列])</td>
-</tr>
-<tr>
-<td style="text-align:center">legend</td>
-<td style="text-align:left">図内の各プロットのラベルを表示する。locでラベルの場所を指定する。</td>
-</tr>
-<tr>
-<td style="text-align:center">xlim(ylim)</td>
-<td style="text-align:left">図のx軸(y軸)方向の表示する範囲を指定する。</td>
-</tr>
-</tbody>
-</table>
+<h2 id="%E5%BF%9C%E7%94%A8">&#24540;&#29992;<a class="anchor-link" href="#%E5%BF%9C%E7%94%A8">&#182;</a></h2><p>色々なモジュールやオプションを使いこなすで、線のデザインを変えたりラベルをつけたりすることが出来ます。</p>
+<p>| モジュール名 | 内容 |
+|:-----------:|:------------|
+|figure|figsizeで、図の縦・横の長さを指定する。plotで図示する前に用いる。|
+|title|図にタイトルを付ける。|
+|xlabel(ylabel)|図のx軸(y軸)にラベルを付ける。|
+|xticks(yticks)|図のx軸(y軸)の目盛りを指定する。|
+|text|図内に文字を挿入する。plt.text([x座標],[y座標],[文字列])|
+|legend|図内の各プロットのラベルを表示する。locでラベルの場所を指定する。|
+|xlim(ylim)|図のx軸(y軸)方向の表示する範囲を指定する。|</p>
 
 </div>
 </div>
@@ -605,15 +577,15 @@ eDt1TC03AAAAAElFTkSuQmCC
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>      
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="s1">&#39;o-&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Primary&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="s1">&#39;^--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Quadratic&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Cubic&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Various functions&#39;</span><span class="p">)</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>                
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">36</span><span class="p">)</span>    
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="s1">'o-'</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">'Primary'</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="s1">'^--'</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">'green'</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">'Quadratic'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span><span class="s1">'s'</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">'blue'</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">'Cubic'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Various functions'</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'t'</span><span class="p">)</span>                
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'y'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">36</span><span class="p">)</span>    
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mf">4.0</span><span class="p">],</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>             
-<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">30.0</span><span class="p">,</span><span class="s2">&quot;rakugaki&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>                
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">30.0</span><span class="p">,</span><span class="s2">"rakugaki"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">'upper left'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>                
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">5.0</span><span class="p">)</span>              
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -959,14 +931,14 @@ aCRJTRk0kqSmDBpJUlMGjSSpKYNGktTUb67RNmAvHCcEAAAAAElFTkSuQmCC
 <span class="c1">#y1のプロット</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\sin x$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">"$\sin x$"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.3</span><span class="p">,</span><span class="mf">1.3</span><span class="p">)</span>
 
 <span class="c1">#y2のプロット</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\cos x$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">"$\cos x$"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.3</span><span class="p">,</span><span class="mf">1.3</span><span class="p">)</span>
 
@@ -1242,7 +1214,7 @@ AAAASUVORK5CYII=
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#12498;&#12473;&#12488;&#12464;&#12521;&#12512;">&#12498;&#12473;&#12488;&#12464;&#12521;&#12512;<a class="anchor-link" href="#&#12498;&#12473;&#12488;&#12464;&#12521;&#12512;">&#182;</a></h1><h2 id="&#22522;&#30990;">&#22522;&#30990;<a class="anchor-link" href="#&#22522;&#30990;">&#182;</a></h2><p>plt.plotの代わりに、plt.histを用います。</p>
+<h1 id="%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0">&#12498;&#12473;&#12488;&#12464;&#12521;&#12512;<a class="anchor-link" href="#%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0">&#182;</a></h1><h2 id="%E5%9F%BA%E7%A4%8E">&#22522;&#30990;<a class="anchor-link" href="#%E5%9F%BA%E7%A4%8E">&#182;</a></h2><p>plt.plotの代わりに、plt.histを用います。</p>
 
 </div>
 </div>
@@ -1354,31 +1326,12 @@ Ne7/AdCmqHcjBZ4nAAAAAElFTkSuQmCC
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#24540;&#29992;">&#24540;&#29992;<a class="anchor-link" href="#&#24540;&#29992;">&#182;</a></h2><table>
-<thead><tr>
-<th style="text-align:center">オプション</th>
-<th style="text-align:left">内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">normed</td>
-<td style="text-align:left">縦軸を規格化するかのオプション。規格化する(つまり縦軸を確率にする)場合は、normed=Trueとする</td>
-</tr>
-<tr>
-<td style="text-align:center">bins</td>
-<td style="text-align:left">ヒストグラムの幅を調整できる</td>
-</tr>
-<tr>
-<td style="text-align:center">alpha</td>
-<td style="text-align:left">図の透過度を0~1の値で調整できる。0で完全に透過、1.0で透過なし</td>
-</tr>
-<tr>
-<td style="text-align:center">range</td>
-<td style="text-align:left">ヒストグラムを表示させる範囲を指定する</td>
-</tr>
-</tbody>
-</table>
+<h2 id="%E5%BF%9C%E7%94%A8">&#24540;&#29992;<a class="anchor-link" href="#%E5%BF%9C%E7%94%A8">&#182;</a></h2><p>| オプション | 内容 |
+|:-----------:|:------------|
+|normed|縦軸を規格化するかのオプション。規格化する(つまり縦軸を確率にする)場合は、normed=Trueとする|
+|bins|ヒストグラムの幅を調整できる|
+|alpha|図の透過度を0~1の値で調整できる。0で完全に透過、1.0で透過なし|
+|range|ヒストグラムを表示させる範囲を指定する|</p>
 
 </div>
 </div>
@@ -1391,8 +1344,8 @@ Ne7/AdCmqHcjBZ4nAAAAAElFTkSuQmCC
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>  <span class="c1">#平均0、標準偏差1の乱数を1000個生成する</span>
 <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span> <span class="o">+</span> <span class="mf">2.0</span>  <span class="c1">#平均2、標準偏差1の乱数を1000個生成する</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="nb">range</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="nb">range</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">"x"</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="nb">range</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">"blue"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">"y"</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="nb">range</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">"red"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1523,18 +1476,18 @@ AElFTkSuQmCC
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="2&#36890;&#12426;&#12398;&#22259;&#12398;&#20316;&#25104;&#26041;&#27861;">2&#36890;&#12426;&#12398;&#22259;&#12398;&#20316;&#25104;&#26041;&#27861;<a class="anchor-link" href="#2&#36890;&#12426;&#12398;&#22259;&#12398;&#20316;&#25104;&#26041;&#27861;">&#182;</a></h1><p>実は、matplotlibで図を作成するのには、以下の2つの方法があります。</p>
-<h2 id="1.-matplotlib.pyplot&#12514;&#12472;&#12517;&#12540;&#12523;&#12398;&#38306;&#25968;&#12434;&#29992;&#12356;&#12390;&#22259;&#12434;&#20316;&#25104;&#12377;&#12427;&#26041;&#27861;">1. matplotlib.pyplot&#12514;&#12472;&#12517;&#12540;&#12523;&#12398;&#38306;&#25968;&#12434;&#29992;&#12356;&#12390;&#22259;&#12434;&#20316;&#25104;&#12377;&#12427;&#26041;&#27861;<a class="anchor-link" href="#1.-matplotlib.pyplot&#12514;&#12472;&#12517;&#12540;&#12523;&#12398;&#38306;&#25968;&#12434;&#29992;&#12356;&#12390;&#22259;&#12434;&#20316;&#25104;&#12377;&#12427;&#26041;&#27861;">&#182;</a></h2><p>plt.plot, plt.xlabelなど、pltモジュールの関数を用いて図の詳細を順々に指定してやる方法です。<br>
-<strong>非常に直感的でわかりやすい方法ですので、ちょっとデータを見たいときなどには重宝します。  </strong><br>
+<h1 id="2%E9%80%9A%E3%82%8A%E3%81%AE%E5%9B%B3%E3%81%AE%E4%BD%9C%E6%88%90%E6%96%B9%E6%B3%95">2&#36890;&#12426;&#12398;&#22259;&#12398;&#20316;&#25104;&#26041;&#27861;<a class="anchor-link" href="#2%E9%80%9A%E3%82%8A%E3%81%AE%E5%9B%B3%E3%81%AE%E4%BD%9C%E6%88%90%E6%96%B9%E6%B3%95">&#182;</a></h1><p>実は、matplotlibで図を作成するのには、以下の2つの方法があります。</p>
+<h2 id="1.-matplotlib.pyplot%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E9%96%A2%E6%95%B0%E3%82%92%E7%94%A8%E3%81%84%E3%81%A6%E5%9B%B3%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95">1. matplotlib.pyplot&#12514;&#12472;&#12517;&#12540;&#12523;&#12398;&#38306;&#25968;&#12434;&#29992;&#12356;&#12390;&#22259;&#12434;&#20316;&#25104;&#12377;&#12427;&#26041;&#27861;<a class="anchor-link" href="#1.-matplotlib.pyplot%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E9%96%A2%E6%95%B0%E3%82%92%E7%94%A8%E3%81%84%E3%81%A6%E5%9B%B3%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95">&#182;</a></h2><p>plt.plot, plt.xlabelなど、pltモジュールの関数を用いて図の詳細を順々に指定してやる方法です。<br />
+<strong>非常に直感的でわかりやすい方法ですので、ちょっとデータを見たいときなどには重宝します。  </strong><br />
 一方で、例えば「1つのファイルに複数の図を載せる」場合、plt.subplotで次の図の詳細を記述し始めると前の図の詳細の記述に戻れないなど、細かい図を作成するときにはやや不便です。</p>
 <p>ここまで作成してきた図は、すべてこの1.の方法を用いて作成してきました。</p>
-<h2 id="2.matplotlib&#20869;&#12398;&#12463;&#12521;&#12473;&#12434;&#29992;&#12356;&#12390;&#22259;&#12434;&#20316;&#25104;&#12377;&#12427;&#26041;&#27861;">2.matplotlib&#20869;&#12398;&#12463;&#12521;&#12473;&#12434;&#29992;&#12356;&#12390;&#22259;&#12434;&#20316;&#25104;&#12377;&#12427;&#26041;&#27861;<a class="anchor-link" href="#2.matplotlib&#20869;&#12398;&#12463;&#12521;&#12473;&#12434;&#29992;&#12356;&#12390;&#22259;&#12434;&#20316;&#25104;&#12377;&#12427;&#26041;&#27861;">&#182;</a></h2><p>matplotlib.pyplot.figure関数でFigureオブジェクトを作成し、図の詳細を追加していく方法です。
+<h2 id="2.matplotlib%E5%86%85%E3%81%AE%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%92%E7%94%A8%E3%81%84%E3%81%A6%E5%9B%B3%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95">2.matplotlib&#20869;&#12398;&#12463;&#12521;&#12473;&#12434;&#29992;&#12356;&#12390;&#22259;&#12434;&#20316;&#25104;&#12377;&#12427;&#26041;&#27861;<a class="anchor-link" href="#2.matplotlib%E5%86%85%E3%81%AE%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%92%E7%94%A8%E3%81%84%E3%81%A6%E5%9B%B3%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95">&#182;</a></h2><p>matplotlib.pyplot.figure関数でFigureオブジェクトを作成し、図の詳細を追加していく方法です。
 大まかな流れとしては、</p>
-<p>①. matplotlib.pyplot.figure関数でFigureオブジェクトを生成する<br>
- ②. Figureオブジェクトのメソッド(.add_subplot, .add_axesなど)を用いて、Axesオブジェクトを生成する<br>
- ③. Axesオブジェクトのメソッド(.plot, .histなど)にデータを渡してプロットする<br>
+<p>①. matplotlib.pyplot.figure関数でFigureオブジェクトを生成する<br />
+ ②. Figureオブジェクトのメソッド(.add_subplot, .add_axesなど)を用いて、Axesオブジェクトを生成する<br />
+ ③. Axesオブジェクトのメソッド(.plot, .histなど)にデータを渡してプロットする<br />
  ④. 必要ならば、Axesオブジェクトのメソッド(.set_xlim, set_titleなど)を用いて図を調整する</p>
-<p>すなわち、1.の方法ではFigureオブジェクトが暗黙的に作られていたのに対し、2.の方法ではFigureオブジェクトを明示的に生成することになります。<br>
+<p>すなわち、1.の方法ではFigureオブジェクトが暗黙的に作られていたのに対し、2.の方法ではFigureオブジェクトを明示的に生成することになります。<br />
 <strong>記述量が多くなりますが、より自由に描写を操作することが可能になります。</strong></p>
 <p>例えば、「簡単な1次元プロット/応用」の図は、2.の方法を用いると以下のように記述することが出来ます。</p>
 
@@ -1558,18 +1511,18 @@ AElFTkSuQmCC
 <span class="n">ax</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># 図のプロット</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="s1">&#39;o-&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Primary&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="s1">&#39;^--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Quadratic&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Cubic&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="s1">'o-'</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">'Primary'</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="s1">'^--'</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">'green'</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">'Quadratic'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span><span class="s1">'s'</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">'blue'</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">'Cubic'</span><span class="p">)</span>
 
 <span class="c1"># 図の調整</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Various functions&#39;</span><span class="p">)</span> 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>                
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">36</span><span class="p">)</span>    
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Various functions'</span><span class="p">)</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'t'</span><span class="p">)</span>                
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'y'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">36</span><span class="p">)</span>    
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;3&#39;</span><span class="p">,</span><span class="s1">&#39;4.0&#39;</span><span class="p">],</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>             
-<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">30.0</span><span class="p">,</span><span class="s2">&quot;rakugaki&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> 
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>                
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">'1'</span><span class="p">,</span><span class="s1">'3'</span><span class="p">,</span><span class="s1">'4.0'</span><span class="p">],</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>             
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">30.0</span><span class="p">,</span><span class="s2">"rakugaki"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">'upper left'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>                
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">5.0</span><span class="p">)</span>              
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1925,8 +1878,8 @@ aCRJTRk0kqSmDBpJUlMGjSSpKYNGktTUb67RNmAvHCcEAAAAAElFTkSuQmCC
 <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span>
 
 <span class="c1"># Axesオブジェクトのメソッドを用いて図を調整</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\sin x$&quot;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\cos x$&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">"$\sin x$"</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">"$\cos x$"</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.3</span><span class="p">,</span><span class="mf">1.3</span><span class="p">)</span>
@@ -2205,49 +2158,21 @@ AAAASUVORK5CYII=
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>上記を見たら分かる通り、「matplotlib.pyplotのモジュール名」と、「Axesオブジェクトのメソッド名」は異なる場合があるので注意が必要です。</p>
-<table>
-<thead><tr>
-<th style="text-align:center">matplotlib.pyplotのモジュール名</th>
-<th style="text-align:center">Axesオブジェクトのメソッド名</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">plot</td>
-<td style="text-align:center">plot</td>
-</tr>
-<tr>
-<td style="text-align:center">title</td>
-<td style="text-align:center">set_title</td>
-</tr>
-<tr>
-<td style="text-align:center">xlabel</td>
-<td style="text-align:center">set_xlabel</td>
-</tr>
-<tr>
-<td style="text-align:center">xticks</td>
-<td style="text-align:center">set_xticks &amp; set_xticklabels</td>
-</tr>
-<tr>
-<td style="text-align:center">text</td>
-<td style="text-align:center">text</td>
-</tr>
-<tr>
-<td style="text-align:center">legend</td>
-<td style="text-align:center">legend</td>
-</tr>
-<tr>
-<td style="text-align:center">xlim</td>
-<td style="text-align:center">set_xlim</td>
-</tr>
-</tbody>
-</table>
+<p>| matplotlib.pyplotのモジュール名 | Axesオブジェクトのメソッド名 |
+|:-----------:|:------------:|
+|plot|plot|
+|title|set_title|
+|xlabel|set_xlabel|
+|xticks|set_xticks &amp; set_xticklabels |
+|text|text|
+|legend|legend|
+|xlim|set_xlim|</p>
 <p>状況に応じて、2つの方法を自在に使い分けられるようにしましょう。</p>
 
 </div>
 </div>
 </div>
- 
+
 
 </div>
       </div>

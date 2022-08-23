@@ -66,7 +66,7 @@
         <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#30446;&#27425;">&#30446;&#27425;<a class="anchor-link" href="#&#30446;&#27425;">&#182;</a></h1><ul>
+<h1 id="%E7%9B%AE%E6%AC%A1">&#30446;&#27425;<a class="anchor-link" href="#%E7%9B%AE%E6%AC%A1">&#182;</a></h1><ul>
 <li>はじめに</li>
 <li>テキスト(csv)ファイル読み込み</li>
 <li>NetCDFファイル読み込み</li>
@@ -79,14 +79,14 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#12399;&#12376;&#12417;&#12395;">&#12399;&#12376;&#12417;&#12395;<a class="anchor-link" href="#&#12399;&#12376;&#12417;&#12395;">&#182;</a></h2><p>データ解析を行う際に、データファイルを読み込むというのは最も基本的な操作になります。<br>
+<h2 id="%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">&#12399;&#12376;&#12417;&#12395;<a class="anchor-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">&#182;</a></h2><p>データ解析を行う際に、データファイルを読み込むというのは最も基本的な操作になります。<br />
 地球物理学の分野でメジャーなデータファイルの形式は、以下の3つだと思います。</p>
 <ol>
 <li>テキストファイル</li>
 <li>NetCDFファイル</li>
 <li>Fortranバイナリファイル</li>
 </ol>
-<p>Pythonを用いれば、この3つのどの形式のデータファイルも簡単に読み込むことが可能です。<br>
+<p>Pythonを用いれば、この3つのどの形式のデータファイルも簡単に読み込むことが可能です。<br />
 以下でそれぞれ順を追って説明していきますが、ご自身の必要に応じて2.、3.から読み進める等していただいても構いません。</p>
 
 </div>
@@ -95,8 +95,8 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#12486;&#12461;&#12473;&#12488;(csv)&#12501;&#12449;&#12452;&#12523;&#35501;&#12415;&#36796;&#12415;">&#12486;&#12461;&#12473;&#12488;(csv)&#12501;&#12449;&#12452;&#12523;&#35501;&#12415;&#36796;&#12415;<a class="anchor-link" href="#&#12486;&#12461;&#12473;&#12488;(csv)&#12501;&#12449;&#12452;&#12523;&#35501;&#12415;&#36796;&#12415;">&#182;</a></h2><p>カンマで区切られているテキストファイルを読み込んでみましょう。<br>
-テキストファイル内の数値データは、numpyのloadtxt関数で読み込むことが出来ます。<br>
+<h2 id="%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88(csv)%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">&#12486;&#12461;&#12473;&#12488;(csv)&#12501;&#12449;&#12452;&#12523;&#35501;&#12415;&#36796;&#12415;<a class="anchor-link" href="#%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88(csv)%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">&#182;</a></h2><p>カンマで区切られているテキストファイルを読み込んでみましょう。<br />
+テキストファイル内の数値データは、numpyのloadtxt関数で読み込むことが出来ます。<br />
 なお、今回読み込むファイルは、<a href="http://www.data.jma.go.jp/gmd/cpd/db/elnino/index/nino3irm.html">気象庁のページ</a>から取得した、エルニーニョ指数データです。</p>
 
 </div>
@@ -108,7 +108,7 @@
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;NINO.3.csv&#39;</span><span class="p">,</span><span class="n">comments</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">'NINO.3.csv'</span><span class="p">,</span><span class="n">comments</span><span class="o">=</span><span class="s1">'year'</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">','</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="s1">'float'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -238,11 +238,11 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="NetCDF&#12501;&#12449;&#12452;&#12523;&#35501;&#12415;&#36796;&#12415;">NetCDF&#12501;&#12449;&#12452;&#12523;&#35501;&#12415;&#36796;&#12415;<a class="anchor-link" href="#NetCDF&#12501;&#12449;&#12452;&#12523;&#35501;&#12415;&#36796;&#12415;">&#182;</a></h2><p>netCDFファイルの読み込みには、netCDF4モジュールを用います。<br>
-netCDF4モジュールが使えるようにする方法に関しては<a href="https://github.com/Unidata/netcdf4-python">こちら</a>をご参照ください。<br>
-試しに、<a href="https://www1.ncdc.noaa.gov/pub/data/cmb/ersst/v4/netcdf/">NOAAのサイト</a>からダウンロードした2017年2月の全球海面水温データを読み込んでみることにします。<br>
-まず、ターミナル上で<br>
-$ ncdump -c ersst.v4.201702.nc<br>
+<h2 id="NetCDF%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">NetCDF&#12501;&#12449;&#12452;&#12523;&#35501;&#12415;&#36796;&#12415;<a class="anchor-link" href="#NetCDF%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">&#182;</a></h2><p>netCDFファイルの読み込みには、netCDF4モジュールを用います。<br />
+netCDF4モジュールが使えるようにする方法に関しては<a href="https://github.com/Unidata/netcdf4-python">こちら</a>をご参照ください。<br />
+試しに、<a href="https://www1.ncdc.noaa.gov/pub/data/cmb/ersst/v4/netcdf/">NOAAのサイト</a>からダウンロードした2017年2月の全球海面水温データを読み込んでみることにします。<br />
+まず、ターミナル上で<br />
+$ ncdump -c ersst.v4.201702.nc<br />
 と実行して、当該netCDFファイル内のデータの構造に目を通しておくことにします。</p>
 
 </div>
@@ -408,7 +408,7 @@ data:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>以上の通り、海面水温データは、'sst'という変数名で格納されているということがわかりました。<br>
+<p>以上の通り、海面水温データは、'sst'という変数名で格納されているということがわかりました。<br />
 そこで、この海面水温データをnetCDF4モジュールを用いて取り出してみることにします。</p>
 
 </div>
@@ -420,8 +420,8 @@ data:
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">netCDF4</span>
-<span class="n">nc</span><span class="o">=</span><span class="n">netCDF4</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="s1">&#39;ersst.v4.201702.nc&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="n">data</span><span class="o">=</span><span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;sst&#39;</span><span class="p">][:]</span>
+<span class="n">nc</span><span class="o">=</span><span class="n">netCDF4</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="s1">'ersst.v4.201702.nc'</span><span class="p">,</span><span class="s1">'r'</span><span class="p">)</span>
+<span class="n">data</span><span class="o">=</span><span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">'sst'</span><span class="p">][:]</span>
 </pre></div>
 
     </div>
@@ -432,8 +432,8 @@ data:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>たったこれだけです。<br>
-2行目で、netCDFファイルの中身の情報を持った「netCDF4オブジェクト」を生成し、<br>
+<p>たったこれだけです。<br />
+2行目で、netCDFファイルの中身の情報を持った「netCDF4オブジェクト」を生成し、<br />
 3行目で、そのオブジェクトの一要素(今回の場合'sst'という変数名で格納されたデータの中身)を取り出しているわけです。</p>
 
 </div>
@@ -484,8 +484,8 @@ data:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Fortran&#12496;&#12452;&#12490;&#12522;&#12501;&#12449;&#12452;&#12523;&#35501;&#12415;&#36796;&#12415;">Fortran&#12496;&#12452;&#12490;&#12522;&#12501;&#12449;&#12452;&#12523;&#35501;&#12415;&#36796;&#12415;<a class="anchor-link" href="#Fortran&#12496;&#12452;&#12490;&#12522;&#12501;&#12449;&#12452;&#12523;&#35501;&#12415;&#36796;&#12415;">&#182;</a></h2><p>ここでは、まず<br>
-<strong>リトルエンディアンのヘッダなし4バイト浮動小数点バイナリ(俗に言うGrADS形式と呼ばれるもの)</strong><br>
+<h2 id="Fortran%E3%83%90%E3%82%A4%E3%83%8A%E3%83%AA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">Fortran&#12496;&#12452;&#12490;&#12522;&#12501;&#12449;&#12452;&#12523;&#35501;&#12415;&#36796;&#12415;<a class="anchor-link" href="#Fortran%E3%83%90%E3%82%A4%E3%83%8A%E3%83%AA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">&#182;</a></h2><p>ここでは、まず<br />
+<strong>リトルエンディアンのヘッダなし4バイト浮動小数点バイナリ(俗に言うGrADS形式と呼ばれるもの)</strong><br />
 の中身を読み込んでみることにします。</p>
 
 </div>
@@ -594,10 +594,10 @@ end program main
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">N</span><span class="o">=</span><span class="mi">10</span>  <span class="c1">#1レコード番号あたりに格納されているデータの数。</span>
 <span class="n">M</span><span class="o">=</span><span class="mi">20</span>  <span class="c1">#レコードの総数。</span>
-<span class="n">f</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;filename.out&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="n">dty</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">([(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;f&#39;</span><span class="p">)])</span>
+<span class="n">f</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">'filename.out'</span><span class="p">,</span><span class="s1">'r'</span><span class="p">)</span>
+<span class="n">dty</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">([(</span><span class="s1">'data'</span><span class="p">,</span><span class="s1">'&lt;'</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">+</span><span class="s1">'f'</span><span class="p">)])</span>
 <span class="n">chunk</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">dty</span><span class="p">,</span><span class="n">count</span><span class="o">=</span><span class="n">M</span><span class="p">)</span>
-<span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">chunk</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">M</span><span class="p">)])</span>
+<span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">chunk</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">'data'</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">M</span><span class="p">)])</span>
 </pre></div>
 
     </div>
@@ -671,7 +671,7 @@ end program main
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">M</span><span class="p">):</span>  
-     <span class="n">data</span><span class="p">[</span><span class="n">j</span><span class="p">,:]</span><span class="o">=</span><span class="n">chunk</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+     <span class="n">data</span><span class="p">[</span><span class="n">j</span><span class="p">,:]</span><span class="o">=</span><span class="n">chunk</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">'data'</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -682,8 +682,8 @@ end program main
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>を1行で書き換えたものです。<br>
-chunk[k-1]が、fortranで言うところのレコード番号kのデータに対応しています。<br>
+<p>を1行で書き換えたものです。<br />
+chunk[k-1]が、fortranで言うところのレコード番号kのデータに対応しています。<br />
 なので、例えばレコード番号6のデータだけを取り出したい場合には、最終行を</p>
 
 </div>
@@ -694,7 +694,7 @@ chunk[k-1]が、fortranで言うところのレコード番号kのデータに�
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="o">=</span><span class="n">chunk</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>  
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="o">=</span><span class="n">chunk</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="s1">'data'</span><span class="p">]</span>  
 </pre></div>
 
     </div>
@@ -743,7 +743,7 @@ chunk[k-1]が、fortranで言うところのレコード番号kのデータに�
 </div>
 
 </div>
- 
+
 
 </div>
       </div>

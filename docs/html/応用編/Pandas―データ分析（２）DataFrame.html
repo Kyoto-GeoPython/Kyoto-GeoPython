@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Pandas ― データ分析（２）複数の列を持った表形式でデータを格納する</title>
+    <title>Pandas―データ分析（２）DataFrame</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
       async
@@ -60,14 +60,14 @@
     <div tabindex="-1" id="notebook" class="border-box-sizing must-no-padding">
       <div class="container my-notebook-container must-no-padding" id="notebook-container">
         <div class="w3-panel">
-          <h1 class="w3-center">Pandas ― データ分析（２）複数の列を持った表形式でデータを格納する</h1>
+          <h1 class="w3-center">Pandas―データ分析（２）DataFrame</h1>
         </div>
 
         <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="DataFrame">DataFrame<a class="anchor-link" href="#DataFrame">&#182;</a></h1><p>Seriesが一列だとすれば、DataFrameは複数の列を持つデータ構造をしています。<br>
-イメージとして、Excelのようなデータ構造をndarrayで保持しているというのが近いと思います。<br>
+<h1 id="DataFrame">DataFrame<a class="anchor-link" href="#DataFrame">&#182;</a></h1><p>Seriesが一列だとすれば、DataFrameは複数の列を持つデータ構造をしています。<br />
+イメージとして、Excelのようなデータ構造をndarrayで保持しているというのが近いと思います。<br />
 一つ一つの要素を書き換えるような手動の処理はExcelの方が素早く出来ますが、一括計算をしたいときはDataFrameの方が遥かに素早く計算できます。</p>
 
 </div>
@@ -98,10 +98,10 @@
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 辞書型を引数にとり、DataFrameオブジェクトを返す。</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="p">{</span>
-        <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
-        <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;apple&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
-    <span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">&quot;abcd&quot;</span><span class="p">))</span>
+        <span class="s2">"A"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+        <span class="s2">"B"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"apple"</span><span class="p">,</span> <span class="s2">"orange"</span><span class="p">,</span> <span class="s2">"banana"</span><span class="p">,</span> <span class="s2">"apple"</span><span class="p">],</span>
+        <span class="s2">"C"</span><span class="p">:</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
+    <span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">"abcd"</span><span class="p">))</span>
 <span class="n">df</span>
 </pre></div>
 
@@ -119,8 +119,7 @@
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -170,8 +169,7 @@
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -221,11 +219,11 @@
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># columnsをキーワード引数で与える場合、インデックスごとのデータのリストを渡す</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="p">[</span>
-        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
-        <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
-        <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
-        <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
-    <span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">])</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"apple"</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"orange"</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="s2">"banana"</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
+        <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"apple"</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
+    <span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">])</span>
 <span class="n">df</span>
 </pre></div>
 
@@ -243,8 +241,7 @@
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -294,8 +291,7 @@
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -346,7 +342,7 @@ dtype: object</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Seriesは属性のように呼び出せる</span>
-<span class="n">df</span><span class="o">.</span><span class="n">B</span> <span class="c1"># または df[&quot;B&quot;]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">B</span> <span class="c1"># または df["B"]</span>
 </pre></div>
 
     </div>
@@ -384,7 +380,7 @@ Name: B, dtype: object</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 複数の列を抜き出したDataFrameを作る</span>
-<span class="n">df</span><span class="p">[[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">]]</span>
+<span class="n">df</span><span class="p">[[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">]]</span>
 </pre></div>
 
     </div>
@@ -401,8 +397,7 @@ Name: B, dtype: object</pre>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -447,8 +442,7 @@ Name: B, dtype: object</pre>
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -461,7 +455,7 @@ Name: B, dtype: object</pre>
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Series &#39;C&#39;の値がTrueのものだけをDataFrameとして抜き出す</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Series 'C'の値がTrueのものだけをDataFrameとして抜き出す</span>
 <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">C</span><span class="p">]</span>
 </pre></div>
 
@@ -479,8 +473,7 @@ Name: B, dtype: object</pre>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -524,8 +517,7 @@ Name: B, dtype: object</pre>
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -539,7 +531,7 @@ Name: B, dtype: object</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Bがappleのものだけを抜き出す</span>
-<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">B</span> <span class="o">==</span> <span class="s2">&quot;apple&quot;</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">B</span> <span class="o">==</span> <span class="s2">"apple"</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -556,8 +548,7 @@ Name: B, dtype: object</pre>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -595,8 +586,7 @@ Name: B, dtype: object</pre>
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -610,7 +600,7 @@ Name: B, dtype: object</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Bがappleかつ、CがTrueのものだけを抜き出す</span>
-<span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">B</span> <span class="o">==</span> <span class="s2">&quot;apple&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">df</span><span class="o">.</span><span class="n">C</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">B</span> <span class="o">==</span> <span class="s2">"apple"</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">df</span><span class="o">.</span><span class="n">C</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -627,8 +617,7 @@ Name: B, dtype: object</pre>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -660,8 +649,7 @@ Name: B, dtype: object</pre>
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -675,7 +663,7 @@ Name: B, dtype: object</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># DataFrameへのSeriesの追加はこのようにする</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;D_new&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">A</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"D_new"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">A</span> <span class="o">**</span> <span class="mi">2</span>
 <span class="n">df</span>
 </pre></div>
 
@@ -693,8 +681,7 @@ Name: B, dtype: object</pre>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -749,8 +736,7 @@ Name: B, dtype: object</pre>
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -802,8 +788,8 @@ dtype: object</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># DataFrameの統計量をまとめて出す</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;rand&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(),</span>
-                <span class="s2">&quot;randn&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()})</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"rand"</span><span class="p">:</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(),</span>
+                <span class="s2">"randn"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()})</span>
 <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 
@@ -821,8 +807,7 @@ dtype: object</pre>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -887,8 +872,7 @@ dtype: object</pre>
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1342,7 +1326,7 @@ rkJggg==
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ヒストグラムなどはkindで指定する。 「df.plot?」を見ると詳細あり。</span>
-<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"hist"</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1499,7 +1483,7 @@ Sv1/ZRPb6eJdZp0AAAAASUVORK5CYII=
 </div>
 
 </div>
- 
+
 
 </div>
       </div>

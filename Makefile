@@ -1,5 +1,5 @@
 convert: src
-	python scripts/nb_converter.py
+	poetry run python scripts/html_renderer.py
 
 start:
-	cd docs && python -m http.server 8080
+	cd docs && poetry run python -m http.server 8080
