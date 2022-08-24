@@ -123,7 +123,8 @@ Pythonを用いることには次のような利点があります。</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="ls:-%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E3%83%AA%E3%82%B9%E3%83%88%E3%81%99%E3%82%8B">ls: &#12501;&#12449;&#12452;&#12523;&#12434;&#12522;&#12473;&#12488;&#12377;&#12427;<a class="anchor-link" href="#ls:-%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E3%83%AA%E3%82%B9%E3%83%88%E3%81%99%E3%82%8B">&#182;</a></h1><p>ls <em>path</em> は os.listdir(<em>path</em>) で、<em>path</em>におけるファイルなどを、文字列のリストとして返してくれます。</p>
+<h1 id="cd:-%E4%BD%9C%E6%A5%AD%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B">cd: &#20316;&#26989;&#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#12434;&#22793;&#26356;&#12377;&#12427;<a class="anchor-link" href="#cd:-%E4%BD%9C%E6%A5%AD%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B">&#182;</a></h1><p>cd <em>path</em> は os.chdir(<em>path</em>) です。<br />
+Python上での作業ディレクトリの変更は、Pythonのセッションが終了するまで（IPythonなどを閉じるまで）有効です。</p>
 
 </div>
 </div>
@@ -131,6 +132,27 @@ Pythonを用いることには次のような利点があります。</p>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">"./my-dir"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="ls:-%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E3%83%AA%E3%82%B9%E3%83%88%E3%81%99%E3%82%8B">ls: &#12501;&#12449;&#12452;&#12523;&#12434;&#12522;&#12473;&#12488;&#12377;&#12427;<a class="anchor-link" href="#ls:-%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E3%83%AA%E3%82%B9%E3%83%88%E3%81%99%E3%82%8B">&#182;</a></h1><p>ls <em>path</em> は os.listdir(<em>path</em>) で、<em>path</em>におけるファイルなどを、文字列のリストとして返してくれます。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">'.'</span><span class="p">)</span>
@@ -146,34 +168,13 @@ Pythonを用いることには次のような利点があります。</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[2]:</div>
+    <div class="prompt output_prompt">Out[3]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&#39;c02.csv&#39;,
- &#39;Sample.gif&#39;,
- &#39;c01.csv&#39;,
- &#39;Pandas\u3000―\u3000データ分析.ipynb&#39;,
- &#39;Pandas―データ分析（３）GroupBy.ipynb&#39;,
- &#39;Seaborn ― matplotlib をより美しく、使いやすく.ipynb&#39;,
- &#39;libsobol.c&#39;,
- &#39;Fortran, C言語 との連携.ipynb&#39;,
- &#39;RK4.f90&#39;,
- &#39;Pandas―データ分析（５）応用：都道府県別人口推移.ipynb&#39;,
- &#39;RK4_f2py.f90&#39;,
- &#39;Pandas―データ分析（４）ファイル入出力.ipynb&#39;,
- &#39;double_pendulum.gif&#39;,
- &#39;SymPyー代数演算（２）応用：二重振り子.ipynb&#39;,
- &#39;Pandas―データ分析（１）Series.ipynb&#39;,
- &#39;.ipynb_checkpoints&#39;,
- &#39;SymPyー代数演算（１）使い方.ipynb&#39;,
- &#39;shやBashの代わりにPythonを使う.ipynb&#39;,
- &#39;use_RK4.py&#39;,
- &#39;SymPyー代数演算.ipynb&#39;,
- &#39;Pandas―データ分析（２）DataFrame.ipynb&#39;,
- &#39;Animation.ipynb&#39;]</pre>
+<pre>[&#39;mycsv1.csv&#39;, &#39;mycsv2.csv&#39;, &#39;mytext2.txt&#39;, &#39;child-dir&#39;, &#39;mytext1.txt&#39;]</pre>
 </div>
 
 </div>
@@ -194,11 +195,11 @@ glob.glob(<em>path</em>)で、<em>path</em>に一致するファイルをリス�
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
-<span class="n">ls2</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"./*.ipynb"</span><span class="p">)</span>
+<span class="n">ls2</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"./*.txt"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">ls2</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </pre></div>
@@ -217,19 +218,8 @@ glob.glob(<em>path</em>)で、<em>path</em>に一致するファイルをリス�
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>./Pandas　―　データ分析.ipynb
-./Pandas―データ分析（３）GroupBy.ipynb
-./Seaborn ― matplotlib をより美しく、使いやすく.ipynb
-./Fortran, C言語 との連携.ipynb
-./Pandas―データ分析（５）応用：都道府県別人口推移.ipynb
-./Pandas―データ分析（４）ファイル入出力.ipynb
-./SymPyー代数演算（２）応用：二重振り子.ipynb
-./Pandas―データ分析（１）Series.ipynb
-./SymPyー代数演算（１）使い方.ipynb
-./shやBashの代わりにPythonを使う.ipynb
-./SymPyー代数演算.ipynb
-./Pandas―データ分析（２）DataFrame.ipynb
-./Animation.ipynb
+<pre>./mytext2.txt
+./mytext1.txt
 </pre>
 </div>
 </div>
@@ -248,10 +238,10 @@ glob.glob(<em>path</em>)で、<em>path</em>に一致するファイルをリス�
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"../**/*.ipynb"</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"./**/*.txt"</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -264,22 +254,13 @@ glob.glob(<em>path</em>)で、<em>path</em>に一致するファイルをリス�
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[5]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&#39;../スライド/1日目スライド.ipynb&#39;,
- &#39;../応用編/Pandas\u3000―\u3000データ分析.ipynb&#39;,
- &#39;../応用編/Pandas―データ分析（３）GroupBy.ipynb&#39;,
- &#39;../応用編/Seaborn ― matplotlib をより美しく、使いやすく.ipynb&#39;,
- &#39;../応用編/Fortran, C言語 との連携.ipynb&#39;,
- &#39;../応用編/Pandas―データ分析（５）応用：都道府県別人口推移.ipynb&#39;,
- &#39;../応用編/Pandas―データ分析（４）ファイル入出力.ipynb&#39;,
- &#39;../応用編/SymPyー代数演算（２）応用：二重振り子.ipynb&#39;,
- &#39;../応用編/Pandas―データ分析（１）Series.ipynb&#39;,
- &#39;../応用編/SymPyー代数演算（１）使い方.ipynb&#39;]</pre>
+<pre>[&#39;./mytext2.txt&#39;, &#39;./mytext1.txt&#39;, &#39;./child-dir/childtext.txt&#39;]</pre>
 </div>
 
 </div>
@@ -299,16 +280,16 @@ glob.glob(<em>path</em>)で、<em>path</em>に一致するファイルをリス�
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
-<span class="c1"># Pathオブジェクト(ここでは、一つ上のディレクトリを基準に作る)</span>
-<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">'..'</span><span class="p">)</span>
+<span class="c1"># Pathオブジェクト(ここでは、今いるディレクトリを基準に作る)</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">'.'</span><span class="p">)</span>
 
-<span class="c1">#  再帰的にサブディレクトリ内の '.ipynb'ファイルを全て列挙する</span>
-<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'**/*.ipynb'</span><span class="p">):</span>
+<span class="c1">#  再帰的にサブディレクトリ内の '.txt'ファイルを全て列挙する</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'./**/*.txt'</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
 </pre></div>
 
@@ -326,38 +307,9 @@ glob.glob(<em>path</em>)で、<em>path</em>に一致するファイルをリス�
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>../スライド/1日目スライド.ipynb
-../応用編/Pandas　―　データ分析.ipynb
-../応用編/Pandas―データ分析（３）GroupBy.ipynb
-../応用編/Seaborn ― matplotlib をより美しく、使いやすく.ipynb
-../応用編/Fortran, C言語 との連携.ipynb
-../応用編/Pandas―データ分析（５）応用：都道府県別人口推移.ipynb
-../応用編/Pandas―データ分析（４）ファイル入出力.ipynb
-../応用編/SymPyー代数演算（２）応用：二重振り子.ipynb
-../応用編/Pandas―データ分析（１）Series.ipynb
-../応用編/SymPyー代数演算（１）使い方.ipynb
-../応用編/shやBashの代わりにPythonを使う.ipynb
-../応用編/SymPyー代数演算.ipynb
-../応用編/Pandas―データ分析（２）DataFrame.ipynb
-../応用編/Animation.ipynb
-../応用編/.ipynb_checkpoints/shやBashの代わりにPythonを使う-checkpoint.ipynb
-../ライブラリ集/Sympy―代数演算.ipynb
-../基礎編/Numpyを使う際の注意点.ipynb
-../基礎編/Numpyの基礎（１）導入.ipynb
-../基礎編/Numpyの基礎（７）便利なライブラリ群.ipynb
-../基礎編/Matplotlib.ipynb
-../基礎編/Numpyの基礎（４）データ型.ipynb
-../基礎編/Numpyの基礎（６）ブロードキャスト.ipynb
-../基礎編/Pythonの基礎2.ipynb
-../基礎編/文字列操作（１）str.format.ipynb
-../基礎編/Numpyの基礎（８）ファイル入出力.ipynb
-../基礎編/Numpyの基礎（５）要素の参照.ipynb
-../基礎編/numpy（基礎編）.ipynb
-../基礎編/文字列操作（２）strやファイル読み込み.ipynb
-../基礎編/Pythonの基礎1.ipynb
-../基礎編/Numpyの基礎（３）ufunc.ipynb
-../基礎編/ファイル読み込み.ipynb
-../基礎編/Numpyの基礎（２）生成関数.ipynb
+<pre>mytext2.txt
+mytext1.txt
+child-dir/childtext.txt
 </pre>
 </div>
 </div>
@@ -373,28 +325,6 @@ glob.glob(<em>path</em>)で、<em>path</em>に一致するファイルをリス�
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="cd:-%E4%BD%9C%E6%A5%AD%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B">cd: &#20316;&#26989;&#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#12434;&#22793;&#26356;&#12377;&#12427;<a class="anchor-link" href="#cd:-%E4%BD%9C%E6%A5%AD%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B">&#182;</a></h1><p>cd <em>path</em> は os.chdir(<em>path</em>) です。<br />
-Python上での作業ディレクトリの変更は、Pythonのセッションが終了するまで（IPythonなどを閉じるまで）有効です。</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">"../基礎編"</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -490,9 +420,9 @@ cp <em>src</em> <em>dst</em>  は shutil.copy(<em>src</em>, <em>dst</em>) です
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"./*.f90"</span><span class="p">))</span>
-<span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="s2">"write_binary.f90"</span><span class="p">,</span> <span class="s2">"copied_write_binary.f90"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"./*.f90"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"./*.txt"</span><span class="p">))</span>
+<span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="s2">"mytext1.txt"</span><span class="p">,</span> <span class="s2">"copied_mytext1.txt"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"./*.txt"</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -509,8 +439,8 @@ cp <em>src</em> <em>dst</em>  は shutil.copy(<em>src</em>, <em>dst</em>) です
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[&#39;./write_binary.f90&#39;]
-[&#39;./copied_write_binary.f90&#39;, &#39;./write_binary.f90&#39;]
+<pre>[&#39;./mytext2.txt&#39;, &#39;./mytext1.txt&#39;]
+[&#39;./mytext2.txt&#39;, &#39;./mytext1.txt&#39;, &#39;./copied_mytext1.txt&#39;]
 </pre>
 </div>
 </div>
@@ -530,7 +460,7 @@ cp <em>src</em> <em>dst</em>  は shutil.copy(<em>src</em>, <em>dst</em>) です
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="mv:-%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E7%A7%BB%E5%8B%95%E3%81%99%E3%82%8B">mv: &#12501;&#12449;&#12452;&#12523;&#12434;&#31227;&#21205;&#12377;&#12427;<a class="anchor-link" href="#mv:-%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E7%A7%BB%E5%8B%95%E3%81%99%E3%82%8B">&#182;</a></h1><p>mv <em>src</em> <em>dst</em> は shutil.move(<em>src</em>,<em>dst</em>) です。</p>
+<h1 id="mv:-%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E7%A7%BB%E5%8B%95%E3%81%99%E3%82%8B">mv: &#12501;&#12449;&#12452;&#12523;&#12434;&#31227;&#21205;&#12377;&#12427;<a class="anchor-link" href="#mv:-%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E7%A7%BB%E5%8B%95%E3%81%99%E3%82%8B">&#182;</a></h1><p>mv <em>src</em> <em>dst</em> は shutil.move(<em>src</em>,<em>dst</em>) です。rename もできます。</p>
 
 </div>
 </div>
@@ -540,9 +470,9 @@ cp <em>src</em> <em>dst</em>  は shutil.copy(<em>src</em>, <em>dst</em>) です
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"./*.f90"</span><span class="p">))</span>
-<span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="s2">"copied_write_binary.f90"</span><span class="p">,</span> <span class="s2">"moved_write_binary.f90"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"./*.f90"</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"./*.txt"</span><span class="p">))</span>
+<span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="s2">"copied_mytext1.txt"</span><span class="p">,</span> <span class="s2">"moved_mytext1.txt"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"./*.txt"</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -559,8 +489,8 @@ cp <em>src</em> <em>dst</em>  は shutil.copy(<em>src</em>, <em>dst</em>) です
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[&#39;./copied_write_binary.f90&#39;, &#39;./write_binary.f90&#39;]
-[&#39;./moved_write_binary.f90&#39;, &#39;./write_binary.f90&#39;]
+<pre>[&#39;./mytext2.txt&#39;, &#39;./mytext1.txt&#39;, &#39;./copied_mytext1.txt&#39;]
+[&#39;./mytext2.txt&#39;, &#39;./mytext1.txt&#39;, &#39;./moved_mytext1.txt&#39;]
 </pre>
 </div>
 </div>
@@ -582,9 +512,9 @@ cp <em>src</em> <em>dst</em>  は shutil.copy(<em>src</em>, <em>dst</em>) です
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"./*.f90"</span><span class="p">))</span>
-<span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">"moved_write_binary.f90"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"./*.f90"</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"./*.txt"</span><span class="p">))</span>
+<span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">"moved_mytext1.txt"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"./*.txt"</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -601,8 +531,8 @@ cp <em>src</em> <em>dst</em>  は shutil.copy(<em>src</em>, <em>dst</em>) です
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[&#39;./moved_write_binary.f90&#39;, &#39;./write_binary.f90&#39;]
-[&#39;./write_binary.f90&#39;]
+<pre>[&#39;./mytext2.txt&#39;, &#39;./mytext1.txt&#39;, &#39;./moved_mytext1.txt&#39;]
+[&#39;./mytext2.txt&#39;, &#39;./mytext1.txt&#39;]
 </pre>
 </div>
 </div>
@@ -683,7 +613,7 @@ os.path.isfile(<em>path</em>) <em>path</em>がファイルならばTrue、ディ
 <div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'../**'</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]:</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'./**'</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'is_dir = </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="si">}</span><span class="s1"> :  is_path = </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 
@@ -702,15 +632,12 @@ os.path.isfile(<em>path</em>) <em>path</em>がファイルならばTrue、ディ
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>is_dir = True :  is_path = False
-is_dir = True :  is_path = False
-is_dir = False :  is_path = True
-is_dir = False :  is_path = True
-is_dir = True :  is_path = False
-is_dir = False :  is_path = True
 is_dir = False :  is_path = True
 is_dir = False :  is_path = True
 is_dir = False :  is_path = True
 is_dir = True :  is_path = False
+is_dir = False :  is_path = True
+is_dir = False :  is_path = True
 </pre>
 </div>
 </div>
@@ -746,7 +673,7 @@ is_dir = True :  is_path = False
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 表示例</span>
-<span class="o">!</span> tree -L <span class="m">1</span> ../..
+<span class="o">!</span> tree -L <span class="m">2</span> .
 </pre></div>
 
     </div>
@@ -763,16 +690,15 @@ is_dir = True :  is_path = False
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre><span class="ansi-blue-intense-fg ansi-bold">../..</span>
-├── Makefile
-├── README.md
-├── <span class="ansi-blue-intense-fg ansi-bold">docs</span>
-├── <span class="ansi-blue-intense-fg ansi-bold">resource</span>
-├── <span class="ansi-blue-intense-fg ansi-bold">scripts</span>
-├── <span class="ansi-blue-intense-fg ansi-bold">src</span>
-└── <span class="ansi-blue-intense-fg ansi-bold">template</span>
+<pre><span class="ansi-blue-intense-fg ansi-bold">.</span>
+├── <span class="ansi-blue-intense-fg ansi-bold">child-dir</span>
+│   └── childtext.txt
+├── mycsv1.csv
+├── mycsv2.csv
+├── mytext1.txt
+└── mytext2.txt
 
-5 directories, 2 files
+1 directory, 5 files
 </pre>
 </div>
 </div>
@@ -796,7 +722,7 @@ is_dir = True :  is_path = False
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
-<span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">'tree'</span><span class="p">,</span> <span class="s1">'../..'</span><span class="p">,</span> <span class="s1">'-L'</span><span class="p">,</span> <span class="s1">'1'</span><span class="p">])</span>
+<span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">'tree'</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">,</span> <span class="s1">'-L'</span><span class="p">,</span> <span class="s1">'2'</span><span class="p">])</span>
 </pre></div>
 
     </div>
@@ -809,13 +735,32 @@ is_dir = True :  is_path = False
 
 <div class="output_area">
 
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>.
+├── child-dir
+│   └── childtext.txt
+├── mycsv1.csv
+├── mycsv2.csv
+├── mytext1.txt
+└── mytext2.txt
+
+1 directory, 5 files
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
     <div class="prompt output_prompt">Out[17]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>CompletedProcess(args=[&#39;tree&#39;, &#39;../..&#39;, &#39;-L&#39;, &#39;1&#39;], returncode=0)</pre>
+<pre>CompletedProcess(args=[&#39;tree&#39;, &#39;.&#39;, &#39;-L&#39;, &#39;2&#39;], returncode=0)</pre>
 </div>
 
 </div>
@@ -838,7 +783,7 @@ is_dir = True :  is_path = False
 <div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">proc</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">'tree'</span><span class="p">,</span> <span class="s1">'../..'</span><span class="p">,</span> <span class="s1">'-L'</span><span class="p">,</span> <span class="s1">'1'</span><span class="p">],</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">proc</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">'tree'</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">,</span> <span class="s1">'-L'</span><span class="p">,</span> <span class="s1">'2'</span><span class="p">],</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">proc</span>
 </pre></div>
 
@@ -858,7 +803,7 @@ is_dir = True :  is_path = False
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>CompletedProcess(args=[&#39;tree&#39;, &#39;../..&#39;, &#39;-L&#39;, &#39;1&#39;], returncode=0, stdout=b&#39;../..\n\xe2\x94\x9c\xe2\x94\x80\xe2\x94\x80 Makefile\n\xe2\x94\x9c\xe2\x94\x80\xe2\x94\x80 README.md\n\xe2\x94\x9c\xe2\x94\x80\xe2\x94\x80 docs\n\xe2\x94\x9c\xe2\x94\x80\xe2\x94\x80 resource\n\xe2\x94\x9c\xe2\x94\x80\xe2\x94\x80 scripts\n\xe2\x94\x9c\xe2\x94\x80\xe2\x94\x80 src\n\xe2\x94\x94\xe2\x94\x80\xe2\x94\x80 template\n\n5 directories, 2 files\n&#39;, stderr=b&#39;&#39;)</pre>
+<pre>CompletedProcess(args=[&#39;tree&#39;, &#39;.&#39;, &#39;-L&#39;, &#39;2&#39;], returncode=0, stdout=b&#39;.\n\xe2\x94\x9c\xe2\x94\x80\xe2\x94\x80 child-dir\n\xe2\x94\x82\xc2\xa0\xc2\xa0 \xe2\x94\x94\xe2\x94\x80\xe2\x94\x80 childtext.txt\n\xe2\x94\x9c\xe2\x94\x80\xe2\x94\x80 mycsv1.csv\n\xe2\x94\x9c\xe2\x94\x80\xe2\x94\x80 mycsv2.csv\n\xe2\x94\x9c\xe2\x94\x80\xe2\x94\x80 mytext1.txt\n\xe2\x94\x94\xe2\x94\x80\xe2\x94\x80 mytext2.txt\n\n1 directory, 5 files\n&#39;, stderr=b&#39;&#39;)</pre>
 </div>
 
 </div>
@@ -890,16 +835,15 @@ is_dir = True :  is_path = False
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>../..
-├── Makefile
-├── README.md
-├── docs
-├── resource
-├── scripts
-├── src
-└── template
+<pre>.
+├── child-dir
+│   └── childtext.txt
+├── mycsv1.csv
+├── mycsv2.csv
+├── mytext1.txt
+└── mytext2.txt
 
-5 directories, 2 files
+1 directory, 5 files
 
 </pre>
 </div>
@@ -998,7 +942,7 @@ is_dir = True :  is_path = False
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># file objectをstdoutに渡す</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'result.txt'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
-    <span class="n">proc</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">'tree'</span><span class="p">,</span> <span class="s1">'../..'</span><span class="p">,</span> <span class="s1">'-L'</span><span class="p">,</span> <span class="s1">'1'</span><span class="p">],</span> <span class="n">stdout</span><span class="o">=</span><span class="n">fp</span><span class="p">)</span>
+    <span class="n">proc</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">'tree'</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">,</span> <span class="s1">'-L'</span><span class="p">,</span> <span class="s1">'2'</span><span class="p">],</span> <span class="n">stdout</span><span class="o">=</span><span class="n">fp</span><span class="p">)</span>
 
 <span class="o">!</span> cat result.txt
 </pre></div>
@@ -1017,20 +961,33 @@ is_dir = True :  is_path = False
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>../..
-├── Makefile
-├── README.md
-├── docs
-├── resource
-├── scripts
-├── src
-└── template
+<pre>.
+├── child-dir
+│   └── childtext.txt
+├── mycsv1.csv
+├── mycsv2.csv
+├── mytext1.txt
+├── mytext2.txt
+└── result.txt
 
-5 directories, 2 files
+1 directory, 6 files
 </pre>
 </div>
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span> rm result.txt
+</pre></div>
+
+    </div>
 </div>
 </div>
 
@@ -1046,7 +1003,7 @@ is_dir = True :  is_path = False
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_wd</span> <span class="o">=</span> <span class="o">%</span><span class="k">pwd</span>
@@ -1071,7 +1028,7 @@ is_dir = True :  is_path = False
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>which python
@@ -1091,7 +1048,7 @@ is_dir = True :  is_path = False
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>/Users/zawawahoge/.pyenv/versions/3.8.0/bin/python
+<pre>/Users/zawawahoge/.asdf/shims/python
 </pre>
 </div>
 </div>
@@ -1110,7 +1067,7 @@ is_dir = True :  is_path = False
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">python_location</span> <span class="o">=</span> <span class="o">!</span>which python
@@ -1127,13 +1084,13 @@ is_dir = True :  is_path = False
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[25]:</div>
+    <div class="prompt output_prompt">Out[26]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&#39;/Users/zawawahoge/.pyenv/versions/3.8.0/bin/python&#39;]</pre>
+<pre>[&#39;/Users/zawawahoge/.asdf/shims/python&#39;]</pre>
 </div>
 
 </div>
@@ -1152,23 +1109,10 @@ is_dir = True :  is_path = False
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">'基礎編'</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls ../<span class="nv">$a</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls
 </pre></div>
 
     </div>
@@ -1185,32 +1129,51 @@ is_dir = True :  is_path = False
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Matplotlib.ipynb
-NINO.3.csv
-Numpyの基礎（３）ufunc.ipynb
-Numpyの基礎（１）導入.html
-Numpyの基礎（１）導入.ipynb
-Numpyを使う際の注意点.ipynb
-Numpyの基礎（２）生成関数.ipynb
-Numpyの基礎（４）データ型.ipynb
-Numpyの基礎（５）要素の参照.ipynb
-Numpyの基礎（８）ファイル入出力.ipynb
-Numpyの基礎（６）ブロードキャスト.ipynb
-Numpyの基礎（７）便利なライブラリ群.ipynb
-Pythonの基礎1.ipynb
-Pythonの基礎2.ipynb
-axis.png
-c01.csv
-ersst.v4.201702.nc
-my_module.py
-numpy（基礎編）.ipynb
-redirected.txt
-result.txt
-temp
-write_binary.f90
-ファイル読み込み.ipynb
-文字列操作（１）str.format.ipynb
-文字列操作（２）strやファイル読み込み.ipynb
+<pre><span class="ansi-cyan-fg">child-dir</span>   mycsv1.csv  mycsv2.csv  mytext1.txt mytext2.txt
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">'child-dir'</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls ./<span class="nv">$a</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>childtext.txt
 </pre>
 </div>
 </div>
@@ -1229,7 +1192,7 @@ write_binary.f90
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">langs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'python'</span><span class="p">,</span> <span class="s1">'ruby'</span><span class="p">,</span> <span class="s1">'java'</span><span class="p">]</span>
@@ -1252,7 +1215,7 @@ write_binary.f90
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[&#39;/Users/zawawahoge/.pyenv/versions/3.8.0/bin/python&#39;]
+<pre>[&#39;/Users/zawawahoge/.asdf/shims/python&#39;]
 [&#39;/usr/bin/ruby&#39;]
 [&#39;/usr/bin/java&#39;]
 </pre>

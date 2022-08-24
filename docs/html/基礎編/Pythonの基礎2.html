@@ -668,17 +668,14 @@ plusone [12]
 <pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">UnboundLocalError</span>                         Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-12-596a42660a12&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">     11</span> try_to_rewrite_1<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-red-fg"># successful</span>
-<span class="ansi-green-intense-fg ansi-bold">     12</span> print<span class="ansi-blue-fg">(</span>x<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">---&gt; 13</span><span class="ansi-red-fg"> </span>try_to_rewrite_2<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-red-fg"># raises Error</span>
+Input <span class="ansi-green-fg">In [12]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 13&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">     11</span> try_to_rewrite_1() <span style="color: rgb(95,135,135)"># successful</span>
+<span class="ansi-green-intense-fg ansi-bold">     12</span> <span style="color: rgb(0,135,0)">print</span>(x)
+<span class="ansi-green-fg">---&gt; 13</span> <span class="ansi-yellow-bg">try_to_rewrite_2</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
 
-<span class="ansi-green-fg">&lt;ipython-input-12-596a42660a12&gt;</span> in <span class="ansi-cyan-fg">try_to_rewrite_2</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      6</span> 
-<span class="ansi-green-intense-fg ansi-bold">      7</span> <span class="ansi-green-fg">def</span> try_to_rewrite_2<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">----&gt; 8</span><span class="ansi-red-fg">     </span>x <span class="ansi-blue-fg">=</span> x <span class="ansi-blue-fg">+</span> <span class="ansi-cyan-fg">10</span>
-<span class="ansi-green-intense-fg ansi-bold">      9</span> 
-<span class="ansi-green-intense-fg ansi-bold">     10</span> print<span class="ansi-blue-fg">(</span>x<span class="ansi-blue-fg">)</span>
+Input <span class="ansi-green-fg">In [12]</span>, in <span class="ansi-cyan-fg">try_to_rewrite_2</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      7</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">try_to_rewrite_2</span>():
+<span class="ansi-green-fg">----&gt; 8</span>     x <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">x</span> <span style="color: rgb(98,98,98)">+</span> <span style="color: rgb(98,98,98)">10</span>
 
 <span class="ansi-red-fg">UnboundLocalError</span>: local variable &#39;x&#39; referenced before assignment</pre>
 </div>
