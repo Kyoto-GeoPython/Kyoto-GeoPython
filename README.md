@@ -6,6 +6,14 @@
 $ make convert
 ```
 
+## run local server
+
+```
+$ make start
+```
+
+Open `http://localhost:8080` in your browser.
+
 # setup
 
 Install Poetry.

@@ -1,49 +1,29 @@
 
 # coding: utf-8
 
-import os
 from jinja2 import Template
-import glob
 import subprocess
-from logging import getLogger, StreamHandler, DEBUG
-
-logger = getLogger(__name__)
-handler = StreamHandler()
-handler.setLevel(DEBUG)
-logger.setLevel(DEBUG)
-logger.addHandler(handler)
-
-PWD = os.getcwd()
-
-with open(f'{PWD}/template/notebook-template.html', 'r') as fp:
-    template_html = fp.read()
-template = Template(template_html)
-
-target = f'{PWD}/docs/html'
 
 
-def write_body(path, body):
-    with open(path, 'w') as fp:
-        fp.write(body)
+def render_ipynb(src_path, title, template_path):
+    body = get_nb_html(src_path)
+
+    if title is None:
+        title = extract_title(src_path)
+
+    if template_path is not None:
+        with open(template_path, 'r') as fp:
+            template_html = fp.read()
+        template = Template(template_html)
+        body = template.render(body=body, title=title)
+
+    return body
 
 
-def path_nb_to_html(path_nb):
-    path_html = path_nb.replace('.ipynb', '.html')
-    path_html = path_html.replace('src/', '')
-    return os.path.join(target, path_html)
-
-
-def find_nb():
-    return glob.glob('src/*/*.ipynb')
-
-
-def nbconvert_stdout(path_nb):
+def get_nb_html(path_nb):
     cmd = ['jupyter', 'nbconvert', path_nb,
            '--to', 'html', '--template', 'basic', '--stdout']
-    logger.debug(f'[My nbconvert] {" ".join(cmd)}')
     proc = subprocess.run(cmd, capture_output=True, encoding='utf-8')
-    logger.debug(f'[My nbconvert] {path_nb}')
-    logger.debug(f'[My nbconvert] {proc.stderr}')
     return proc.stdout
 
 
@@ -51,15 +31,24 @@ def extract_title(path_nb):
     return path_nb.split('/')[-1].replace('.ipynb', '')
 
 
-def render(element, title):
-    return template.render(body=element, title=title)
-
-
 if __name__ == '__main__':
+    import argparse
+    parser = argparse.ArgumentParser(description='Process some integers.')
+    parser.add_argument('--template', metavar='T', type=str,
+                        help='template file to use for rendering')
+    parser.add_argument('src', metavar='src', type=str,
+                        help='source ipynb file to render')
+    parser.add_argument('-o', metavar='output', type=str,
+                        default='a.html', help='output html file')
+    parser.add_argument('--title', metavar='title', type=str,
+                        help='title for header')
+    args = parser.parse_args()
 
-    for path_nb in find_nb():
-        element = nbconvert_stdout(path_nb)
-        title = extract_title(path_nb)
-        rendered = render(element, title)
-        path_html = path_nb_to_html(path_nb)
-        write_body(path_html, rendered)
+    template_path = args.template
+    src_path = args.src
+    output_path = args.o
+    title = args.title
+
+    body = render_ipynb(src_path, title, template_path)
+    with open(output_path, 'w') as fp:
+        fp.write(body)
