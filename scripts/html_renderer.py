@@ -8,9 +8,6 @@ import subprocess
 def render_ipynb(src_path, title, template_path):
     body = get_nb_html(src_path)
 
-    if title is None:
-        title = extract_title(src_path)
-
     if template_path is not None:
         with open(template_path, 'r') as fp:
             template_html = fp.read()
@@ -27,10 +24,6 @@ def get_nb_html(path_nb):
     return proc.stdout
 
 
-def extract_title(path_nb):
-    return path_nb.split('/')[-1].replace('.ipynb', '')
-
-
 if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(description='Process some integers.')
@@ -41,7 +34,7 @@ if __name__ == '__main__':
     parser.add_argument('-o', metavar='output', type=str,
                         default='a.html', help='output html file')
     parser.add_argument('--title', metavar='title', type=str,
-                        help='title for header')
+                        default='', help='title for header')
     args = parser.parse_args()
 
     template_path = args.template
