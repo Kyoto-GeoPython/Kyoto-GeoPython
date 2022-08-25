@@ -2,7 +2,7 @@
 
 cd "$(dirname "$0")/.."
 
-source scripts/constants.sh
+source ./.env
 
 notebooks="$(find "$src_base_dir" -type f -name "*.ipynb" | grep -v ".ipynb_checkpoints" | LC_ALL=C sort)"
 echo "$notebooks" > notebooks.lock
