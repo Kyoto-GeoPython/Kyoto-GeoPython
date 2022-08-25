@@ -17,6 +17,7 @@ scipy = "^1.9.0"
 netCDF4 = "^1.6.0"
 seaborn = "^0.11.2"
 sympy = "^1.11"
+jupyterlab = "^3.4.5"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
