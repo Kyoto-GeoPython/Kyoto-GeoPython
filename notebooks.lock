@@ -1,3 +1,4 @@
+src/notebooks/その他/IPython_Magic.ipynb
 src/notebooks/スライド/1日目スライド.ipynb
 src/notebooks/基礎編/Matplotlib.ipynb
 src/notebooks/基礎編/Numpyの基礎（１）導入.ipynb
@@ -26,3 +27,5 @@ src/notebooks/応用編/Seaborn ― matplotlib をより美しく、使いやす
 src/notebooks/応用編/SymPyー代数演算（１）使い方.ipynb
 src/notebooks/応用編/SymPyー代数演算（２）応用：二重振り子.ipynb
 src/notebooks/応用編/shやBashの代わりにPythonを使う.ipynb
+src/notebooks/応用編/可視化ツール.ipynb
+src/notebooks/応用編/高速化Tips.ipynb

@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>IPython_Magic</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-115860818-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-115860818-2");
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="/css/nb-000.css" />
+    <link rel="stylesheet" type="text/css" href="/css/nb-001.css" />
+    <link rel="stylesheet" type="text/css" href="/css/nb-002.css" />
+
+    <link rel="stylesheet" href="/css/w3.css" />
+    <link rel="stylesheet" type="text/css" href="/css/nb-base.css" />
+
+    <!-- Loading mathjax macro -->
+    <!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+              processEscapes: true,
+              processEnvironments: true
+          },
+          // Center justify equations in code and markdown cells. Elsewhere
+          // we use CSS to left justify single line equations in code cells.
+          displayAlign: 'center',
+          "HTML-CSS": {
+              styles: {'.MathJax_Display': {"margin": 0}},
+              linebreaks: { automatic: true }
+          }
+      });
+    </script>
+    <!-- End of mathjax configuration -->
+  </head>
+  <body>
+      <div class="top-button-container">
+        <div class="w3-panel w3-left">
+          <h4><a class="w3-button w3-black" href="/">トップページに戻る</a></h4>
+        </div>
+      </div>
+
+    <div tabindex="-1" id="notebook" class="border-box-sizing must-no-padding">
+      <div class="container my-notebook-container must-no-padding" id="notebook-container">
+        <div class="w3-panel">
+          <h1 class="w3-center">IPython_Magic</h1>
+        </div>
+
+        <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="IPython-magic%E3%81%AE%E7%B4%B9%E4%BB%8B">IPython magic&#12398;&#32057;&#20171;<a class="anchor-link" href="#IPython-magic%E3%81%AE%E7%B4%B9%E4%BB%8B">&#182;</a></h2><h3 id="IPython-magic%E3%81%A8%E3%81%AF%EF%BC%9F">IPython magic&#12392;&#12399;&#65311;<a class="anchor-link" href="#IPython-magic%E3%81%A8%E3%81%AF%EF%BC%9F">&#182;</a></h3><p>標準のPythonコンソールから拡張されたコマンド</p>
+<p>「%」から始まる
+複数行に渡る場合は「％％」にする</p>
+<h3 id="%25ls">%ls<a class="anchor-link" href="#%25ls">&#182;</a></h3><p>シェルの「ls」を呼び出す。
+Windowsの場合「dir」と同じ</p>
+<h3 id="%25cd">%cd<a class="anchor-link" href="#%25cd">&#182;</a></h3><p>シェルと同じく、カレントワーキングディレクトリを変更する。</p>
+<h3 id="%25pwd">%pwd<a class="anchor-link" href="#%25pwd">&#182;</a></h3><p>カレントワーキングディレクトリを表示する。</p>
+<h3 id="%25run-%5Bfilename%5D">%run [filename]<a class="anchor-link" href="#%25run-%5Bfilename%5D">&#182;</a></h3><p>ファイルをIPython内で実行する。変数はIPythonに残る。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat ./run_test.py
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>import numpy as np
+            
+arr = np.array([1, 3, 4])        
+mylist = []
+for i in range(100):
+    mylist.append(i)
+    np.random.randn(100, 100)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">run</span> ./run_test.py
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">arr</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[3]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([1, 3, 4])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="%25run--t-%5Bfilename%5D">%run -t [filename]<a class="anchor-link" href="#%25run--t-%5Bfilename%5D">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">run</span> -t ./run_test.py
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+IPython CPU timings (estimated):
+  User   :       0.05 s.
+  System :       0.09 s.
+Wall time:       0.03 s.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="%25run--p-%5Bfilename%5D">%run -p [filename]<a class="anchor-link" href="#%25run--p-%5Bfilename%5D">&#182;</a></h3><p>ファイル実行の際、プロファイリングを行う。
+各関数について呼ばれた回数と計算時間を計測する。（%prunも似たような機能）</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">run</span> -p -s "cumulative" ./run_test.py 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> </pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="%25time">%time<a class="anchor-link" href="#%25time">&#182;</a></h3><p>ある文を実行する時間を計測する。</p>
+<h3 id="%25timeit-%E3%80%80%E2%86%90%E3%80%80%E3%82%AA%E3%82%B9%E3%82%B9%E3%83%A1%EF%BC%81">%timeit &#12288;&#8592;&#12288;&#12458;&#12473;&#12473;&#12513;&#65281;<a class="anchor-link" href="#%25timeit-%E3%80%80%E2%86%90%E3%80%80%E3%82%AA%E3%82%B9%E3%82%B9%E3%83%A1%EF%BC%81">&#182;</a></h3><p>ある文を繰り返し実行し、計算時間の平均を調べる</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> 1 + 1
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>7.16 ns ± 0.225 ns per loop (mean ± std. dev. of 7 runs, 100,000,000 loops each)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> np.random.randn(1000,1000)
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>25.2 ms ± 822 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 逆行列</span>
+<span class="o">%</span><span class="k">timeit</span> np.linalg.inv(A)
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>78.1 ms ± 27.5 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ムーア・ペンローズ逆行列</span>
+<span class="o">%</span><span class="k">timeit</span> np.linalg.pinv(A)
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>382 ms ± 26.4 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 行列積</span>
+<span class="o">%</span><span class="k">timeit</span> A @ A
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>14.7 ms ± 725 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="%25matplotlib-inline">%matplotlib inline<a class="anchor-link" href="#%25matplotlib-inline">&#182;</a></h3><p>IPythonに埋め込むプロットをしたいとき</p>
+<h3 id="%25matplotlib-qt">%matplotlib qt<a class="anchor-link" href="#%25matplotlib-qt">&#182;</a></h3><p>ポップアップウィンドウにプロットしたいとき</p>
+
+</div>
+</div>
+</div>
+
+
+</div>
+      </div>
+    </div>
+
+      <div class="w3-row-padding w3-padding-small w3-left-aligned w3-panel">
+        <div class="w3-half w3-padding-small w3-container">
+          <h2 class="w3-xxlarge w3-padding-small w3-blue">基礎編</h2>
+          <div class="w3-row-padding bottom-links">
+            <p>
+              <a href="/html/基礎編/Pythonの基礎1.html">Pythonの基礎（１）</a>
+            </p>
+            <p>
+              <a href="/html/基礎編/Pythonの基礎2.html">Pythonの基礎（２）</a>
+            </p>
+            <p><a href="/html/基礎編/Matplotlib.html">Matplotlib</a></p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（１）導入.html"
+                >Numpyの基礎（１）導入</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（２）生成関数.html"
+                >Numpyの基礎（２）生成関数</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（３）ufunc.html"
+                >Numpyの基礎（３）配列に関数を作用させる</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（４）データ型.html"
+                >Numpyの基礎（４）データ型（C,Fortranとの比較）</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（５）要素の参照.html"
+                >Numpyの基礎（５）要素の取り出し方</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（６）ブロードキャスト.html"
+                >Numpyの基礎（６）ブロードキャスト</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（７）便利なライブラリ群.html"
+                >Numpyの基礎（７）線形代数やフーリエ変換</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（８）ファイル入出力.html"
+                >Numpyの基礎（８）様々な形式に対応したファイル入出力</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/ファイル読み込み.html">ファイル読み込み</a>
+            </p>
+            <p>
+              <a href="/html/基礎編/文字列操作（１）str.format.html"
+                >文字列操作（１）数値を文字列にフォーマットする</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/文字列操作（２）strやファイル読み込み.html"
+                >文字列操作（２）文字列に関数を適用する</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/読みやすいPythonコードを書こう.html"
+                >読みやすいPythonコードを書こう</a
+              >
+            </p>
+          </div>
+        </div>
+        <div class="w3-half w3-padding-small w3-container">
+          <h2 class="w3-xxlarge w3-padding-small w3-orange">応用編</h2>
+          <div class="w3-row-padding bottom-links">
+            <p><a href="/html/応用編/Animation.html">Animation</a></p>
+            <p>
+              <a href="/html/応用編/Fortran, C言語 との連携.html"
+                >Fortran, C言語 との連携</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/Pandas―データ分析（１）Series.html"
+                >Pandas ― データ分析（１）時系列などをうまく扱えるようにする</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/Pandas―データ分析（２）DataFrame.html"
+                >Pandas ― データ分析（２）複数の列を持った表形式でデータを格納する</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/Pandas―データ分析（３）GroupBy.html"
+                >Pandas ― データ分析（３）データを分割し、個別に集計する</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/Pandas―データ分析（４）ファイル入出力.html"
+                >Pandas ― データ分析（４）高度なファイル入出力</a
+              >
+            </p>
+            <p>
+              <a
+                href="/html/応用編/Pandas―データ分析（５）応用：都道府県別人口推移.html"
+                >Pandas ― データ分析（５）応用：都道府県別人口推移</a
+              >
+            </p>
+            <p>
+              <a
+                href="/html/応用編/Seaborn ― matplotlib をより美しく、使いやすく.html"
+                >Seaborn ― matplotlib をより美しく、使いやすく</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/shやBashの代わりにPythonを使う.html"
+                >shやBashの代わりにPythonを使う</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/SymPyー代数演算（１）使い方.html"
+                >SymPy ― 代数演算（１）文字を文字のまま計算する</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/SymPyー代数演算（２）応用：二重振り子.html"
+                >SymPy ―
+                代数演算（２）応用：ラグランジアンから運動方程式を求めて二重振り子を解く</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-button-container">
+        <div class="w3-panel w3-center">
+          <h4><a class="w3-button w3-black" href="/">トップページに戻る</a></h4>
+        </div>
+      </div>
+  </body>
+</html>
