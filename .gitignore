@@ -1,1 +1,10 @@
-/.ipynb_checkpoints/
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+
+node_modules
+
+__pycache__
+
+.venv/
+
+*.so

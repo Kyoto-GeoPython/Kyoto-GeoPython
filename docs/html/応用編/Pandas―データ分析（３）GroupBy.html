@@ -1,5 +1,701 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<title>Redirecting to https://kyotogeopython.zawawahoge.com/html/応用編/Pandas―データ分析（３）GroupBy.html</title>
-<meta http-equiv="refresh" content="0; URL=https://kyotogeopython.zawawahoge.com/html/応用編/Pandas―データ分析（３）GroupBy.html">
-<link rel="canonical" href="https://kyotogeopython.zawawahoge.com/html/応用編/Pandas―データ分析（３）GroupBy.html">
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Pandas―データ分析（３）GroupBy</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-115860818-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-115860818-2");
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="/css/nb-000.css" />
+    <link rel="stylesheet" type="text/css" href="/css/nb-001.css" />
+    <link rel="stylesheet" type="text/css" href="/css/nb-002.css" />
+
+    <link rel="stylesheet" href="/css/w3.css" />
+    <link rel="stylesheet" type="text/css" href="/css/nb-base.css" />
+
+    <!-- Loading mathjax macro -->
+    <!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+              processEscapes: true,
+              processEnvironments: true
+          },
+          // Center justify equations in code and markdown cells. Elsewhere
+          // we use CSS to left justify single line equations in code cells.
+          displayAlign: 'center',
+          "HTML-CSS": {
+              styles: {'.MathJax_Display': {"margin": 0}},
+              linebreaks: { automatic: true }
+          }
+      });
+    </script>
+    <!-- End of mathjax configuration -->
+  </head>
+  <body>
+      <div class="top-button-container">
+        <div class="w3-panel w3-left">
+          <h4><a class="w3-button w3-black" href="/">トップページに戻る</a></h4>
+        </div>
+      </div>
+
+    <div tabindex="-1" id="notebook" class="border-box-sizing must-no-padding">
+      <div class="container my-notebook-container must-no-padding" id="notebook-container">
+        <div class="w3-panel">
+          <h1 class="w3-center">Pandas―データ分析（３）GroupBy</h1>
+        </div>
+
+        <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="%E5%88%86%E9%9B%A2%E3%83%BC%E9%81%A9%E7%94%A8%E3%83%BC%E7%B5%90%E5%90%88">&#20998;&#38626;&#12540;&#36969;&#29992;&#12540;&#32080;&#21512;<a class="anchor-link" href="#%E5%88%86%E9%9B%A2%E3%83%BC%E9%81%A9%E7%94%A8%E3%83%BC%E7%B5%90%E5%90%88">&#182;</a></h1><p>Pandasが得意としているのは、ある条件でデータを分類し、その特徴を調べるという処理です。具体的には、</p>
+<ol>
+<li>DataFrame.groupbyメソッドで小さいDataFrameに分割</li>
+<li>グループごとに計算を行う</li>
+<li>それらを集めてグループごとの計算結果を表示する</li>
+</ol>
+<p>という流れとなります。<br />
+どういうgroupに分けるか、分けたDataFrameでどのような計算を行うかは解析の最も難しく面白いところだと思います。<br />
+このあたりの手法は<a href="http://pandas.pydata.org/pandas-docs/stable/groupby.html">Group By: split-apply-combine</a>を参考にしました。</p>
+<h2 id="DataFrame.groupby">DataFrame.groupby<a class="anchor-link" href="#DataFrame.groupby">&#182;</a></h2><p>引数で与えた列をkeyとして、分割してDataFrameGroupByオブジェクトを返す関数です（<strong>分割</strong>）。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"alphabet"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s2">"abc"</span><span class="p">),</span> <span class="mi">15</span><span class="p">),</span>
+    <span class="s2">"randn"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span>
+    <span class="s2">"rand"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span>
+<span class="p">})</span>
+<span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[2]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>alphabet</th>
+      <th>randn</th>
+      <th>rand</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>c</td>
+      <td>0.475997</td>
+      <td>0.992821</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>a</td>
+      <td>0.443803</td>
+      <td>0.541533</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>a</td>
+      <td>-1.542293</td>
+      <td>0.385064</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>a</td>
+      <td>0.480258</td>
+      <td>0.859190</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>c</td>
+      <td>-1.354883</td>
+      <td>0.484650</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>b</td>
+      <td>1.077677</td>
+      <td>0.478178</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>c</td>
+      <td>-1.049236</td>
+      <td>0.762415</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>c</td>
+      <td>0.881290</td>
+      <td>0.133353</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>c</td>
+      <td>2.107907</td>
+      <td>0.020915</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>b</td>
+      <td>0.976134</td>
+      <td>0.521719</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>a</td>
+      <td>-1.081692</td>
+      <td>0.333477</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>b</td>
+      <td>0.926112</td>
+      <td>0.134365</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>a</td>
+      <td>-0.184165</td>
+      <td>0.280311</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>c</td>
+      <td>0.741431</td>
+      <td>0.225383</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>b</td>
+      <td>0.413151</td>
+      <td>0.149615</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="DataFrameGroupBy%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88">DataFrameGroupBy&#12458;&#12502;&#12472;&#12455;&#12463;&#12488;<a class="anchor-link" href="#DataFrameGroupBy%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88">&#182;</a></h3><p>イテレータであり、for ~ in ...の...に置くと、グループ名と分割されたDataFrameを取り出すことが出来ます。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">_name</span><span class="p">,</span> <span class="n">_df</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"alphabet"</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">_name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">_df</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>a
+   alphabet     randn      rand
+1         a  0.443803  0.541533
+2         a -1.542293  0.385064
+3         a  0.480258  0.859190
+10        a -1.081692  0.333477
+12        a -0.184165  0.280311
+
+b
+   alphabet     randn      rand
+5         b  1.077677  0.478178
+9         b  0.976134  0.521719
+11        b  0.926112  0.134365
+14        b  0.413151  0.149615
+
+c
+   alphabet     randn      rand
+0         c  0.475997  0.992821
+4         c -1.354883  0.484650
+6         c -1.049236  0.762415
+7         c  0.881290  0.133353
+8         c  2.107907  0.020915
+13        c  0.741431  0.225383
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get_groupで特定のkeyを持つDataFrameを取得する</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"alphabet"</span><span class="p">)</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s2">"a"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[4]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>alphabet</th>
+      <th>randn</th>
+      <th>rand</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>a</td>
+      <td>0.443803</td>
+      <td>0.541533</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>a</td>
+      <td>-1.542293</td>
+      <td>0.385064</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>a</td>
+      <td>0.480258</td>
+      <td>0.859190</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>a</td>
+      <td>-1.081692</td>
+      <td>0.333477</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>a</td>
+      <td>-0.184165</td>
+      <td>0.280311</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>DataFrameGroupByオブジェクトのメソッドを呼び出すことで、分割された各DataFrameで計算されます（<strong>適用</strong>）。<br />
+最終的に、グループごとに計算を行った結果がまとめられます（<strong>結合</strong>）。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># GroupByオブジェクトの関数を呼ぶとグループごとに計算した結果を返す</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"alphabet"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[5]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>randn</th>
+      <th>rand</th>
+    </tr>
+    <tr>
+      <th>alphabet</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>-0.376818</td>
+      <td>0.479915</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td>0.848268</td>
+      <td>0.320969</td>
+    </tr>
+    <tr>
+      <th>c</th>
+      <td>0.300417</td>
+      <td>0.436590</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>自作関数を各列に適用するためにはaggメソッドを使います。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 最大値と最小値の差を計算する自作関数</span>
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">cols</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">cols</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">cols</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+
+<span class="c1"># aggメソッドで各グループ、各列に関数を適用し、値を得る</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"alphabet"</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">func</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[6]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;AxesSubplot:xlabel=&#39;alphabet&#39;&gt;</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>正規分布乱数の方が最大値と最小値の差が大きいことがわかりますね。</p>
+
+</div>
+</div>
+</div>
+
+
+</div>
+      </div>
+    </div>
+
+      <div class="w3-row-padding w3-padding-small w3-left-aligned w3-panel">
+        <div class="w3-half w3-padding-small w3-container">
+          <h2 class="w3-xxlarge w3-padding-small w3-blue">基礎編</h2>
+          <div class="w3-row-padding bottom-links">
+            <p>
+              <a href="/html/基礎編/Pythonの基礎1.html">Pythonの基礎（１）</a>
+            </p>
+            <p>
+              <a href="/html/基礎編/Pythonの基礎2.html">Pythonの基礎（２）</a>
+            </p>
+            <p><a href="/html/基礎編/Matplotlib.html">Matplotlib</a></p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（１）導入.html"
+                >Numpyの基礎（１）導入</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（２）生成関数.html"
+                >Numpyの基礎（２）生成関数</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（３）ufunc.html"
+                >Numpyの基礎（３）配列に関数を作用させる</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（４）データ型.html"
+                >Numpyの基礎（４）データ型（C,Fortranとの比較）</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（５）要素の参照.html"
+                >Numpyの基礎（５）要素の取り出し方</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（６）ブロードキャスト.html"
+                >Numpyの基礎（６）ブロードキャスト</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（７）便利なライブラリ群.html"
+                >Numpyの基礎（７）線形代数やフーリエ変換</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（８）ファイル入出力.html"
+                >Numpyの基礎（８）様々な形式に対応したファイル入出力</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/ファイル読み込み.html">ファイル読み込み</a>
+            </p>
+            <p>
+              <a href="/html/基礎編/文字列操作（１）str.format.html"
+                >文字列操作（１）数値を文字列にフォーマットする</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/文字列操作（２）strやファイル読み込み.html"
+                >文字列操作（２）文字列に関数を適用する</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/読みやすいPythonコードを書こう.html"
+                >読みやすいPythonコードを書こう</a
+              >
+            </p>
+          </div>
+        </div>
+        <div class="w3-half w3-padding-small w3-container">
+          <h2 class="w3-xxlarge w3-padding-small w3-orange">応用編</h2>
+          <div class="w3-row-padding bottom-links">
+            <p><a href="/html/応用編/Animation.html">Animation</a></p>
+            <p>
+              <a href="/html/応用編/Fortran, C言語 との連携.html"
+                >Fortran, C言語 との連携</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/Pandas―データ分析（１）Series.html"
+                >Pandas ― データ分析（１）時系列などをうまく扱えるようにする</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/Pandas―データ分析（２）DataFrame.html"
+                >Pandas ― データ分析（２）複数の列を持った表形式でデータを格納する</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/Pandas―データ分析（３）GroupBy.html"
+                >Pandas ― データ分析（３）データを分割し、個別に集計する</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/Pandas―データ分析（４）ファイル入出力.html"
+                >Pandas ― データ分析（４）高度なファイル入出力</a
+              >
+            </p>
+            <p>
+              <a
+                href="/html/応用編/Pandas―データ分析（５）応用：都道府県別人口推移.html"
+                >Pandas ― データ分析（５）応用：都道府県別人口推移</a
+              >
+            </p>
+            <p>
+              <a
+                href="/html/応用編/Seaborn ― matplotlib をより美しく、使いやすく.html"
+                >Seaborn ― matplotlib をより美しく、使いやすく</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/shやBashの代わりにPythonを使う.html"
+                >shやBashの代わりにPythonを使う</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/SymPyー代数演算（１）使い方.html"
+                >SymPy ― 代数演算（１）文字を文字のまま計算する</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/SymPyー代数演算（２）応用：二重振り子.html"
+                >SymPy ―
+                代数演算（２）応用：ラグランジアンから運動方程式を求めて二重振り子を解く</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-button-container">
+        <div class="w3-panel w3-center">
+          <h4><a class="w3-button w3-black" href="/">トップページに戻る</a></h4>
+        </div>
+      </div>
+  </body>
+</html>

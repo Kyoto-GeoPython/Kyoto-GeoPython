@@ -1,19 +1,37 @@
 # Kyoto-GeoPython
 
-とりあえずのホームページが出来ました
+## convert ipynb to html
 
-詳細はCHANGELOG.mdを参照してください。
+```
+$ make convert
+```
 
-[https://kyoto-geopython.github.io/Kyoto-GeoPython/](https://kyoto-geopython.github.io/Kyoto-GeoPython/)
+## run local server
 
-#### ipynb、リンク集の変更をホームページに反映させるためには
+```
+$ make start
+```
 
-1. ipynb_html_converter.py（docs/htmlフォルダ下にipynbファイルに対応するhtmlを生成する）
-1. parse_html.py（docs/html以下のファイルをもとにindex.htmlを生成する）
+Open `http://localhost:8080` in your browser.
 
-#### リンク集の書き方（多分conflictしないはず。。。）
-1. リンク集以下のマークダウンファイルを開く
-1. 「###」でリンク先のタイトルを[]でくくってそのURLを()で書く  
-1. 数行説明を書く
-1. 最後は「***」だけを書いた行を追加（ボーダーラインになる）
-1. 確認は「parse_html.py」の実行後のdocs/html/Links.htmlで出来る
+# setup
+
+Install Poetry.
+
+https://python-poetry.org/docs/
+
+Or `brew install poetry` for Mac OS.
+
+
+```
+asdf install
+poetry install
+```
+
+## Tips
+
+`.venv` in repository root directory.
+
+```
+poetry config virtualenvs.in-project true
+```

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>読みやすいPythonコードを書こう</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-115860818-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-115860818-2");
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="/css/nb-000.css" />
+    <link rel="stylesheet" type="text/css" href="/css/nb-001.css" />
+    <link rel="stylesheet" type="text/css" href="/css/nb-002.css" />
+
+    <link rel="stylesheet" href="/css/w3.css" />
+    <link rel="stylesheet" type="text/css" href="/css/nb-base.css" />
+
+    <!-- Loading mathjax macro -->
+    <!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+              processEscapes: true,
+              processEnvironments: true
+          },
+          // Center justify equations in code and markdown cells. Elsewhere
+          // we use CSS to left justify single line equations in code cells.
+          displayAlign: 'center',
+          "HTML-CSS": {
+              styles: {'.MathJax_Display': {"margin": 0}},
+              linebreaks: { automatic: true }
+          }
+      });
+    </script>
+    <!-- End of mathjax configuration -->
+  </head>
+  <body>
+      <div class="top-button-container">
+        <div class="w3-panel w3-left">
+          <h4><a class="w3-button w3-black" href="/">トップページに戻る</a></h4>
+        </div>
+      </div>
+
+    <div tabindex="-1" id="notebook" class="border-box-sizing must-no-padding">
+      <div class="container my-notebook-container must-no-padding" id="notebook-container">
+        <div class="w3-panel">
+          <h1 class="w3-center">読みやすいPythonコードを書こう</h1>
+        </div>
+
+        <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">&#12399;&#12376;&#12417;&#12395;<a class="anchor-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">&#182;</a></h1><p>Pythonは可読性の高い言語だとよく言われます。インデントが強制されることで、分岐や繰り返し、関数のスコープなどが一目見ただけでわかるようになっています。</p>
+<p>また、言語の特性上、非常に柔軟な書き方ができるため、目的の動作を実現することが簡単にコードに表現することができます。</p>
+<p>しかし、これらの言語特性が裏目に出て、次のようなコードを量産する可能性もあります。</p>
+<ul>
+<li><strong>すぐ書けたけど、後日振り返ってみると読めない</strong></li>
+<li><strong>他の人が書いたPythonコードが全然読めない</strong></li>
+</ul>
+<p>このページでは、<strong>読みやすいPythonコードを書くためにはどうしたら良いか？</strong>ということを、私なりにまとめてみようと思います。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Python-%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%82%AC%E3%82%A4%E3%83%89">Python &#12467;&#12540;&#12489;&#12398;&#12473;&#12479;&#12452;&#12523;&#12460;&#12452;&#12489;<a class="anchor-link" href="#Python-%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%82%AC%E3%82%A4%E3%83%89">&#182;</a></h1><p><a href="https://pep8-ja.readthedocs.io/ja/latest/">PEP: 8 Python コードのスタイルガイド</a> で公式のスタイルガイドが書かれています。</p>
+<blockquote>
+<p>Guido の重要な洞察のひとつに、コードは書くよりも読まれることの方が多い、というものがあります。この文書で示すガイドラインの目的は、コードを読みやすくするとともに、Pythonで書かれた幅広いコードのスタイルを一貫させることです。PEP 20 にもあるように &quot;可読性重要&quot; です。</p>
+</blockquote>
+<p><em>Guido</em> さんは、Pythonの生みの親です。</p>
+<p>仮に、「自分だけが読むコードだから自分だけ読めればいいんだよ！」のように言いながら、 <strong>意味をなさない変数名</strong>や、 <strong>複雑な引数と戻り値を持つ関数</strong> を導入してしまう人がいます（昔の自分）。</p>
+<p>そして、後日読み直してみると、何をやっていたか理解できない・・・。。（あるある</p>
+<p><strong>一週間後の自分ですら他人</strong>だと思ったほうが良いです。誰もが読めるように <strong>スタイルガイドに沿った可読性を意識した優れたPythonコードを書く</strong>ようにしてください。</p>
+<p>せっかくなので、このスタイルガイドを一つずつ例を挙げて読んでいくことにします。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="%E3%82%A4%E3%83%B3%E3%83%87%E3%83%B3%E3%83%88">&#12452;&#12531;&#12487;&#12531;&#12488;<a class="anchor-link" href="#%E3%82%A4%E3%83%B3%E3%83%87%E3%83%B3%E3%83%88">&#182;</a></h2><p>Pythonのインデントは、 <strong>スペース４つ</strong>です。</p>
+<p>また、カッコの中身が長いときの改行の位置にも気をつけましょう。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 関数定義の引数が長くなる時は改行してインデントを深くする</span>
+<span class="k">def</span> <span class="nf">my_first_func</span><span class="p">(</span>
+        <span class="n">long_argument_name_1</span><span class="p">,</span> <span class="n">long_argument_name_2</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="n">long_argument_name_1</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">long_argument_name_2</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># 関数の引数を改行する時は、最初の文字をカッコの位置に揃える</span>
+<span class="n">my_first_func</span><span class="p">(</span><span class="n">long_argument_name_1</span><span class="p">,</span>
+                          <span class="n">long_argument_name_2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># リストの中身を改行するときには、以下のようにする</span>
+<span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">,</span>
+    <span class="s2">"d"</span><span class="p">,</span> <span class="s2">"e"</span><span class="p">,</span> <span class="s2">"f"</span><span class="p">,</span> <span class="c1"># 最後に , をつけても良い</span>
+<span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1"># [m/s]</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1"># [kg]</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.8</span> <span class="c1"># [m/s^2]</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># [m]</span>
+<span class="n">some_energy</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1"># [J]</span>
+
+<span class="c1"># 長い数式はカッコに包んで、演算子を行の最初に持ってくる</span>
+<span class="n">energy</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span> <span class="o">*</span> <span class="n">v</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span>
+                  <span class="o">+</span> <span class="n">m</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">h</span>
+                  <span class="o">+</span> <span class="n">some_energy</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="%E3%82%A4%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%88">&#12452;&#12531;&#12509;&#12540;&#12488;<a class="anchor-link" href="#%E3%82%A4%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%88">&#182;</a></h2><p>ファイルの先頭にずらっと並びがちなライブラリのインポートの文も見やすくしましょう。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># [Good] ライブラリごとにインポート文は分ける</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c1"># [Bad] まとめてインポートする</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
+
+<span class="c1"># [Good] ライブラリ内のインポートはまとめて良い</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">Series</span>
+
+<span class="c1"># [Bad] ワイルドカードを用いたインポートは避ける</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="%E7%A9%BA%E7%99%BD%E6%96%87%E5%AD%97%E3%82%92%E5%85%A5%E3%82%8C%E3%82%8B%E3%81%8B%E5%85%A5%E3%82%8C%E3%81%AA%E3%81%84%E3%81%8B%E5%95%8F%E9%A1%8C">&#31354;&#30333;&#25991;&#23383;&#12434;&#20837;&#12428;&#12427;&#12363;&#20837;&#12428;&#12394;&#12356;&#12363;&#21839;&#38988;<a class="anchor-link" href="#%E7%A9%BA%E7%99%BD%E6%96%87%E5%AD%97%E3%82%92%E5%85%A5%E3%82%8C%E3%82%8B%E3%81%8B%E5%85%A5%E3%82%8C%E3%81%AA%E3%81%84%E3%81%8B%E5%95%8F%E9%A1%8C">&#182;</a></h2><p>空白文字（スペース）を入れる場所によって、可読性が大きく変わってきます。</p>
+<p>必ず統一するようにしましょう。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="c1"># [Good] , や : の後に空白文字を入れる</span>
+<span class="n">my_first_func</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">{</span><span class="s2">"args"</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+
+<span class="c1"># [Bad]  カッコの直後に空白文字</span>
+<span class="n">my_first_func</span><span class="p">(</span> <span class="n">my_list</span><span class="p">[</span> <span class="mi">1</span> <span class="p">]</span> <span class="p">,</span> <span class="p">{</span> <span class="s2">"args"</span> <span class="p">:</span> <span class="mi">2</span><span class="p">}</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>リストのスライスの指定も空白文字を入れる位置に気をつけましょう。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span>
+<span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="p">,</span> <span class="n">e1</span><span class="p">,</span> <span class="n">e2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+
+<span class="c1"># [Good] 空白文字を入れない</span>
+<span class="n">my_list</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+
+<span class="c1"># [Good] 演算部分には空白文字を入れない（ : の周りだけ入れる）</span>
+<span class="n">my_list</span><span class="p">[</span><span class="n">s1</span><span class="o">+</span><span class="n">s2</span> <span class="p">:</span> <span class="n">e1</span><span class="o">+</span><span class="n">e2</span><span class="p">]</span>
+
+<span class="c1"># [Good] 演算部分にも空白文字を入れる</span>
+<span class="n">my_list</span><span class="p">[</span><span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span> <span class="p">:</span> <span class="n">e1</span> <span class="o">+</span> <span class="n">e2</span><span class="p">]</span>
+
+<span class="c1"># [Bad] 片方に偏ってる</span>
+<span class="n">my_list</span><span class="p">[</span><span class="n">start</span><span class="p">:</span> <span class="n">end</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[6]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[1, 2]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88">&#12467;&#12513;&#12531;&#12488;<a class="anchor-link" href="#%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88">&#182;</a></h2><p><a href="https://pep8-ja.readthedocs.io/ja/latest/#id19">PEP: 8 Python コードのスタイルガイド</a>によると、</p>
+<blockquote>
+<p>英語を話さない国出身の Python プログラマの方々へ：あなたのコードが、自分の言葉を話さない人に 120% 読まれないと確信していなければ、コメントを英語で書くようにお願いします。</p>
+</blockquote>
+<p>とあります。</p>
+<p>科学技術計算でPythonコードを書く場合、必ず <strong>英語</strong> でコメントを書くようにしましょう。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="pycodestyle">pycodestyle<a class="anchor-link" href="#pycodestyle">&#182;</a></h2><p>このようなスタイルを自動的にチェックしてくれるライブラリが作られています。</p>
+<p><a href="https://pypi.org/project/pycodestyle/">pycodestyle</a></p>
+<p>慣れてくると、わざわざ調べなくても通るコードが書けてきますが、最初のうちはなるべくチェックして感覚を身につけましょう。</p>
+<h3 id="%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;<a class="anchor-link" href="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">&#182;</a></h3><pre><code>$ pip install pycodestyle
+</code></pre>
+<h3 id="%E4%BD%BF%E3%81%84%E6%96%B9">&#20351;&#12356;&#26041;<a class="anchor-link" href="#%E4%BD%BF%E3%81%84%E6%96%B9">&#182;</a></h3><pre><code>$ pycodestyle --show-source --show-pep8 &lt;file-name&gt;
+</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="flake8">flake8<a class="anchor-link" href="#flake8">&#182;</a></h2><p>さらに高度なラッパーライブラリが　<strong>flake8</strong> です。</p>
+<p><a href="https://pypi.org/project/flake8/">flake8</a></p>
+<h3 id="%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;<a class="anchor-link" href="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">&#182;</a></h3><pre><code>$ pip install flake8
+</code></pre>
+<h3 id="%E3%83%98%E3%83%AB%E3%83%97">&#12504;&#12523;&#12503;<a class="anchor-link" href="#%E3%83%98%E3%83%AB%E3%83%97">&#182;</a></h3><pre><code>$ flake8 --help
+</code></pre>
+<h3 id="%E4%BD%BF%E3%81%84%E6%96%B9">&#20351;&#12356;&#26041;<a class="anchor-link" href="#%E4%BD%BF%E3%81%84%E6%96%B9">&#182;</a></h3><pre><code>$ flake8 your-file.py
+</code></pre>
+<p>フォルダに対しても実行できます。</p>
+<pre><code>$ flake8 folder/
+</code></pre>
+<p>実装の複雑度も測ってくれます。複雑な関数は直しましょう。</p>
+<pre><code>$ flake8 your-file.py --max-complexity 10
+</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%89%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%81%99%E3%82%8B">&#12456;&#12487;&#12451;&#12479;&#12391;&#12467;&#12540;&#12489;&#12473;&#12479;&#12452;&#12523;&#12481;&#12455;&#12483;&#12463;&#12377;&#12427;<a class="anchor-link" href="#%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%89%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%81%99%E3%82%8B">&#182;</a></h2><p>AtomやVS CodeといったエディタにPEP8のスタイルチェックをしてくれる拡張機能を追加しておくと大変便利です。</p>
+<p>PyCharm, Spyderといったエディタにはデフォルトでチェックする機能がついているので、ぜひ有効にして見てください。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="%E5%8F%82%E8%80%83%E8%B3%87%E6%96%99">&#21442;&#32771;&#36039;&#26009;<a class="anchor-link" href="#%E5%8F%82%E8%80%83%E8%B3%87%E6%96%99">&#182;</a></h1><ul>
+<li><a href="https://pep8-ja.readthedocs.io/ja/latest/">Python コードのスタイルガイド - 公式</a></li>
+<li><a href="https://blog.amedama.jp/entry/2017/06/13/222556">Python: pep8 は pycodestyle になったし pep257 は pydocstyle になった</a></li>
+<li><a href="https://www.xn--ebkc7kqd.com/entry/flake8">Pythonのコーディングチェックにflake8を使う</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+
+
+</div>
+      </div>
+    </div>
+
+      <div class="w3-row-padding w3-padding-small w3-left-aligned w3-panel">
+        <div class="w3-half w3-padding-small w3-container">
+          <h2 class="w3-xxlarge w3-padding-small w3-blue">基礎編</h2>
+          <div class="w3-row-padding bottom-links">
+            <p>
+              <a href="/html/基礎編/Pythonの基礎1.html">Pythonの基礎（１）</a>
+            </p>
+            <p>
+              <a href="/html/基礎編/Pythonの基礎2.html">Pythonの基礎（２）</a>
+            </p>
+            <p><a href="/html/基礎編/Matplotlib.html">Matplotlib</a></p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（１）導入.html"
+                >Numpyの基礎（１）導入</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（２）生成関数.html"
+                >Numpyの基礎（２）生成関数</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（３）ufunc.html"
+                >Numpyの基礎（３）配列に関数を作用させる</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（４）データ型.html"
+                >Numpyの基礎（４）データ型（C,Fortranとの比較）</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（５）要素の参照.html"
+                >Numpyの基礎（５）要素の取り出し方</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（６）ブロードキャスト.html"
+                >Numpyの基礎（６）ブロードキャスト</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（７）便利なライブラリ群.html"
+                >Numpyの基礎（７）線形代数やフーリエ変換</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（８）ファイル入出力.html"
+                >Numpyの基礎（８）様々な形式に対応したファイル入出力</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/ファイル読み込み.html">ファイル読み込み</a>
+            </p>
+            <p>
+              <a href="/html/基礎編/文字列操作（１）str.format.html"
+                >文字列操作（１）数値を文字列にフォーマットする</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/文字列操作（２）strやファイル読み込み.html"
+                >文字列操作（２）文字列に関数を適用する</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/読みやすいPythonコードを書こう.html"
+                >読みやすいPythonコードを書こう</a
+              >
+            </p>
+          </div>
+        </div>
+        <div class="w3-half w3-padding-small w3-container">
+          <h2 class="w3-xxlarge w3-padding-small w3-orange">応用編</h2>
+          <div class="w3-row-padding bottom-links">
+            <p><a href="/html/応用編/Animation.html">Animation</a></p>
+            <p>
+              <a href="/html/応用編/Fortran, C言語 との連携.html"
+                >Fortran, C言語 との連携</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/Pandas―データ分析（１）Series.html"
+                >Pandas ― データ分析（１）時系列などをうまく扱えるようにする</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/Pandas―データ分析（２）DataFrame.html"
+                >Pandas ― データ分析（２）複数の列を持った表形式でデータを格納する</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/Pandas―データ分析（３）GroupBy.html"
+                >Pandas ― データ分析（３）データを分割し、個別に集計する</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/Pandas―データ分析（４）ファイル入出力.html"
+                >Pandas ― データ分析（４）高度なファイル入出力</a
+              >
+            </p>
+            <p>
+              <a
+                href="/html/応用編/Pandas―データ分析（５）応用：都道府県別人口推移.html"
+                >Pandas ― データ分析（５）応用：都道府県別人口推移</a
+              >
+            </p>
+            <p>
+              <a
+                href="/html/応用編/Seaborn ― matplotlib をより美しく、使いやすく.html"
+                >Seaborn ― matplotlib をより美しく、使いやすく</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/shやBashの代わりにPythonを使う.html"
+                >shやBashの代わりにPythonを使う</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/SymPyー代数演算（１）使い方.html"
+                >SymPy ― 代数演算（１）文字を文字のまま計算する</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/SymPyー代数演算（２）応用：二重振り子.html"
+                >SymPy ―
+                代数演算（２）応用：ラグランジアンから運動方程式を求めて二重振り子を解く</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-button-container">
+        <div class="w3-panel w3-center">
+          <h4><a class="w3-button w3-black" href="/">トップページに戻る</a></h4>
+        </div>
+      </div>
+  </body>
+</html>

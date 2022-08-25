@@ -1,5 +1,837 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<title>Redirecting to https://kyotogeopython.zawawahoge.com/html/基礎編/ファイル読み込み.html</title>
-<meta http-equiv="refresh" content="0; URL=https://kyotogeopython.zawawahoge.com/html/基礎編/ファイル読み込み.html">
-<link rel="canonical" href="https://kyotogeopython.zawawahoge.com/html/基礎編/ファイル読み込み.html">
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ファイル読み込み</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-115860818-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-115860818-2");
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="/css/nb-000.css" />
+    <link rel="stylesheet" type="text/css" href="/css/nb-001.css" />
+    <link rel="stylesheet" type="text/css" href="/css/nb-002.css" />
+
+    <link rel="stylesheet" href="/css/w3.css" />
+    <link rel="stylesheet" type="text/css" href="/css/nb-base.css" />
+
+    <!-- Loading mathjax macro -->
+    <!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+              processEscapes: true,
+              processEnvironments: true
+          },
+          // Center justify equations in code and markdown cells. Elsewhere
+          // we use CSS to left justify single line equations in code cells.
+          displayAlign: 'center',
+          "HTML-CSS": {
+              styles: {'.MathJax_Display': {"margin": 0}},
+              linebreaks: { automatic: true }
+          }
+      });
+    </script>
+    <!-- End of mathjax configuration -->
+  </head>
+  <body>
+      <div class="top-button-container">
+        <div class="w3-panel w3-left">
+          <h4><a class="w3-button w3-black" href="/">トップページに戻る</a></h4>
+        </div>
+      </div>
+
+    <div tabindex="-1" id="notebook" class="border-box-sizing must-no-padding">
+      <div class="container my-notebook-container must-no-padding" id="notebook-container">
+        <div class="w3-panel">
+          <h1 class="w3-center">ファイル読み込み</h1>
+        </div>
+
+        <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="%E7%9B%AE%E6%AC%A1">&#30446;&#27425;<a class="anchor-link" href="#%E7%9B%AE%E6%AC%A1">&#182;</a></h1><ul>
+<li>はじめに</li>
+<li>テキスト(csv)ファイル読み込み</li>
+<li>NetCDFファイル読み込み</li>
+<li>Fortranバイナリファイル読み込み</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">&#12399;&#12376;&#12417;&#12395;<a class="anchor-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">&#182;</a></h2><p>データ解析を行う際に、データファイルを読み込むというのは最も基本的な操作になります。<br />
+地球物理学の分野でメジャーなデータファイルの形式は、以下の3つだと思います。</p>
+<ol>
+<li>テキストファイル</li>
+<li>NetCDFファイル</li>
+<li>Fortranバイナリファイル</li>
+</ol>
+<p>Pythonを用いれば、この3つのどの形式のデータファイルも簡単に読み込むことが可能です。<br />
+以下でそれぞれ順を追って説明していきますが、ご自身の必要に応じて2.、3.から読み進める等していただいても構いません。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88(csv)%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">&#12486;&#12461;&#12473;&#12488;(csv)&#12501;&#12449;&#12452;&#12523;&#35501;&#12415;&#36796;&#12415;<a class="anchor-link" href="#%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88(csv)%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">&#182;</a></h2><p>カンマで区切られているテキストファイルを読み込んでみましょう。<br />
+テキストファイル内の数値データは、numpyのloadtxt関数で読み込むことが出来ます。<br />
+なお、今回読み込むファイルは、<a href="http://www.data.jma.go.jp/gmd/cpd/db/elnino/index/nino3irm.html">気象庁のページ</a>から取得した、エルニーニョ指数データです。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">'NINO.3.csv'</span><span class="p">,</span><span class="n">comments</span><span class="o">=</span><span class="s1">'year'</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">','</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="s1">'float'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>commentsで、読み飛ばす行の左端に存在する文字列を指定する。</li>
+<li>delimiterで、区切り文字を指定する。もしスペースで区切ってあった場合には、delimiter=...という記述は必要ない。</li>
+<li>dtypeで、データをどの形式で読み込むかを指定する。デフォルトはfloat(浮動小数点数)。整数として読み込みたい場合にはintとすればよい。</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[2]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 2.001e+03, -4.000e-01, -3.000e-01, -2.000e-01, -1.000e-01,
+         0.000e+00,  0.000e+00, -1.000e-01, -2.000e-01, -3.000e-01,
+        -4.000e-01, -5.000e-01, -4.000e-01],
+       [ 2.002e+03, -3.000e-01, -1.000e-01,  0.000e+00,  3.000e-01,
+         4.000e-01,  5.000e-01,  6.000e-01,  7.000e-01,  8.000e-01,
+         1.000e+00,  1.000e+00,  1.000e+00],
+       [ 2.003e+03,  8.000e-01,  5.000e-01,  0.000e+00, -2.000e-01,
+        -2.000e-01, -2.000e-01, -1.000e-01,  1.000e-01,  3.000e-01,
+         4.000e-01,  4.000e-01,  4.000e-01],
+       [ 2.004e+03,  4.000e-01,  3.000e-01,  1.000e-01,  0.000e+00,
+        -1.000e-01,  0.000e+00,  0.000e+00,  2.000e-01,  3.000e-01,
+         4.000e-01,  4.000e-01,  3.000e-01],
+       [ 2.005e+03,  2.000e-01,  1.000e-01,  1.000e-01,  1.000e-01,
+         2.000e-01,  3.000e-01,  2.000e-01,  1.000e-01, -2.000e-01,
+        -5.000e-01, -7.000e-01, -8.000e-01],
+       [ 2.006e+03, -8.000e-01, -7.000e-01, -5.000e-01, -3.000e-01,
+        -2.000e-01,  1.000e-01,  3.000e-01,  4.000e-01,  6.000e-01,
+         8.000e-01,  9.000e-01,  8.000e-01],
+       [ 2.007e+03,  5.000e-01,  2.000e-01, -2.000e-01, -5.000e-01,
+        -6.000e-01, -7.000e-01, -9.000e-01, -1.100e+00, -1.300e+00,
+        -1.400e+00, -1.500e+00, -1.500e+00],
+       [ 2.008e+03, -1.400e+00, -1.100e+00, -8.000e-01, -5.000e-01,
+        -1.000e-01,  1.000e-01,  2.000e-01,  2.000e-01,  2.000e-01,
+         0.000e+00, -2.000e-01, -4.000e-01],
+       [ 2.009e+03, -5.000e-01, -5.000e-01, -3.000e-01,  0.000e+00,
+         3.000e-01,  5.000e-01,  7.000e-01,  8.000e-01,  9.000e-01,
+         1.000e+00,  1.000e+00,  1.100e+00],
+       [ 2.010e+03,  1.100e+00,  9.000e-01,  7.000e-01,  3.000e-01,
+         0.000e+00, -4.000e-01, -8.000e-01, -1.100e+00, -1.300e+00,
+        -1.400e+00, -1.500e+00, -1.400e+00],
+       [ 2.011e+03, -1.200e+00, -9.000e-01, -7.000e-01, -4.000e-01,
+        -2.000e-01, -2.000e-01, -2.000e-01, -4.000e-01, -6.000e-01,
+        -8.000e-01, -8.000e-01, -7.000e-01],
+       [ 2.012e+03, -6.000e-01, -3.000e-01, -1.000e-01,  1.000e-01,
+         3.000e-01,  4.000e-01,  5.000e-01,  5.000e-01,  4.000e-01,
+         2.000e-01,  0.000e+00, -2.000e-01],
+       [ 2.013e+03, -2.000e-01, -3.000e-01, -4.000e-01, -4.000e-01,
+        -5.000e-01, -6.000e-01, -6.000e-01, -5.000e-01, -3.000e-01,
+        -2.000e-01, -1.000e-01, -2.000e-01],
+       [ 2.014e+03, -2.000e-01, -1.000e-01,  0.000e+00,  2.000e-01,
+         4.000e-01,  5.000e-01,  5.000e-01,  5.000e-01,  6.000e-01,
+         7.000e-01,  7.000e-01,  6.000e-01],
+       [ 2.015e+03,  5.000e-01,  5.000e-01,  6.000e-01,  8.000e-01,
+         1.200e+00,  1.600e+00,  1.900e+00,  2.200e+00,  2.500e+00,
+         2.700e+00,  2.800e+00,  2.700e+00]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="NetCDF%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">NetCDF&#12501;&#12449;&#12452;&#12523;&#35501;&#12415;&#36796;&#12415;<a class="anchor-link" href="#NetCDF%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">&#182;</a></h2><p>netCDFファイルの読み込みには、netCDF4モジュールを用います。<br />
+netCDF4モジュールが使えるようにする方法に関しては<a href="https://github.com/Unidata/netcdf4-python">こちら</a>をご参照ください。<br />
+試しに、<a href="https://www1.ncdc.noaa.gov/pub/data/cmb/ersst/v4/netcdf/">NOAAのサイト</a>からダウンロードした2017年2月の全球海面水温データを読み込んでみることにします。<br />
+まず、ターミナル上で<br />
+$ ncdump -c ersst.v4.201702.nc<br />
+と実行して、当該netCDFファイル内のデータの構造に目を通しておくことにします。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre><code>netcdf ersst.v4.201702 {
+dimensions:
+    lat = 89 ;
+    lev = 1 ;
+    lon = 180 ;
+    time = 1 ;
+
+variables:
+    double lat(lat) ;
+    	lat:units = &quot;degrees_north&quot; ;
+    	lat:long_name = &quot;Latitude&quot; ;
+    	lat:standard_name = &quot;latitude&quot; ;
+    	lat:axis = &quot;Y&quot; ;
+    	lat:bounds = &quot;lat_bnds&quot; ;
+    	lat:grids = &quot;Uniform grid from -88 to 88 by 2&quot; ;
+    double lev(lev) ;
+    	lev:units = &quot;meters&quot; ;
+    	lev:long_name = &quot;Depth of sea surface temperature measurements&quot; ;
+    	lev:standard_name = &quot;depth&quot; ;
+    	lev:axis = &quot;Z&quot; ;
+    	lev:positive = &quot;down&quot; ;
+    	lev:_CoordinateAxisType = &quot;Height&quot; ;
+    	lev:comment = &quot;Measurement depth of in situ sea surface temperature varies&quot; ;
+    double lon(lon) ;
+    	lon:units = &quot;degrees_east&quot; ;
+    	lon:long_name = &quot;Longitude&quot; ;
+    	lon:standard_name = &quot;longitude&quot; ;
+    	lon:axis = &quot;X&quot; ;
+    	lon:bounds = &quot;lon_bnds&quot; ;
+    	lon:grids = &quot;Uniform grid from 0 to 358 by 2&quot; ;
+    float sst(time, lev, lat, lon) ;
+    	sst:_FillValue = -999.f ;
+    	sst:long_name = &quot;Extended reconstructed sea surface temperature&quot; ;
+    	sst:standard_name = &quot;SST&quot; ;
+    	sst:units = &quot;degree_C&quot; ;
+    	sst:add_offset = 0.f ;
+    	sst:scale_factor = 1.f ;
+    	sst:valid_min = -3.f ;
+    	sst:valid_max = 45.f ;
+    double time(time) ;
+    	time:long_name = &quot;Center time of the day&quot; ;
+    	time:standard_name = &quot;time&quot; ;
+    	time:axis = &quot;T&quot; ;
+    	time:delta_t = &quot;0000-01-00&quot; ;
+    	time:avg_period = &quot;0000-01-00&quot; ;
+    	time:units = &quot;minutes since 2017-02-01 00:00&quot; ;
+    float ssta(time, lev, lat, lon) ;
+    	ssta:_FillValue = -999.f ;
+    	ssta:long_name = &quot;Extended reconstructed SST anomalies&quot; ;
+    	ssta:standard_name = &quot;SSTA&quot; ;
+    	ssta:units = &quot;degree_C&quot; ;
+    	ssta:add_offset = 0.f ;
+    	ssta:scale_factor = 1.f ;
+    	ssta:valid_min = -12.f ;
+    	ssta:valid_max = 12.f ;
+
+// global attributes:
+    	:Conventions = &quot;CF-1.6&quot; ;
+    	:Metadata_Conventions = &quot;CF-1.6, Unidata Dataset Discovery v1.0&quot; ;
+    	:metadata_link = &quot;C00884&quot; ;
+    	:id = &quot;ersst.v4.201702&quot; ;
+    	:naming_authority = &quot;gov.noaa.ncdc&quot; ;
+    	:title = &quot;NOAA ERSSTv4 (in situ only)&quot; ;
+    	:summary = &quot;ERSST.v4 is developped based on v3b after revisions of 11 parameters using updated data sets and advanced knowledge of ERSST analysis&quot; ;
+    	:institution = &quot;NOAA/NESDIS/NCEI/CCOG&quot; ;
+    	:creator_name = &quot;Boyin Huang&quot; ;
+    	:creator_email = &quot;boyin.huang@noaa.gov&quot; ;
+    	:date_modified = &quot;2017/03/03&quot; ;
+    	:production_version = &quot;Version 5&quot; ;
+    	:history = &quot;Fri Mar  3 13:35:18 2017: ncatted -O -a _FillValue,ssta,o,f,-999.0 ssta.nc\n&quot;,
+    &quot;Version 5 based on Version 4&quot; ;
+    	:publisher_name = &quot;Boyin Huang&quot; ;
+    	:publisher_email = &quot;boyin.huang@noaa.gov&quot; ;
+    	:creator_url = &quot;http://www.ncdc.noaa.gov&quot; ;
+    	:license = &quot;No constraints on data access or use&quot; ;
+    	:time_coverage_start = &quot;2017-02-15T000000Z&quot; ;
+    	:time_coverage_end = &quot;2017-02-15T000000Z&quot; ;
+    	:geospatial_lon_min = -1.f ;
+    	:geospatial_lon_max = 359.f ;
+    	:geospatial_lat_min = -89.f ;
+    	:geospatial_lat_max = 89.f ;
+    	:geospatial_lat_units = &quot;degrees_north&quot; ;
+    	:geospatial_lat_resolution = 2.f ;
+    	:geospatial_lon_units = &quot;degrees_east&quot; ;
+    	:geospatial_lon_resolution = 2.f ;
+    	:spatial_resolution = &quot;2.0 degree grid&quot; ;
+    	:cdm_data_type = &quot;Grid&quot; ;
+    	:processing_level = &quot;L4&quot; ;
+    	:standard_name_vocabulary = &quot;CF Standard Name Table v27&quot; ;
+    	:keywords = &quot;Earth Science &amp;gt; Oceans &amp;gt; Ocean Temperature &amp;gt; Sea Sur face Temperature &amp;gt&quot; ;
+    	:keywords_vocabulary = &quot;NASA Global Change Master Directory (GCMD) Science Keywords&quot; ;
+    	:project = &quot;NOAA Extended Reconstructed Sea Surface Temperature (ERSST)&quot; ;
+    	:platform = &quot;Ship and Buoy SSTs from ICOADS R2.5 and NCEP GTS&quot; ;
+    	:instrument = &quot;Conventional thermometers&quot; ;
+    	:source = &quot;ICOADS R2.5 SST, NCEP GTS SST, HadISST ice, NCEP ice&quot; ;
+    	:comment = &quot;SSTs were observed by conventional thermometers in Buckets (in sulated or un-insulated canvas and wooded buckets), Engine Room Intakers, or floats and drifters&quot; ;
+    	:references = &quot;Huang et al, 2015: Extended Reconstructed Sea Surface Temperatures Version 4 (ERSST.v4), Part I. Upgrades and Intercomparisons. Journal of Climate, DOI: 10.1175/JCLI-D-14-00006.1.&quot; ;
+    	:climatology = &quot;Climatology is based on 1971-2000 SST, Xue, Y., T. M. Smith, and R. W. Reynolds, 2003: Interdecadal changes of 30-yr SST normals during 1871.2000. Journal of Climate, 16, 1601-1612.&quot; ;
+    	:description = &quot;In situ data: ICOADS2.5 before 2007, NCEP in situ data from 2008 to present. Ice data: HadISST ice before 2015 and NCEP ice after 2015.&quot; ;
+
+data:
+
+ lat = -88, -86, -84, -82, -80, -78, -76, -74, -72, -70, -68, -66, -64, -62, 
+    -60, -58, -56, -54, -52, -50, -48, -46, -44, -42, -40, -38, -36, -34, 
+    -32, -30, -28, -26, -24, -22, -20, -18, -16, -14, -12, -10, -8, -6, -4, 
+    -2, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 
+    36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 
+    72, 74, 76, 78, 80, 82, 84, 86, 88 ;
+
+ lev = 0 ;
+
+ lon = 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 
+    38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 
+    74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 
+    108, 110, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 132, 134, 
+    136, 138, 140, 142, 144, 146, 148, 150, 152, 154, 156, 158, 160, 162, 
+    164, 166, 168, 170, 172, 174, 176, 178, 180, 182, 184, 186, 188, 190, 
+    192, 194, 196, 198, 200, 202, 204, 206, 208, 210, 212, 214, 216, 218, 
+    220, 222, 224, 226, 228, 230, 232, 234, 236, 238, 240, 242, 244, 246, 
+    248, 250, 252, 254, 256, 258, 260, 262, 264, 266, 268, 270, 272, 274, 
+    276, 278, 280, 282, 284, 286, 288, 290, 292, 294, 296, 298, 300, 302, 
+    304, 306, 308, 310, 312, 314, 316, 318, 320, 322, 324, 326, 328, 330, 
+    332, 334, 336, 338, 340, 342, 344, 346, 348, 350, 352, 354, 356, 358 ;
+
+ time = 0 ;
+}
+</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>以上の通り、海面水温データは、'sst'という変数名で格納されているということがわかりました。<br />
+そこで、この海面水温データをnetCDF4モジュールを用いて取り出してみることにします。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">netCDF4</span>
+<span class="n">nc</span><span class="o">=</span><span class="n">netCDF4</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="s1">'ersst.v4.201702.nc'</span><span class="p">,</span><span class="s1">'r'</span><span class="p">)</span>
+<span class="n">data</span><span class="o">=</span><span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">'sst'</span><span class="p">][:]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>たったこれだけです。<br />
+2行目で、netCDFファイルの中身の情報を持った「netCDF4オブジェクト」を生成し、<br />
+3行目で、そのオブジェクトの一要素(今回の場合'sst'という変数名で格納されたデータの中身)を取り出しているわけです。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">nc</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;
+[[[[-- -- -- ... -- -- --]
+   [-- -- -- ... -- -- --]
+   [-- -- -- ... -- -- --]
+   ...
+   [-1.5788253545761108 -1.5387723445892334 -1.518031358718872 ...
+    -1.7999999523162842 -1.7702364921569824 -1.7328710556030273]
+   [-1.5536582469940186 -1.5258724689483643 -1.5181310176849365 ...
+    -1.6532748937606812 -1.6176127195358276 -1.5812113285064697]
+   [-1.7319483757019043 -1.7999999523162842 -1.7999999523162842 ...
+    -1.741258144378662 -1.7337182760238647 -1.729689598083496]]]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Fortran%E3%83%90%E3%82%A4%E3%83%8A%E3%83%AA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">Fortran&#12496;&#12452;&#12490;&#12522;&#12501;&#12449;&#12452;&#12523;&#35501;&#12415;&#36796;&#12415;<a class="anchor-link" href="#Fortran%E3%83%90%E3%82%A4%E3%83%8A%E3%83%AA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">&#182;</a></h2><p>ここでは、まず<br />
+<strong>リトルエンディアンのヘッダなし4バイト浮動小数点バイナリ(俗に言うGrADS形式と呼ばれるもの)</strong><br />
+の中身を読み込んでみることにします。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat write_binary.f90 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>program main
+
+  implicit none
+
+  integer,parameter::N=10,M=20
+  integer::i,j
+  real,dimension(1:N,1:M)::x
+
+  open(10,file=&#39;filename.out&#39;,form=&#39;unformatted&#39;,access=&#39;direct&#39;,recl=N*4)
+
+  do i = 1,N
+     do j = 1,M
+        x(i,j) = i+j*2
+     end do
+  end do
+
+  do j = 1,M
+     write(10,rec=j)(x(i,j),i=1,N)
+  end do
+
+  close(10)
+
+end program main
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>まず、fortranプログラムを実行して架空のデータを作成。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>gfortran write_binary.f90
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>./a.out
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>続いてpythonでファイルの読み込みです。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">N</span><span class="o">=</span><span class="mi">10</span>  <span class="c1">#1レコード番号あたりに格納されているデータの数。</span>
+<span class="n">M</span><span class="o">=</span><span class="mi">20</span>  <span class="c1">#レコードの総数。</span>
+<span class="n">f</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">'filename.out'</span><span class="p">,</span><span class="s1">'r'</span><span class="p">)</span>
+<span class="n">dty</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">([(</span><span class="s1">'data'</span><span class="p">,</span><span class="s1">'&lt;'</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">+</span><span class="s1">'f'</span><span class="p">)])</span>
+<span class="n">chunk</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">dty</span><span class="p">,</span><span class="n">count</span><span class="o">=</span><span class="n">M</span><span class="p">)</span>
+<span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">chunk</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">'data'</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">M</span><span class="p">)])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[9]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 3.,  4.,  5.,  6.,  7.,  8.,  9., 10., 11., 12.],
+       [ 5.,  6.,  7.,  8.,  9., 10., 11., 12., 13., 14.],
+       [ 7.,  8.,  9., 10., 11., 12., 13., 14., 15., 16.],
+       [ 9., 10., 11., 12., 13., 14., 15., 16., 17., 18.],
+       [11., 12., 13., 14., 15., 16., 17., 18., 19., 20.],
+       [13., 14., 15., 16., 17., 18., 19., 20., 21., 22.],
+       [15., 16., 17., 18., 19., 20., 21., 22., 23., 24.],
+       [17., 18., 19., 20., 21., 22., 23., 24., 25., 26.],
+       [19., 20., 21., 22., 23., 24., 25., 26., 27., 28.],
+       [21., 22., 23., 24., 25., 26., 27., 28., 29., 30.],
+       [23., 24., 25., 26., 27., 28., 29., 30., 31., 32.],
+       [25., 26., 27., 28., 29., 30., 31., 32., 33., 34.],
+       [27., 28., 29., 30., 31., 32., 33., 34., 35., 36.],
+       [29., 30., 31., 32., 33., 34., 35., 36., 37., 38.],
+       [31., 32., 33., 34., 35., 36., 37., 38., 39., 40.],
+       [33., 34., 35., 36., 37., 38., 39., 40., 41., 42.],
+       [35., 36., 37., 38., 39., 40., 41., 42., 43., 44.],
+       [37., 38., 39., 40., 41., 42., 43., 44., 45., 46.],
+       [39., 40., 41., 42., 43., 44., 45., 46., 47., 48.],
+       [41., 42., 43., 44., 45., 46., 47., 48., 49., 50.]], dtype=float32)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>最終行は、</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">M</span><span class="p">):</span>  
+     <span class="n">data</span><span class="p">[</span><span class="n">j</span><span class="p">,:]</span><span class="o">=</span><span class="n">chunk</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">'data'</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>を1行で書き換えたものです。<br />
+chunk[k-1]が、fortranで言うところのレコード番号kのデータに対応しています。<br />
+なので、例えばレコード番号6のデータだけを取り出したい場合には、最終行を</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="o">=</span><span class="n">chunk</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="s1">'data'</span><span class="p">]</span>  
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>に置き換えれば良いです。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[12]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([13., 14., 15., 16., 17., 18., 19., 20., 21., 22.], dtype=float32)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+</div>
+      </div>
+    </div>
+
+      <div class="w3-row-padding w3-padding-small w3-left-aligned w3-panel">
+        <div class="w3-half w3-padding-small w3-container">
+          <h2 class="w3-xxlarge w3-padding-small w3-blue">基礎編</h2>
+          <div class="w3-row-padding bottom-links">
+            <p>
+              <a href="/html/基礎編/Pythonの基礎1.html">Pythonの基礎（１）</a>
+            </p>
+            <p>
+              <a href="/html/基礎編/Pythonの基礎2.html">Pythonの基礎（２）</a>
+            </p>
+            <p><a href="/html/基礎編/Matplotlib.html">Matplotlib</a></p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（１）導入.html"
+                >Numpyの基礎（１）導入</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（２）生成関数.html"
+                >Numpyの基礎（２）生成関数</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（３）ufunc.html"
+                >Numpyの基礎（３）配列に関数を作用させる</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（４）データ型.html"
+                >Numpyの基礎（４）データ型（C,Fortranとの比較）</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（５）要素の参照.html"
+                >Numpyの基礎（５）要素の取り出し方</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（６）ブロードキャスト.html"
+                >Numpyの基礎（６）ブロードキャスト</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（７）便利なライブラリ群.html"
+                >Numpyの基礎（７）線形代数やフーリエ変換</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（８）ファイル入出力.html"
+                >Numpyの基礎（８）様々な形式に対応したファイル入出力</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/ファイル読み込み.html">ファイル読み込み</a>
+            </p>
+            <p>
+              <a href="/html/基礎編/文字列操作（１）str.format.html"
+                >文字列操作（１）数値を文字列にフォーマットする</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/文字列操作（２）strやファイル読み込み.html"
+                >文字列操作（２）文字列に関数を適用する</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/読みやすいPythonコードを書こう.html"
+                >読みやすいPythonコードを書こう</a
+              >
+            </p>
+          </div>
+        </div>
+        <div class="w3-half w3-padding-small w3-container">
+          <h2 class="w3-xxlarge w3-padding-small w3-orange">応用編</h2>
+          <div class="w3-row-padding bottom-links">
+            <p><a href="/html/応用編/Animation.html">Animation</a></p>
+            <p>
+              <a href="/html/応用編/Fortran, C言語 との連携.html"
+                >Fortran, C言語 との連携</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/Pandas―データ分析（１）Series.html"
+                >Pandas ― データ分析（１）時系列などをうまく扱えるようにする</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/Pandas―データ分析（２）DataFrame.html"
+                >Pandas ― データ分析（２）複数の列を持った表形式でデータを格納する</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/Pandas―データ分析（３）GroupBy.html"
+                >Pandas ― データ分析（３）データを分割し、個別に集計する</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/Pandas―データ分析（４）ファイル入出力.html"
+                >Pandas ― データ分析（４）高度なファイル入出力</a
+              >
+            </p>
+            <p>
+              <a
+                href="/html/応用編/Pandas―データ分析（５）応用：都道府県別人口推移.html"
+                >Pandas ― データ分析（５）応用：都道府県別人口推移</a
+              >
+            </p>
+            <p>
+              <a
+                href="/html/応用編/Seaborn ― matplotlib をより美しく、使いやすく.html"
+                >Seaborn ― matplotlib をより美しく、使いやすく</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/shやBashの代わりにPythonを使う.html"
+                >shやBashの代わりにPythonを使う</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/SymPyー代数演算（１）使い方.html"
+                >SymPy ― 代数演算（１）文字を文字のまま計算する</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/SymPyー代数演算（２）応用：二重振り子.html"
+                >SymPy ―
+                代数演算（２）応用：ラグランジアンから運動方程式を求めて二重振り子を解く</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-button-container">
+        <div class="w3-panel w3-center">
+          <h4><a class="w3-button w3-black" href="/">トップページに戻る</a></h4>
+        </div>
+      </div>
+  </body>
+</html>

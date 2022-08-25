@@ -1,0 +1,30 @@
+p {
+    font-size: 15px;
+
+}
+
+.top-button-container {
+    max-width: 1110px;
+    margin: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-button-container {
+    margin: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.my-notebook-container {
+    margin-top: 2px;
+    margin-bottom: 5px;
+}
+
+.must-no-padding {
+    padding: 0px !important;
+}
+
+.bottom-links > p {
+    padding: 5px 1px;
+}

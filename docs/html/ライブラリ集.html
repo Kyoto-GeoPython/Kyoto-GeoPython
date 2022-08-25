@@ -1,5 +1,117 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<title>Redirecting to https://kyotogeopython.zawawahoge.com/html/ライブラリ集.html</title>
-<meta http-equiv="refresh" content="0; URL=https://kyotogeopython.zawawahoge.com/html/ライブラリ集.html">
-<link rel="canonical" href="https://kyotogeopython.zawawahoge.com/html/ライブラリ集.html">
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115860818-2"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-115860818-2');
+	</script>
+		<link rel="stylesheet" href="/css/w3.css">
+        <link rel="stylesheet" href="/css/base.css">
+        <title>ライブラリ集</title>
+    </head>
+    <body>
+        <div class="w3-center">
+            <div class="w3-container w3-left-align center-container">
+                <div class="w3-container">
+                    <h1>ライブラリ集</h1>
+                </div>
+
+                <div class="w3-container">
+                    <h2>はじめに</h2>
+                </div>
+
+                <div class="w3-container">
+                    <p><a href="http://docs.python.jp/3/library/index.html"><strong>Python標準ライブラリ</strong></a>を見ると分かるように、Pythonには標準でたくさんのライブラリが用意されています。それ以外にも、本当に多岐にわたるライブラリが様々なPythonコミュニティによって作られています。</p>
+                    <p>ただ、ライブラリが多すぎて、初めてPythonを触れる人にとっては、「結局どのライブラリが分からない」となる可能性もあります。</p>
+                    <p>ですのでこのページでは、よく使う標準ライブラリを含め、それぞれの分野では代表的なライブラリを紹介します。</p>
+                    <p>注意点として、基本的に有名なPythonライブラリは海外で作られているのでドキュメントが英語であることが多いです。少し古いバージョンであれば日本語訳されているものもありますが、最新版のドキュメントを読もうとすると必ず英語を読むことになります。</p>
+                    <p>最新版の情報を知るためになるべく（英語であっても）それぞれのHPのチュートリアルぐらいは読むと、取っ付きやすくなると思います。</p>
+                    <p>リンクは標準ライブラリならPython公式ページ、それ以外ならそのライブラリのページとなっています。</p>
+                    <p>標準ライブラリの説明は少し分かりにくいので、Google先生などに聞いてみると分かりやすい日本語のページを教えてくれるかもしれません。</p>
+                </div>
+
+                <div class="w3-container">
+                    <h2>OS関連</h2>
+                    <h3><a href="http://docs.python.jp/3/library/os.html">os　―　雑多なオペレーティングシステムインタフェース</a></h3>
+                    <div class="w3-container">
+                        <p><a href="http://nonbiri-tereka.hatenablog.com/entry/2014/03/14/195241">Python osを使ったファイルの動作、操作。パスの操作などなど</a></p>
+                    </div>
+                    <h3><a href="http://docs.python.jp/3/library/os.path.html">os.path　―　共通のパス名操作</a></h3>
+                    <h3><a href="http://docs.python.jp/3/library/pathlib.html">pathlib　―　オブジェクト指向のファイルシステムパス</a></h3>
+                    <h3><a href="http://docs.python.jp/3/library/sys.html">sys　― システムパラメータと関数</a></h3>
+                </div>
+
+                <hr>
+
+                <div class="w3-container">
+                    <h2>科学技術計算関連</h2>
+                    <h3><a href="http://www.numpy.org/">Numpy　―　ベクトル演算</a></h3>
+                    <h3><a href="https://docs.scipy.org/doc/scipy/reference/">Scipy　―　高度な科学技術計算</a></h3>
+                    <h3><a href="http://pandas.pydata.org/pandas-docs/stable/index.html">Pandas　―　データ分析</a></h3>
+                    <h3><a href="http://numba.pydata.org/">Numba　―　JITコンパイルによる高速化</a></h3>
+                    <h3><a href="http://docs.sympy.org/latest/index.html">Sympy　―　代数演算</a></h3>
+                    <div class="w3-container">
+                        <p><a href="./ライブラリ集/Sympy―代数演算.html">簡単な紹介ページ</a>を作りました。</p>
+                    </div>
+                    <h3><a href="http://cython.readthedocs.io/en/latest/src/tutorial/cython_tutorial.html">Cython　―　PythonicなコードをC言語に変換する</a></h3>
+                    <h3><a href="http://scikit-learn.org/stable/">scikit-learn　―　機械学習</a></h3>
+                    <h3><a href="http://docs.python.jp/3/library/ctypes.html">ctypes　―　Pythonのための外部関数ライブラリ</a></h3>
+                    <h3><a href="https://docs.python.jp/3/library/multiprocessing.html">multiprocessing — プロセスベースの並列処理</a></h3>
+                </div>
+
+                <hr>
+
+                <div class="w3-container">
+                    <h2>可視化</h2>
+                    <div class="w3-container">
+                        <p>良さげな記事として</p>
+                        <ul>
+                        <li><a href="http://qiita.com/onhrs/items/5afcbc83857f16895781">Pythonで幾つかある可視化ツールを試してみた〜入門として〜</a></li>
+                        </ul>
+                    </div>
+                    <h3><a href="http://matplotlib.org/2.0.0/index.html">Matplotlib　―　可視化ライブラリの定番</a></h3>
+                    <h3><a href="https://plot.ly/python/">Plotly　―　インタラクティブな可視化</a></h3>
+                    <h3><a href="https://seaborn.pydata.org/">Seaborn　―　スタイリッシュなデータ可視化</a></h3>
+                </div>
+
+                <hr>
+
+                <div class="w3-container">
+                    <h2>テキスト処理</h2>
+                    <h3><a href="http://docs.python.jp/3/library/string.html">string　―　一般的な文字列操作</a></h3>
+                    <h3><a href="http://docs.python.jp/3/library/csv.html">csv　―　CSV ファイルの読み書き</a></h3>
+                    <h3><a href="http://docs.python.jp/3/library/re.html">re　―　正規表現操作</a></h3>
+                    <h3><a href="https://pythonhosted.org/pyquery/">PyQuery　―　XMLやHTMLを扱うjQueryライクなAPI</a></h3>
+                </div>
+
+                <hr>
+
+                <div class="w3-container">
+                    <h2>日付や時間関連</h2>
+                    <h3><a href="http://docs.python.jp/3/library/time.html">time　―　時刻データへのアクセスと変換</a></h3>
+                    <h3><a href="http://docs.python.jp/3/library/datetime.html">datetime　―　基本的な日付型および時間型</a></h3>
+                </div>
+
+                <hr>
+
+                <div class="w3-container">
+                    <h2>Web関連</h2>
+                    <h3><a href="http://docs.python.jp/3/library/urllib.html">urllib　―　URLを扱うモジュール群</a></h3>
+                    <h3><a href="http://docs.python.jp/3/library/http.html">http　―　HTTP モジュール群</a></h3>
+                    <h3><a href="https://www.djangoproject.com/">Django　―　高度なサーバー</a></h3>
+                </div>
+
+            </div>
+            <div class="w3-panel w3-center">
+                <h4><a class="w3-button w3-black" href='/'>トップページに戻る</a></h4>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,5 +1,753 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<title>Redirecting to https://kyotogeopython.zawawahoge.com/html/応用編/SymPyー代数演算（１）使い方.html</title>
-<meta http-equiv="refresh" content="0; URL=https://kyotogeopython.zawawahoge.com/html/応用編/SymPyー代数演算（１）使い方.html">
-<link rel="canonical" href="https://kyotogeopython.zawawahoge.com/html/応用編/SymPyー代数演算（１）使い方.html">
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SymPyー代数演算（１）使い方</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-115860818-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-115860818-2");
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="/css/nb-000.css" />
+    <link rel="stylesheet" type="text/css" href="/css/nb-001.css" />
+    <link rel="stylesheet" type="text/css" href="/css/nb-002.css" />
+
+    <link rel="stylesheet" href="/css/w3.css" />
+    <link rel="stylesheet" type="text/css" href="/css/nb-base.css" />
+
+    <!-- Loading mathjax macro -->
+    <!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+              processEscapes: true,
+              processEnvironments: true
+          },
+          // Center justify equations in code and markdown cells. Elsewhere
+          // we use CSS to left justify single line equations in code cells.
+          displayAlign: 'center',
+          "HTML-CSS": {
+              styles: {'.MathJax_Display': {"margin": 0}},
+              linebreaks: { automatic: true }
+          }
+      });
+    </script>
+    <!-- End of mathjax configuration -->
+  </head>
+  <body>
+      <div class="top-button-container">
+        <div class="w3-panel w3-left">
+          <h4><a class="w3-button w3-black" href="/">トップページに戻る</a></h4>
+        </div>
+      </div>
+
+    <div tabindex="-1" id="notebook" class="border-box-sizing must-no-padding">
+      <div class="container my-notebook-container must-no-padding" id="notebook-container">
+        <div class="w3-panel">
+          <h1 class="w3-center">SymPyー代数演算（１）使い方</h1>
+        </div>
+
+        <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="SymPy%E3%81%A8%E3%81%AF">SymPy&#12392;&#12399;<a class="anchor-link" href="#SymPy%E3%81%A8%E3%81%AF">&#182;</a></h1><p>代数演算のライブラリです。<br />
+Symbolicな演算（文字を数値としてではなくそのまま計算する演算）を可能にします。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sy</span>
+<span class="n">sy</span><span class="o">.</span><span class="n">init_printing</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%81%AE%E5%AE%9A%E7%BE%A9">&#12471;&#12531;&#12508;&#12523;&#12398;&#23450;&#32681;<a class="anchor-link" href="#%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%81%AE%E5%AE%9A%E7%BE%A9">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># シンボルを定義</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">"a"</span><span class="p">)</span>
+<span class="n">a</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[3]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle a$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 複数のシンボルを同時に定義</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">"x y"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># LaTexの記法を使える（raw文字列にしないとエスケープ文字と認識する）</span>
+<span class="n">theta</span><span class="p">,</span> <span class="n">gamma</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\theta \gamma"</span><span class="p">)</span>
+<span class="n">theta</span><span class="p">,</span> <span class="n">gamma</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[5]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle \left( \theta, \  \gamma\right)$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 正の実数として定義</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">"r"</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 実数として定義</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">"q"</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>文字の情報を与えないと非常に一般的な複素数として計算することがあるので、なるべく情報を与えるようにしましょう。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="%E5%9F%BA%E6%9C%AC%E6%BC%94%E7%AE%97">&#22522;&#26412;&#28436;&#31639;<a class="anchor-link" href="#%E5%9F%BA%E6%9C%AC%E6%BC%94%E7%AE%97">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span> <span class="o">-</span> <span class="n">theta</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle - \theta + a^{2} + x$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">a</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[8]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle a$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[9]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle \left(x + y\right)^{3}$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="%E5%BC%8F%E3%81%AE%E5%B1%95%E9%96%8B%E3%81%AA%E3%81%A9">&#24335;&#12398;&#23637;&#38283;&#12394;&#12393;<a class="anchor-link" href="#%E5%BC%8F%E3%81%AE%E5%B1%95%E9%96%8B%E3%81%AA%E3%81%A9">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span>
+<span class="n">f</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[10]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle x^{3} + 3 x^{2} y + 3 x y^{2} + y^{3}$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># x^2の係数</span>
+<span class="n">f</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">coeff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[11]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle 3 y$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="%E5%BE%AE%E5%88%86%E3%82%84%E6%A5%B5%E9%99%90">&#24494;&#20998;&#12420;&#26997;&#38480;<a class="anchor-link" href="#%E5%BE%AE%E5%88%86%E3%82%84%E6%A5%B5%E9%99%90">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span>
+<span class="n">f</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[12]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle 1$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># xで偏微分</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">f</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[13]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle 6 x y + y^{2}$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 代入（シンボルも代入できる）</span>
+<span class="n">f</span><span class="o">.</span><span class="n">subs</span><span class="p">([(</span><span class="n">y</span><span class="p">,</span> <span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="p">)])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[14]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle a^{4} x + 3 a^{2} x^{2}$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="NumPy%E3%81%AEufunc%E3%81%AB%E5%A4%89%E6%8F%9B">NumPy&#12398;ufunc&#12395;&#22793;&#25563;<a class="anchor-link" href="#NumPy%E3%81%AEufunc%E3%81%AB%E5%A4%89%E6%8F%9B">&#182;</a></h2><p>シンボリックな表現をNumPyのufuncに変換できます。<br />
+これは結構すごいと思います。<br />
+シンボリックな計算をしたあと、数値計算を簡単にすることができます。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">"x a b c"</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">c</span>
+<span class="n">f</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[15]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle a x^{2} + b x + c$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ４引数を持つ関数を定義</span>
+<span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="n">func</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s2">"numpy"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 実際に数値を代入(ufuncとして振る舞い、ベクトル演算が可能)</span>
+<span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">func</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+</div>
+      </div>
+    </div>
+
+      <div class="w3-row-padding w3-padding-small w3-left-aligned w3-panel">
+        <div class="w3-half w3-padding-small w3-container">
+          <h2 class="w3-xxlarge w3-padding-small w3-blue">基礎編</h2>
+          <div class="w3-row-padding bottom-links">
+            <p>
+              <a href="/html/基礎編/Pythonの基礎1.html">Pythonの基礎（１）</a>
+            </p>
+            <p>
+              <a href="/html/基礎編/Pythonの基礎2.html">Pythonの基礎（２）</a>
+            </p>
+            <p><a href="/html/基礎編/Matplotlib.html">Matplotlib</a></p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（１）導入.html"
+                >Numpyの基礎（１）導入</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（２）生成関数.html"
+                >Numpyの基礎（２）生成関数</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（３）ufunc.html"
+                >Numpyの基礎（３）配列に関数を作用させる</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（４）データ型.html"
+                >Numpyの基礎（４）データ型（C,Fortranとの比較）</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（５）要素の参照.html"
+                >Numpyの基礎（５）要素の取り出し方</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（６）ブロードキャスト.html"
+                >Numpyの基礎（６）ブロードキャスト</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（７）便利なライブラリ群.html"
+                >Numpyの基礎（７）線形代数やフーリエ変換</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/Numpyの基礎（８）ファイル入出力.html"
+                >Numpyの基礎（８）様々な形式に対応したファイル入出力</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/ファイル読み込み.html">ファイル読み込み</a>
+            </p>
+            <p>
+              <a href="/html/基礎編/文字列操作（１）str.format.html"
+                >文字列操作（１）数値を文字列にフォーマットする</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/文字列操作（２）strやファイル読み込み.html"
+                >文字列操作（２）文字列に関数を適用する</a
+              >
+            </p>
+            <p>
+              <a href="/html/基礎編/読みやすいPythonコードを書こう.html"
+                >読みやすいPythonコードを書こう</a
+              >
+            </p>
+          </div>
+        </div>
+        <div class="w3-half w3-padding-small w3-container">
+          <h2 class="w3-xxlarge w3-padding-small w3-orange">応用編</h2>
+          <div class="w3-row-padding bottom-links">
+            <p><a href="/html/応用編/Animation.html">Animation</a></p>
+            <p>
+              <a href="/html/応用編/Fortran, C言語 との連携.html"
+                >Fortran, C言語 との連携</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/Pandas―データ分析（１）Series.html"
+                >Pandas ― データ分析（１）時系列などをうまく扱えるようにする</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/Pandas―データ分析（２）DataFrame.html"
+                >Pandas ― データ分析（２）複数の列を持った表形式でデータを格納する</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/Pandas―データ分析（３）GroupBy.html"
+                >Pandas ― データ分析（３）データを分割し、個別に集計する</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/Pandas―データ分析（４）ファイル入出力.html"
+                >Pandas ― データ分析（４）高度なファイル入出力</a
+              >
+            </p>
+            <p>
+              <a
+                href="/html/応用編/Pandas―データ分析（５）応用：都道府県別人口推移.html"
+                >Pandas ― データ分析（５）応用：都道府県別人口推移</a
+              >
+            </p>
+            <p>
+              <a
+                href="/html/応用編/Seaborn ― matplotlib をより美しく、使いやすく.html"
+                >Seaborn ― matplotlib をより美しく、使いやすく</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/shやBashの代わりにPythonを使う.html"
+                >shやBashの代わりにPythonを使う</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/SymPyー代数演算（１）使い方.html"
+                >SymPy ― 代数演算（１）文字を文字のまま計算する</a
+              >
+            </p>
+            <p>
+              <a href="/html/応用編/SymPyー代数演算（２）応用：二重振り子.html"
+                >SymPy ―
+                代数演算（２）応用：ラグランジアンから運動方程式を求めて二重振り子を解く</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-button-container">
+        <div class="w3-panel w3-center">
+          <h4><a class="w3-button w3-black" href="/">トップページに戻る</a></h4>
+        </div>
+      </div>
+  </body>
+</html>
