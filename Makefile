@@ -6,3 +6,6 @@ start:
 
 jupyter:
 	poetry run jupyter notebook src
+
+jupyter-lab:
+	poetry run jupyter lab src
