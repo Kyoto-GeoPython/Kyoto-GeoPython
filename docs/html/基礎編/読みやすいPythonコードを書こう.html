@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>読みやすいPythonコードを書こう</title>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=UA-115860818-2"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      gtag("config", "UA-115860818-2");
-    </script>
+  <title>読みやすいPythonコードを書こう</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115860818-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || []
+    function gtag() {
+      dataLayer.push(arguments)
+    }
+    gtag("js", new Date())
 
-    <link rel="stylesheet" type="text/css" href="/css/nb-000.css" />
-    <link rel="stylesheet" type="text/css" href="/css/nb-001.css" />
-    <link rel="stylesheet" type="text/css" href="/css/nb-002.css" />
+    gtag("config", "UA-115860818-2");
+  </script>
 
-    <link rel="stylesheet" href="/css/w3.css" />
-    <link rel="stylesheet" type="text/css" href="/css/nb-base.css" />
+  <link rel="stylesheet" type="text/css" href="/css/nb-000.css" />
+  <link rel="stylesheet" type="text/css" href="/css/nb-001.css" />
+  <link rel="stylesheet" type="text/css" href="/css/nb-002.css" />
 
-    <!-- Loading mathjax macro -->
-    <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
-    <!-- MathJax configuration -->
-    <script type="text/x-mathjax-config">
+  <link rel="stylesheet" href="/css/w3.css" />
+  <link rel="stylesheet" type="text/css" href="/css/nb-base.css" />
+
+  <!-- Loading mathjax macro -->
+  <!-- Load mathjax -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+  <!-- MathJax configuration -->
+  <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
           tex2jax: {
               inlineMath: [ ['$','$'], ["\\(","\\)"] ],
@@ -48,22 +46,23 @@
           }
       });
     </script>
-    <!-- End of mathjax configuration -->
-  </head>
-  <body>
-      <div class="top-button-container">
-        <div class="w3-panel w3-left">
-          <h4><a class="w3-button w3-black" href="/">トップページに戻る</a></h4>
-        </div>
+  <!-- End of mathjax configuration -->
+</head>
+
+<body>
+  <div class="top-button-container">
+    <div class="w3-panel w3-left">
+      <h4><a class="w3-button w3-black" href="/">トップページに戻る</a></h4>
+    </div>
+  </div>
+
+  <div tabindex="-1" id="notebook" class="border-box-sizing must-no-padding">
+    <div class="container my-notebook-container must-no-padding" id="notebook-container">
+      <div class="w3-panel">
+        <h1 class="w3-center">読みやすいPythonコードを書こう</h1>
       </div>
 
-    <div tabindex="-1" id="notebook" class="border-box-sizing must-no-padding">
-      <div class="container my-notebook-container must-no-padding" id="notebook-container">
-        <div class="w3-panel">
-          <h1 class="w3-center">読みやすいPythonコードを書こう</h1>
-        </div>
-
-        <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+      <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">&#12399;&#12376;&#12417;&#12395;<a class="anchor-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">&#182;</a></h1><p>Pythonは可読性の高い言語だとよく言われます。インデントが強制されることで、分岐や繰り返し、関数のスコープなどが一目見ただけでわかるようになっています。</p>
@@ -351,145 +350,102 @@
 
 
 </div>
+    </div>
+  </div>
+
+  <div class="w3-row-padding w3-padding-small w3-left-aligned w3-panel">
+    <div class="w3-half w3-padding-small w3-container">
+      <h2 class="w3-xxlarge w3-padding-small w3-blue">基礎編</h2>
+      <div class="w3-row-padding bottom-links">
+        <p>
+          <a href="/html/基礎編/Pythonの基礎1.html">Pythonの基礎（１）</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/Pythonの基礎2.html">Pythonの基礎（２）</a>
+        </p>
+        <p><a href="/html/基礎編/Matplotlib.html">Matplotlib</a></p>
+        <p>
+          <a href="/html/基礎編/Numpyの基礎（１）導入.html">Numpyの基礎（１）導入</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/Numpyの基礎（２）生成関数.html">Numpyの基礎（２）生成関数</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/Numpyの基礎（３）ufunc.html">Numpyの基礎（３）配列に関数を作用させる</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/Numpyの基礎（４）データ型.html">Numpyの基礎（４）データ型（C,Fortranとの比較）</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/Numpyの基礎（５）要素の参照.html">Numpyの基礎（５）要素の取り出し方</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/Numpyの基礎（６）ブロードキャスト.html">Numpyの基礎（６）ブロードキャスト</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/Numpyの基礎（７）便利なライブラリ群.html">Numpyの基礎（７）線形代数やフーリエ変換</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/Numpyの基礎（８）ファイル入出力.html">Numpyの基礎（８）様々な形式に対応したファイル入出力</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/ファイル読み込み.html">ファイル読み込み</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/文字列操作（１）str.format.html">文字列操作（１）数値を文字列にフォーマットする</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/文字列操作（２）strやファイル読み込み.html">文字列操作（２）文字列に関数を適用する</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/読みやすいPythonコードを書こう.html">読みやすいPythonコードを書こう</a>
+        </p>
       </div>
     </div>
-
-      <div class="w3-row-padding w3-padding-small w3-left-aligned w3-panel">
-        <div class="w3-half w3-padding-small w3-container">
-          <h2 class="w3-xxlarge w3-padding-small w3-blue">基礎編</h2>
-          <div class="w3-row-padding bottom-links">
-            <p>
-              <a href="/html/基礎編/Pythonの基礎1.html">Pythonの基礎（１）</a>
-            </p>
-            <p>
-              <a href="/html/基礎編/Pythonの基礎2.html">Pythonの基礎（２）</a>
-            </p>
-            <p><a href="/html/基礎編/Matplotlib.html">Matplotlib</a></p>
-            <p>
-              <a href="/html/基礎編/Numpyの基礎（１）導入.html"
-                >Numpyの基礎（１）導入</a
-              >
-            </p>
-            <p>
-              <a href="/html/基礎編/Numpyの基礎（２）生成関数.html"
-                >Numpyの基礎（２）生成関数</a
-              >
-            </p>
-            <p>
-              <a href="/html/基礎編/Numpyの基礎（３）ufunc.html"
-                >Numpyの基礎（３）配列に関数を作用させる</a
-              >
-            </p>
-            <p>
-              <a href="/html/基礎編/Numpyの基礎（４）データ型.html"
-                >Numpyの基礎（４）データ型（C,Fortranとの比較）</a
-              >
-            </p>
-            <p>
-              <a href="/html/基礎編/Numpyの基礎（５）要素の参照.html"
-                >Numpyの基礎（５）要素の取り出し方</a
-              >
-            </p>
-            <p>
-              <a href="/html/基礎編/Numpyの基礎（６）ブロードキャスト.html"
-                >Numpyの基礎（６）ブロードキャスト</a
-              >
-            </p>
-            <p>
-              <a href="/html/基礎編/Numpyの基礎（７）便利なライブラリ群.html"
-                >Numpyの基礎（７）線形代数やフーリエ変換</a
-              >
-            </p>
-            <p>
-              <a href="/html/基礎編/Numpyの基礎（８）ファイル入出力.html"
-                >Numpyの基礎（８）様々な形式に対応したファイル入出力</a
-              >
-            </p>
-            <p>
-              <a href="/html/基礎編/ファイル読み込み.html">ファイル読み込み</a>
-            </p>
-            <p>
-              <a href="/html/基礎編/文字列操作（１）str.format.html"
-                >文字列操作（１）数値を文字列にフォーマットする</a
-              >
-            </p>
-            <p>
-              <a href="/html/基礎編/文字列操作（２）strやファイル読み込み.html"
-                >文字列操作（２）文字列に関数を適用する</a
-              >
-            </p>
-            <p>
-              <a href="/html/基礎編/読みやすいPythonコードを書こう.html"
-                >読みやすいPythonコードを書こう</a
-              >
-            </p>
-          </div>
-        </div>
-        <div class="w3-half w3-padding-small w3-container">
-          <h2 class="w3-xxlarge w3-padding-small w3-orange">応用編</h2>
-          <div class="w3-row-padding bottom-links">
-            <p><a href="/html/応用編/Animation.html">Animation</a></p>
-            <p>
-              <a href="/html/応用編/Fortran, C言語 との連携.html"
-                >Fortran, C言語 との連携</a
-              >
-            </p>
-            <p>
-              <a href="/html/応用編/Pandas―データ分析（１）Series.html"
-                >Pandas ― データ分析（１）時系列などをうまく扱えるようにする</a
-              >
-            </p>
-            <p>
-              <a href="/html/応用編/Pandas―データ分析（２）DataFrame.html"
-                >Pandas ― データ分析（２）複数の列を持った表形式でデータを格納する</a
-              >
-            </p>
-            <p>
-              <a href="/html/応用編/Pandas―データ分析（３）GroupBy.html"
-                >Pandas ― データ分析（３）データを分割し、個別に集計する</a
-              >
-            </p>
-            <p>
-              <a href="/html/応用編/Pandas―データ分析（４）ファイル入出力.html"
-                >Pandas ― データ分析（４）高度なファイル入出力</a
-              >
-            </p>
-            <p>
-              <a
-                href="/html/応用編/Pandas―データ分析（５）応用：都道府県別人口推移.html"
-                >Pandas ― データ分析（５）応用：都道府県別人口推移</a
-              >
-            </p>
-            <p>
-              <a
-                href="/html/応用編/Seaborn ― matplotlib をより美しく、使いやすく.html"
-                >Seaborn ― matplotlib をより美しく、使いやすく</a
-              >
-            </p>
-            <p>
-              <a href="/html/応用編/shやBashの代わりにPythonを使う.html"
-                >shやBashの代わりにPythonを使う</a
-              >
-            </p>
-            <p>
-              <a href="/html/応用編/SymPyー代数演算（１）使い方.html"
-                >SymPy ― 代数演算（１）文字を文字のまま計算する</a
-              >
-            </p>
-            <p>
-              <a href="/html/応用編/SymPyー代数演算（２）応用：二重振り子.html"
-                >SymPy ―
-                代数演算（２）応用：ラグランジアンから運動方程式を求めて二重振り子を解く</a
-              >
-            </p>
-          </div>
-        </div>
+    <div class="w3-half w3-padding-small w3-container">
+      <h2 class="w3-xxlarge w3-padding-small w3-orange">応用編</h2>
+      <div class="w3-row-padding bottom-links">
+        <p><a href="/html/応用編/Animation.html">Animation</a></p>
+        <p>
+          <a href="/html/応用編/Fortran, C言語 との連携.html">Fortran, C言語 との連携</a>
+        </p>
+        <p>
+          <a href="/html/応用編/Pandas―データ分析（１）Series.html">Pandas ― データ分析（１）時系列などをうまく扱えるようにする</a>
+        </p>
+        <p>
+          <a href="/html/応用編/Pandas―データ分析（２）DataFrame.html">Pandas ― データ分析（２）複数の列を持った表形式でデータを格納する</a>
+        </p>
+        <p>
+          <a href="/html/応用編/Pandas―データ分析（３）GroupBy.html">Pandas ― データ分析（３）データを分割し、個別に集計する</a>
+        </p>
+        <p>
+          <a href="/html/応用編/Pandas―データ分析（４）ファイル入出力.html">Pandas ― データ分析（４）高度なファイル入出力</a>
+        </p>
+        <p>
+          <a href="/html/応用編/Pandas―データ分析（５）応用：都道府県別人口推移.html">Pandas ― データ分析（５）応用：都道府県別人口推移</a>
+        </p>
+        <p>
+          <a href="/html/応用編/Seaborn ― matplotlib をより美しく、使いやすく.html">Seaborn ― matplotlib をより美しく、使いやすく</a>
+        </p>
+        <p>
+          <a href="/html/応用編/shやBashの代わりにPythonを使う.html">shやBashの代わりにPythonを使う</a>
+        </p>
+        <p>
+          <a href="/html/応用編/SymPyー代数演算（１）使い方.html">SymPy ― 代数演算（１）文字を文字のまま計算する</a>
+        </p>
+        <p>
+          <a href="/html/応用編/SymPyー代数演算（２）応用：二重振り子.html">SymPy ―
+            代数演算（２）応用：ラグランジアンから運動方程式を求めて二重振り子を解く</a>
+        </p>
       </div>
+    </div>
+  </div>
 
-      <div class="footer-button-container">
-        <div class="w3-panel w3-center">
-          <h4><a class="w3-button w3-black" href="/">トップページに戻る</a></h4>
-        </div>
-      </div>
-  </body>
+  <div class="footer-button-container">
+    <div class="w3-panel w3-center">
+      <h4><a class="w3-button w3-black" href="/">トップページに戻る</a></h4>
+    </div>
+  </div>
+</body>
+
 </html>
