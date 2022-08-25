@@ -11,7 +11,7 @@ template_path="template/notebook-template.html"
 title="$(basename "$src_basename" | sed -e 's/\.ipynb//g')"
 
 # -- output
-output_dirname=$(echo "$src_dirname" | sed -e 's/src/docs\/html/g')
+output_dirname=$(echo "$src_dirname" | sed -e 's/src\/ipynb/docs\/html/g')
 output_basename=$(echo "$src_basename" | sed -e 's/ipynb/html/g')
 output_path="$output_dirname/$output_basename"
 
