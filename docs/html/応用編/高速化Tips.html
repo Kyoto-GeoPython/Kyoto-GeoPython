@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>高速化Tips</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115860818-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || []
+    function gtag() {
+      dataLayer.push(arguments)
+    }
+    gtag("js", new Date())
+
+    gtag("config", "UA-115860818-2");
+  </script>
+
+  <link rel="stylesheet" type="text/css" href="/css/nb-000.css" />
+  <link rel="stylesheet" type="text/css" href="/css/nb-001.css" />
+  <link rel="stylesheet" type="text/css" href="/css/nb-002.css" />
+
+  <link rel="stylesheet" href="/css/w3.css" />
+  <link rel="stylesheet" type="text/css" href="/css/nb-base.css" />
+
+  <!-- Loading mathjax macro -->
+  <!-- Load mathjax -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+  <!-- MathJax configuration -->
+  <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+              processEscapes: true,
+              processEnvironments: true
+          },
+          // Center justify equations in code and markdown cells. Elsewhere
+          // we use CSS to left justify single line equations in code cells.
+          displayAlign: 'center',
+          "HTML-CSS": {
+              styles: {'.MathJax_Display': {"margin": 0}},
+              linebreaks: { automatic: true }
+          }
+      });
+    </script>
+  <!-- End of mathjax configuration -->
+</head>
+
+<body>
+  <div class="top-button-container">
+    <div class="w3-panel w3-left">
+      <h4><a class="w3-button w3-black" href="/">トップページに戻る</a></h4>
+    </div>
+  </div>
+
+  <div tabindex="-1" id="notebook" class="border-box-sizing must-no-padding">
+    <div class="container my-notebook-container must-no-padding" id="notebook-container">
+      <div class="w3-panel">
+        <h1 class="w3-center">高速化Tips</h1>
+      </div>
+
+      <div class="w3-container w3-padding-small"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="%E9%AB%98%E9%80%9F%E5%8C%96Tips">&#39640;&#36895;&#21270;Tips<a class="anchor-link" href="#%E9%AB%98%E9%80%9F%E5%8C%96Tips">&#182;</a></h1><h2 id="Python%E3%82%92%E7%A7%91%E5%AD%A6%E6%8A%80%E8%A1%93%E8%A8%88%E7%AE%97%E3%81%AB%E4%BD%BF%E3%81%86%E4%BA%BA%E3%81%AB%E5%90%91%E3%81%91%E3%81%A6%E3%81%AE%E3%83%92%E3%83%B3%E3%83%88">Python&#12434;&#31185;&#23398;&#25216;&#34899;&#35336;&#31639;&#12395;&#20351;&#12358;&#20154;&#12395;&#21521;&#12369;&#12390;&#12398;&#12498;&#12531;&#12488;<a class="anchor-link" href="#Python%E3%82%92%E7%A7%91%E5%AD%A6%E6%8A%80%E8%A1%93%E8%A8%88%E7%AE%97%E3%81%AB%E4%BD%BF%E3%81%86%E4%BA%BA%E3%81%AB%E5%90%91%E3%81%91%E3%81%A6%E3%81%AE%E3%83%92%E3%83%B3%E3%83%88">&#182;</a></h2><p>プログラムが遅いと感じたらどうする？
+「よし、とりあえずforループを全部FortranやCに書き換えて・・・」</p>
+<p>↑は間違いです！
+まずはボトルネックを調べるべき</p>
+<img src="use-case-graphic_bottleneck.png">
+<p>もし全てのコードを高速化しようとしたら
+Pythonの利点であるコーディング時間の短さを失う！</p>
+<h2 id="%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E6%99%82%E9%96%93%EF%BC%8B%E8%A8%88%E7%AE%97%E6%99%82%E9%96%93%EF%BC%9D%E7%A0%94%E7%A9%B6%E6%99%82%E9%96%93">&#12467;&#12540;&#12487;&#12451;&#12531;&#12464;&#26178;&#38291;&#65291;&#35336;&#31639;&#26178;&#38291;&#65309;&#30740;&#31350;&#26178;&#38291;<a class="anchor-link" href="#%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E6%99%82%E9%96%93%EF%BC%8B%E8%A8%88%E7%AE%97%E6%99%82%E9%96%93%EF%BC%9D%E7%A0%94%E7%A9%B6%E6%99%82%E9%96%93">&#182;</a></h2><h3 id="%E3%83%9C%E3%83%88%E3%83%AB%E3%83%8D%E3%83%83%E3%82%AF%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%8B%E6%96%B9%E6%B3%95">&#12508;&#12488;&#12523;&#12493;&#12483;&#12463;&#12434;&#35211;&#12388;&#12369;&#12427;&#26041;&#27861;<a class="anchor-link" href="#%E3%83%9C%E3%83%88%E3%83%AB%E3%83%8D%E3%83%83%E3%82%AF%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%8B%E6%96%B9%E6%B3%95">&#182;</a></h3><ul>
+<li>%timeit</li>
+<li>%run -p</li>
+<li>line_profiler (行ごとの計算時間を計測）</li>
+</ul>
+<h3 id="%E3%83%9C%E3%83%88%E3%83%AB%E3%83%8D%E3%83%83%E3%82%AF%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%81%9F%E3%82%89%EF%BC%9F">&#12508;&#12488;&#12523;&#12493;&#12483;&#12463;&#12434;&#35211;&#12388;&#12369;&#12383;&#12425;&#65311;<a class="anchor-link" href="#%E3%83%9C%E3%83%88%E3%83%AB%E3%83%8D%E3%83%83%E3%82%AF%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%81%9F%E3%82%89%EF%BC%9F">&#182;</a></h3><p>ボトルネックの種類を見極める</p>
+<ol>
+<li>Python”だから”遅い</li>
+<li>Python”でなくても”遅い</li>
+</ol>
+<h3 id="%EF%BC%91%EF%BC%8EPython%E2%80%9D%E3%81%A0%E3%81%8B%E3%82%89%E2%80%9D%E9%81%85%E3%81%84">&#65297;&#65294;Python&#8221;&#12384;&#12363;&#12425;&#8221;&#36933;&#12356;<a class="anchor-link" href="#%EF%BC%91%EF%BC%8EPython%E2%80%9D%E3%81%A0%E3%81%8B%E3%82%89%E2%80%9D%E9%81%85%E3%81%84">&#182;</a></h3><p>（例）成分ごとにforループを回している</p>
+<p>高速化のためのライブラリが存在する</p>
+<p>Numba
+Cython
+ctypes
+↑に共通するのはコンパイルするということ！</p>
+<h3 id="%EF%BC%92%EF%BC%8EPython%E2%80%9D%E3%81%A7%E3%81%AA%E3%81%8F%E3%81%A6%E3%82%82%E2%80%9D%E9%81%85%E3%81%84">&#65298;&#65294;Python&#8221;&#12391;&#12394;&#12367;&#12390;&#12418;&#8221;&#36933;&#12356;<a class="anchor-link" href="#%EF%BC%92%EF%BC%8EPython%E2%80%9D%E3%81%A7%E3%81%AA%E3%81%8F%E3%81%A6%E3%82%82%E2%80%9D%E9%81%85%E3%81%84">&#182;</a></h3><p>例えば</p>
+<ul>
+<li>巨大な行列演算</li>
+<li>遅いアルゴリズムを使っている</li>
+</ul>
+<p>Numpyは並のC言語のコードよりも速い
+この場合、CやFortranに書き換えたとしても劇的に早くなることはない</p>
+<p>「Python”だから”遅い」ときの対処法
+どのくらい遅いか（sumの場合）</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># １０００×１０００の二次元配列</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Numpy%E3%81%AE%E9%96%A2%E6%95%B0%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E5%A0%B4%E5%90%88">Numpy&#12398;&#38306;&#25968;&#12434;&#20351;&#12387;&#12383;&#22580;&#21512;<a class="anchor-link" href="#Numpy%E3%81%AE%E9%96%A2%E6%95%B0%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E5%A0%B4%E5%90%88">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> A.sum()
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>350 µs ± 7.46 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="%E7%94%9F%E3%81%AEPython%E3%81%A7%E6%9B%B8%E3%81%84%E3%81%9F%E5%A0%B4%E5%90%88">&#29983;&#12398;Python&#12391;&#26360;&#12356;&#12383;&#22580;&#21512;<a class="anchor-link" href="#%E7%94%9F%E3%81%AEPython%E3%81%A7%E6%9B%B8%E3%81%84%E3%81%9F%E5%A0%B4%E5%90%88">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">my_sum</span><span class="p">(</span><span class="n">arr2d</span><span class="p">):</span>
+    <span class="n">I</span> <span class="o">=</span> <span class="n">arr2d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="n">arr2d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="mf">0.</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">I</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">J</span><span class="p">):</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="n">arr2d</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">res</span>
+            
+<span class="o">%</span><span class="k">timeit</span> my_sum(A)
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>180 ms ± 2.29 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>2桁ぐらい遅い！</p>
+<h2 id="Numba%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B">Numba&#12434;&#20351;&#12387;&#12390;&#12415;&#12427;<a class="anchor-link" href="#Numba%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B">&#182;</a></h2><p>Numbaは、JIT(Just In Time)コンパイラ
+初めての実行時にコンパイルを行い、それ以降はコンパイルされたものを使う。</p>
+<p>（Just In Time = 必要になるときに必要な分だけ）</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">jit</span>
+<span class="kn">import</span> <span class="nn">numba</span> <span class="k">as</span> <span class="nn">nb</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@jit</span>
+<span class="k">def</span> <span class="nf">my_sum_Numba</span><span class="p">(</span><span class="n">arr2d</span><span class="p">):</span>
+    <span class="n">I</span> <span class="o">=</span> <span class="n">arr2d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="n">arr2d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="mf">0.</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">I</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">J</span><span class="p">):</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="n">arr2d</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="c1"># 実行時に初めてコンパイル</span>
+<span class="n">my_sum_Numba</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="o">*</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+
+<span class="o">%</span><span class="k">timeit</span> my_sum_Numba(A)
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1.16 ms ± 21.1 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Numpyのsum関数より少し遅いが、生Pythonよりは100倍以上速い</p>
+<h3 id="%E8%A1%8C%E5%88%97%E7%A9%8D%E3%81%AE%E5%A0%B4%E5%90%88">&#34892;&#21015;&#31309;&#12398;&#22580;&#21512;<a class="anchor-link" href="#%E8%A1%8C%E5%88%97%E7%A9%8D%E3%81%AE%E5%A0%B4%E5%90%88">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
+            
+<span class="o">%</span><span class="k">timeit</span> np.dot(A, B)
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>164 µs ± 11.9 µs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="%E7%94%9FPython%E3%81%A7%E8%A1%8C%E5%88%97%E7%A9%8D">&#29983;Python&#12391;&#34892;&#21015;&#31309;<a class="anchor-link" href="#%E7%94%9FPython%E3%81%A7%E8%A1%8C%E5%88%97%E7%A9%8D">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">my_mul</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="n">M_A</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">N_B</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">M_A</span><span class="p">,</span> <span class="n">N_B</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M_A</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_B</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+                <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">C</span>
+
+<span class="o">%</span><span class="k">timeit</span> my_mul(A, B)            
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1.7 s ± 8.13 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>数桁遅い</p>
+<h3 id="Numba%E3%81%A7%E8%A1%8C%E5%88%97%E7%A9%8D">Numba&#12391;&#34892;&#21015;&#31309;<a class="anchor-link" href="#Numba%E3%81%A7%E8%A1%8C%E5%88%97%E7%A9%8D">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># @jit(nb.float64[:,:](nb.float64[:,:], nb.float64[:,:]), nopython=True)</span>
+<span class="nd">@jit</span>
+<span class="k">def</span> <span class="nf">my_mul_numba</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="n">M_A</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">N_B</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">M_A</span><span class="p">,</span> <span class="n">N_B</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M_A</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_B</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+                <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">C</span>
+
+<span class="n">my_mul_numba</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+
+<span class="o">%</span><span class="k">timeit</span> my_mul_numba(A, B)
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>3.35 ms ± 27.2 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="%E9%AB%98%E9%80%9F%E5%8C%96%E3%81%BE%E3%81%A8%E3%82%81">&#39640;&#36895;&#21270;&#12414;&#12392;&#12417;<a class="anchor-link" href="#%E9%AB%98%E9%80%9F%E5%8C%96%E3%81%BE%E3%81%A8%E3%82%81">&#182;</a></h2><ul>
+<li>まずは、Numpyの関数で書く！</li>
+<li>どうしても生PythonループがボトルネックになっていたらNumba等を検討！</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+
+</div>
+    </div>
+  </div>
+
+  <div class="w3-row-padding w3-padding-small w3-left-aligned w3-panel">
+    <div class="w3-half w3-padding-small w3-container">
+      <h2 class="w3-xxlarge w3-padding-small w3-blue">基礎編</h2>
+      <div class="w3-row-padding bottom-links">
+        <p>
+          <a href="/html/基礎編/Pythonの基礎1.html">Pythonの基礎（１）</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/Pythonの基礎2.html">Pythonの基礎（２）</a>
+        </p>
+        <p><a href="/html/基礎編/Matplotlib.html">Matplotlib</a></p>
+        <p>
+          <a href="/html/基礎編/Numpyの基礎（１）導入.html">Numpyの基礎（１）導入</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/Numpyの基礎（２）生成関数.html">Numpyの基礎（２）生成関数</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/Numpyの基礎（３）ufunc.html">Numpyの基礎（３）配列に関数を作用させる</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/Numpyの基礎（４）データ型.html">Numpyの基礎（４）データ型（C,Fortranとの比較）</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/Numpyの基礎（５）要素の参照.html">Numpyの基礎（５）要素の取り出し方</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/Numpyの基礎（６）ブロードキャスト.html">Numpyの基礎（６）ブロードキャスト</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/Numpyの基礎（７）便利なライブラリ群.html">Numpyの基礎（７）線形代数やフーリエ変換</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/Numpyの基礎（８）ファイル入出力.html">Numpyの基礎（８）様々な形式に対応したファイル入出力</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/ファイル読み込み.html">ファイル読み込み</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/文字列操作（１）str.format.html">文字列操作（１）数値を文字列にフォーマットする</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/文字列操作（２）strやファイル読み込み.html">文字列操作（２）文字列に関数を適用する</a>
+        </p>
+        <p>
+          <a href="/html/基礎編/読みやすいPythonコードを書こう.html">読みやすいPythonコードを書こう</a>
+        </p>
+      </div>
+    </div>
+    <div class="w3-half w3-padding-small w3-container">
+      <h2 class="w3-xxlarge w3-padding-small w3-orange">応用編</h2>
+      <div class="w3-row-padding bottom-links">
+        <p><a href="/html/応用編/Animation.html">Animation</a></p>
+        <p>
+          <a href="/html/応用編/Fortran, C言語 との連携.html">Fortran, C言語 との連携</a>
+        </p>
+        <p>
+          <a href="/html/応用編/Pandas―データ分析（１）Series.html">Pandas ― データ分析（１）時系列などをうまく扱えるようにする</a>
+        </p>
+        <p>
+          <a href="/html/応用編/Pandas―データ分析（２）DataFrame.html">Pandas ― データ分析（２）複数の列を持った表形式でデータを格納する</a>
+        </p>
+        <p>
+          <a href="/html/応用編/Pandas―データ分析（３）GroupBy.html">Pandas ― データ分析（３）データを分割し、個別に集計する</a>
+        </p>
+        <p>
+          <a href="/html/応用編/Pandas―データ分析（４）ファイル入出力.html">Pandas ― データ分析（４）高度なファイル入出力</a>
+        </p>
+        <p>
+          <a href="/html/応用編/Pandas―データ分析（５）応用：都道府県別人口推移.html">Pandas ― データ分析（５）応用：都道府県別人口推移</a>
+        </p>
+        <p>
+          <a href="/html/応用編/Seaborn ― matplotlib をより美しく、使いやすく.html">Seaborn ― matplotlib をより美しく、使いやすく</a>
+        </p>
+        <p>
+          <a href="/html/応用編/shやBashの代わりにPythonを使う.html">shやBashの代わりにPythonを使う</a>
+        </p>
+        <p>
+          <a href="/html/応用編/SymPyー代数演算（１）使い方.html">SymPy ― 代数演算（１）文字を文字のまま計算する</a>
+        </p>
+        <p>
+          <a href="/html/応用編/SymPyー代数演算（２）応用：二重振り子.html">SymPy ―
+            代数演算（２）応用：ラグランジアンから運動方程式を求めて二重振り子を解く</a>
+        </p>
+        <p>
+          <a href="/html/応用編/高速化Tips.html">高速化Tips</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-button-container">
+    <div class="w3-panel w3-center">
+      <h4><a class="w3-button w3-black" href="/">トップページに戻る</a></h4>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -18,6 +18,9 @@ netCDF4 = "^1.6.0"
 seaborn = "^0.11.2"
 sympy = "^1.11"
 jupyterlab = "^3.4.5"
+plotly = "^5.10.0"
+numba = "^0.56.0"
+numpy = "<1.23"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
