@@ -2,19 +2,15 @@
 
 cd "$(dirname "$0")/.."
 
-src_basename=$(basename "$1")
-src_dirname=$(dirname "$1")
+# args
+src_path="$1"
 
-template_path="template/notebook-template.html"
+source scripts/constants.sh
 
 # -- arguments for renderer
-title="$(basename "$src_basename" | sed -e 's/\.ipynb//g')"
+output_path="$(echo "$src_path" | sed -e "s#"$src_base_dir"#"$output_base_dir"#g" | sed -e 's#.ipynb#.html#g')"
+title="$(basename "$output_path" | sed -e 's#.html##g')"
 
-# -- output
-output_dirname=$(echo "$src_dirname" | sed -e 's/src/docs\/html/g')
-output_basename=$(echo "$src_basename" | sed -e 's/ipynb/html/g')
-output_path="$output_dirname/$output_basename"
-
-mkdir -p "$output_dirname"
+mkdir -p "$(dirname "$output_path")"
 
 poetry run python scripts/html_renderer.py --template "$template_path" -o "$output_path" --title "$title" "$1"

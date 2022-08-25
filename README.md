@@ -1,37 +1,41 @@
 # Kyoto-GeoPython
 
-## convert ipynb to html
+Kyoto-GeoPython の HP を管理するための GitHub repository です。
+
+https://kyotogeopython.zawawahoge.com/ で公開されています。
+
+# 開発者用
+
+## 準備
+
+- Python を実行できる環境を用意する
+- パッケージ管理＆仮想環境構築用に [Poetry](https://python-poetry.org/docs/) をインストールしておく
+
+```
+$ poetry install
+```
+
+を実行すると、必要な依存関係が全て入る。
+
+`.venv` という仮想環境が生成され、これを使って開発を行う。
+
+## ipynb → 　HTML への変換
 
 ```
 $ make convert
 ```
 
-## run local server
+## ローカルサーバの起動
 
 ```
 $ make start
 ```
 
-Open `http://localhost:8080` in your browser.
 
-# setup
+ブラウザで `http://localhost:8080` を開く。
 
-Install Poetry.
-
-https://python-poetry.org/docs/
-
-Or `brew install poetry` for Mac OS.
-
+## Jupyter Notebook の起動
 
 ```
-asdf install
-poetry install
-```
-
-## Tips
-
-`.venv` in repository root directory.
-
-```
-poetry config virtualenvs.in-project true
+$ make jupyter
 ```

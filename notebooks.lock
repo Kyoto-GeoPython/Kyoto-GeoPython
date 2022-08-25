@@ -1,0 +1,28 @@
+src/ipynb/スライド/1日目スライド.ipynb
+src/ipynb/基礎編/Matplotlib.ipynb
+src/ipynb/基礎編/Numpyの基礎（１）導入.ipynb
+src/ipynb/基礎編/Numpyの基礎（２）生成関数.ipynb
+src/ipynb/基礎編/Numpyの基礎（３）ufunc.ipynb
+src/ipynb/基礎編/Numpyの基礎（４）データ型.ipynb
+src/ipynb/基礎編/Numpyの基礎（５）要素の参照.ipynb
+src/ipynb/基礎編/Numpyの基礎（６）ブロードキャスト.ipynb
+src/ipynb/基礎編/Numpyの基礎（７）便利なライブラリ群.ipynb
+src/ipynb/基礎編/Numpyの基礎（８）ファイル入出力.ipynb
+src/ipynb/基礎編/Numpyを使う際の注意点.ipynb
+src/ipynb/基礎編/Pythonの基礎1.ipynb
+src/ipynb/基礎編/Pythonの基礎2.ipynb
+src/ipynb/基礎編/ファイル読み込み.ipynb
+src/ipynb/基礎編/文字列操作（１）str.format.ipynb
+src/ipynb/基礎編/文字列操作（２）strやファイル読み込み.ipynb
+src/ipynb/基礎編/読みやすいPythonコードを書こう.ipynb
+src/ipynb/応用編/Animation.ipynb
+src/ipynb/応用編/Fortran, C言語 との連携.ipynb
+src/ipynb/応用編/Pandas―データ分析（１）Series.ipynb
+src/ipynb/応用編/Pandas―データ分析（２）DataFrame.ipynb
+src/ipynb/応用編/Pandas―データ分析（３）GroupBy.ipynb
+src/ipynb/応用編/Pandas―データ分析（４）ファイル入出力.ipynb
+src/ipynb/応用編/Pandas―データ分析（５）応用：都道府県別人口推移.ipynb
+src/ipynb/応用編/Seaborn ― matplotlib をより美しく、使いやすく.ipynb
+src/ipynb/応用編/SymPyー代数演算（１）使い方.ipynb
+src/ipynb/応用編/SymPyー代数演算（２）応用：二重振り子.ipynb
+src/ipynb/応用編/shやBashの代わりにPythonを使う.ipynb
