@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>{{ title }}</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115860818-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || []
+    function gtag() {
+      dataLayer.push(arguments)
+    }
+    gtag("js", new Date())
+
+    gtag("config", "UA-115860818-2");
+  </script>
+
+  <link rel="stylesheet" type="text/css" href="/css/nb-000.css" />
+  <link rel="stylesheet" type="text/css" href="/css/nb-001.css" />
+  <link rel="stylesheet" type="text/css" href="/css/nb-002.css" />
+
+  <link rel="stylesheet" href="/css/w3.css" />
+  <link rel="stylesheet" type="text/css" href="/css/nb-base.css" />
+
+  <!-- Loading mathjax macro -->
+  <!-- Load mathjax -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+  <!-- MathJax configuration -->
+  <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+              processEscapes: true,
+              processEnvironments: true
+          },
+          // Center justify equations in code and markdown cells. Elsewhere
+          // we use CSS to left justify single line equations in code cells.
+          displayAlign: 'center',
+          "HTML-CSS": {
+              styles: {'.MathJax_Display': {"margin": 0}},
+              linebreaks: { automatic: true }
+          }
+      });
+    </script>
+  <!-- End of mathjax configuration -->
+</head>
+
+<body>
+  <div class="top-button-container">
+    <div class="w3-panel w3-left">
+      <h1>ページが見つかりませんでした</h1>
+      <h4><a class="w3-button w3-black" href="/">トップページに戻る</a></h4>
+    </div>
+  </div>
+</body>
+
+</html>
